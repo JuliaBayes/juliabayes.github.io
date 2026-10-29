@@ -1,0 +1,15 @@
+---
+title: "Hello, world!"
+date: 2026-10-29
+categories: [news]
+---
+
+Welcome to the JuliaBayes blog! Posts here can contain Julia code, which is
+run when the site is built:
+
+```{julia}
+using Statistics
+
+x = randn(1000)
+mean(x), std(x)
+```

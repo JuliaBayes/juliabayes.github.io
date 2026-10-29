@@ -1,0 +1,12 @@
+{
+  "hash": "33f3e726120c965068c0658b350bd12c",
+  "result": {
+    "engine": "julia",
+    "markdown": "---\ntitle: \"Hello, world!\"\ndate: 2026-10-29\ncategories: [news]\n---\n\nWelcome to the JuliaBayes blog! Posts here can contain Julia code, which is\nrun when the site is built:\n\n::: {#2 .cell execution_count=1}\n``` {.julia .cell-code}\nusing Statistics\n\nx = randn(1000)\nmean(x), std(x)\n```\n\n::: {.cell-output .cell-output-display execution_count=1}\n```\n(-0.0069591340392612154, 1.0080028233314922)\n```\n:::\n:::\n\n\n\n",
+    "supporting": [
+      "index_files/figure-html"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

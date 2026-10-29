@@ -1,0 +1,5 @@
+---
+title: "About"
+---
+
+JuliaBayes is a GitHub organisation for Bayesian statistics in Julia.

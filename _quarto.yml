@@ -1,0 +1,28 @@
+project:
+  type: website
+  resources:
+    - CNAME
+
+website:
+  title: "JuliaBayes"
+  site-url: https://juliabayes.org
+  description: "News, notes, and discussion from the JuliaBayes organisation."
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/JuliaBayes
+      - icon: rss
+        href: index.xml
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    toc: true
+
+# Render Julia code locally and commit the results in _freeze/, so that CI
+# doesn't need to run any Julia.
+execute:
+  freeze: auto

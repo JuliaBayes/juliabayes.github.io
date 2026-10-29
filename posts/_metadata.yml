@@ -1,0 +1,8 @@
+# Settings shared by all posts.
+engine: julia
+# Each post lives in its own folder with its own Project.toml and
+# Manifest.toml. `@.` makes Julia use the nearest Project.toml, starting from
+# the post's folder.
+julia:
+  exeflags: ["--project=@."]
+author: "JuliaBayes"

@@ -1,0 +1,12 @@
+.landing-buttons {
+  margin-top: 1.25rem;
+}
+
+// Pandoc wraps the button links in a single paragraph.
+.landing-buttons > p {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}

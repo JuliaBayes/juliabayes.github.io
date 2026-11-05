@@ -4,7 +4,10 @@ project:
   # hidden directory (e.g. ~/.julia/dev/).
   render:
     - "/*.qmd"
-    - "posts/**/*.qmd"
+    - "about/*.qmd"
+    - "ecosystem/*.qmd"
+    - "news/*.qmd"
+    - "news/posts/**/*.qmd"
   resources:
     - CNAME
 
@@ -14,19 +17,19 @@ website:
   description: "News, notes, and discussion from the JuliaBayes organisation."
   navbar:
     right:
-      - about.qmd
-      - ecosystem.qmd
-      - blog.qmd
+      - about/index.qmd
+      - ecosystem/index.qmd
+      - news/index.qmd
       - icon: github
         href: https://github.com/JuliaBayes
       - icon: rss
-        href: blog.xml
+        href: news/index.xml
 
 format:
   html:
     theme:
-      light: cosmo
-      dark: darkly
+      light: [cosmo, theming/theme-light.scss]
+      dark: [darkly, theming/theme-dark.scss]
     toc: true
 
 # Render Julia code locally and commit the results in _freeze/, so that CI

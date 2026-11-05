@@ -4,11 +4,11 @@ toc: false
 format:
   html:
     theme:
-      light: [cosmo, landing-light.scss, landing.scss]
-      dark: [darkly, landing-dark.scss, landing.scss]
+      light: [cosmo, theming/theme-light.scss, theming/landing.scss]
+      dark: [darkly, theming/theme-dark.scss, theming/landing.scss]
 listing:
   id: news-listing
-  contents: posts
+  contents: news/posts
   sort: "date desc"
   type: default
   max-items: 3
@@ -32,18 +32,18 @@ listing:
 :::
 
 ::: {.landing-buttons}
-[About](about.qmd){.btn}
-[GitHub](https://github.com/JuliaBayes){.btn}
+[About](about/index.qmd){.btn .accent-button .accent-blue}
+[GitHub](https://github.com/JuliaBayes){.btn .accent-button .accent-blue}
 :::
 
 ::::
 
-:::: {.g-col-12 .g-col-md-6 .landing-card .landing-card-eco}
+:::: {.g-col-12 .g-col-md-6 .accent-card .accent-purple}
 
 ::: {.landing-card-header}
 ## Ecosystem
 
-[All packages →](ecosystem.qmd)
+[All packages →](ecosystem/index.qmd)
 :::
 
 [Packages for modelling, inference, and diagnostics.]{.landing-card-intro}
@@ -57,31 +57,31 @@ listing:
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <div class="landing-slide">
+      <div class="accent-panel landing-slide">
         <h3 class="landing-slide-title">Category 1</h3>
         <p>Placeholder text describing the packages in this category and what they are used for.</p>
-        <p><a href="#">Pkg 1</a> · <a href="#">Pkg 2</a> · <a href="#">Pkg 3</a> · <a href="#">Pkg 4</a></p>
+        <p class="landing-slide-links"><a href="#">Pkg 1</a><a href="#">Pkg 2</a><a href="#">Pkg 3</a><a href="#">Pkg 4</a></p>
       </div>
     </div>
     <div class="carousel-item">
-      <div class="landing-slide">
+      <div class="accent-panel landing-slide">
         <h3 class="landing-slide-title">Category 2</h3>
         <p>Placeholder text describing the packages in this category and what they are used for.</p>
-        <p><a href="#">Pkg 1</a> · <a href="#">Pkg 2</a> · <a href="#">Pkg 3</a> · <a href="#">Pkg 4</a></p>
+        <p class="landing-slide-links"><a href="#">Pkg 1</a><a href="#">Pkg 2</a><a href="#">Pkg 3</a><a href="#">Pkg 4</a></p>
       </div>
     </div>
     <div class="carousel-item">
-      <div class="landing-slide">
+      <div class="accent-panel landing-slide">
         <h3 class="landing-slide-title">Category 3</h3>
         <p>Placeholder text describing the packages in this category and what they are used for.</p>
-        <p><a href="#">Pkg 1</a> · <a href="#">Pkg 2</a> · <a href="#">Pkg 3</a> · <a href="#">Pkg 4</a></p>
+        <p class="landing-slide-links"><a href="#">Pkg 1</a><a href="#">Pkg 2</a><a href="#">Pkg 3</a><a href="#">Pkg 4</a></p>
       </div>
     </div>
     <div class="carousel-item">
-      <div class="landing-slide">
+      <div class="accent-panel landing-slide">
         <h3 class="landing-slide-title">Category 4</h3>
         <p>Placeholder text describing the packages in this category and what they are used for.</p>
-        <p><a href="#">Pkg 1</a> · <a href="#">Pkg 2</a> · <a href="#">Pkg 3</a> · <a href="#">Pkg 4</a></p>
+        <p class="landing-slide-links"><a href="#">Pkg 1</a><a href="#">Pkg 2</a><a href="#">Pkg 3</a><a href="#">Pkg 4</a></p>
       </div>
     </div>
   </div>
@@ -90,18 +90,20 @@ listing:
 
 ::::
 
-:::: {.g-col-12 .g-col-md-6 .landing-card .landing-card-news}
+:::: {.g-col-12 .g-col-md-6 .accent-card .accent-red .landing-card-news}
 
 ::: {.landing-card-header}
 ## News
 
-[Blog →](blog.qmd)
+[All news →](news/index.qmd)
 :::
 
 [Notes and announcements.]{.landing-card-intro}
 
+:::: {.accent-panel .landing-news-panel}
 ::: {#news-listing}
 :::
+::::
 
 ::::
 

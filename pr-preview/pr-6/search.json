@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "JuliaBayes is a GitHub organisation for Bayesian statistics in Julia."
+  },
+  {
+    "objectID": "posts/2026-10-29-hello-world/index.html",
+    "href": "posts/2026-10-29-hello-world/index.html",
+    "title": "Hello, world!",
+    "section": "",
+    "text": "Welcome to the JuliaBayes blog! Posts here can contain Julia code, which is run when the site is built:\n\nusing Statistics\n\nx = randn(1000)\nmean(x), std(x)\n\n(-0.0069591340392612154, 1.0080028233314922)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "JuliaBayes",
+    "section": "",
+    "text": "Hello, world!\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\nJuliaBayes\n\n\n\n\n\nNo matching items"
+  }
+]

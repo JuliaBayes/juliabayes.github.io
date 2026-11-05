@@ -1,0 +1,33 @@
+name: PR Preview
+
+# `pull_request` gives fork PRs a read-only token, so previews are built only
+# for PRs from branches of this repository.
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # 7.0.1
+      - uses: quarto-dev/quarto-actions/setup@8a96df13519ee81fd526f2dfca5962811136661b # 2.2.0
+        if: github.event.action != 'closed'
+      # Julia outputs come from _freeze/, so no Julia is needed here.
+      - run: quarto render
+        if: github.event.action != 'closed'
+      # Deploys to gh-pages:pr-preview/pr-<N>/ and comments the URL; removes it on close.
+      - uses: rossjrw/pr-preview-action@873417d2df72380da1f3978378fb58560bcde976 # 1.8.2
+        with:
+          source-dir: _site
+          pages-base-url: juliabayes.org
+          qr-code: false

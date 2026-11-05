@@ -1,5 +1,10 @@
 project:
   type: website
+  # Explicit list: Quarto finds no inputs when the project path contains a
+  # hidden directory (e.g. ~/.julia/dev/).
+  render:
+    - "/*.qmd"
+    - "posts/**/*.qmd"
   resources:
     - CNAME
 
@@ -10,10 +15,12 @@ website:
   navbar:
     right:
       - about.qmd
+      - ecosystem.qmd
+      - blog.qmd
       - icon: github
         href: https://github.com/JuliaBayes
       - icon: rss
-        href: index.xml
+        href: blog.xml
 
 format:
   html:

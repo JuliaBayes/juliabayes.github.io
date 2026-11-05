@@ -1,13 +1,122 @@
 ---
 title: "JuliaBayes"
+toc: false
+format:
+  html:
+    theme:
+      light: [cosmo, landing-light.scss, landing.scss]
+      dark: [darkly, landing-dark.scss, landing.scss]
 listing:
+  id: news-listing
   contents: posts
   sort: "date desc"
   type: default
-  categories: true
+  max-items: 3
+  fields: [date, title]
   sort-ui: false
   filter-ui: false
-  feed: true
-page-layout: full
-title-block-banner: true
 ---
+
+::::::: {.grid}
+
+:::: {.g-col-12 .landing-hero}
+
+::: {.hero-stage}
+{{< include _hero-curve.md >}}
+
+::: {.hero-text}
+# JuliaBayes
+
+[Bayesian software in Julia]{.hero-subtitle}
+:::
+:::
+
+::: {.landing-buttons}
+[About](about.qmd){.btn}
+[GitHub](https://github.com/JuliaBayes){.btn}
+:::
+
+::::
+
+:::: {.g-col-12 .g-col-md-6 .landing-card .landing-card-eco}
+
+::: {.landing-card-header}
+## Ecosystem
+
+[All packages →](ecosystem.qmd)
+:::
+
+[Packages for modelling, inference, and diagnostics.]{.landing-card-intro}
+
+```{=html}
+<div id="ecosystem-carousel" class="carousel">
+  <div class="eco-carousel-controls">
+    <button type="button" data-bs-target="#ecosystem-carousel" data-bs-slide="prev" aria-label="Previous category">‹</button>
+    <span class="eco-carousel-counter">1 / 4</span>
+    <button type="button" data-bs-target="#ecosystem-carousel" data-bs-slide="next" aria-label="Next category">›</button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="landing-slide">
+        <h3 class="landing-slide-title">Category 1</h3>
+        <p>Placeholder text describing the packages in this category and what they are used for.</p>
+        <p><a href="#">Pkg 1</a> · <a href="#">Pkg 2</a> · <a href="#">Pkg 3</a> · <a href="#">Pkg 4</a></p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="landing-slide">
+        <h3 class="landing-slide-title">Category 2</h3>
+        <p>Placeholder text describing the packages in this category and what they are used for.</p>
+        <p><a href="#">Pkg 1</a> · <a href="#">Pkg 2</a> · <a href="#">Pkg 3</a> · <a href="#">Pkg 4</a></p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="landing-slide">
+        <h3 class="landing-slide-title">Category 3</h3>
+        <p>Placeholder text describing the packages in this category and what they are used for.</p>
+        <p><a href="#">Pkg 1</a> · <a href="#">Pkg 2</a> · <a href="#">Pkg 3</a> · <a href="#">Pkg 4</a></p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="landing-slide">
+        <h3 class="landing-slide-title">Category 4</h3>
+        <p>Placeholder text describing the packages in this category and what they are used for.</p>
+        <p><a href="#">Pkg 1</a> · <a href="#">Pkg 2</a> · <a href="#">Pkg 3</a> · <a href="#">Pkg 4</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+::::
+
+:::: {.g-col-12 .g-col-md-6 .landing-card .landing-card-news}
+
+::: {.landing-card-header}
+## News
+
+[Blog →](blog.qmd)
+:::
+
+[Notes and announcements.]{.landing-card-intro}
+
+::: {#news-listing}
+:::
+
+::::
+
+:::::::
+
+```{=html}
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const carousel = document.getElementById("ecosystem-carousel");
+  const counter = carousel.querySelector(".eco-carousel-counter");
+  const total = carousel.querySelectorAll('.carousel-item').length;
+  counter.textContent = `1 / ${total}`;
+  carousel.addEventListener("slid.bs.carousel", (event) => {
+    counter.textContent = `${event.to + 1} / ${total}`;
+  });
+});
+</script>
+```

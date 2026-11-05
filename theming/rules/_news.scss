@@ -1,0 +1,48 @@
+.landing-news-panel {
+  flex: 1 1 auto;
+  margin-top: 0.75rem;
+
+  .quarto-listing {
+    padding-bottom: 0;
+  }
+
+  .quarto-listing-container-default {
+    margin-right: 0;
+  }
+
+  div.quarto-post:first-child {
+    padding-top: 0;
+  }
+
+  div.quarto-post:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+// Overrides Quarto's default listing: one row per post, date first, at every
+// width.
+.landing-card-news div.quarto-post {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--bs-border-color-translucent);
+
+  .metadata {
+    order: -1;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0;
+    color: var(--bs-secondary-color);
+  }
+
+  .body {
+    flex: 1 1 auto;
+  }
+
+  .listing-title {
+    font-size: $landing-small-font-size;
+  }
+}

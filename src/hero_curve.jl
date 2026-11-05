@@ -1,3 +1,5 @@
+# 100% vibe coded woopsies
+
 # Generates `_hero-curve.md`: the Normal-density curve drawn behind the landing
 # page hero text. Distances are in CSS px (1rem = 16px) and measured from the
 # curve base, which sits at the bottom of the subtitle.
@@ -14,7 +16,7 @@ const CLEARANCE_PX = 12
 const TAIL_TOLERANCE_PX = 8
 const CURVE_STROKE_PX = 6
 
-# Font sizes must match the hero rules in landing.scss. The phone layout applies
+# Font sizes must match the hero rules in theming/rules/_hero.scss. The phone layout applies
 # below Bootstrap's sm breakpoint (576px); its row is the card row at that width.
 const HERO_LAYOUTS = (
     desktop=(;

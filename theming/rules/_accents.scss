@@ -1,0 +1,41 @@
+// A colour class takes effect only on an accent card or button. Everything
+// inside a card, accent panels included, reads the card's colour.
+@each $name, $color in $accent-colors {
+  .accent-card.accent-#{$name},
+  .accent-button.accent-#{$name} {
+    --accent-color: #{$color};
+    --accent-tint: #{rgba($color, $tint-strength)};
+    --accent-button-hover-bg: #{mix($color, $accent-card-bg, percentage($tint-strength))};
+  }
+}
+
+.accent-card {
+  padding: 1rem;
+  border: $accent-border-width solid var(--accent-color);
+  border-radius: $accent-card-border-radius;
+  background: $accent-card-bg;
+}
+
+.accent-panel {
+  padding: $accent-panel-padding;
+  border-radius: $accent-panel-border-radius;
+  background: var(--accent-tint);
+}
+
+// Bootstrap's hover and active states read their colours from these
+// variables, so setting `background` or `color` directly would disable them.
+// The radius is set directly: cosmo disables rounding, so its `.btn` rule
+// never reads `--bs-btn-border-radius`.
+.btn.accent-button {
+  --bs-btn-border-width: #{$accent-border-width};
+  --bs-btn-border-color: var(--accent-color);
+  --bs-btn-hover-border-color: var(--accent-color);
+  --bs-btn-active-border-color: var(--accent-color);
+  --bs-btn-bg: #{$accent-card-bg};
+  --bs-btn-hover-bg: var(--accent-button-hover-bg);
+  --bs-btn-active-bg: var(--accent-button-hover-bg);
+  --bs-btn-color: #{$body-color};
+  --bs-btn-hover-color: #{$body-color};
+  --bs-btn-active-color: #{$body-color};
+  border-radius: $accent-button-border-radius;
+}

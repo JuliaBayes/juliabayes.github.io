@@ -18,12 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # 7.0.1
       - uses: quarto-dev/quarto-actions/setup@8a96df13519ee81fd526f2dfca5962811136661b # 2.2.0
-      # Julia outputs come from _freeze/, so no Julia is needed here.
+      # No need for julia here because outputs come from _freeze/
       - run: quarto render
       - uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # 4.9.0
         with:
           branch: gh-pages
           folder: _site
-          clean-exclude: pr-preview/
-          # Preview workflows push to gh-pages too; rebase instead of overwriting them.
+          clean-exclude: previews/
           force: false

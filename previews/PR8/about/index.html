@@ -36,8 +36,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -50,9 +48,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-1f23444cedaad52eafeef4947b7b5108.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-acf79e44f2638aa89768770e2f784471.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-1f23444cedaad52eafeef4947b7b5108.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c664ef787972b9f9a50b329b2bad3a02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-103e0c7acc9d891306875dd45615d1f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c664ef787972b9f9a50b329b2bad3a02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,67 +77,11 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-team .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-name','listing-github','listing-role','listing-order','listing-image','listing-pronouns','listing-affiliation','listing-packages','listing-website','listing-email',{ data: ['index'] },{ data: ['categories'] }],
-      
-      searchColumns: ["listing-name","listing-github","listing-role","listing-order","listing-image","listing-pronouns","listing-affiliation","listing-packages","listing-website","listing-email"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-team'] = new List('listing-team', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <meta property="og:title" content="About – JuliaBayes">
 <meta property="og:description" content="News, notes, and discussion from the JuliaBayes organisation.">
-<meta property="og:image" content="https://juliabayes.org/about/people/BJMCox.png">
 <meta property="og:site_name" content="JuliaBayes">
-<meta property="og:image:alt" content="">
-<meta property="og:image:height" content="200">
-<meta property="og:image:width" content="200">
 </head>
 
 <body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
@@ -373,14 +315,8 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#team" id="toc-team" class="nav-link active" data-scroll-target="#team">Team</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
@@ -409,50 +345,8 @@ window.Quarto = {
 <p>We strive to be an open and welcoming community whose members share an interest in Bayesian statistics, no matter whether that interest is theoretical, applied, or from a software engineering perspective. Our projects span modelling, parameter estimation, and tools for working with the results.</p>
 <p>We’re open to collaborations across different probabilistic programming languages, research groups, and institutions. Most of us contribute alongside our day jobs, so contributions of all sizes are welcome.</p>
 <p>Do you want to bring your package into JuliaBayes, or just want to hang out and discuss with us? Come say hello in <a href="https://julialang.slack.com/archives/C0BKRUEN6CX"><code>#bayes</code> on Julia Slack</a>!</p>
-<section id="team" class="level2">
-<h2 class="anchored" data-anchor-id="team">Team</h2>
-<p>These are some of the people behind JuliaBayes.</p>
-<div id="listing-team" class="quarto-listing quarto-listing-container-custom">
-<div class="team-list">
-<div class="team-person" data-index="0">
-<p><img src="people/BJMCox.png" class="team-avatar" alt="" width="80" height="80"></p>
-<section id="jessica-cox-sheher-or-theythem" class="level3 team-name unnumbered unlisted team-body">
-<h3 class="team-name unnumbered unlisted anchored" data-anchor-id="jessica-cox-sheher-or-theythem">Jessica Cox <span class="team-pronouns">she/her or they/them</span></h3>
-<dl>
-<dt>Role</dt>
-<dd>
-Member
-</dd>
-<dt>Affiliation</dt>
-<dd>
-Max-Planck-Institut für Physik
-</dd>
-<dt>Packages</dt>
-<dd>
-<a href="https://github.com/JuliaBayes/EnsembleMCMC.jl">EnsembleMCMC.jl</a>, <a href="https://github.com/JuliaBayes/Wren.jl">Wren.jl</a>
-</dd>
-<dt>GitHub</dt>
-<dd>
-<a href="https://github.com/BJMCox">BJMCox</a>
-</dd>
-<dt>Website</dt>
-<dd>
-<a href="https://bjmcox.github.io/">bjmcox.github.io</a>
-</dd>
-<dt>Email</dt>
-<dd>
-<a href="mailto:bcox@mpp.mpg.de">bcox@mpp.mpg.de</a>
-</dd>
-</dl>
-</section>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
 
 
-
-</section>
 
 </main> <!-- /main -->
 <!-- Quarto swaps the theme stylesheets at once, but elements with a CSS

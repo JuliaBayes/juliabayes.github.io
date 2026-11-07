@@ -70,13 +70,6 @@
     "text": "JuliaBayes is a shared home for Bayesian software in Julia. Our goal is to make it easier to collaborate, share maintenance, and keep packages supported over time.\nWe strive to be an open and welcoming community whose members share an interest in Bayesian statistics, no matter whether that interest is theoretical, applied, or from a software engineering perspective. Our projects span modelling, parameter estimation, and tools for working with the results.\nWe’re open to collaborations across different probabilistic programming languages, research groups, and institutions. Most of us contribute alongside our day jobs, so contributions of all sizes are welcome.\nDo you want to bring your package into JuliaBayes, or just want to hang out and discuss with us? Come say hello in #bayes on Julia Slack!"
   },
   {
-    "objectID": "about/index.html#team",
-    "href": "about/index.html#team",
-    "title": "About",
-    "section": "Team",
-    "text": "Team\nThese are some of the people behind JuliaBayes.\n\n\n\n\n\nJessica Cox she/her or they/them\n\nRole\n\nMember\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nEnsembleMCMC.jl, Wren.jl\n\nGitHub\n\nBJMCox\n\nWebsite\n\nbjmcox.github.io\n\nEmail\n\nbcox@mpp.mpg.de\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "JuliaBayes",

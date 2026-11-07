@@ -1,7 +1,0 @@
----
-title: "Debugging a model, step by step"
-date: 2026-05-28
-engine: markdown
----
-
-Hello, world!

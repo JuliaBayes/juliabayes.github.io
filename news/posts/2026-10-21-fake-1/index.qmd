@@ -1,7 +1,0 @@
----
-title: "Release notes for the October sampler update"
-date: 2026-10-21
-engine: markdown
----
-
-Hello, world!

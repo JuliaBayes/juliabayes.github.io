@@ -23,3 +23,66 @@
     color: var(--bs-navbar-hover-color);
   }
 }
+
+// The toggle comes after the search. Quarto orders the search 4 below the lg
+// breakpoint and 999 above it, and the collapsed links 20.
+.navbar .quarto-navbar-tools {
+  order: 5;
+}
+
+@include media-breakpoint-up(lg) {
+  .navbar .quarto-navbar-tools {
+    order: 1000;
+  }
+
+  // Sets the search apart from the links.
+  .navbar #quarto-search {
+    margin-left: 1rem;
+    margin-right: 0.25rem;
+  }
+}
+
+// The search box shrinks to its loupe until it has focus. Quarto's overlay
+// search puts a light scrim over the whole page, which flashes in the dark
+// theme.
+#quarto-search.type-textbox {
+  .aa-Autocomplete {
+    width: 2rem;
+    transition: width 0.2s ease-in-out;
+
+    &:focus-within {
+      width: 14rem;
+    }
+  }
+
+  // The loupe sits at the right end, so that it stays in place while the box
+  // grows to its left.
+  .aa-Form {
+    flex-direction: row-reverse;
+    width: 100%;
+    overflow: hidden;
+    border-color: transparent;
+    background-color: transparent;
+    color: inherit;
+  }
+
+  .aa-Autocomplete:focus-within .aa-Form {
+    border-color: var(--bs-border-color);
+    background-color: $body-bg;
+  }
+
+  .aa-SubmitButton,
+  .aa-SubmitIcon,
+  .aa-Input,
+  .aa-ClearButton {
+    color: inherit;
+    opacity: 1;
+  }
+}
+
+// On narrow screens, the search still opens as an overlay. Quarto tints its
+// scrim with the text colour, which is light in the dark theme. A scrim in the
+// page background colour does not brighten the page.
+.aa-DetachedOverlay {
+  background-color: rgba($body-bg, 0.6);
+}

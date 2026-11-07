@@ -1,0 +1,25 @@
+// Quarto draws the colour-scheme toggle as a toggle switch, which does not say
+// what it switches. It shows the moon in the light theme and the sun in the
+// dark theme, as a font glyph so that it takes the navbar link colour.
+.navbar .quarto-color-scheme-toggle:not(.alternate) .bi::before,
+.navbar .quarto-color-scheme-toggle.alternate .bi::before {
+  background-image: none;
+  vertical-align: -0.125em;
+}
+.navbar .quarto-color-scheme-toggle:not(.alternate) .bi::before {
+  content: "\f497"; // bi-moon
+}
+
+.navbar .quarto-color-scheme-toggle.alternate .bi::before {
+  content: "\f5a2"; // bi-sun
+}
+
+// Quarto colours the tools apart from the links. The toggle takes the link
+// colours, so that it matches the GitHub and RSS icons.
+.navbar .quarto-navbar-tools .quarto-navigation-tool {
+  color: var(--bs-navbar-color);
+
+  &:hover {
+    color: var(--bs-navbar-hover-color);
+  }
+}

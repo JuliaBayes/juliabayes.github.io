@@ -1,6 +1,8 @@
 ---
 title: "JuliaBayes"
 toc: false
+# Quarto loads MathJax on every listing page. The landing page shows no maths.
+html-math-method: plain
 format:
   html:
     theme:

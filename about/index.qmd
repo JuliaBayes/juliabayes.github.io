@@ -1,0 +1,14 @@
+---
+title: "About"
+---
+
+JuliaBayes is a shared home for Bayesian software in Julia.
+Our goal is to make it easier to collaborate, share maintenance, and keep packages supported over time.
+
+We strive to be an open and welcoming community whose members share an interest in Bayesian statistics, no matter whether that interest is theoretical, applied, or from a software engineering perspective.
+
+We’re open to collaborations across different probabilistic programming languages, research groups, and institutions. 
+Most of us contribute alongside our day jobs, so contributions of all sizes are welcome.
+
+Do you want to bring your package into JuliaBayes, or just want to hang out and discuss with us? 
+Join us in #bayes on Julia Slack to chat!

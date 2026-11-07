@@ -33,6 +33,7 @@ format:
       light: [cosmo, theming/theme-light.scss]
       dark: [darkly, theming/theme-dark.scss]
     toc: true
+    include-after-body: theming/theme-switch.html
 
 # Render Julia code locally and commit the results in _freeze/, so that CI
 # doesn't need to run any Julia.

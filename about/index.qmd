@@ -1,5 +1,11 @@
 ---
 title: "About"
+listing:
+  id: team
+  contents: people/*.yml
+  template: people.ejs.md
+  # `order` sets the position. Entries with the same `order` sort by name.
+  sort: [order, name]
 ---
 
 JuliaBayes is a shared home for Bayesian software in Julia.
@@ -13,3 +19,10 @@ Most of us contribute alongside our day jobs, so contributions of all sizes are 
 
 Do you want to bring your package into JuliaBayes, or just want to hang out and discuss with us? 
 Come say hello in [`#bayes` on Julia Slack](https://julialang.slack.com/archives/C0BKRUEN6CX)!
+
+## Team
+
+These are some of the people behind JuliaBayes.
+
+::: {#team}
+:::

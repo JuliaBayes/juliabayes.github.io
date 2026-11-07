@@ -1,0 +1,14 @@
+// A very long word in a post title would otherwise run past the edge of the
+// page on small screens.
+.quarto-post .listing-title {
+  overflow-wrap: anywhere;
+}
+
+// Quarto gives the date a third of the row, which leaves a large gap before
+// each title. A fixed width is enough for a date and an author name. Below
+// the md breakpoint, Quarto puts the date above the title instead.
+@include media-breakpoint-up(md) {
+  div.quarto-post .metadata {
+    flex: 0 0 7rem;
+  }
+}

@@ -86,6 +86,12 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  #quarto-search.type-textbox .aa-Autocomplete {
+    transition: none;
+  }
+}
+
 // On narrow screens, the search still opens as an overlay. Quarto tints its
 // scrim with the text colour, which is light in the dark theme. A scrim in the
 // page background colour does not brighten the page.

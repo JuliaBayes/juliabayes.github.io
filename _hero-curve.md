@@ -5,7 +5,21 @@
   <defs>
     <linearGradient id="hero-curve-gradient-desktop" x1="0" x2="1" y1="0" y2="0">
       <stop offset="0.0" stop-color="#389826"/>
+      <stop offset="0.0625" stop-color="#009C5F"/>
+      <stop offset="0.125" stop-color="#009B89"/>
+      <stop offset="0.1875" stop-color="#0095AB"/>
+      <stop offset="0.25" stop-color="#008AC4"/>
+      <stop offset="0.3125" stop-color="#097DD2"/>
+      <stop offset="0.375" stop-color="#5870D3"/>
+      <stop offset="0.4375" stop-color="#7C63C7"/>
       <stop offset="0.5" stop-color="#9558B2"/>
+      <stop offset="0.5625" stop-color="#A053A9"/>
+      <stop offset="0.625" stop-color="#A94E9E"/>
+      <stop offset="0.6875" stop-color="#B24991"/>
+      <stop offset="0.75" stop-color="#BA4482"/>
+      <stop offset="0.8125" stop-color="#C04072"/>
+      <stop offset="0.875" stop-color="#C53D60"/>
+      <stop offset="0.9375" stop-color="#C93C4C"/>
       <stop offset="1.0" stop-color="#CB3C33"/>
     </linearGradient>
   </defs>
@@ -17,7 +31,21 @@
   <defs>
     <linearGradient id="hero-curve-gradient-phone" x1="0" x2="1" y1="0" y2="0">
       <stop offset="0.15" stop-color="#389826"/>
+      <stop offset="0.1937" stop-color="#009C5F"/>
+      <stop offset="0.2375" stop-color="#009B89"/>
+      <stop offset="0.2812" stop-color="#0095AB"/>
+      <stop offset="0.325" stop-color="#008AC4"/>
+      <stop offset="0.3688" stop-color="#097DD2"/>
+      <stop offset="0.4125" stop-color="#5870D3"/>
+      <stop offset="0.4562" stop-color="#7C63C7"/>
       <stop offset="0.5" stop-color="#9558B2"/>
+      <stop offset="0.5438" stop-color="#A053A9"/>
+      <stop offset="0.5875" stop-color="#A94E9E"/>
+      <stop offset="0.6312" stop-color="#B24991"/>
+      <stop offset="0.675" stop-color="#BA4482"/>
+      <stop offset="0.7188" stop-color="#C04072"/>
+      <stop offset="0.7625" stop-color="#C53D60"/>
+      <stop offset="0.8062" stop-color="#C93C4C"/>
       <stop offset="0.85" stop-color="#CB3C33"/>
     </linearGradient>
   </defs>

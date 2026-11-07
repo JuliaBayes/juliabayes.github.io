@@ -35,6 +35,71 @@ const HERO_LAYOUTS = (
     ),
 )
 
+# Julia green, purple and red. SVG interpolates gradient stops in sRGB, which
+# passes through grey between green and purple. Extra stops interpolated in
+# OKLCH keep the lightness and chroma changes even along the curve.
+const GRADIENT_COLORS = ("#389826", "#9558B2", "#CB3C33")
+const GRADIENT_STOPS_PER_SEGMENT = 8
+
+srgb_to_linear(c) = c ≤ 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055)^2.4
+linear_to_srgb(c) = c ≤ 0.0031308 ? 12.92c : 1.055c^(1 / 2.4) - 0.055
+
+# Matrices from Björn Ottosson, "A perceptual color space for image processing"
+# (2020).
+function hex_to_oklch(hex)
+    r, g, b = (srgb_to_linear(parse(Int, hex[i:(i + 1)]; base=16) / 255) for i in (2, 4, 6))
+    l, m, s = cbrt.((
+        0.4122214708r + 0.5363325363g + 0.0514459929b,
+        0.2119034982r + 0.6806995451g + 0.1073969566b,
+        0.0883024619r + 0.2817188376g + 0.6299787005b,
+    ))
+    L = 0.2104542553l + 0.7936177850m - 0.0040720468s
+    a = 1.9779984951l - 2.4285922050m + 0.4505937099s
+    b = 0.0259040371l + 0.7827717662m - 0.8086757660s
+    return (; L, C=hypot(a, b), h=atan(b, a))
+end
+
+function oklch_to_hex((; L, C, h))
+    a, b = C * cos(h), C * sin(h)
+    l, m, s = (
+        L + 0.3963377774a + 0.2158037573b,
+        L - 0.1055613458a - 0.0638541728b,
+        L - 0.0894841775a - 1.2914855480b,
+    ) .^ 3
+    rgb = (
+        4.0767416621l - 3.3077115913m + 0.2309699292s,
+        -1.2684380046l + 2.6097574011m - 0.3413193965s,
+        -0.0041960863l - 0.7034186147m + 1.7076147010s,
+    )
+    channels = (round(Int, 255 * linear_to_srgb(clamp(c, 0, 1))) for c in rgb)
+    return "#" * uppercase(join(string(c; base=16, pad=2) for c in channels))
+end
+
+# The hue takes the shorter way round the colour wheel.
+function interpolate_oklch(from, to, t)
+    Δh = rem2pi(to.h - from.h, RoundNearest)
+    return (; L=from.L + t * (to.L - from.L), C=from.C + t * (to.C - from.C), h=from.h + t * Δh)
+end
+
+"""
+    gradient_stops(offsets)
+
+Return `(offset, hex)` pairs that run through `GRADIENT_COLORS`, placed at
+`offsets`, with `GRADIENT_STOPS_PER_SEGMENT` stops in each segment.
+"""
+function gradient_stops(offsets)
+    colors = map(hex_to_oklch, GRADIENT_COLORS)
+    n = GRADIENT_STOPS_PER_SEGMENT
+    stops = [(first(offsets), first(GRADIENT_COLORS))]
+    for i in 1:(length(colors) - 1), k in 1:n
+        t = k / n
+        offset = offsets[i] + t * (offsets[i + 1] - offsets[i])
+        color = k == n ? GRADIENT_COLORS[i + 1] : oklch_to_hex(interpolate_oklch(colors[i], colors[i + 1], t))
+        push!(stops, (round(offset; digits=4), color))
+    end
+    return stops
+end
+
 normal_height(x, σ, peak_height) = peak_height * exp(-x^2 / (2σ^2))
 
 function sigma_lower_bound(peak_height, half_width, top)
@@ -111,13 +176,18 @@ function curve_svg(;
         ),
         " L",
     )
+    stops = join(
+        (
+            """<stop offset="$offset" stop-color="$color"/>""" for
+            (offset, color) in gradient_stops((gradient_inset, 0.5, 1 - gradient_inset))
+        ),
+        "\n      ",
+    )
     return """
     <svg width="$width" height="$height" viewBox="0 0 $width $height" aria-hidden="true" focusable="false">
       <defs>
         <linearGradient id="$gradient_id" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="$(gradient_inset)" stop-color="#389826"/>
-          <stop offset="0.5" stop-color="#9558B2"/>
-          <stop offset="$(1 - gradient_inset)" stop-color="#CB3C33"/>
+          $stops
         </linearGradient>
       </defs>
       <path d="M$points" fill="none" stroke="url(#$gradient_id)" stroke-width="$stroke_width" stroke-linejoin="round"/>

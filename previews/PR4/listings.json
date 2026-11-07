@@ -1,0 +1,14 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/news/posts/2026-10-29-hello-world/index.html"
+    ]
+  },
+  {
+    "listing": "/news/index.html",
+    "items": [
+      "/news/posts/2026-10-29-hello-world/index.html"
+    ]
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "news/posts/2026-10-29-hello-world/index.html",
+    "href": "news/posts/2026-10-29-hello-world/index.html",
+    "title": "Hello, world!",
+    "section": "",
+    "text": "Welcome to the JuliaBayes blog! Posts here can contain Julia code, which is run when the site is built:\n\nusing Statistics\n\nx = randn(1000)\nmean(x), std(x)\n\n(-0.02098169607447264, 0.9991584384383952)"
+  },
+  {
+    "objectID": "ecosystem/index.html",
+    "href": "ecosystem/index.html",
+    "title": "Ecosystem",
+    "section": "",
+    "text": "An overview of the packages in JuliaBayes will appear here."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "JuliaBayes",
+    "section": "",
+    "text": "Bayesian software in Julia\n\n\n\nAbout GitHub\n\n\n\n\n\nAll packages →\n\nPackages for modelling, inference, and diagnostics.\n\n  \n    ‹\n    1 / 4\n    ›\n  \n  \n    \n      \n        \n        Placeholder text describing the packages in this category and what they are used for.\n        Pkg 1Pkg 2Pkg 3Pkg 4\n      \n    \n    \n      \n        \n        Placeholder text describing the packages in this category and what they are used for.\n        Pkg 1Pkg 2Pkg 3Pkg 4\n      \n    \n    \n      \n        \n        Placeholder text describing the packages in this category and what they are used for.\n        Pkg 1Pkg 2Pkg 3Pkg 4\n      \n    \n    \n      \n        \n        Placeholder text describing the packages in this category and what they are used for.\n        Pkg 1Pkg 2Pkg 3Pkg 4\n      \n    \n  \n\n\n\n\n\nAll news →\n\nNotes and announcements.\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#ecosystem",
+    "href": "index.html#ecosystem",
+    "title": "JuliaBayes",
+    "section": "",
+    "text": "All packages →"
+  },
+  {
+    "objectID": "index.html#news",
+    "href": "index.html#news",
+    "title": "JuliaBayes",
+    "section": "",
+    "text": "All news →"
+  },
+  {
+    "objectID": "about/index.html",
+    "href": "about/index.html",
+    "title": "About",
+    "section": "",
+    "text": "JuliaBayes is a shared home for Bayesian software in Julia. Our goal is to make it easier to collaborate, share maintenance, and keep packages supported over time.\nWe strive to be an open and welcoming community whose members share an interest in Bayesian statistics, no matter whether that interest is theoretical, applied, or from a software engineering perspective.\nWe’re open to collaborations across different probabilistic programming languages, research groups, and institutions. Most of us contribute alongside our day jobs, so contributions of all sizes are welcome.\nDo you want to bring your package into JuliaBayes, or just want to hang out and discuss with us? Join us in #bayes on Julia Slack to chat!"
+  },
+  {
+    "objectID": "news/index.html",
+    "href": "news/index.html",
+    "title": "News",
+    "section": "",
+    "text": "Hello, world!\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\nJuliaBayes\n\n\n\n\n\nNo matching items"
+  }
+]

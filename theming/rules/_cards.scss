@@ -1,8 +1,11 @@
-// The grid stretches both cards to the same height; the news panel takes up
-// whatever height the header and intro leave.
-.landing-card-news {
+// The grid stretches both cards to the same height, and each card's panel takes
+// up whatever height the header and intro leave, so the panels match too.
+// Without min-width, the news card is at least as wide as the longest
+// single-line news title, which widens its column.
+.landing-card {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .landing-card-header {

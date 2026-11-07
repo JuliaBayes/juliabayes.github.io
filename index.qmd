@@ -11,7 +11,7 @@ listing:
   contents: news/posts
   sort: "date desc"
   type: default
-  max-items: 3
+  max-items: 4
   fields: [date, title]
   sort-ui: false
   filter-ui: false
@@ -38,7 +38,7 @@ listing:
 
 ::::
 
-:::: {.g-col-12 .g-col-md-6 .accent-card .accent-purple}
+:::: {.g-col-12 .g-col-md-6 .accent-card .accent-purple .landing-card}
 
 ::: {.landing-card-header}
 ## Ecosystem
@@ -90,10 +90,10 @@ listing:
 
 ::::
 
-:::: {.g-col-12 .g-col-md-6 .accent-card .accent-red .landing-card-news}
+:::: {.g-col-12 .g-col-md-6 .accent-card .accent-red .landing-card .landing-card-news}
 
 ::: {.landing-card-header}
-## News
+## Recent news
 
 [All news →](news/index.qmd)
 :::

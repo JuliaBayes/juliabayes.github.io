@@ -1,6 +1,5 @@
 .landing-news-panel {
   flex: 1 1 auto;
-  margin-top: 0.75rem;
 
   .quarto-listing {
     padding-bottom: 0;
@@ -8,6 +7,14 @@
 
   .quarto-listing-container-default {
     margin-right: 0;
+  }
+
+  // Two columns shared by all posts, so every date takes the width of the
+  // widest one and all titles start at the same point.
+  .quarto-listing-default {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 0.4rem;
   }
 
   div.quarto-post:first-child {
@@ -23,26 +30,31 @@
 // Overrides Quarto's default listing: one row per post, date first, at every
 // width.
 .landing-card-news div.quarto-post {
-  flex-direction: row;
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  // Quarto sets `gap: 2em` on posts, which would replace the list's gap.
+  column-gap: inherit;
   align-items: baseline;
-  gap: 0.75rem;
   margin: 0;
   padding: 0.4rem 0;
   border-bottom: 1px solid var(--bs-border-color-translucent);
 
   .metadata {
     order: -1;
-    flex: 0 0 auto;
     margin: 0;
     padding: 0;
     color: var(--bs-secondary-color);
   }
 
-  .body {
-    flex: 1 1 auto;
-  }
-
+  // Long titles end in an ellipsis after one line. The colour is for the
+  // ellipsis; the line height stops `overflow` from cutting off descenders.
   .listing-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-size: $landing-small-font-size;
+    line-height: 1.5;
+    color: var(--bs-link-color);
   }
 }

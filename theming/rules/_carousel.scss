@@ -1,6 +1,20 @@
+// The carousel and the visible slide stretch to the card's height, so the
+// slide's panel is as tall as the news panel.
 #ecosystem-carousel {
   position: relative;
-  margin-top: 0.75rem;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+
+  .carousel-inner {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .carousel-item {
+    flex: 1 1 auto;
+  }
 }
 
 // Slides switch without animation. Bootstrap sets this transition on every
@@ -31,7 +45,12 @@
   }
 }
 
+// The package links sit at the bottom of the slide; any extra height goes
+// between them and the description.
 .landing-slide {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   font-size: $landing-small-font-size;
 
   p:last-child {
@@ -47,6 +66,7 @@
 }
 
 .landing-slide-links {
+  margin-top: auto;
   display: flex;
   flex-wrap: wrap;
   gap: 0 1em;

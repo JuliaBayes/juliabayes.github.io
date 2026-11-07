@@ -4,8 +4,6 @@ listing:
   contents: posts
   sort: "date desc"
   type: default
-  # Leaves out `image`: posts have no images, and Quarto would otherwise keep
-  # an empty thumbnail column beside every post.
   fields: [date, author, title, categories, description]
   categories: true
   sort-ui: false

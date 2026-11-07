@@ -1,7 +1,0 @@
----
-title: "What we learned from moving three packages into one organisation and why we would do it again"
-date: 2026-09-30
-engine: markdown
----
-
-Hello, world!

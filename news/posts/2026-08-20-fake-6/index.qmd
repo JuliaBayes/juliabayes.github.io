@@ -1,7 +1,0 @@
----
-title: "New documentation site"
-date: 2026-08-20
-engine: markdown
----
-
-Hello, world!

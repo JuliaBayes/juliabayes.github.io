@@ -13,3 +13,12 @@ div.quarto-post .listing-title {
 div.quarto-post .listing-categories .listing-category {
   color: var(--bs-secondary-color);
 }
+
+// Quarto gives the date a third of the row, which leaves a large gap before
+// each title. A fixed width is enough for a date and an author name. Below
+// the md breakpoint, Quarto puts the date above the title instead.
+@include media-breakpoint-up(md) {
+  div.quarto-post .metadata {
+    flex: 0 0 7rem;
+  }
+}

@@ -50,9 +50,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8d3ad9c781c51ccd60b292c95058b2c2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-32280d01ff3a7ff5cbe701a37ed6ca11.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-8d3ad9c781c51ccd60b292c95058b2c2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c9b7ec712e1269d3f48e26ff02eb37ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-cce1f72e64daee8161aa40a622d4fe2a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-c9b7ec712e1269d3f48e26ff02eb37ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -83,20 +83,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-news-listing .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-news-listing'] = new List('listing-news-listing', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -134,9 +134,9 @@ window.Quarto = {
 };
 </script>
 
-<link rel="alternate" type="application/rss+xml" title="JuliaBayes" href="index.xml" data-external="1"></head>
+</head>
 
-<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -309,7 +309,7 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -323,8 +323,16 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="./about/index.html"> 
 <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./ecosystem/index.html"> 
+<span class="menu-text">Ecosystem</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./news/index.html"> 
+<span class="menu-text">News</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/JuliaBayes"> <i class="bi bi-github" role="img">
@@ -332,7 +340,7 @@ window.Quarto = {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="./news/index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -346,77 +354,232 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">JuliaBayes</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV3cw==">news <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content" tabindex="-1">
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">JuliaBayes</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
 
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="grid">
+<div class="g-col-12 landing-hero">
+<div class="hero-stage">
+<!-- Generated by src/hero_curve/hero_curve.jl -->
+<div class="hero-curve hero-curve-desktop">
+<svg width="800" height="267" viewbox="0 0 800 267" aria-hidden="true" focusable="false">
+  <defs>
+    <lineargradient id="hero-curve-gradient-desktop" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0.0" stop-color="#389826"></stop>
+      <stop offset="0.5" stop-color="#9558B2"></stop>
+      <stop offset="1.0" stop-color="#CB3C33"></stop>
+    </lineargradient>
+  </defs>
+  <path d="M0,253.1 L4,252.5 L8,251.9 L12,251.3 L16,250.6 L20,249.9 L24,249.1 L28,248.3 L32,247.5 L36,246.6 L40,245.7 L44,244.7 L48,243.7 L52,242.6 L56,241.4 L60,240.2 L64,239.0 L68,237.7 L72,236.3 L76,234.9 L80,233.4 L84,231.8 L88,230.2 L92,228.4 L96,226.7 L100,224.8 L104,222.9 L108,220.9 L112,218.8 L116,216.7 L120,214.5 L124,212.2 L128,209.8 L132,207.3 L136,204.8 L140,202.2 L144,199.5 L148,196.7 L152,193.9 L156,190.9 L160,187.9 L164,184.8 L168,181.7 L172,178.5 L176,175.2 L180,171.8 L184,168.3 L188,164.8 L192,161.3 L196,157.6 L200,153.9 L204,150.2 L208,146.4 L212,142.6 L216,138.7 L220,134.8 L224,130.8 L228,126.8 L232,122.8 L236,118.7 L240,114.7 L244,110.6 L248,106.5 L252,102.5 L256,98.4 L260,94.3 L264,90.3 L268,86.3 L272,82.3 L276,78.3 L280,74.4 L284,70.6 L288,66.8 L292,63.0 L296,59.3 L300,55.7 L304,52.2 L308,48.8 L312,45.4 L316,42.2 L320,39.1 L324,36.0 L328,33.1 L332,30.3 L336,27.7 L340,25.2 L344,22.8 L348,20.5 L352,18.4 L356,16.5 L360,14.7 L364,13.1 L368,11.6 L372,10.3 L376,9.2 L380,8.2 L384,7.4 L388,6.8 L392,6.4 L396,6.1 L400,6.0 L404,6.1 L408,6.4 L412,6.8 L416,7.4 L420,8.2 L424,9.2 L428,10.3 L432,11.6 L436,13.1 L440,14.7 L444,16.5 L448,18.4 L452,20.5 L456,22.8 L460,25.2 L464,27.7 L468,30.3 L472,33.1 L476,36.0 L480,39.1 L484,42.2 L488,45.4 L492,48.8 L496,52.2 L500,55.7 L504,59.3 L508,63.0 L512,66.8 L516,70.6 L520,74.4 L524,78.3 L528,82.3 L532,86.3 L536,90.3 L540,94.3 L544,98.4 L548,102.5 L552,106.5 L556,110.6 L560,114.7 L564,118.7 L568,122.8 L572,126.8 L576,130.8 L580,134.8 L584,138.7 L588,142.6 L592,146.4 L596,150.2 L600,153.9 L604,157.6 L608,161.3 L612,164.8 L616,168.3 L620,171.8 L624,175.2 L628,178.5 L632,181.7 L636,184.8 L640,187.9 L644,190.9 L648,193.9 L652,196.7 L656,199.5 L660,202.2 L664,204.8 L668,207.3 L672,209.8 L676,212.2 L680,214.5 L684,216.7 L688,218.8 L692,220.9 L696,222.9 L700,224.8 L704,226.7 L708,228.4 L712,230.2 L716,231.8 L720,233.4 L724,234.9 L728,236.3 L732,237.7 L736,239.0 L740,240.2 L744,241.4 L748,242.6 L752,243.7 L756,244.7 L760,245.7 L764,246.6 L768,247.5 L772,248.3 L776,249.1 L780,249.9 L784,250.6 L788,251.3 L792,251.9 L796,252.5 L800,253.1" fill="none" stroke="url(#hero-curve-gradient-desktop)" stroke-width="6" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="hero-curve hero-curve-phone">
+<svg width="544" height="165" viewbox="0 0 544 165" aria-hidden="true" focusable="false">
+  <defs>
+    <lineargradient id="hero-curve-gradient-phone" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0.15" stop-color="#389826"></stop>
+      <stop offset="0.5" stop-color="#9558B2"></stop>
+      <stop offset="0.85" stop-color="#CB3C33"></stop>
+    </lineargradient>
+  </defs>
+  <path d="M0,151.2 L4,150.5 L8,149.7 L12,148.9 L16,148.0 L20,147.1 L24,146.1 L28,145.0 L32,143.9 L36,142.7 L40,141.4 L44,140.1 L48,138.7 L52,137.2 L56,135.6 L60,133.9 L64,132.1 L68,130.3 L72,128.4 L76,126.4 L80,124.3 L84,122.1 L88,119.8 L92,117.4 L96,115.0 L100,112.4 L104,109.8 L108,107.1 L112,104.4 L116,101.5 L120,98.6 L124,95.6 L128,92.5 L132,89.4 L136,86.3 L140,83.1 L144,79.8 L148,76.6 L152,73.3 L156,69.9 L160,66.6 L164,63.3 L168,60.0 L172,56.7 L176,53.4 L180,50.1 L184,46.9 L188,43.8 L192,40.7 L196,37.7 L200,34.8 L204,32.0 L208,29.2 L212,26.6 L216,24.1 L220,21.8 L224,19.5 L228,17.5 L232,15.5 L236,13.8 L240,12.2 L244,10.7 L248,9.5 L252,8.4 L256,7.6 L260,6.9 L264,6.4 L268,6.1 L272,6.0 L276,6.1 L280,6.4 L284,6.9 L288,7.6 L292,8.4 L296,9.5 L300,10.7 L304,12.2 L308,13.8 L312,15.5 L316,17.5 L320,19.5 L324,21.8 L328,24.1 L332,26.6 L336,29.2 L340,32.0 L344,34.8 L348,37.7 L352,40.7 L356,43.8 L360,46.9 L364,50.1 L368,53.4 L372,56.7 L376,60.0 L380,63.3 L384,66.6 L388,69.9 L392,73.3 L396,76.6 L400,79.8 L404,83.1 L408,86.3 L412,89.4 L416,92.5 L420,95.6 L424,98.6 L428,101.5 L432,104.4 L436,107.1 L440,109.8 L444,112.4 L448,115.0 L452,117.4 L456,119.8 L460,122.1 L464,124.3 L468,126.4 L472,128.4 L476,130.3 L480,132.1 L484,133.9 L488,135.6 L492,137.2 L496,138.7 L500,140.1 L504,141.4 L508,142.7 L512,143.9 L516,145.0 L520,146.1 L524,147.1 L528,148.0 L532,148.9 L536,149.7 L540,150.5 L544,151.2" fill="none" stroke="url(#hero-curve-gradient-phone)" stroke-width="6" stroke-linejoin="round"></path>
+</svg>
+</div>
+<section id="juliabayes" class="level1 hero-text">
+<h1>JuliaBayes</h1>
+</section>
+</div>
+<div class="landing-buttons">
+<p><a href="./about/index.html" class="btn accent-button accent-blue">About us</a> <a href="./ecosystem/index.html" class="btn accent-button accent-blue">Ecosystem</a> <a href="https://github.com/JuliaBayes" class="btn accent-button accent-blue"><span class="bi bi-github"></span> GitHub</a> <a href="https://julialang.slack.com/archives/C0BKRUEN6CX" class="btn accent-button accent-blue"><span class="bi bi-slack"></span> Slack</a></p>
+</div>
+</div>
+<div class="g-col-12 landing-about">
+<p>JuliaBayes is a shared home for Bayesian software in Julia. We welcome contributions from everybody but not AI slop.</p>
+<p>It was set up in 2026 in an attempt to overthrow the hegemony of Stan.</p>
+</div>
+<div class="g-col-12 accent-card landing-card-news">
+<section id="news" class="level2 landing-card-header">
+<h2 class="anchored" data-anchor-id="news">News</h2>
+<p><a href="./news/index.html">All news →</a></p>
+</section>
+<div class="landing-news-panel">
+<div id="listing-news-listing" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794011167601" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="22">
-<div class="thumbnail"><a href="./posts/2026-10-29-hello-world/index.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
+<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794061243039" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="22">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/2026-10-29-hello-world/index.html" class="no-external-icon">Hello, world!</a>
+<a href="./news/posts/2026-10-29-hello-world/index.html" class="no-external-icon">Hello, world!</a>
 </h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
-
-</div>
-<div class="listing-description">
-<a href="./posts/2026-10-29-hello-world/index.html" class="no-external-icon">
-Welcome to the JuliaBayes blog! Posts here can contain Julia code, which is run when the site is built:
-</a>
-</div>
 </div>
 <div class="metadata">
-<a href="./posts/2026-10-29-hello-world/index.html" class="no-external-icon">
+<a href="./news/posts/2026-10-29-hello-world/index.html" class="no-external-icon">
 <div class="listing-date">
 Oct 29, 2026
 </div>
-<div class="listing-author">
-JuliaBayes
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1792540800000" data-listing-file-modified-sort="1794061243037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./news/posts/2026-10-21-fake-1/index.html" class="no-external-icon">Release notes for the October sampler update</a>
+</h3>
+</div>
+<div class="metadata">
+<a href="./news/posts/2026-10-21-fake-1/index.html" class="no-external-icon">
+<div class="listing-date">
+Oct 21, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1791417600000" data-listing-file-modified-sort="1794061243037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./news/posts/2026-10-08-fake-2/index.html" class="no-external-icon">An extremely long and frankly unreasonable post title about AutomaticDifferentiationThroughHierarchicalBayesianModelsWithNonCentredParameterisationsAndAdaptiveHamiltonianMonteCarloSamplers that keeps going well past the point where anybody sensible would have stopped writing it</a>
+</h3>
+</div>
+<div class="metadata">
+<a href="./news/posts/2026-10-08-fake-2/index.html" class="no-external-icon">
+<div class="listing-date">
+Oct 8, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1790726400000" data-listing-file-modified-sort="1794061243037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./news/posts/2026-09-30-fake-3/index.html" class="no-external-icon">What we learned from moving three packages into one organisation and why we would do it again</a>
+</h3>
+</div>
+<div class="metadata">
+<a href="./news/posts/2026-09-30-fake-3/index.html" class="no-external-icon">
+<div class="listing-date">
+Sep 30, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1789603200000" data-listing-file-modified-sort="1794061243037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./news/posts/2026-09-17-fake-4/index.html" class="no-external-icon">Community call summary</a>
+</h3>
+</div>
+<div class="metadata">
+<a href="./news/posts/2026-09-17-fake-4/index.html" class="no-external-icon">
+<div class="listing-date">
+Sep 17, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1788393600000" data-listing-file-modified-sort="1794061243037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./news/posts/2026-09-03-fake-5/index.html" class="no-external-icon">A gentle introduction to posterior predictive checks</a>
+</h3>
+</div>
+<div class="metadata">
+<a href="./news/posts/2026-09-03-fake-5/index.html" class="no-external-icon">
+<div class="listing-date">
+Sep 3, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1787184000000" data-listing-file-modified-sort="1794061243037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./news/posts/2026-08-20-fake-6/index.html" class="no-external-icon">New documentation site</a>
+</h3>
+</div>
+<div class="metadata">
+<a href="./news/posts/2026-08-20-fake-6/index.html" class="no-external-icon">
+<div class="listing-date">
+Aug 20, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1785974400000" data-listing-file-modified-sort="1794061243037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./news/posts/2026-08-06-fake-7/index.html" class="no-external-icon">Comparing samplers on hierarchical models</a>
+</h3>
+</div>
+<div class="metadata">
+<a href="./news/posts/2026-08-06-fake-7/index.html" class="no-external-icon">
+<div class="listing-date">
+Aug 6, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-listing-date-sort="1784764800000" data-listing-file-modified-sort="1794061243037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./news/posts/2026-07-23-fake-8/index.html" class="no-external-icon">Meet us at JuliaCon</a>
+</h3>
+</div>
+<div class="metadata">
+<a href="./news/posts/2026-07-23-fake-8/index.html" class="no-external-icon">
+<div class="listing-date">
+Jul 23, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-listing-date-sort="1783555200000" data-listing-file-modified-sort="1794061243037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./news/posts/2026-07-09-fake-9/index.html" class="no-external-icon">Notes from the maintainers’ meeting</a>
+</h3>
+</div>
+<div class="metadata">
+<a href="./news/posts/2026-07-09-fake-9/index.html" class="no-external-icon">
+<div class="listing-date">
+Jul 9, 2026
 </div>
 </a>
 </div>
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

@@ -1,0 +1,32 @@
+.landing-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+
+  h2 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  // Below the lg breakpoint, Quarto gives the first h2 of a section a top
+  // margin through an ID selector; overriding it needs the ID too.
+  #quarto-content .accent-card & h2:first-of-type {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 0;
+    font-size: $landing-small-font-size;
+  }
+}
+
+.landing-about {
+  width: 100%;
+  max-width: 36rem;
+  margin-inline: auto;
+  text-align: center;
+}

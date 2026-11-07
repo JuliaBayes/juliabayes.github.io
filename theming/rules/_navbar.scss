@@ -84,6 +84,13 @@
     color: inherit;
     opacity: 1;
   }
+
+  // The loupe sits inside a label for the input. If clicks pass through the
+  // button to the label, a click on the loupe focuses the input, and the user
+  // can type at once.
+  .aa-SubmitButton {
+    pointer-events: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

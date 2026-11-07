@@ -1,3 +1,24 @@
+// Data compliance: IBM Plex Sans is served from this site, not from Google
+// Fonts, so that no visitor's IP address goes to Google. The files are IBM's
+// release of @ibm/plex-sans 1.1.0, under the SIL Open Font License (see
+// theming/fonts/LICENSE.txt). Quarto resolves the path from the project root
+// and copies the files next to the compiled stylesheet.
+@each $file, $weight, $style in (
+  "Regular" 400 normal,
+  "Italic" 400 italic,
+  "SemiBold" 600 normal,
+  "Bold" 700 normal,
+  "BoldItalic" 700 italic
+) {
+  @font-face {
+    font-family: "IBM Plex Sans";
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+    src: url("theming/fonts/IBMPlexSans-#{$file}.woff2") format("woff2");
+  }
+}
+
 .navbar-title {
   font-family: $headings-font-family;
   font-weight: 700;

@@ -10,6 +10,9 @@ project:
     - "news/posts/**/*.qmd"
   resources:
     - CNAME
+    # The font licence asks that it ships with the fonts. Quarto copies the
+    # fonts themselves from the url() in theming/rules/_fonts.scss.
+    - theming/fonts/LICENSE.txt
 
 website:
   title: "JuliaBayes"

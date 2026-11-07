@@ -1,0 +1,9 @@
+// A long unbroken word in a post title, such as a package name, otherwise
+// stretches the listing column past the page edge.
+div.quarto-post .body {
+  min-width: 0;
+}
+
+div.quarto-post .listing-title {
+  overflow-wrap: anywhere;
+}

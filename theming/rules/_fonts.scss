@@ -2,3 +2,8 @@
   font-family: $headings-font-family;
   font-weight: 700;
 }
+
+// A long unbroken word in a page title otherwise widens the page on phones.
+h1.title {
+  overflow-wrap: anywhere;
+}

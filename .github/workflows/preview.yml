@@ -1,0 +1,48 @@
+name: PR Preview
+
+# ghpages_cleanup.yml removes previews weekly
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    env:
+      IS_PR_BUT_NOT_FORK: ${{ github.event.pull_request.head.repo.full_name == github.event.pull_request.base.repo.full_name }}
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # 7.0.1
+      - uses: quarto-dev/quarto-actions/setup@8a96df13519ee81fd526f2dfca5962811136661b # 2.2.0
+      # No need for julia here because outputs come from _freeze/
+      - run: quarto render
+
+      - name: Deploy preview
+        if: ${{ env.IS_PR_BUT_NOT_FORK == 'true' }}
+        uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # 4.9.0
+        with:
+          branch: gh-pages
+          folder: _site
+          target-folder: previews/PR${{ github.event.pull_request.number }}
+          force: false
+
+      - name: Post preview comment
+        if: ${{ env.IS_PR_BUT_NOT_FORK == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          preview_url="https://juliabayes.org/previews/PR${PR_NUMBER}/"
+          body="<!-- site-preview-tag -->
+          [Site preview for PR #${PR_NUMBER}](${preview_url})"
+          existing=$(gh pr view "$PR_NUMBER" --json comments --jq '.comments[] | select(.body | contains("site-preview-tag")) | .id' | head -1)
+          if [ -z "$existing" ]; then
+            gh pr comment "$PR_NUMBER" --body "$body"
+          fi

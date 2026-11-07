@@ -1,6 +1,9 @@
 ---
 title: "JuliaBayes"
+description: "JuliaBayes is a shared home for Bayesian software in Julia."
 toc: false
+# Quarto loads MathJax on every listing page. The landing page shows no maths.
+html-math-method: plain
 format:
   html:
     theme:
@@ -10,7 +13,7 @@ listing:
   id: news-listing
   contents: news/posts
   sort: "date desc"
-  max-items: 10
+  max-items: 9
   type: default
   fields: [date, title]
   sort-ui: false
@@ -32,7 +35,6 @@ listing:
 ::: {.landing-buttons}
 [About us](about/index.qmd){.btn .accent-button .accent-blue}
 [Ecosystem](ecosystem/index.qmd){.btn .accent-button .accent-blue}
-[[]{.bi .bi-github} GitHub](https://github.com/JuliaBayes){.btn .accent-button .accent-blue}
 [[]{.bi .bi-slack} Slack](https://julialang.slack.com/archives/C0BKRUEN6CX){.btn .accent-button .accent-blue}
 :::
 

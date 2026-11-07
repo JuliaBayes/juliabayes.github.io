@@ -24,4 +24,10 @@
   --bs-btn-hover-color: #{$body-color};
   --bs-btn-active-color: #{$body-color};
   border-radius: $accent-button-border-radius;
+
+  // Cosmo removes the focus shadow, which left keyboard focus invisible.
+  &:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
 }

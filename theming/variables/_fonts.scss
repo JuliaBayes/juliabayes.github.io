@@ -2,4 +2,8 @@ $font-family-sans-serif: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Se
 $headings-font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
 $headings-font-weight: 400;
 $landing-small-font-size: 0.9rem;
-$web-font-path: "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap";
+// Data compliance: the fonts are self-hosted, because loading them from Google
+// Fonts sends each visitor's IP address to Google. `false` stops both themes
+// from importing a font stylesheet. The @font-face rules are in
+// theming/rules/_fonts.scss.
+$web-font-path: false;

@@ -1,0 +1,32 @@
+<!-- Quarto swaps the theme stylesheets at once, but elements with a CSS
+     transition, such as the buttons, then fade to the new colours and lag
+     behind the page. Transitions stay off until the new stylesheet applies,
+     which can take a frame or more, so the script waits for the page
+     background to change. The frame limit ends the wait if it never does. -->
+<style>
+  .theme-switching * {
+    transition: none !important;
+  }
+</style>
+<script>
+  (() => {
+    const toggle = window.quartoToggleColorScheme;
+    const maxFrames = 30;
+    window.quartoToggleColorScheme = () => {
+      const root = document.documentElement;
+      const background = () => getComputedStyle(document.body).backgroundColor;
+      const before = background();
+      root.classList.add("theme-switching");
+      toggle();
+      let frames = 0;
+      const settle = () => {
+        if (background() === before && ++frames < maxFrames) {
+          requestAnimationFrame(settle);
+        } else {
+          requestAnimationFrame(() => root.classList.remove("theme-switching"));
+        }
+      };
+      requestAnimationFrame(settle);
+    };
+  })();
+</script>

@@ -1,0 +1,100 @@
+// Quarto draws the colour-scheme toggle as a toggle switch, which does not say
+// what it switches. It shows the moon in the light theme and the sun in the
+// dark theme, as a font glyph so that it takes the navbar link colour.
+.navbar .quarto-color-scheme-toggle:not(.alternate) .bi::before,
+.navbar .quarto-color-scheme-toggle.alternate .bi::before {
+  background-image: none;
+  vertical-align: -0.125em;
+}
+
+// Quarto's toggle is 22px tall, under the 24px minimum target size.
+.navbar .quarto-color-scheme-toggle {
+  padding-block: 0.125rem;
+}
+
+.navbar .quarto-color-scheme-toggle:not(.alternate) .bi::before {
+  content: "\f497"; // bi-moon
+}
+
+.navbar .quarto-color-scheme-toggle.alternate .bi::before {
+  content: "\f5a2"; // bi-sun
+}
+
+// Quarto colours the tools apart from the links. The toggle takes the link
+// colours, so that it matches the GitHub and RSS icons.
+.navbar .quarto-navbar-tools .quarto-navigation-tool {
+  color: var(--bs-navbar-color);
+
+  &:hover {
+    color: var(--bs-navbar-hover-color);
+  }
+}
+
+// The toggle comes after the search. Quarto orders the search 4 below the lg
+// breakpoint and 999 above it, and the collapsed links 20.
+.navbar .quarto-navbar-tools {
+  order: 5;
+}
+
+@include media-breakpoint-up(lg) {
+  .navbar .quarto-navbar-tools {
+    order: 1000;
+  }
+
+  // Sets the search apart from the links.
+  .navbar #quarto-search {
+    margin-left: 1rem;
+    margin-right: 0.25rem;
+  }
+}
+
+// The search box shrinks to its loupe until it has focus. Quarto's overlay
+// search puts a light scrim over the whole page, which flashes in the dark
+// theme.
+#quarto-search.type-textbox {
+  .aa-Autocomplete {
+    width: 2rem;
+    transition: width 0.2s ease-in-out;
+
+    &:focus-within {
+      width: 14rem;
+    }
+  }
+
+  // The loupe sits at the right end, so that it stays in place while the box
+  // grows to its left.
+  .aa-Form {
+    flex-direction: row-reverse;
+    width: 100%;
+    overflow: hidden;
+    border-color: transparent;
+    background-color: transparent;
+    color: inherit;
+  }
+
+  .aa-Autocomplete:focus-within .aa-Form {
+    border-color: var(--bs-border-color);
+    background-color: $body-bg;
+  }
+
+  .aa-SubmitButton,
+  .aa-SubmitIcon,
+  .aa-Input,
+  .aa-ClearButton {
+    color: inherit;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #quarto-search.type-textbox .aa-Autocomplete {
+    transition: none;
+  }
+}
+
+// On narrow screens, the search still opens as an overlay. Quarto tints its
+// scrim with the text colour, which is light in the dark theme. A scrim in the
+// page background colour does not brighten the page.
+.aa-DetachedOverlay {
+  background-color: rgba($body-bg, 0.6);
+}

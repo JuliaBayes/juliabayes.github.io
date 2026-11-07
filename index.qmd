@@ -10,7 +10,7 @@ listing:
   id: news-listing
   contents: news/posts
   sort: "date desc"
-  max-items: 15
+  max-items: 10
   type: default
   fields: [date, title]
   sort-ui: false

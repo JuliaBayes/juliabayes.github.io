@@ -1,7 +1,0 @@
----
-title: "About"
----
-
-JuliaBayes is a group of developers working on Bayesian software in Julia. We work on similar problems, share ideas, and maintain projects together.
-
-Our projects span modelling, parameter estimation, and tools for working with the results. If you’re building something along those lines, come say hello in `#bayes` on [Julia Slack](https://julialang.org/slack/).

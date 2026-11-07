@@ -1,13 +1,63 @@
 ---
 title: "JuliaBayes"
+toc: false
+format:
+  html:
+    theme:
+      light: [cosmo, theming/theme-light.scss, theming/landing.scss]
+      dark: [darkly, theming/theme-dark.scss, theming/landing.scss]
 listing:
-  contents: posts
+  id: news-listing
+  contents: news/posts
   sort: "date desc"
+  max-items: 10
   type: default
-  categories: true
+  fields: [date, title]
   sort-ui: false
   filter-ui: false
-  feed: true
-page-layout: full
-title-block-banner: true
 ---
+
+::::::: {.grid}
+
+:::: {.g-col-12 .landing-hero}
+
+::: {.hero-stage}
+{{< include _hero-curve.md >}}
+
+::: {.hero-text}
+# JuliaBayes
+:::
+:::
+
+::: {.landing-buttons}
+[About us](about/index.qmd){.btn .accent-button .accent-blue}
+[Ecosystem](ecosystem/index.qmd){.btn .accent-button .accent-blue}
+[[]{.bi .bi-github} GitHub](https://github.com/JuliaBayes){.btn .accent-button .accent-blue}
+[[]{.bi .bi-slack} Slack](https://julialang.slack.com/archives/C0BKRUEN6CX){.btn .accent-button .accent-blue}
+:::
+
+::::
+
+:::: {.g-col-12 .landing-about}
+JuliaBayes is a shared home for Bayesian software in Julia.
+We welcome contributions from everybody but not AI slop.
+
+It was set up in 2026 in an attempt to overthrow the hegemony of Stan.
+::::
+
+:::: {.g-col-12 .accent-card .landing-card-news}
+
+::: {.landing-card-header}
+## News
+
+[All news →](news/index.qmd)
+:::
+
+:::: {.landing-news-panel}
+::: {#news-listing}
+:::
+::::
+
+::::
+
+:::::::

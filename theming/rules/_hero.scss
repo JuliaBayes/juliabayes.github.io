@@ -1,0 +1,65 @@
+// The hero carries the page heading. The front-matter title must stay set:
+// without it, Quarto moves the first h1 on the page into a new title block.
+#title-block-header {
+  display: none;
+}
+
+.landing-hero {
+  text-align: center;
+  padding: 2rem 0 0.25rem;
+}
+
+// The curve and the text share one grid cell, aligned at the bottom, so the
+// curve's base meets the bottom of the title. The desktop and phone curves
+// come from src/hero_curve/hero_curve.jl, which assumes the font sizes below.
+.hero-stage {
+  display: grid;
+}
+
+.hero-curve,
+.hero-text {
+  grid-area: 1 / 1;
+  align-self: end;
+}
+
+.hero-curve {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  $fade: linear-gradient(to right, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+  -webkit-mask-image: $fade;
+  mask-image: $fade;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.hero-curve-phone {
+  display: none;
+}
+
+.hero-text {
+  position: relative;
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .hero-curve-desktop {
+    display: none;
+  }
+
+  .hero-curve-phone {
+    display: flex;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+}

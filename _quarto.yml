@@ -15,6 +15,8 @@ website:
   title: "JuliaBayes"
   site-url: https://juliabayes.org
   description: "News, notes, and discussion from the JuliaBayes organisation."
+  # Gives shared links a preview card, for example in Slack.
+  open-graph: true
   search:
     type: textbox
   navbar:

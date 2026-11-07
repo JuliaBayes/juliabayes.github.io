@@ -1,5 +1,6 @@
 ---
 title: "JuliaBayes"
+description: "JuliaBayes is a shared home for Bayesian software in Julia."
 toc: false
 # Quarto loads MathJax on every listing page. The landing page shows no maths.
 html-math-method: plain

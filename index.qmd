@@ -39,10 +39,9 @@ listing:
 ::::
 
 :::: {.g-col-12 .landing-about}
-JuliaBayes is a shared home for Bayesian software in Julia.
-We welcome contributions from everybody but not AI slop.
+JuliaBayes is a community-driven endeavour to support the development, shared maintenance, and promotion of Bayesian methods and software in the Julia programming language.
 
-It was set up in 2026 in an attempt to overthrow the hegemony of Stan.
+We aim to provide a welcoming and inclusive environment for all who would like to collaborate and contribute to the ecosystem.
 ::::
 
 :::: {.g-col-12 .accent-card .landing-card-news}

@@ -1,14 +1,44 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/news/index.html",
     "items": [
-      "/news/posts/2026-10-29-hello-world/index.html"
+      "/news/posts/2026-10-29-hello-world/index.html",
+      "/news/posts/2026-10-21-fake-1/index.html",
+      "/news/posts/2026-10-08-fake-2/index.html",
+      "/news/posts/2026-09-30-fake-3/index.html",
+      "/news/posts/2026-09-17-fake-4/index.html",
+      "/news/posts/2026-09-03-fake-5/index.html",
+      "/news/posts/2026-08-20-fake-6/index.html",
+      "/news/posts/2026-08-06-fake-7/index.html",
+      "/news/posts/2026-07-23-fake-8/index.html",
+      "/news/posts/2026-07-09-fake-9/index.html",
+      "/news/posts/2026-06-25-fake-10/index.html",
+      "/news/posts/2026-06-11-fake-11/index.html",
+      "/news/posts/2026-05-28-fake-12/index.html",
+      "/news/posts/2026-05-14-fake-13/index.html",
+      "/news/posts/2026-04-30-fake-14/index.html",
+      "/news/posts/2026-04-16-fake-15/index.html"
     ]
   },
   {
-    "listing": "/news/index.html",
+    "listing": "/index.html",
     "items": [
-      "/news/posts/2026-10-29-hello-world/index.html"
+      "/news/posts/2026-10-29-hello-world/index.html",
+      "/news/posts/2026-10-21-fake-1/index.html",
+      "/news/posts/2026-10-08-fake-2/index.html",
+      "/news/posts/2026-09-30-fake-3/index.html",
+      "/news/posts/2026-09-17-fake-4/index.html",
+      "/news/posts/2026-09-03-fake-5/index.html",
+      "/news/posts/2026-08-20-fake-6/index.html",
+      "/news/posts/2026-08-06-fake-7/index.html",
+      "/news/posts/2026-07-23-fake-8/index.html",
+      "/news/posts/2026-07-09-fake-9/index.html",
+      "/news/posts/2026-06-25-fake-10/index.html",
+      "/news/posts/2026-06-11-fake-11/index.html",
+      "/news/posts/2026-05-28-fake-12/index.html",
+      "/news/posts/2026-05-14-fake-13/index.html",
+      "/news/posts/2026-04-30-fake-14/index.html",
+      "/news/posts/2026-04-16-fake-15/index.html"
     ]
   }
 ]

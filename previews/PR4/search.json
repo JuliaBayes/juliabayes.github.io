@@ -7,32 +7,60 @@
     "text": "Welcome to the JuliaBayes blog! Posts here can contain Julia code, which is run when the site is built:\n\nusing Statistics\n\nx = randn(1000)\nmean(x), std(x)\n\n(-0.02098169607447264, 0.9991584384383952)"
   },
   {
-    "objectID": "ecosystem/index.html",
-    "href": "ecosystem/index.html",
-    "title": "Ecosystem",
+    "objectID": "news/posts/2026-10-08-fake-2/index.html",
+    "href": "news/posts/2026-10-08-fake-2/index.html",
+    "title": "An extremely long and frankly unreasonable post title about AutomaticDifferentiationThroughHierarchicalBayesianModelsWithNonCentredParameterisationsAndAdaptiveHamiltonianMonteCarloSamplers that keeps going well past the point where anybody sensible would have stopped writing it",
     "section": "",
-    "text": "An overview of the packages in JuliaBayes will appear here."
+    "text": "Hello, world!"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "JuliaBayes",
+    "objectID": "news/posts/2026-09-17-fake-4/index.html",
+    "href": "news/posts/2026-09-17-fake-4/index.html",
+    "title": "Community call summary",
     "section": "",
-    "text": "Bayesian software in Julia\n\n\n\nAbout GitHub\n\n\n\n\n\nAll packages →\n\nPackages for modelling, inference, and diagnostics.\n\n  \n    ‹\n    1 / 4\n    ›\n  \n  \n    \n      \n        \n        Placeholder text describing the packages in this category and what they are used for.\n        Pkg 1Pkg 2Pkg 3Pkg 4\n      \n    \n    \n      \n        \n        Placeholder text describing the packages in this category and what they are used for.\n        Pkg 1Pkg 2Pkg 3Pkg 4\n      \n    \n    \n      \n        \n        Placeholder text describing the packages in this category and what they are used for.\n        Pkg 1Pkg 2Pkg 3Pkg 4\n      \n    \n    \n      \n        \n        Placeholder text describing the packages in this category and what they are used for.\n        Pkg 1Pkg 2Pkg 3Pkg 4\n      \n    \n  \n\n\n\n\n\nAll news →\n\nNotes and announcements.\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Hello, world!"
   },
   {
-    "objectID": "index.html#ecosystem",
-    "href": "index.html#ecosystem",
-    "title": "JuliaBayes",
+    "objectID": "news/posts/2026-08-20-fake-6/index.html",
+    "href": "news/posts/2026-08-20-fake-6/index.html",
+    "title": "New documentation site",
     "section": "",
-    "text": "All packages →"
+    "text": "Hello, world!"
   },
   {
-    "objectID": "index.html#news",
-    "href": "index.html#news",
-    "title": "JuliaBayes",
+    "objectID": "news/posts/2026-07-23-fake-8/index.html",
+    "href": "news/posts/2026-07-23-fake-8/index.html",
+    "title": "Meet us at JuliaCon",
     "section": "",
-    "text": "All news →"
+    "text": "Hello, world!"
+  },
+  {
+    "objectID": "news/posts/2026-06-25-fake-10/index.html",
+    "href": "news/posts/2026-06-25-fake-10/index.html",
+    "title": "Improving convergence diagnostics for long-running chains on large models",
+    "section": "",
+    "text": "Hello, world!"
+  },
+  {
+    "objectID": "news/posts/2026-05-28-fake-12/index.html",
+    "href": "news/posts/2026-05-28-fake-12/index.html",
+    "title": "Debugging a model, step by step",
+    "section": "",
+    "text": "Hello, world!"
+  },
+  {
+    "objectID": "news/posts/2026-04-30-fake-14/index.html",
+    "href": "news/posts/2026-04-30-fake-14/index.html",
+    "title": "Why we changed our testing setup",
+    "section": "",
+    "text": "Hello, world!"
+  },
+  {
+    "objectID": "news/index.html",
+    "href": "news/index.html",
+    "title": "News",
+    "section": "",
+    "text": "Hello, world!\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nRelease notes for the October sampler update\n\n\n\n\n\n\n\n\n\n\nOct 21, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nAn extremely long and frankly unreasonable post title about AutomaticDifferentiationThroughHierarchicalBayesianModelsWithNonCentredParameterisationsAndAdaptiveHamiltonianMonteCarloSamplers that keeps going well past the point where anybody sensible would have stopped writing it\n\n\n\n\n\n\n\n\n\n\nOct 8, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nWhat we learned from moving three packages into one organisation and why we would do it again\n\n\n\n\n\n\n\n\n\n\nSep 30, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nCommunity call summary\n\n\n\n\n\n\n\n\n\n\nSep 17, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nA gentle introduction to posterior predictive checks\n\n\n\n\n\n\n\n\n\n\nSep 3, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nNew documentation site\n\n\n\n\n\n\n\n\n\n\nAug 20, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nComparing samplers on hierarchical models\n\n\n\n\n\n\n\n\n\n\nAug 6, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nMeet us at JuliaCon\n\n\n\n\n\n\n\n\n\n\nJul 23, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nNotes from the maintainers’ meeting\n\n\n\n\n\n\n\n\n\n\nJul 9, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nImproving convergence diagnostics for long-running chains on large models\n\n\n\n\n\n\n\n\n\n\nJun 25, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nPackage roadmap for the second half of the year\n\n\n\n\n\n\n\n\n\n\nJun 11, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nDebugging a model, step by step\n\n\n\n\n\n\n\n\n\n\nMay 28, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nContributor spotlight\n\n\n\n\n\n\n\n\n\n\nMay 14, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nWhy we changed our testing setup\n\n\n\n\n\n\n\n\n\n\nApr 30, 2026\n\n\nJuliaBayes\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome to the news page\n\n\n\n\n\n\n\n\n\n\nApr 16, 2026\n\n\nJuliaBayes\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about/index.html",
@@ -42,10 +70,87 @@
     "text": "JuliaBayes is a shared home for Bayesian software in Julia. Our goal is to make it easier to collaborate, share maintenance, and keep packages supported over time.\nWe strive to be an open and welcoming community whose members share an interest in Bayesian statistics, no matter whether that interest is theoretical, applied, or from a software engineering perspective.\nWe’re open to collaborations across different probabilistic programming languages, research groups, and institutions. Most of us contribute alongside our day jobs, so contributions of all sizes are welcome.\nDo you want to bring your package into JuliaBayes, or just want to hang out and discuss with us? Join us in #bayes on Julia Slack to chat!"
   },
   {
-    "objectID": "news/index.html",
-    "href": "news/index.html",
-    "title": "News",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "JuliaBayes",
     "section": "",
-    "text": "Hello, world!\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\nJuliaBayes\n\n\n\n\n\nNo matching items"
+    "text": "Bayesian software in Julia\n\n\n\nAbout GitHub\n\n\n\n\n\nAll packages →\n\nPackages for modelling, inference, and diagnostics.\n\n  \n    ‹\n    1 / 4\n    ›\n  \n  \n    \n      \n        \n        Placeholder text describing the packages in this category and what they are used for.\n        Pkg 1Pkg 2Pkg 3Pkg 4\n      \n    \n    \n      \n        \n        Placeholder text describing the packages in this category and what they are used for.\n        Pkg 1Pkg 2Pkg 3Pkg 4\n      \n    \n    \n      \n        \n        Placeholder text describing the packages in this category and what they are used for.\n        Pkg 1Pkg 2Pkg 3Pkg 4\n      \n    \n    \n      \n        \n        Placeholder text describing the packages in this category and what they are used for.\n        Pkg 1Pkg 2Pkg 3Pkg 4\n      \n    \n  \n\n\n\n\n\nAll news →\n\nNotes and announcements.\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2026\n\n\n\n\n\n\n\n\n\n\n\nOct 8, 2026\n\n\n\n\n\n\n\n\n\n\n\nSep 30, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#ecosystem",
+    "href": "index.html#ecosystem",
+    "title": "JuliaBayes",
+    "section": "",
+    "text": "All packages →"
+  },
+  {
+    "objectID": "index.html#recent-news",
+    "href": "index.html#recent-news",
+    "title": "JuliaBayes",
+    "section": "",
+    "text": "All news →"
+  },
+  {
+    "objectID": "ecosystem/index.html",
+    "href": "ecosystem/index.html",
+    "title": "Ecosystem",
+    "section": "",
+    "text": "An overview of the packages in JuliaBayes will appear here."
+  },
+  {
+    "objectID": "news/posts/2026-04-16-fake-15/index.html",
+    "href": "news/posts/2026-04-16-fake-15/index.html",
+    "title": "Welcome to the news page",
+    "section": "",
+    "text": "Hello, world!"
+  },
+  {
+    "objectID": "news/posts/2026-05-14-fake-13/index.html",
+    "href": "news/posts/2026-05-14-fake-13/index.html",
+    "title": "Contributor spotlight",
+    "section": "",
+    "text": "Hello, world!"
+  },
+  {
+    "objectID": "news/posts/2026-06-11-fake-11/index.html",
+    "href": "news/posts/2026-06-11-fake-11/index.html",
+    "title": "Package roadmap for the second half of the year",
+    "section": "",
+    "text": "Hello, world!"
+  },
+  {
+    "objectID": "news/posts/2026-07-09-fake-9/index.html",
+    "href": "news/posts/2026-07-09-fake-9/index.html",
+    "title": "Notes from the maintainers’ meeting",
+    "section": "",
+    "text": "Hello, world!"
+  },
+  {
+    "objectID": "news/posts/2026-08-06-fake-7/index.html",
+    "href": "news/posts/2026-08-06-fake-7/index.html",
+    "title": "Comparing samplers on hierarchical models",
+    "section": "",
+    "text": "Hello, world!"
+  },
+  {
+    "objectID": "news/posts/2026-09-03-fake-5/index.html",
+    "href": "news/posts/2026-09-03-fake-5/index.html",
+    "title": "A gentle introduction to posterior predictive checks",
+    "section": "",
+    "text": "Hello, world!"
+  },
+  {
+    "objectID": "news/posts/2026-09-30-fake-3/index.html",
+    "href": "news/posts/2026-09-30-fake-3/index.html",
+    "title": "What we learned from moving three packages into one organisation and why we would do it again",
+    "section": "",
+    "text": "Hello, world!"
+  },
+  {
+    "objectID": "news/posts/2026-10-21-fake-1/index.html",
+    "href": "news/posts/2026-10-21-fake-1/index.html",
+    "title": "Release notes for the October sampler update",
+    "section": "",
+    "text": "Hello, world!"
   }
 ]

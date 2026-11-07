@@ -1,0 +1,95 @@
+// Team list on the About page: one row per person, with the avatar on the
+// left and the details as a list of labelled items.
+.team-list {
+  margin-top: 1rem;
+}
+
+.team-person {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--bs-border-color);
+
+  &:last-child {
+    border-bottom: 1px solid var(--bs-border-color);
+  }
+
+  // Pandoc wraps the avatar in a paragraph.
+  > p:first-child {
+    flex: 0 0 auto;
+    margin: 0;
+  }
+}
+
+.team-avatar {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+// Keeps the details of people without an avatar in line with the others.
+.team-avatar-empty {
+  background-color: rgba($body-color, 0.08);
+}
+
+.team-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+
+  dl {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 0.25rem 1rem;
+    margin: 0.5rem 0 0;
+    font-size: $landing-small-font-size;
+  }
+
+  dt {
+    font-weight: 400;
+    color: var(--bs-secondary-color);
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  dd p {
+    margin: 0;
+  }
+}
+
+// The name is a heading for screen-reader navigation, but it sits in a row,
+// so it takes a smaller size than the section heading.
+#quarto-content .team-person h3.team-name {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.team-pronouns {
+  margin-left: 0.4rem;
+  font-size: $landing-small-font-size;
+  font-weight: 400;
+  color: var(--bs-secondary-color);
+}
+
+@include media-breakpoint-down(sm) {
+  .team-avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  // On phones the labels go above their values.
+  .team-body dl {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .team-body dd {
+    margin-bottom: 0.4rem;
+  }
+}

@@ -30,21 +30,43 @@
   }
 }
 
-// The toggle comes after the search. Quarto orders the search 4 below the lg
+// The search is the rightmost item. Quarto orders the search 4 below the lg
 // breakpoint and 999 above it, and the collapsed links 20.
 .navbar .quarto-navbar-tools {
-  order: 5;
+  order: 3;
+}
+
+// Keeps the toggle next to the search, away from the name. Quarto puts the
+// auto margin on the search, which would leave the toggle in the middle.
+@include media-breakpoint-down(lg) {
+  .navbar .quarto-navbar-tools {
+    margin-left: auto;
+  }
+
+  .navbar #quarto-search {
+    margin-left: 0.5rem;
+  }
 }
 
 @include media-breakpoint-up(lg) {
   .navbar .quarto-navbar-tools {
-    order: 1000;
+    order: 998;
   }
 
-  // Sets the search apart from the links.
+  // The search keeps the width of its loupe. The box opens over the icons to
+  // its left, so that no other item moves.
   .navbar #quarto-search {
-    margin-left: 1rem;
-    margin-right: 0.25rem;
+    position: relative;
+    width: 2rem;
+    margin-left: 0.5rem;
+  }
+
+  .navbar #quarto-search.type-textbox .aa-Autocomplete {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 1;
+    transform: translateY(-50%);
   }
 }
 
@@ -72,6 +94,7 @@
     color: inherit;
   }
 
+  // The box covers the icons, so it takes an opaque background.
   .aa-Autocomplete:focus-within .aa-Form {
     border-color: var(--bs-border-color);
     background-color: $body-bg;

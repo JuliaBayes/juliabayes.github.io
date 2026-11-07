@@ -23,10 +23,11 @@ website:
   search:
     type: textbox
   navbar:
-    right:
+    left:
       - about/index.qmd
       - ecosystem/index.qmd
       - news/index.qmd
+    right:
       - icon: github
         href: https://github.com/JuliaBayes
         aria-label: GitHub

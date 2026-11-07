@@ -1,7 +1,0 @@
----
-title: "Improving convergence diagnostics for long-running chains on large models"
-date: 2026-06-25
-engine: markdown
----
-
-Hello, world!

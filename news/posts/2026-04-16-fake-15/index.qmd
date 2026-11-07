@@ -1,7 +1,0 @@
----
-title: "Welcome to the news page"
-date: 2026-04-16
-engine: markdown
----
-
-Hello, world!

@@ -1,7 +1,0 @@
----
-title: "Comparing samplers on hierarchical models"
-date: 2026-08-06
-engine: markdown
----
-
-Hello, world!

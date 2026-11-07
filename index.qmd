@@ -10,8 +10,8 @@ listing:
   id: news-listing
   contents: news/posts
   sort: "date desc"
+  max-items: 15
   type: default
-  max-items: 3
   fields: [date, title]
   sort-ui: false
   filter-ui: false
@@ -26,71 +26,26 @@ listing:
 
 ::: {.hero-text}
 # JuliaBayes
-
-[Bayesian software in Julia]{.hero-subtitle}
 :::
 :::
 
 ::: {.landing-buttons}
-[About](about/index.qmd){.btn .accent-button .accent-blue}
-[GitHub](https://github.com/JuliaBayes){.btn .accent-button .accent-blue}
+[About us](about/index.qmd){.btn .accent-button .accent-blue}
+[Ecosystem](ecosystem/index.qmd){.btn .accent-button .accent-blue}
+[[]{.bi .bi-github} GitHub](https://github.com/JuliaBayes){.btn .accent-button .accent-blue}
+[[]{.bi .bi-slack} Slack](https://julialang.slack.com/archives/C0BKRUEN6CX){.btn .accent-button .accent-blue}
 :::
 
 ::::
 
-:::: {.g-col-12 .g-col-md-6 .accent-card .accent-purple}
+:::: {.g-col-12 .landing-about}
+JuliaBayes is a shared home for Bayesian software in Julia.
+We welcome contributions from everybody but not AI slop.
 
-::: {.landing-card-header}
-## Ecosystem
-
-[All packages →](ecosystem/index.qmd)
-:::
-
-[Packages for modelling, inference, and diagnostics.]{.landing-card-intro}
-
-```{=html}
-<div id="ecosystem-carousel" class="carousel">
-  <div class="eco-carousel-controls">
-    <button type="button" data-bs-target="#ecosystem-carousel" data-bs-slide="prev" aria-label="Previous category">‹</button>
-    <span class="eco-carousel-counter">1 / 4</span>
-    <button type="button" data-bs-target="#ecosystem-carousel" data-bs-slide="next" aria-label="Next category">›</button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="accent-panel landing-slide">
-        <h3 class="landing-slide-title">Category 1</h3>
-        <p>Placeholder text describing the packages in this category and what they are used for.</p>
-        <p class="landing-slide-links"><a href="#">Pkg 1</a><a href="#">Pkg 2</a><a href="#">Pkg 3</a><a href="#">Pkg 4</a></p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="accent-panel landing-slide">
-        <h3 class="landing-slide-title">Category 2</h3>
-        <p>Placeholder text describing the packages in this category and what they are used for.</p>
-        <p class="landing-slide-links"><a href="#">Pkg 1</a><a href="#">Pkg 2</a><a href="#">Pkg 3</a><a href="#">Pkg 4</a></p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="accent-panel landing-slide">
-        <h3 class="landing-slide-title">Category 3</h3>
-        <p>Placeholder text describing the packages in this category and what they are used for.</p>
-        <p class="landing-slide-links"><a href="#">Pkg 1</a><a href="#">Pkg 2</a><a href="#">Pkg 3</a><a href="#">Pkg 4</a></p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="accent-panel landing-slide">
-        <h3 class="landing-slide-title">Category 4</h3>
-        <p>Placeholder text describing the packages in this category and what they are used for.</p>
-        <p class="landing-slide-links"><a href="#">Pkg 1</a><a href="#">Pkg 2</a><a href="#">Pkg 3</a><a href="#">Pkg 4</a></p>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
+It was set up in 2026 in an attempt to overthrow the hegemony of Stan.
 ::::
 
-:::: {.g-col-12 .g-col-md-6 .accent-card .accent-red .landing-card-news}
+:::: {.g-col-12 .accent-card .landing-card-news}
 
 ::: {.landing-card-header}
 ## News
@@ -98,9 +53,7 @@ listing:
 [All news →](news/index.qmd)
 :::
 
-[Notes and announcements.]{.landing-card-intro}
-
-:::: {.accent-panel .landing-news-panel}
+:::: {.landing-news-panel}
 ::: {#news-listing}
 :::
 ::::
@@ -108,17 +61,3 @@ listing:
 ::::
 
 :::::::
-
-```{=html}
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const carousel = document.getElementById("ecosystem-carousel");
-  const counter = carousel.querySelector(".eco-carousel-counter");
-  const total = carousel.querySelectorAll('.carousel-item').length;
-  counter.textContent = `1 / ${total}`;
-  carousel.addEventListener("slid.bs.carousel", (event) => {
-    counter.textContent = `${event.to + 1} / ${total}`;
-  });
-});
-</script>
-```

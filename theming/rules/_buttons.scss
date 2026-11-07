@@ -1,5 +1,7 @@
+// Matches the space below the buttons (the grid gap plus the hero's bottom
+// padding), so that the space above and below them is equal.
 .landing-buttons {
-  margin-top: 1.25rem;
+  margin-top: 1.75rem;
 }
 
 // Pandoc wraps the button links in a single paragraph.

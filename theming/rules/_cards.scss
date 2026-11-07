@@ -1,10 +1,3 @@
-// The grid stretches both cards to the same height; the news panel takes up
-// whatever height the header and intro leave.
-.landing-card-news {
-  display: flex;
-  flex-direction: column;
-}
-
 .landing-card-header {
   display: flex;
   justify-content: space-between;
@@ -31,9 +24,9 @@
   }
 }
 
-.landing-card-intro {
-  display: block;
-  margin-top: 0.25rem;
-  font-size: $landing-small-font-size;
-  color: var(--bs-secondary-color);
+.landing-about {
+  width: 100%;
+  max-width: 36rem;
+  margin-inline: auto;
+  text-align: center;
 }

@@ -6,11 +6,11 @@
 
 .landing-hero {
   text-align: center;
-  padding: 2rem 0 1.5rem;
+  padding: 2rem 0 0.25rem;
 }
 
 // The curve and the text share one grid cell, aligned at the bottom, so the
-// curve's base meets the bottom of the subtitle. The desktop and phone curves
+// curve's base meets the bottom of the title. The desktop and phone curves
 // come from src/hero_curve/hero_curve.jl, which assumes the font sizes below.
 .hero-stage {
   display: grid;
@@ -42,25 +42,12 @@
 .hero-text {
   position: relative;
 
-  // Pandoc wraps the subtitle in a paragraph; its margin would lift the
-  // subtitle off the curve's base.
-  p {
-    margin: 0;
-  }
-
   h1 {
     font-size: 4rem;
     font-weight: 700;
     line-height: 1.1;
     margin: 0;
   }
-}
-
-.hero-subtitle {
-  display: block;
-  font-size: 1.75rem;
-  line-height: 1;
-  margin-top: 0.5rem;
 }
 
 @include media-breakpoint-down(sm) {
@@ -74,9 +61,5 @@
 
   .hero-text h1 {
     font-size: 2.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.25rem;
   }
 }

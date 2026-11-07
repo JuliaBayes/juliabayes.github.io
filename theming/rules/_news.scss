@@ -1,5 +1,4 @@
 .landing-news-panel {
-  flex: 1 1 auto;
   margin-top: 0.75rem;
 
   .quarto-listing {
@@ -32,17 +31,42 @@
 
   .metadata {
     order: -1;
-    flex: 0 0 auto;
+    // A fixed width, so that all titles start at the same point however long
+    // the date is.
+    flex: 0 0 6rem;
     margin: 0;
     padding: 0;
+    font-size: $landing-small-font-size;
     color: var(--bs-secondary-color);
   }
 
+  // Without min-width, a long title stretches the column instead of being cut
+  // off.
   .body {
     flex: 1 1 auto;
+    min-width: 0;
   }
 
+  // Long titles end in an ellipsis after one line. The colour is for the
+  // ellipsis, and the line height stops `overflow` from cutting off the
+  // underline.
   .listing-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-size: $landing-small-font-size;
+    line-height: 1.5;
+    color: var(--bs-link-color);
+  }
+
+  // Quarto strips the link styling from post titles. Restores it so that they
+  // look clickable, like every other link on the page.
+  .listing-title a {
+    color: var(--bs-link-color);
+    text-decoration: underline;
+  }
+
+  .listing-title a:hover {
+    color: var(--bs-link-hover-color);
   }
 }

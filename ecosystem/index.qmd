@@ -3,3 +3,19 @@ title: "Ecosystem"
 ---
 
 An overview of the packages in JuliaBayes will appear here.
+
+## Category 1
+
+Placeholder text describing the packages in this category.
+
+## Category 2
+
+Placeholder text describing the packages in this category.
+
+## Category 3
+
+Placeholder text describing the packages in this category.
+
+## Category 4
+
+Placeholder text describing the packages in this category.

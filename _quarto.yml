@@ -37,6 +37,9 @@ format:
       light: [cosmo, theming/theme-light.scss]
       dark: [darkly, theming/theme-dark.scss]
     toc: true
+    # The first visit follows the visitor's system setting. The toggle still
+    # overrides it.
+    respect-user-color-scheme: true
     include-after-body: theming/theme-switch.html
 
 # Render Julia code locally and commit the results in _freeze/, so that CI

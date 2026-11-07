@@ -24,8 +24,10 @@ website:
       - news/index.qmd
       - icon: github
         href: https://github.com/JuliaBayes
+        aria-label: GitHub
       - icon: rss
         href: news/index.xml
+        aria-label: RSS feed
 
 format:
   html:

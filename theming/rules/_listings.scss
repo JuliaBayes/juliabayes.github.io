@@ -7,3 +7,9 @@ div.quarto-post .body {
 div.quarto-post .listing-title {
   overflow-wrap: anywhere;
 }
+
+// Quarto's fixed grey is under 4.5:1 in both themes. The theme's secondary
+// text colour stays muted but readable.
+div.quarto-post .listing-categories .listing-category {
+  color: var(--bs-secondary-color);
+}

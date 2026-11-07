@@ -6,6 +6,12 @@
   background-image: none;
   vertical-align: -0.125em;
 }
+
+// Quarto's toggle is 22px tall, under the 24px minimum target size.
+.navbar .quarto-color-scheme-toggle {
+  padding-block: 0.125rem;
+}
+
 .navbar .quarto-color-scheme-toggle:not(.alternate) .bi::before {
   content: "\f497"; // bi-moon
 }

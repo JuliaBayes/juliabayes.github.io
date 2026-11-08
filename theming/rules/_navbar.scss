@@ -144,3 +144,22 @@
 .aa-DetachedOverlay {
   background-color: rgba($body-bg, 0.6);
 }
+
+// The logo SVG has a view box but no size, so under Quarto's max-height and
+// width: auto it collapses to nothing. A fixed height gives it a size. At
+// Quarto's 24px cap, the dots look small next to the bold title. The negative
+// margin keeps the navbar at the height of the title, so the content does not
+// move down.
+.navbar .navbar-logo {
+  height: 2rem;
+  max-height: none;
+  margin-block: -0.25rem;
+}
+
+// On phones, the menu button, title, search and icons fill the bar, and the
+// logo would push the icons onto a second row.
+@include media-breakpoint-down(sm) {
+  .navbar .navbar-brand-logo {
+    display: none;
+  }
+}

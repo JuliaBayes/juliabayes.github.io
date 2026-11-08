@@ -17,3 +17,11 @@ Julia code should be run locally and saved in `_freeze`; it shouldn't be rerun o
 CI should only read from `_freeze` and render the post.
 
 If you need to rerun the code in a post, you can delete the `_freeze/news/posts/YYYY-MM-DD-slug` folder (do _not_ delete the entire `_freeze` folder!) and rerun `quarto render`.
+
+## License
+
+- Code, such as the theme, scripts, templates and configuration, is under the [MIT License](LICENSE).
+- Content, such as the text of pages and posts and the images, is under [CC BY 4.0](LICENSE-CONTENT).
+
+Files that carry their own licence keep it.
+By contributing, you agree that your contribution is under these licences.

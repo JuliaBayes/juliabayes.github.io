@@ -1,7 +1,0 @@
----
-title: "Community call summary"
-date: 2026-09-17
-engine: markdown
----
-
-Hello, world!

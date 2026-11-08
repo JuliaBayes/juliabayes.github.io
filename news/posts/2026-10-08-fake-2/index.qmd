@@ -1,7 +1,0 @@
----
-title: "An extremely long and frankly unreasonable post title about AutomaticDifferentiationThroughHierarchicalBayesianModelsWithNonCentredParameterisationsAndAdaptiveHamiltonianMonteCarloSamplers that keeps going well past the point where anybody sensible would have stopped writing it"
-date: 2026-10-08
-engine: markdown
----
-
-Hello, world!

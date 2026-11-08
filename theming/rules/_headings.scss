@@ -1,0 +1,5 @@
+// A very long word in a heading (such as a post title) would otherwise run
+// past the edge of the page on small screens.
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: anywhere;
+}

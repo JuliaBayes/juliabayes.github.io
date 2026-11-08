@@ -1,0 +1,28 @@
+<!-- Quarto links the categories under a post title to the listing nearest the
+     post. Its search compares paths with and without a leading slash, so it
+     never matches, and the links fall back to the first listing: the home page,
+     which has no category filter. The links go to the News listing instead. -->
+<script>
+  (() => {
+    const categories = document.querySelectorAll(
+      "header.quarto-title-block .quarto-categories",
+    );
+    const offset = document.querySelector('meta[name="quarto:offset"]')?.content;
+    if (categories.length === 0 || offset === undefined) {
+      return;
+    }
+    const listing = new URL(`${offset}news/`, window.location).pathname;
+    // Quarto adds the links after it fetches listings.json.
+    const retarget = () => {
+      for (const link of document.querySelectorAll(
+        "header.quarto-title-block .quarto-category a",
+      )) {
+        link.setAttribute("href", listing + new URL(link.href).hash);
+      }
+    };
+    const observer = new MutationObserver(retarget);
+    for (const element of categories) {
+      observer.observe(element, { childList: true, subtree: true });
+    }
+  })();
+</script>

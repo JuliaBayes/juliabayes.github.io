@@ -13,3 +13,29 @@ div.quarto-post .listing-title {
 div.quarto-post .listing-categories .listing-category {
   color: var(--bs-secondary-color);
 }
+
+// Quarto gives the date a third of the row, which leaves a large gap before
+// each title. A fixed width is enough for a date and an author name. Below
+// the md breakpoint, Quarto puts the date above the title instead.
+@include media-breakpoint-up(md) {
+  div.quarto-post .metadata {
+    flex: 0 0 7rem;
+  }
+}
+
+// Quarto renders a subtitle link for every post, empty when the post has no
+// subtitle. An empty link has no name for screen readers.
+div.quarto-post .listing-subtitle:has(> a:empty) {
+  display: none;
+}
+
+// Quarto dims the categories under a post title to 0.6, which takes them under
+// 4.5:1.
+.quarto-title .quarto-categories .quarto-category {
+  opacity: 1;
+  color: var(--bs-secondary-color);
+
+  a {
+    color: inherit;
+  }
+}

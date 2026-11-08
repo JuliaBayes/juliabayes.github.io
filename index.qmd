@@ -4,11 +4,9 @@ description: "JuliaBayes is a shared home for Bayesian software in Julia."
 toc: false
 # Quarto loads MathJax on every listing page. The landing page shows no maths.
 html-math-method: plain
-format:
-  html:
-    theme:
-      light: [cosmo, theming/theme-light.scss, theming/landing.scss]
-      dark: [darkly, theming/theme-dark.scss, theming/landing.scss]
+# The landing page shares the site theme, so that the next page needs no new
+# stylesheet. Its own rules hang off this class.
+body-classes: landing
 listing:
   id: news-listing
   contents: news/posts

@@ -81,19 +81,19 @@ function interpolate_oklch(from, to, t)
 end
 
 """
-    gradient_stops(offsets)
+    gradient_stops(offsets; colors=GRADIENT_COLORS)
 
-Return `(offset, hex)` pairs that run through `GRADIENT_COLORS`, placed at
-`offsets`, with `GRADIENT_STOPS_PER_SEGMENT` stops in each segment.
+Return `(offset, hex)` pairs that run through `colors`, placed at `offsets`,
+with `GRADIENT_STOPS_PER_SEGMENT` stops in each segment.
 """
-function gradient_stops(offsets)
-    colors = map(hex_to_oklch, GRADIENT_COLORS)
+function gradient_stops(offsets; colors=GRADIENT_COLORS)
+    oklch = map(hex_to_oklch, colors)
     n = GRADIENT_STOPS_PER_SEGMENT
-    stops = [(first(offsets), first(GRADIENT_COLORS))]
+    stops = [(first(offsets), first(colors))]
     for i in 1:(length(colors) - 1), k in 1:n
         t = k / n
         offset = offsets[i] + t * (offsets[i + 1] - offsets[i])
-        color = k == n ? GRADIENT_COLORS[i + 1] : oklch_to_hex(interpolate_oklch(colors[i], colors[i + 1], t))
+        color = k == n ? colors[i + 1] : oklch_to_hex(interpolate_oklch(oklch[i], oklch[i + 1], t))
         push!(stops, (round(offset; digits=4), color))
     end
     return stops

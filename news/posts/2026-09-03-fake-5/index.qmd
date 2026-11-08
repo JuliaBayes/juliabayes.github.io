@@ -1,7 +1,0 @@
----
-title: "A gentle introduction to posterior predictive checks"
-date: 2026-09-03
-engine: markdown
----
-
-Hello, world!

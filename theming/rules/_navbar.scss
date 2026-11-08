@@ -1,5 +1,5 @@
 // Quarto draws the colour-scheme toggle as a toggle switch, which does not say
-// what it switches. It shows the moon in the light theme and the sun in the
+// what it switches. It shows the sun in the light theme and the moon in the
 // dark theme, as a font glyph so that it takes the navbar link colour.
 .navbar .quarto-color-scheme-toggle:not(.alternate) .bi::before,
 .navbar .quarto-color-scheme-toggle.alternate .bi::before {
@@ -13,15 +13,15 @@
 }
 
 .navbar .quarto-color-scheme-toggle:not(.alternate) .bi::before {
-  content: "\f497"; // bi-moon
-}
-
-.navbar .quarto-color-scheme-toggle.alternate .bi::before {
   content: "\f5a2"; // bi-sun
 }
 
-// Quarto colours the tools apart from the links. The toggle takes the link
-// colours, so that it matches the GitHub and RSS icons.
+.navbar .quarto-color-scheme-toggle.alternate .bi::before {
+  content: "\f497"; // bi-moon
+}
+
+// Quarto colours the tools apart from the links. The tools take the link
+// colours, so that they match the page links.
 .navbar .quarto-navbar-tools .quarto-navigation-tool {
   color: var(--bs-navbar-color);
 
@@ -30,21 +30,42 @@
   }
 }
 
-// The toggle comes after the search. Quarto orders the search 4 below the lg
-// breakpoint and 999 above it, and the collapsed links 20.
+// The search comes before the icons, so that the box grows into the free space
+// to its left and no icon moves. Quarto orders the collapsed links 20, and the
+// search after the tools.
+.navbar #quarto-search {
+  order: 3;
+}
+
 .navbar .quarto-navbar-tools {
-  order: 5;
+  order: 4;
 }
 
 @include media-breakpoint-up(lg) {
-  .navbar .quarto-navbar-tools {
-    order: 1000;
+  .navbar #quarto-search {
+    order: 998;
+    margin-inline: 0.5rem 0.25rem;
   }
 
-  // Sets the search apart from the links.
-  .navbar #quarto-search {
-    margin-left: 1rem;
-    margin-right: 0.25rem;
+  .navbar .quarto-navbar-tools {
+    order: 999;
+  }
+}
+
+// Thin lines separate the page links in the expanded navbar. The collapsed
+// menu stacks them, so it needs no lines.
+@include media-breakpoint-up(lg) {
+  .navbar-collapse .navbar-nav.me-auto .nav-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-collapse .navbar-nav.me-auto .nav-item + .nav-item::before {
+    content: "";
+    width: 1px;
+    height: 1em;
+    background-color: var(--bs-navbar-color);
+    opacity: 0.4;
   }
 }
 
@@ -56,25 +77,43 @@
     width: 2rem;
     transition: width 0.2s ease-in-out;
 
+    // As wide as Quarto's results panel (max-width: 400px), which opens below
+    // the box with the same right edge.
     &:focus-within {
-      width: 14rem;
+      width: 400px;
     }
   }
 
   // The loupe sits at the right end, so that it stays in place while the box
   // grows to its left.
   .aa-Form {
+    position: relative;
     flex-direction: row-reverse;
     width: 100%;
     overflow: hidden;
     border-color: transparent;
     background-color: transparent;
     color: inherit;
+    transition: border-color 0.2s ease-in-out;
   }
 
   .aa-Autocomplete:focus-within .aa-Form {
     border-color: var(--bs-border-color);
-    background-color: $body-bg;
+  }
+
+  // The loupe lies over the right end of the input, and clicks pass through it.
+  // A click on the loupe then lands on the input. A click on the label would
+  // first blur the input, and the box would close and open again.
+  .aa-InputWrapperPrefix {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+
+  .aa-Input {
+    padding-right: 2rem;
   }
 
   .aa-SubmitButton,
@@ -86,8 +125,15 @@
   }
 }
 
+// Before any typing, Quarto opens an empty results panel under the box. Its
+// border shows as a dot at the corner of the box. The panel stays in the layout,
+// because Quarto positions it from its offsetTop, which is 0 under display: none.
+#quarto-search-results .aa-Panel:has(.no-query) {
+  visibility: hidden;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  #quarto-search.type-textbox .aa-Autocomplete {
+  #quarto-search.type-textbox :is(.aa-Autocomplete, .aa-Form) {
     transition: none;
   }
 }
@@ -97,4 +143,23 @@
 // page background colour does not brighten the page.
 .aa-DetachedOverlay {
   background-color: rgba($body-bg, 0.6);
+}
+
+// The logo SVG has a view box but no size, so under Quarto's max-height and
+// width: auto it collapses to nothing. A fixed height gives it a size. At
+// Quarto's 24px cap, the dots look small next to the bold title. The negative
+// margin keeps the navbar at the height of the title, so the content does not
+// move down.
+.navbar .navbar-logo {
+  height: 2rem;
+  max-height: none;
+  margin-block: -0.25rem;
+}
+
+// On phones, the menu button, title, search and icons fill the bar, and the
+// logo would push the icons onto a second row.
+@include media-breakpoint-down(sm) {
+  .navbar .navbar-brand-logo {
+    display: none;
+  }
 }

@@ -1,0 +1,46 @@
+// Quarto centres the content only on pages without margin content. A table of
+// contents or a listing's categories adds a margin column on the right and
+// moves the content left, so pages started at different offsets. The margin
+// column is mirrored on the left, so the content starts at the same offset on
+// every page.
+@include media-breakpoint-up(lg) {
+  body .page-columns,
+  body.fullcontent:not(.floating):not(.docked) .page-columns {
+    grid-template-columns:
+      [screen-start] 1.5em
+      [screen-start-inset] 5fr
+      [page-start] 35px
+      [page-start-inset] minmax(75px, 145px)
+      [body-start-outset] 35px
+      [body-start] 1.5em
+      [body-content-start] minmax(500px, calc(850px - 3em))
+      [body-content-end] 1.5em
+      [body-end] 35px
+      [body-end-outset] minmax(75px, 145px)
+      [page-end-inset] 35px
+      [page-end] 5fr
+      [screen-end-inset] 1.5em
+      [screen-end];
+  }
+}
+
+// Between the md and lg breakpoints, a mirrored margin column leaves too little
+// room for the content. The margin column hides, as it does on phones, and
+// every page takes the centred grid.
+@include media-breakpoint-only(md) {
+  body .page-columns {
+    grid-template-columns:
+      [screen-start] 1.5em
+      [screen-start-inset page-start page-start-inset body-start-outset] 5fr
+      [body-start] 1.5em
+      [body-content-start] minmax(500px, calc(800px - 3em))
+      [body-content-end] 1.5em
+      [body-end body-end-outset page-end-inset page-end] 5fr
+      [screen-end-inset] 1.5em
+      [screen-end];
+  }
+
+  #quarto-margin-sidebar {
+    display: none;
+  }
+}

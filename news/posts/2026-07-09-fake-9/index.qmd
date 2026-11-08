@@ -1,7 +1,0 @@
----
-title: "Notes from the maintainers' meeting"
-date: 2026-07-09
-engine: markdown
----
-
-Hello, world!

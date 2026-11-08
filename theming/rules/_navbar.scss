@@ -33,14 +33,6 @@
 // The search comes before the icons, so that the box grows into the free space
 // to its left and no icon moves. Quarto orders the collapsed links 20, and the
 // search after the tools.
-.navbar #quarto-search {
-  order: 3;
-}
-
-.navbar .quarto-navbar-tools {
-  order: 4;
-}
-
 @include media-breakpoint-up(lg) {
   .navbar #quarto-search {
     order: 998;
@@ -145,6 +137,85 @@
   background-color: rgba($body-bg, 0.6);
 }
 
+// Quarto's overlay sheet is 90% wide and 65% opaque, and on small screens it
+// ends below the last result, so the page shows through beside and under it.
+// The sheet fills the screen instead.
+.aa-DetachedContainer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  background-color: $body-bg;
+  box-shadow: none;
+}
+
+// The modal variant caps the results at 455px. They scroll in the full sheet.
+.aa-DetachedContainer .aa-Panel {
+  max-height: none;
+  overflow-y: auto;
+}
+
+.aa-DetachedFormContainer {
+  gap: 0.25rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+}
+
+// A 17px input stops iOS from zooming in on focus.
+.aa-DetachedFormContainer .aa-Form {
+  min-height: 2.75rem;
+  padding-inline: 0.5rem 0.25rem;
+  border: 2px solid $link-color;
+  border-radius: 0.75rem;
+  background-color: $body-bg;
+  color: $body-color;
+  font-size: 1.0625rem;
+
+  &:focus-within {
+    box-shadow: none;
+  }
+
+  // Quarto takes these colours from the light theme, so the dark theme shows
+  // dark text on a dark box.
+  .aa-InputWrapper .aa-Input,
+  .aa-InputWrapperPrefix .aa-Label svg,
+  .aa-InputWrapperSuffix .aa-ClearButton {
+    color: $body-color;
+  }
+}
+
+.aa-DetachedCancelButton {
+  min-height: 2.75rem;
+  font-size: 1rem;
+  color: $link-color;
+}
+
+// Quarto marks the selected result in Cosmo's blue, which appears nowhere else
+// on the site, and the matches in the dark theme in black. Tints of the link
+// green replace both.
+:is(.aa-DetachedOverlay, #quarto-search-results) .search-item :is(mark.search-match, .search-match.mark) {
+  color: $body-color;
+  background-color: mix($link-color, $body-bg, 25%);
+}
+
+:is(.aa-DetachedOverlay, #quarto-search-results) li.aa-Item[aria-selected="true"] .search-item {
+  &,
+  &.search-result-more,
+  .search-result-section,
+  .search-result-text,
+  .search-result-title-container,
+  .search-result-text-container {
+    color: $body-color;
+    background-color: mix($link-color, $body-bg, 12%);
+  }
+
+  mark.search-match,
+  .search-match.mark {
+    color: $body-color;
+    background-color: mix($link-color, $body-bg, 30%);
+  }
+}
+
 // The logo SVG has a view box but no size, so under Quarto's max-height and
 // width: auto it collapses to nothing. A fixed height gives it a size. At
 // Quarto's 24px cap, the dots look small next to the bold title. The negative
@@ -156,10 +227,132 @@
   margin-block: -0.25rem;
 }
 
-// On phones, the menu button, title, search and icons fill the bar, and the
-// logo would push the icons onto a second row.
-@include media-breakpoint-down(sm) {
-  .navbar .navbar-brand-logo {
+// Below lg, Quarto collapses the page links behind the menu button. The bar
+// keeps the logo, title, search and menu button, each target at least 44px.
+// GitHub, RSS and the theme toggle move into the open menu, under the page
+// links, so the bar has room for the logo.
+@include media-breakpoint-down(lg) {
+  .navbar .navbar-container {
+    flex-wrap: wrap;
+    column-gap: 0.25rem;
+  }
+
+  // The logo lines up with the page text.
+  #quarto-header > .navbar {
+    padding-inline: 0.75rem;
+  }
+
+  // Bootstrap keeps a 1rem margin after the title. The bar's gap spaces it.
+  .navbar .navbar-brand {
+    margin-right: 0;
+  }
+
+  // Quarto centres the brand with mx-auto, a utility with !important, and caps
+  // its width for a bar that also holds the tools, which cuts off the title.
+  .navbar .navbar-brand-container {
+    order: 1;
+    min-width: 0;
+    max-width: none;
+    margin-inline: 0 auto !important;
+  }
+
+  .navbar #quarto-search {
+    order: 2;
+  }
+
+  // Quarto gives the button a right margin. The negative margin instead puts
+  // the icon, not the 44px target around it, on the page's right gutter.
+  .navbar .navbar-toggler {
+    order: 3;
+    margin-right: -0.6875rem;
+  }
+
+  .navbar .navbar-collapse {
+    order: 4;
+    flex-basis: 100%;
+  }
+
+  .navbar .quarto-navbar-tools {
+    order: 5;
+    flex-basis: 100%;
     display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding-block: 0.5rem 1rem;
+  }
+
+  .navbar-container:has(.navbar-collapse:is(.show, .collapsing)) .quarto-navbar-tools {
+    display: flex;
+  }
+
+  .navbar #quarto-search .aa-DetachedSearchButton,
+  .navbar .navbar-toggler {
+    display: grid;
+    place-items: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0;
+    border: 0;
+  }
+
+  // Bootstrap rings the menu button after every tap. The ring stays for
+  // keyboard focus only.
+  .navbar .navbar-toggler:focus:not(:focus-visible) {
+    box-shadow: none;
+  }
+
+  // The menu icon is a mask over the text colour, so that it follows the theme.
+  // It turns into a cross while the menu is open.
+  .navbar .navbar-toggler-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: currentColor;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M4 7h16M4 12h16M4 17h16'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+
+  .navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E");
+  }
+
+  // Large rows, so that each page link is an easy target.
+  .navbar-collapse .navbar-nav {
+    padding-block: 0.5rem;
+  }
+
+  .navbar-collapse .nav-link {
+    display: flex;
+    align-items: center;
+    min-height: 3.5rem;
+    font-size: 1.375rem;
+    border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+  }
+
+  .navbar-collapse .nav-link.active {
+    font-weight: 600;
+  }
+
+  // In the menu, each tool shows its name next to its icon. Quarto's px-1
+  // utility pads them for the bar.
+  .navbar .quarto-navbar-tools .quarto-navigation-tool {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 3rem;
+    padding-inline: 0 !important;
+    font-size: 1.0625rem;
+    text-decoration: none;
+
+    &::after {
+      content: attr(title);
+    }
+  }
+
+  // The toggle names the theme that shows, as its icon does.
+  .navbar .quarto-navbar-tools .quarto-color-scheme-toggle:not(.alternate)::after {
+    content: "Light theme";
+  }
+
+  .navbar .quarto-navbar-tools .quarto-color-scheme-toggle.alternate::after {
+    content: "Dark theme";
   }
 }

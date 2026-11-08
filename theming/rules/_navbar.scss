@@ -77,8 +77,10 @@
     width: 2rem;
     transition: width 0.2s ease-in-out;
 
+    // As wide as Quarto's results panel (max-width: 400px), which opens below
+    // the box with the same right edge.
     &:focus-within {
-      width: 14rem;
+      width: 400px;
     }
   }
 

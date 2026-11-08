@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "About us"
 ---
 
 JuliaBayes is a shared home for Bayesian software in Julia.

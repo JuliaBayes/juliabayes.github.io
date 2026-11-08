@@ -52,6 +52,23 @@
   }
 }
 
+// Thin lines separate the page links in the expanded navbar. The collapsed
+// menu stacks them, so it needs no lines.
+@include media-breakpoint-up(lg) {
+  .navbar-collapse .navbar-nav.me-auto .nav-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-collapse .navbar-nav.me-auto .nav-item + .nav-item::before {
+    content: "";
+    width: 1px;
+    height: 1em;
+    background-color: var(--bs-navbar-color);
+    opacity: 0.4;
+  }
+}
+
 // The search box shrinks to its loupe until it has focus. Quarto's overlay
 // search puts a light scrim over the whole page, which flashes in the dark
 // theme.

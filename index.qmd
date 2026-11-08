@@ -31,7 +31,7 @@ listing:
 :::
 
 ::: {.landing-buttons}
-[About](about/index.qmd){.btn .accent-button .accent-blue}
+[About us](about/index.qmd){.btn .accent-button .accent-blue}
 [Ecosystem](ecosystem/index.qmd){.btn .accent-button .accent-blue}
 [[]{.bi .bi-slack} Slack](https://julialang.slack.com/archives/C0BKRUEN6CX){.btn .accent-button .accent-blue}
 :::

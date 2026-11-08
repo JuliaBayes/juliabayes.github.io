@@ -1,10 +1,10 @@
 {
-  "hash": "33f3e726120c965068c0658b350bd12c",
+  "hash": "def4e0272d8ba6c9fd45ab44bcfe535e",
   "result": {
     "engine": "julia",
-    "markdown": "---\ntitle: \"Hello, world!\"\ndate: 2026-10-29\ncategories: [news]\n---\n\nWelcome to the JuliaBayes blog! Posts here can contain Julia code, which is\nrun when the site is built:\n\n::: {#2 .cell execution_count=1}\n``` {.julia .cell-code}\nusing Statistics\n\nx = randn(1000)\nmean(x), std(x)\n```\n\n::: {.cell-output .cell-output-display execution_count=1}\n```\n(-0.02098169607447264, 0.9991584384383952)\n```\n:::\n:::\n\n\n\n",
+    "markdown": "---\ntitle: \"Hello, world!\"\ndate: 2026-10-29\ncategories: [news]\n---\n\nWelcome to JuliaBayes news! Posts here can contain Julia code. It runs when\nthe author renders the post, and the site shows the saved output:\n\n::: {#2 .cell execution_count=1}\n``` {.julia .cell-code}\nusing Statistics\n\nx = randn(1000)\nmean(x), std(x)\n```\n\n::: {.cell-output .cell-output-display execution_count=1}\n```\n(0.004524789299067646, 0.9581874573980756)\n```\n:::\n:::\n\n\n\n",
     "supporting": [
-      "index_files"
+      "index_files/figure-html"
     ],
     "filters": [],
     "includes": {}

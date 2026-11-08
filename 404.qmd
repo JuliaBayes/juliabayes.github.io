@@ -1,0 +1,8 @@
+---
+title: "Page not found"
+toc: false
+---
+
+This page does not exist. It may have moved.
+
+Go to the [home page](/) or the [news](/news/).

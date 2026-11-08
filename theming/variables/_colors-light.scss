@@ -1,5 +1,11 @@
 $body-bg: #f8f9fb;
 $body-color: #1A1A2E;
 
+// Julia green is 3.5:1 on the light background, under the 4.5:1 that WCAG AA
+// needs for text. The darker green is about 4.9:1.
+$link-color: darken($julia-green, 6%);
+// Inline code sits on a grey background, where the link green is 4.4:1.
+$code-color: darken($julia-green, 8%);
+
 $accent-card-bg: #fff;
 $tint-strength: 0.05;

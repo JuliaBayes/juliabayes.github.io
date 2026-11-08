@@ -2,3 +2,6 @@ $body-bg: #1A1A2E;
 
 $accent-card-bg: desaturate($body-bg, 6%);
 $tint-strength: 0.16;
+// Inline code sits on a lighter background than the page, where Julia green
+// is 3.5:1.
+$code-color: lighten($julia-green, 8%);

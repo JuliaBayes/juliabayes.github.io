@@ -1,7 +1,17 @@
-// A very long word in a post title would otherwise run past the edge of the
-// page on small screens.
-.quarto-post .listing-title {
+// A long unbroken word in a post title, such as a package name, otherwise
+// stretches the listing column past the page edge.
+div.quarto-post .body {
+  min-width: 0;
+}
+
+div.quarto-post .listing-title {
   overflow-wrap: anywhere;
+}
+
+// Quarto's fixed grey is under 4.5:1 in both themes. The theme's secondary
+// text colour stays muted but readable.
+div.quarto-post .listing-categories .listing-category {
+  color: var(--bs-secondary-color);
 }
 
 // Quarto gives the date a third of the row, which leaves a large gap before
@@ -10,5 +20,22 @@
 @include media-breakpoint-up(md) {
   div.quarto-post .metadata {
     flex: 0 0 7rem;
+  }
+}
+
+// Quarto renders a subtitle link for every post, empty when the post has no
+// subtitle. An empty link has no name for screen readers.
+div.quarto-post .listing-subtitle:has(> a:empty) {
+  display: none;
+}
+
+// Quarto dims the categories under a post title to 0.6, which takes them under
+// 4.5:1.
+.quarto-title .quarto-categories .quarto-category {
+  opacity: 1;
+  color: var(--bs-secondary-color);
+
+  a {
+    color: inherit;
   }
 }

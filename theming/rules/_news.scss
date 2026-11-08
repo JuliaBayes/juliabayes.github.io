@@ -57,6 +57,8 @@
     font-size: $landing-small-font-size;
     line-height: 1.5;
     color: var(--bs-link-color);
+    // Quarto dims titles to 0.9, which takes the link green under 4.5:1.
+    opacity: 1;
   }
 
   // Quarto strips the link styling from post titles. Restores it so that they
@@ -93,6 +95,12 @@
       -webkit-line-clamp: 2;
       line-clamp: 2;
       white-space: normal;
+    }
+
+    // Stacked, the date and title links need to be at least 24px tall.
+    .metadata a,
+    .listing-title a {
+      padding-block: 0.125rem;
     }
   }
 }

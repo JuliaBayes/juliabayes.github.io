@@ -49,6 +49,7 @@ format:
     include-after-body:
       - theming/theme-switch.html
       - theming/search-shortcut.html
+      - theming/category-links.html
 
 # Render Julia code locally and commit the results in _freeze/, so that CI
 # doesn't need to run any Julia.

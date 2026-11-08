@@ -106,6 +106,12 @@
   }
 }
 
+// Before any typing, Quarto opens an empty results panel under the box. Its
+// border shows as a dot at the corner of the box.
+#quarto-search-results .aa-Panel:has(.no-query) {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   #quarto-search.type-textbox :is(.aa-Autocomplete, .aa-Form) {
     transition: none;

@@ -137,6 +137,85 @@
   background-color: rgba($body-bg, 0.6);
 }
 
+// Quarto's overlay sheet is 90% wide and 65% opaque, and on small screens it
+// ends below the last result, so the page shows through beside and under it.
+// The sheet fills the screen instead.
+.aa-DetachedContainer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  background-color: $body-bg;
+  box-shadow: none;
+}
+
+// The modal variant caps the results at 455px. They scroll in the full sheet.
+.aa-DetachedContainer .aa-Panel {
+  max-height: none;
+  overflow-y: auto;
+}
+
+.aa-DetachedFormContainer {
+  gap: 0.25rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+}
+
+// A 17px input stops iOS from zooming in on focus.
+.aa-DetachedFormContainer .aa-Form {
+  min-height: 2.75rem;
+  padding-inline: 0.5rem 0.25rem;
+  border: 2px solid $link-color;
+  border-radius: 0.75rem;
+  background-color: $body-bg;
+  color: $body-color;
+  font-size: 1.0625rem;
+
+  &:focus-within {
+    box-shadow: none;
+  }
+
+  // Quarto takes these colours from the light theme, so the dark theme shows
+  // dark text on a dark box.
+  .aa-InputWrapper .aa-Input,
+  .aa-InputWrapperPrefix .aa-Label svg,
+  .aa-InputWrapperSuffix .aa-ClearButton {
+    color: $body-color;
+  }
+}
+
+.aa-DetachedCancelButton {
+  min-height: 2.75rem;
+  font-size: 1rem;
+  color: $link-color;
+}
+
+// Quarto marks the selected result in Cosmo's blue, which appears nowhere else
+// on the site, and the matches in the dark theme in black. Tints of the link
+// green replace both.
+:is(.aa-DetachedOverlay, #quarto-search-results) .search-item :is(mark.search-match, .search-match.mark) {
+  color: $body-color;
+  background-color: mix($link-color, $body-bg, 25%);
+}
+
+:is(.aa-DetachedOverlay, #quarto-search-results) li.aa-Item[aria-selected="true"] .search-item {
+  &,
+  &.search-result-more,
+  .search-result-section,
+  .search-result-text,
+  .search-result-title-container,
+  .search-result-text-container {
+    color: $body-color;
+    background-color: mix($link-color, $body-bg, 12%);
+  }
+
+  mark.search-match,
+  .search-match.mark {
+    color: $body-color;
+    background-color: mix($link-color, $body-bg, 30%);
+  }
+}
+
 // The logo SVG has a view box but no size, so under Quarto's max-height and
 // width: auto it collapses to nothing. A fixed height gives it a size. At
 // Quarto's 24px cap, the dots look small next to the bold title. The negative

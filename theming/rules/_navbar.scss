@@ -124,9 +124,10 @@
 }
 
 // Before any typing, Quarto opens an empty results panel under the box. Its
-// border shows as a dot at the corner of the box.
+// border shows as a dot at the corner of the box. The panel stays in the layout,
+// because Quarto positions it from its offsetTop, which is 0 under display: none.
 #quarto-search-results .aa-Panel:has(.no-query) {
-  display: none;
+  visibility: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {

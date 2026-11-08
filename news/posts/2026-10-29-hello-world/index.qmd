@@ -4,8 +4,8 @@ date: 2026-10-29
 categories: [news]
 ---
 
-Welcome to the JuliaBayes blog! Posts here can contain Julia code, which is
-run when the site is built:
+Welcome to JuliaBayes news! Posts here can contain Julia code. It runs when
+the author renders the post, and the site shows the saved output:
 
 ```{julia}
 using Statistics

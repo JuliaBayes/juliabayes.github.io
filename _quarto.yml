@@ -17,7 +17,7 @@ project:
 website:
   title: "JuliaBayes"
   site-url: https://juliabayes.org
-  description: "News, notes, and discussion from the JuliaBayes organisation."
+  description: "JuliaBayes is a shared home for Bayesian software in Julia."
   # Gives shared links a preview card, for example in Slack.
   open-graph: true
   search:

@@ -1,5 +1,5 @@
 // Quarto draws the colour-scheme toggle as a toggle switch, which does not say
-// what it switches. It shows the moon in the light theme and the sun in the
+// what it switches. It shows the sun in the light theme and the moon in the
 // dark theme, as a font glyph so that it takes the navbar link colour.
 .navbar .quarto-color-scheme-toggle:not(.alternate) .bi::before,
 .navbar .quarto-color-scheme-toggle.alternate .bi::before {
@@ -13,11 +13,11 @@
 }
 
 .navbar .quarto-color-scheme-toggle:not(.alternate) .bi::before {
-  content: "\f497"; // bi-moon
+  content: "\f5a2"; // bi-sun
 }
 
 .navbar .quarto-color-scheme-toggle.alternate .bi::before {
-  content: "\f5a2"; // bi-sun
+  content: "\f497"; // bi-moon
 }
 
 // Quarto colours the tools apart from the links. The toggle takes the link

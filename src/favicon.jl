@@ -8,7 +8,7 @@
 # Run from the repository root: `julia src/favicon.jl`. It needs `rsvg-convert`
 # (Homebrew: `brew install librsvg`).
 
-# Gives the curve the same OKLCH gradient as the hero curve.
+# Colours the curve with the OKLCH gradient of the hero curve.
 include("hero_curve.jl")
 
 const ICON_SIZE = 32
@@ -17,6 +17,9 @@ const ICON_MARGIN = 1.5
 # In julia-dots.svg from JuliaLang/julia-logo-graphics, the dot centres form an
 # equilateral triangle with side 173.205 and the dots have radius 75.
 const JULIA_DOT_SPACING = 173.205 / 75
+# The logo's colours, from left to right: red at bottom left, green at the top
+# and purple at bottom right. The curve runs through them in the same order.
+const DOT_COLORS = ("#CB3C33", "#389826", "#9558B2")
 # The remaining lengths are in units of the dot radius. The script then scales
 # the drawing to fill the icon.
 # The dots keep the logo's triangle, 1.3 times as wide, so that the curve shows
@@ -63,7 +66,7 @@ function icon_svg(; id="favicon", background=nothing, scale=1.0)
     stops = join(
         (
             """<stop offset="$offset" stop-color="$color"/>""" for
-            (offset, color) in gradient_stops(dot_offsets)
+            (offset, color) in gradient_stops(dot_offsets; colors=DOT_COLORS)
         ),
     )
     holes = join(
@@ -75,7 +78,7 @@ function icon_svg(; id="favicon", background=nothing, scale=1.0)
     circles = join(
         (
             """<circle cx="$(round(x; digits=2))" cy="$(round(y; digits=2))" r="$radius" fill="$color"/>"""
-            for ((x, y), color) in zip(dots, GRADIENT_COLORS)
+            for ((x, y), color) in zip(dots, DOT_COLORS)
         ),
     )
     backdrop = isnothing(background) ? "" : """<rect width="$ICON_SIZE" height="$ICON_SIZE" fill="$background"/>"""

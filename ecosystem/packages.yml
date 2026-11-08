@@ -32,6 +32,6 @@
   order: 5
 - title: VarNames.jl
   path: https://juliabayes.org/VarNames.jl/
-  description: Types to represent variable names and collections thereof
+  description: Types to represent variable names and collections thereof.
   task: Tooling
   order: 5

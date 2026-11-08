@@ -28,6 +28,9 @@ website:
   search:
     type: textbox
   navbar:
+    logo: favicon.svg
+    # Quarto puts the logo in a link of its own, so it needs a name.
+    logo-alt: "JuliaBayes home"
     left:
       - about/index.qmd
       - ecosystem/index.qmd

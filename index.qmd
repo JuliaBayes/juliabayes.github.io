@@ -43,7 +43,7 @@ Almost surely,
 :::: {.g-col-12 .landing-about}
 We develop, maintain, and promote Bayesian methods and software in Julia.
 
-We are community-driven and aim to be welcoming and inclusive.
+We are community-driven and aim to be welcoming and inclusive. \
 Contributions and collaborations of all sizes are welcome.
 ::::
 

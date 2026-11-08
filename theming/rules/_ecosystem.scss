@@ -1,0 +1,49 @@
+// The task is short, and reads badly when it wraps.
+#listing-packages .quarto-listing-table td:nth-child(3) {
+  white-space: nowrap;
+}
+
+// Stripes help the eye follow a row across the wide description column. They
+// go on the row, so that they also cover a row stacked as a block on phones.
+// A tint of the text colour darkens the light theme and lightens the dark one.
+// On a stripe, the link green falls under 4.5:1, so the names take the
+// stronger green of inline code.
+#listing-packages .quarto-listing-table {
+  tbody tr:nth-of-type(odd) {
+    background-color: mix($body-color, $body-bg, 4%);
+  }
+
+  td {
+    background-color: transparent;
+  }
+
+  a {
+    color: var(--bs-code-color);
+  }
+}
+
+// On phones, three columns do not fit. Each package becomes a block: the name,
+// what it does, then its task.
+@include media-breakpoint-down(sm) {
+  #listing-packages .quarto-listing-table {
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: block;
+      padding: 0.75rem 0.5rem;
+      border-bottom: 1px solid var(--bs-border-color);
+    }
+
+    td {
+      display: block;
+      padding: 0;
+      border: 0;
+    }
+
+    td:nth-child(3) {
+      color: var(--bs-secondary-color);
+    }
+  }
+}

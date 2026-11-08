@@ -39,3 +39,78 @@ div.quarto-post .listing-subtitle:has(> a:empty) {
     color: inherit;
   }
 }
+
+// Below md, Quarto puts each post's date and author under its description. They
+// lead instead, on one line, as on the landing page.
+@include media-breakpoint-down(md) {
+  div.quarto-post {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  div.quarto-post .metadata {
+    order: -1;
+
+    a {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 0.5ch;
+    }
+
+    .listing-author::before {
+      content: "· ";
+    }
+  }
+}
+
+// Below md, the post's author and date also sit on one line. The labels stay
+// for screen readers.
+@include media-breakpoint-down(md) {
+  // Quarto's grid rule names the block's classes, so this one does too.
+  #title-block-header.quarto-title-block.default .quarto-title-meta {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.5ch;
+    margin-top: 0.5rem;
+
+    > div {
+      display: flex;
+    }
+
+    > div + div::before {
+      content: "·";
+      margin-right: 0.5ch;
+    }
+  }
+
+  #title-block-header .quarto-title-meta-heading {
+    @include visually-hidden;
+  }
+
+  #title-block-header .quarto-title-meta-contents p {
+    margin: 0;
+  }
+}
+
+// Below md, the category badges grow to a 32px target, and the link under a
+// post title fills its badge.
+@include media-breakpoint-down(md) {
+  .quarto-title .quarto-categories .quarto-category,
+  div.quarto-post .listing-categories .listing-category {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    text-transform: none;
+  }
+
+  .quarto-title .quarto-categories .quarto-category a {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    margin-inline: -0.75rem;
+    padding-inline: 0.75rem;
+  }
+}

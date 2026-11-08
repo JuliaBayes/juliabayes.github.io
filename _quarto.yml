@@ -13,10 +13,15 @@ project:
     # The font licence asks that it ships with the fonts. Quarto copies the
     # fonts themselves from the url() in theming/rules/_fonts.scss.
     - theming/fonts/LICENSE.txt
+    # Browsers and iOS request these from the site root without a link tag.
+    # src/favicon.jl generates them with favicon.svg.
+    - favicon.ico
+    - apple-touch-icon.png
 
 website:
   title: "JuliaBayes"
   site-url: https://juliabayes.org
+  favicon: favicon.svg
   description: "JuliaBayes is a shared home for Bayesian software in Julia."
   # Gives shared links a preview card, for example in Slack.
   open-graph: true

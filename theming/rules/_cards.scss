@@ -30,3 +30,18 @@
   margin-inline: auto;
   text-align: center;
 }
+
+// On touch screens, the link beside a card heading reaches the 44px target
+// size. The heading row aligns on centres, since a baseline would move the
+// taller link box.
+@include media-breakpoint-down(lg) {
+  .landing-card-header {
+    align-items: center;
+  }
+
+  .landing-card-header > p > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+  }
+}

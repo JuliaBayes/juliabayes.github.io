@@ -27,13 +27,15 @@ website:
       - about/index.qmd
       - ecosystem/index.qmd
       - news/index.qmd
-    right:
+    # The links sit in the tools, next to the colour-scheme toggle and outside the
+    # collapse, so that the search can come before them.
+    tools:
       - icon: github
         href: https://github.com/JuliaBayes
-        aria-label: GitHub
+        text: GitHub
       - icon: rss
         href: news/index.xml
-        aria-label: RSS feed
+        text: RSS feed
 
 format:
   html:

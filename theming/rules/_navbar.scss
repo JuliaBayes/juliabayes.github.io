@@ -20,8 +20,8 @@
   content: "\f497"; // bi-moon
 }
 
-// Quarto colours the tools apart from the links. The toggle takes the link
-// colours, so that it matches the GitHub and RSS icons.
+// Quarto colours the tools apart from the links. The tools take the link
+// colours, so that they match the page links.
 .navbar .quarto-navbar-tools .quarto-navigation-tool {
   color: var(--bs-navbar-color);
 
@@ -30,43 +30,25 @@
   }
 }
 
-// The search is the rightmost item. Quarto orders the search 4 below the lg
-// breakpoint and 999 above it, and the collapsed links 20.
-.navbar .quarto-navbar-tools {
+// The search comes before the icons, so that the box grows into the free space
+// to its left and no icon moves. Quarto orders the collapsed links 20, and the
+// search after the tools.
+.navbar #quarto-search {
   order: 3;
 }
 
-// Keeps the toggle next to the search, away from the name. Quarto puts the
-// auto margin on the search, which would leave the toggle in the middle.
-@include media-breakpoint-down(lg) {
-  .navbar .quarto-navbar-tools {
-    margin-left: auto;
-  }
-
-  .navbar #quarto-search {
-    margin-left: 0.5rem;
-  }
+.navbar .quarto-navbar-tools {
+  order: 4;
 }
 
 @include media-breakpoint-up(lg) {
-  .navbar .quarto-navbar-tools {
-    order: 998;
-  }
-
-  // The search keeps the width of its loupe. The box opens over the icons to
-  // its left, so that no other item moves.
   .navbar #quarto-search {
-    position: relative;
-    width: 2rem;
-    margin-left: 0.5rem;
+    order: 998;
+    margin-inline: 0.5rem 0.25rem;
   }
 
-  .navbar #quarto-search.type-textbox .aa-Autocomplete {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    z-index: 1;
-    transform: translateY(-50%);
+  .navbar .quarto-navbar-tools {
+    order: 999;
   }
 }
 
@@ -86,18 +68,33 @@
   // The loupe sits at the right end, so that it stays in place while the box
   // grows to its left.
   .aa-Form {
+    position: relative;
     flex-direction: row-reverse;
     width: 100%;
     overflow: hidden;
     border-color: transparent;
     background-color: transparent;
     color: inherit;
+    transition: border-color 0.2s ease-in-out;
   }
 
-  // The box covers the icons, so it takes an opaque background.
   .aa-Autocomplete:focus-within .aa-Form {
     border-color: var(--bs-border-color);
-    background-color: $body-bg;
+  }
+
+  // The loupe lies over the right end of the input, and clicks pass through it.
+  // A click on the loupe then lands on the input. A click on the label would
+  // first blur the input, and the box would close and open again.
+  .aa-InputWrapperPrefix {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+
+  .aa-Input {
+    padding-right: 2rem;
   }
 
   .aa-SubmitButton,
@@ -107,17 +104,10 @@
     color: inherit;
     opacity: 1;
   }
-
-  // The loupe sits inside a label for the input. If clicks pass through the
-  // button to the label, a click on the loupe focuses the input, and the user
-  // can type at once.
-  .aa-SubmitButton {
-    pointer-events: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #quarto-search.type-textbox .aa-Autocomplete {
+  #quarto-search.type-textbox :is(.aa-Autocomplete, .aa-Form) {
     transition: none;
   }
 }

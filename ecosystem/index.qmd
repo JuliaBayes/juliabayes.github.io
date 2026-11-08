@@ -1,21 +1,24 @@
 ---
 title: "Ecosystem"
+toc: false
+# Quarto loads MathJax on every listing page. This page shows no maths.
+html-math-method: plain
+listing:
+  id: packages
+  contents: packages.yml
+  type: table
+  fields: [title, description, task]
+  field-display-names:
+    title: Package
+    description: What it does
+    task: Task
+  sort: [order, title]
+  sort-ui: false
+  filter-ui: false
 ---
 
-An overview of the packages in JuliaBayes will appear here.
+::: {#packages}
+:::
 
-## Category 1
-
-Placeholder text describing the packages in this category.
-
-## Category 2
-
-Placeholder text describing the packages in this category.
-
-## Category 3
-
-Placeholder text describing the packages in this category.
-
-## Category 4
-
-Placeholder text describing the packages in this category.
+Do you want your package here?
+Come say hello in [`#bayes` on Julia Slack](https://julialang.slack.com/archives/C0BKRUEN6CX)!

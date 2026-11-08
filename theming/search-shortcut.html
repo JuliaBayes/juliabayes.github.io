@@ -1,0 +1,16 @@
+<!-- Quarto opens the search on the keyup of "/". Firefox opens its Quick Find
+     bar on the keydown, and the find bar then keeps the key. The page takes the
+     keydown first, so "/" opens the search box and no "/" lands in it. -->
+<script>
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "/" || event.ctrlKey || event.metaKey || event.altKey) {
+      return;
+    }
+    const target = event.target;
+    if (target.isContentEditable || target.closest("input, select, textarea")) {
+      return;
+    }
+    event.preventDefault();
+    window.quartoOpenSearch?.();
+  });
+</script>

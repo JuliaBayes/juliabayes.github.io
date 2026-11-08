@@ -46,7 +46,9 @@ format:
     # The first visit follows the visitor's system setting. The toggle still
     # overrides it.
     respect-user-color-scheme: true
-    include-after-body: theming/theme-switch.html
+    include-after-body:
+      - theming/theme-switch.html
+      - theming/search-shortcut.html
 
 # Render Julia code locally and commit the results in _freeze/, so that CI
 # doesn't need to run any Julia.

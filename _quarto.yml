@@ -27,6 +27,13 @@ website:
   open-graph: true
   search:
     type: textbox
+  # CC BY asks that the licence shows where people read the content, not only
+  # in the repository.
+  page-footer:
+    center: >
+      © JuliaBayes contributors.
+      Text and images: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+      Code: [MIT](https://github.com/JuliaBayes/juliabayes.github.io/blob/main/LICENSE).
   navbar:
     logo: favicon.svg
     # Quarto puts the logo in a link of its own, so it needs a name.

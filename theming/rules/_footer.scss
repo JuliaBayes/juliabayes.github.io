@@ -1,0 +1,12 @@
+// Quarto gives the footer a left, centre and right column, a third of the width
+// each, even when only the centre has content. The empty columns wrap the
+// licence line on wide screens, and on phones they stack into a blank band
+// above it.
+.nav-footer-left:not(:has(*)),
+.nav-footer-right:not(:has(*)) {
+  display: none;
+}
+
+.nav-footer-center {
+  margin-top: 0;
+}

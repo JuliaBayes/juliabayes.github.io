@@ -1,6 +1,6 @@
 // The hero carries the page heading. The front-matter title must stay set:
 // without it, Quarto moves the first h1 on the page into a new title block.
-#title-block-header {
+.landing #title-block-header {
   display: none;
 }
 

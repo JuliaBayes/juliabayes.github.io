@@ -22,3 +22,20 @@ div.quarto-post .listing-categories .listing-category {
     flex: 0 0 7rem;
   }
 }
+
+// Quarto renders a subtitle link for every post, empty when the post has no
+// subtitle. An empty link has no name for screen readers.
+div.quarto-post .listing-subtitle:has(> a:empty) {
+  display: none;
+}
+
+// Quarto dims the categories under a post title to 0.6, which takes them under
+// 4.5:1.
+.quarto-title .quarto-categories .quarto-category {
+  opacity: 1;
+  color: var(--bs-secondary-color);
+
+  a {
+    color: inherit;
+  }
+}

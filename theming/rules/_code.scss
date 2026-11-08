@@ -1,0 +1,5 @@
+// Quarto colours code in a link like the link. On the grey code background,
+// the link green falls under 4.5:1, and the code colour does not.
+a code {
+  color: var(--bs-code-color);
+}

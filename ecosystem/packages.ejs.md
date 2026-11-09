@@ -1,7 +1,7 @@
 <%
 // The listing reads packages.yml and the team entries in about/people/.
 // Package entries carry a `task`; team entries carry a `name`.
-const statuses = ["experimental", "established", "stable"];
+const statuses = ["prototype", "experimental", "established", "stable"];
 const capitalise = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
 const packages = items.filter((item) => item.task !== undefined);

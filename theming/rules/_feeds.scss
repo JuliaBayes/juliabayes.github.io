@@ -1,0 +1,63 @@
+.rss-feed-menu {
+  width: 19rem;
+  min-width: 0;
+  max-width: calc(100vw - 1.5rem);
+  --bs-dropdown-bg: #{$body-bg};
+  --bs-dropdown-color: #{$body-color};
+  --bs-dropdown-border-color: #{$border-color};
+  --bs-dropdown-link-color: #{$body-color};
+  --bs-dropdown-link-hover-bg: #{mix($body-color, $body-bg, 8%)};
+  --bs-dropdown-link-hover-color: #{$body-color};
+  --bs-dropdown-link-active-bg: #{mix($body-color, $body-bg, 8%)};
+  --bs-dropdown-link-active-color: #{$body-color};
+}
+
+.rss-feed-row {
+  display: flex;
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+  }
+
+  a {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .rss-feed-copy {
+    flex: 0 0 4.5rem;
+    width: auto;
+    padding-inline: 0.5rem;
+    border-left: 1px solid $border-color;
+    text-align: center;
+    justify-content: center;
+    font-size: 0.875rem;
+  }
+}
+
+.rss-feed-url {
+  width: calc(100% - 1rem);
+  margin: 0.25rem 0.5rem;
+  color: $body-color;
+  background-color: $body-bg;
+  border-color: $border-color;
+  min-height: 2.75rem;
+  font-size: 0.875rem;
+}
+
+body.quarto-light .rss-feed-menu {
+  color-scheme: light;
+}
+
+body.quarto-dark .rss-feed-menu {
+  color-scheme: dark;
+}
+
+@include media-breakpoint-down(lg) {
+  .navbar .quarto-navbar-tools .rss-feed-toggle::after {
+    border: 0;
+    margin: 0;
+  }
+}

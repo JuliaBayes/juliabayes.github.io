@@ -43,8 +43,12 @@ website:
         href: https://github.com/JuliaBayes
         text: GitHub
       - icon: rss
-        href: news/index.xml
-        text: Blog and news RSS
+        text: RSS feeds
+        menu:
+          - text: Package releases
+            href: releases.xml
+          - text: Blog and news
+            href: news/index.xml
 
 format:
   html:
@@ -61,6 +65,7 @@ format:
       - theming/theme-switch.html
       - theming/search-shortcut.html
       - theming/category-links.html
+      - theming/feed-menu.html
 
 # Render Julia code locally and commit the results in _freeze/, so that CI
 # doesn't need to run any Julia.

@@ -4,3 +4,4 @@ role: Member
 order: 20
 image: oschulz.png
 affiliation: Max-Planck-Institut für Physik
+packages: [MGVI.jl, UltraNest.jl]

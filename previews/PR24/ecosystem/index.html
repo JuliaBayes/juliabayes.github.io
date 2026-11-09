@@ -52,9 +52,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-05979dd3270b9a3ed09ae643a5431683.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-449240010745e72a5631bbc1fc93a638.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-05979dd3270b9a3ed09ae643a5431683.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-bd44ca0211f8cd3832802f65db7328de.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-54ea880c072d2d240f953f49b011e211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-bd44ca0211f8cd3832802f65db7328de.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -91,9 +91,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-description','listing-task','listing-order','listing-logo','listing-status','listing-name','listing-github','listing-role','listing-image','listing-pronouns','listing-affiliation','listing-packages','listing-website','listing-email',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-title','listing-description','listing-task','listing-order','listing-logo','listing-status','listing-release-package','listing-repository','listing-release','listing-checked','listing-name','listing-github','listing-role','listing-image','listing-pronouns','listing-affiliation','listing-packages','listing-website','listing-email',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-title","listing-description","listing-task","listing-order","listing-logo","listing-status","listing-name","listing-github","listing-role","listing-image","listing-pronouns","listing-affiliation","listing-packages","listing-website","listing-email"],
+      searchColumns: ["listing-title","listing-description","listing-task","listing-order","listing-logo","listing-status","listing-release-package","listing-repository","listing-release","listing-checked","listing-name","listing-github","listing-role","listing-image","listing-pronouns","listing-affiliation","listing-packages","listing-website","listing-email"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -366,18 +366,51 @@ ul.task-list li input[type="checkbox"] {
 
 <p>Do you want your package here? Come say hello in <a href="https://julialang.slack.com/archives/C0BKRUEN6CX"><code>#bayes</code> on Julia Slack</a>!</p>
 <div id="listing-packages" class="quarto-listing quarto-listing-container-custom">
+<form id="ecosystem-filters" class="ecosystem-filters" role="search" aria-label="Find packages" hidden="">
+  <div>
+    <label for="package-search" class="form-label">Search packages</label>
+    <input id="package-search" class="form-control" type="search" placeholder="Package name" aria-controls="listing-packages" autocomplete="off">
+  </div>
+  <div>
+    <label for="package-task" class="form-label">Task</label>
+    <select id="package-task" class="form-select" aria-controls="listing-packages">
+      <option value="">All tasks</option>
+      
+      <option value="Modelling">Modelling</option>
+      
+      <option value="Sampling">Sampling</option>
+      
+      <option value="Analysis">Analysis</option>
+      
+      <option value="Workflow">Workflow</option>
+      
+      <option value="Tooling">Tooling</option>
+      
+    </select>
+  </div>
+  <button type="reset" class="btn btn-outline-secondary">Clear</button>
+  <p id="package-count" role="status" aria-live="polite" aria-atomic="true"></p>
+</form>
+
+<p id="package-empty" hidden="">No packages match. Try another name or task.</p>
 <div class="ecosystem-list">
-<section id="modelling" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue">
+<section id="modelling" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue" data-task="Modelling">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="modelling">Modelling</h2>
-<div class="ecosystem-package">
+<div class="ecosystem-package" data-name="Wren.jl">
 <div class="ecosystem-package-text">
 <p><a href="https://pysm.dev/Wren.jl/" class="ecosystem-package-name stretched-link">Wren.jl</a></p>
 <p>Probabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.</p>
+<div class="ecosystem-links">
+<p><a href="https://pysm.dev/Wren.jl/" aria-label="Wren.jl documentation">Docs</a></p>
+</div>
 <div class="ecosystem-meta">
 <div class="ecosystem-maintainers" data-named-count="1">
 <p>Maintained by: <span class="ecosystem-maintainer">Jessica Cox</span><span class="ecosystem-maintainers-more" hidden="hidden">+0</span></p>
 </div>
 <p>Status: Experimental</p>
+<div class="ecosystem-release">
+<p>Release info unavailable.</p>
+</div>
 </div>
 </div>
 <div class="ecosystem-logo">
@@ -385,32 +418,80 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="sampling" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue">
+<section id="sampling" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue" data-task="Sampling">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="sampling">Sampling</h2>
-<div class="ecosystem-package">
+<div class="ecosystem-package" data-name="EnsembleMCMC.jl">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/EnsembleMCMC.jl/" class="ecosystem-package-name stretched-link">EnsembleMCMC.jl</a></p>
 <p>Gradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.</p>
+<div class="ecosystem-links">
+<p><a href="https://juliabayes.org/EnsembleMCMC.jl/" aria-label="EnsembleMCMC.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/EnsembleMCMC.jl" aria-label="EnsembleMCMC.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/EnsembleMCMC.jl/issues" aria-label="EnsembleMCMC.jl issues">Issues</a></p>
+</div>
 <div class="ecosystem-meta">
 <div class="ecosystem-maintainers" data-named-count="1">
 <p>Maintained by: <span class="ecosystem-maintainer">Jessica Cox</span><span class="ecosystem-maintainers-more" hidden="hidden">+0</span></p>
 </div>
 <p>Status: Experimental</p>
+<div class="ecosystem-release">
+<p>Latest release: <a href="https://github.com/JuliaBayes/EnsembleMCMC.jl/releases/tag/v0.0.5">v0.0.5</a> · <time datetime="2026-11-02">2 Nov 2026</time></p>
+</div>
 </div>
 </div>
 <div class="ecosystem-logo ecosystem-logo-empty">
 
 </div>
 </div>
-<div class="ecosystem-package">
+<div class="ecosystem-package" data-name="ImportanceSamplers.jl">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/ImportanceSamplers.jl/dev/" class="ecosystem-package-name stretched-link">ImportanceSamplers.jl</a></p>
 <p>Plain, multiple and adaptive importance sampling, on CPU threads or GPUs.</p>
+<div class="ecosystem-links">
+<p><a href="https://juliabayes.org/ImportanceSamplers.jl/dev/" aria-label="ImportanceSamplers.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/ImportanceSamplers.jl" aria-label="ImportanceSamplers.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/ImportanceSamplers.jl/issues" aria-label="ImportanceSamplers.jl issues">Issues</a></p>
+</div>
 <div class="ecosystem-meta">
 <div class="ecosystem-maintainers" data-named-count="1">
 <p>Maintained by: <span class="ecosystem-maintainer">Jessica Cox</span><span class="ecosystem-maintainers-more" hidden="hidden">+0</span></p>
 </div>
 <p>Status: Experimental</p>
+<div class="ecosystem-release">
+<p>No stable GitHub release yet.</p>
+</div>
+</div>
+</div>
+<div class="ecosystem-logo ecosystem-logo-empty">
+
+</div>
+</div>
+<div class="ecosystem-package" data-name="MGVI.jl">
+<div class="ecosystem-package-text">
+<p><a href="https://juliabayes.org/MGVI.jl/stable/" class="ecosystem-package-name stretched-link">MGVI.jl</a></p>
+<p>Approximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.</p>
+<div class="ecosystem-links">
+<p><a href="https://juliabayes.org/MGVI.jl/stable/" aria-label="MGVI.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/MGVI.jl" aria-label="MGVI.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/MGVI.jl/issues" aria-label="MGVI.jl issues">Issues</a></p>
+</div>
+<div class="ecosystem-meta">
+<p>Status: Established</p>
+<div class="ecosystem-release">
+<p>Latest release: <a href="https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.6.0">v0.6.0</a> · <time datetime="2026-08-10">10 Aug 2026</time></p>
+</div>
+</div>
+</div>
+<div class="ecosystem-logo ecosystem-logo-empty">
+
+</div>
+</div>
+<div class="ecosystem-package" data-name="UltraNest.jl">
+<div class="ecosystem-package-text">
+<p><a href="https://juliabayes.org/UltraNest.jl/stable/" class="ecosystem-package-name stretched-link">UltraNest.jl</a></p>
+<p>Julia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.</p>
+<div class="ecosystem-links">
+<p><a href="https://juliabayes.org/UltraNest.jl/stable/" aria-label="UltraNest.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/UltraNest.jl" aria-label="UltraNest.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/UltraNest.jl/issues" aria-label="UltraNest.jl issues">Issues</a></p>
+</div>
+<div class="ecosystem-meta">
+<p>Status: Established</p>
+<div class="ecosystem-release">
+<p>Latest release: <a href="https://github.com/JuliaBayes/UltraNest.jl/releases/tag/v0.2.0">v0.2.0</a> · <time datetime="2026-07-31">31 Jul 2026</time></p>
+</div>
 </div>
 </div>
 <div class="ecosystem-logo ecosystem-logo-empty">
@@ -418,14 +499,20 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="analysis" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue">
+<section id="analysis" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue" data-task="Analysis">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="analysis">Analysis</h2>
-<div class="ecosystem-package">
+<div class="ecosystem-package" data-name="FlexiChains.jl">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/FlexiChains.jl/" class="ecosystem-package-name stretched-link">FlexiChains.jl</a></p>
 <p>Markov chains that keep the type and structure of each sample.</p>
+<div class="ecosystem-links">
+<p><a href="https://juliabayes.org/FlexiChains.jl/" aria-label="FlexiChains.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/FlexiChains.jl" aria-label="FlexiChains.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/FlexiChains.jl/issues" aria-label="FlexiChains.jl issues">Issues</a></p>
+</div>
 <div class="ecosystem-meta">
 <p>Status: Established</p>
+<div class="ecosystem-release">
+<p>Latest release: <a href="https://github.com/JuliaBayes/FlexiChains.jl/releases/tag/v0.7.2">v0.7.2</a> · <time datetime="2026-11-05">5 Nov 2026</time></p>
+</div>
 </div>
 </div>
 <div class="ecosystem-logo">
@@ -433,14 +520,20 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="workflow" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue">
+<section id="workflow" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue" data-task="Workflow">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="workflow">Workflow</h2>
-<div class="ecosystem-package">
+<div class="ecosystem-package" data-name="BayesianWorkflow.jl">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/BayesianWorkflow.jl/" class="ecosystem-package-name stretched-link">BayesianWorkflow.jl</a></p>
 <p>High-level tools for Bayesian workflows.</p>
+<div class="ecosystem-links">
+<p><a href="https://juliabayes.org/BayesianWorkflow.jl/" aria-label="BayesianWorkflow.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/BayesianWorkflow.jl" aria-label="BayesianWorkflow.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/BayesianWorkflow.jl/issues" aria-label="BayesianWorkflow.jl issues">Issues</a></p>
+</div>
 <div class="ecosystem-meta">
 <p>Status: Prototype</p>
+<div class="ecosystem-release">
+<p>No stable GitHub release yet.</p>
+</div>
 </div>
 </div>
 <div class="ecosystem-logo ecosystem-logo-empty">
@@ -448,38 +541,56 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="tooling" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue">
+<section id="tooling" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue" data-task="Tooling">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="tooling">Tooling</h2>
-<div class="ecosystem-package">
+<div class="ecosystem-package" data-name="MCMCProgress.jl">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/MCMCProgress.jl/" class="ecosystem-package-name stretched-link">MCMCProgress.jl</a></p>
 <p>A common interface for MCMC samplers to report progress, with plain-text and terminal backends.</p>
+<div class="ecosystem-links">
+<p><a href="https://juliabayes.org/MCMCProgress.jl/" aria-label="MCMCProgress.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/MCMCProgress.jl" aria-label="MCMCProgress.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/MCMCProgress.jl/issues" aria-label="MCMCProgress.jl issues">Issues</a></p>
+</div>
 <div class="ecosystem-meta">
 <p>Status: Experimental</p>
+<div class="ecosystem-release">
+<p>No stable GitHub release yet.</p>
+</div>
 </div>
 </div>
 <div class="ecosystem-logo ecosystem-logo-empty">
 
 </div>
 </div>
-<div class="ecosystem-package">
+<div class="ecosystem-package" data-name="Plaice.jl">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/Plaice.jl/" class="ecosystem-package-name stretched-link">Plaice.jl</a></p>
 <p>Converts samples from distributions to and from vectors, constrained or unconstrained.</p>
+<div class="ecosystem-links">
+<p><a href="https://juliabayes.org/Plaice.jl/" aria-label="Plaice.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/Plaice.jl" aria-label="Plaice.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/Plaice.jl/issues" aria-label="Plaice.jl issues">Issues</a></p>
+</div>
 <div class="ecosystem-meta">
 <p>Status: Experimental</p>
+<div class="ecosystem-release">
+<p>Latest release: <a href="https://github.com/JuliaBayes/Plaice.jl/releases/tag/v0.1.4">v0.1.4</a> · <time datetime="2026-11-07">7 Nov 2026</time></p>
+</div>
 </div>
 </div>
 <div class="ecosystem-logo ecosystem-logo-empty">
 
 </div>
 </div>
-<div class="ecosystem-package">
+<div class="ecosystem-package" data-name="VarNames.jl">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/VarNames.jl/" class="ecosystem-package-name stretched-link">VarNames.jl</a></p>
 <p>Types to represent variable names and collections thereof.</p>
+<div class="ecosystem-links">
+<p><a href="https://juliabayes.org/VarNames.jl/" aria-label="VarNames.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/VarNames.jl" aria-label="VarNames.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/VarNames.jl/issues" aria-label="VarNames.jl issues">Issues</a></p>
+</div>
 <div class="ecosystem-meta">
 <p>Status: Established</p>
+<div class="ecosystem-release">
+<p>Latest release: <a href="https://github.com/JuliaBayes/VarNames.jl/releases/tag/v0.1.8">v0.1.8</a> · <time datetime="2026-11-01">1 Nov 2026</time></p>
+</div>
 </div>
 </div>
 <div class="ecosystem-logo ecosystem-logo-empty">
@@ -487,6 +598,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
+</div>
+<div class="ecosystem-release-note">
+<p>GitHub release data checked 9 Nov 2026.</p>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
@@ -604,6 +718,44 @@ ul.task-list li input[type="checkbox"] {
     for (const block of document.querySelectorAll(".ecosystem-maintainers")) {
       observer.observe(block);
     }
+  })();
+</script>
+<script>
+  (() => {
+    const form = document.getElementById("ecosystem-filters");
+    const search = document.getElementById("package-search");
+    const task = document.getElementById("package-task");
+    const cards = [...document.querySelectorAll(".ecosystem-card")];
+    const count = document.getElementById("package-count");
+    const empty = document.getElementById("package-empty");
+
+    const filter = () => {
+      const query = search.value.trim().toLowerCase();
+      let matches = 0;
+      for (const card of cards) {
+        let visible = 0;
+        for (const pkg of card.querySelectorAll(".ecosystem-package")) {
+          pkg.hidden = (task.value !== "" && card.dataset.task !== task.value) ||
+            !pkg.dataset.name.toLowerCase().includes(query);
+          if (!pkg.hidden) visible += 1;
+        }
+        card.hidden = visible === 0;
+        matches += visible;
+      }
+      count.textContent = `${matches} ${matches === 1 ? "package" : "packages"}`;
+      empty.hidden = matches !== 0;
+    };
+
+    form.addEventListener("submit", (event) => event.preventDefault());
+    search.addEventListener("input", filter);
+    task.addEventListener("change", filter);
+    form.addEventListener("reset", () => {
+      search.value = "";
+      task.value = "";
+      filter();
+    });
+    filter();
+    form.hidden = false;
   })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">

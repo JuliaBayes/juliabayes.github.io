@@ -9,58 +9,5 @@
     toggle.setAttribute("role", "button");
     toggle.setAttribute("aria-controls", menu.id);
 
-    const status = document.createElement("div");
-    status.className = "visually-hidden";
-    status.setAttribute("role", "status");
-    status.setAttribute("aria-live", "polite");
-    root.append(status);
-    const controls = [];
-    for (const link of menu.querySelectorAll("a.dropdown-item")) {
-      const label = link.textContent.trim();
-      const row = document.createElement("div");
-      row.className = "rss-feed-row";
-      link.before(row);
-      row.append(link);
-
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "dropdown-item rss-feed-copy";
-      button.textContent = "Copy";
-      button.setAttribute("aria-label", `Copy ${label.toLowerCase()} feed URL`);
-      row.append(button);
-
-      const url = document.createElement("input");
-      url.type = "text";
-      url.readOnly = true;
-      url.value = link.href;
-      url.hidden = true;
-      url.className = "form-control rss-feed-url";
-      url.setAttribute("aria-label", `${label} feed URL`);
-      row.after(url);
-      controls.push({ button, url });
-
-      button.addEventListener("click", async (event) => {
-        event.stopPropagation();
-        try {
-          await navigator.clipboard.writeText(link.href);
-          button.textContent = "Copied";
-          url.hidden = true;
-          status.textContent = `${label} feed URL copied.`;
-        } catch {
-          url.hidden = false;
-          url.focus();
-          url.select();
-          status.textContent = "Copy the selected URL.";
-        }
-        window.bootstrap.Dropdown.getInstance(toggle).update();
-      });
-    }
-    root.addEventListener("hidden.bs.dropdown", () => {
-      for (const { button, url } of controls) {
-        button.textContent = "Copy";
-        url.hidden = true;
-      }
-      status.textContent = "";
-    });
   })();
 </script>

@@ -1,3 +1,32 @@
+.ecosystem-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+
+  > div:first-child {
+    flex: 1 1 15rem;
+  }
+
+  > div:nth-child(2) {
+    flex: 1 1 10rem;
+  }
+
+  #package-count {
+    flex-basis: 100%;
+    margin: 0;
+    font-size: $landing-small-font-size;
+    color: var(--bs-secondary-color);
+  }
+}
+
+.ecosystem-filters[hidden],
+.ecosystem-card[hidden],
+.ecosystem-package[hidden] {
+  display: none;
+}
+
 // One card per task, bordered like the accent buttons.
 .ecosystem-card {
   margin-bottom: 1.25rem;

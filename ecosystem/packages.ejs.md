@@ -46,16 +46,38 @@ const byOrderThenTitle = (a, b) =>
 const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task))];
 %>
 
+```{=html}
+<form id="ecosystem-filters" class="ecosystem-filters" role="search" aria-label="Find packages" hidden>
+  <div>
+    <label for="package-search" class="form-label">Search packages</label>
+    <input id="package-search" class="form-control" type="search" placeholder="Package name" aria-controls="packages" autocomplete="off">
+  </div>
+  <div>
+    <label for="package-task" class="form-label">Task</label>
+    <select id="package-task" class="form-select" aria-controls="packages">
+      <option value="">All tasks</option>
+      <% for (const task of tasks) { %>
+      <option value="<%= task %>"><%= task %></option>
+      <% } %>
+    </select>
+  </div>
+  <button type="reset" class="btn btn-outline-secondary">Clear</button>
+  <p id="package-count" role="status" aria-live="polite" aria-atomic="true"></p>
+</form>
+
+<p id="package-empty" hidden>No packages match. Try another name or task.</p>
+```
+
 ::: {.ecosystem-list}
 
 <% for (const task of tasks) { %>
-::: {.ecosystem-card .accent-card .accent-blue}
+::: {.ecosystem-card .accent-card .accent-blue data-task="<%= task %>"}
 
 ## <%= task %> {.unnumbered .unlisted}
 
 <% for (const pkg of packages.filter((p) => p.task === task)) { %>
 <% const maintainers = maintainersOf(pkg); %>
-::: {.ecosystem-package}
+::: {.ecosystem-package data-name="<%= pkg.title %>"}
 
 ::: {.ecosystem-package-text}
 

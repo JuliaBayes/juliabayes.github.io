@@ -13,6 +13,7 @@ listing:
   filter-ui: false
 include-after-body:
   - maintainers.html
+  - filters.html
 ---
 
 Do you want your package here?

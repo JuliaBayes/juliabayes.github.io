@@ -1,0 +1,38 @@
+<script>
+  (() => {
+    const form = document.getElementById("ecosystem-filters");
+    const search = document.getElementById("package-search");
+    const task = document.getElementById("package-task");
+    const cards = [...document.querySelectorAll(".ecosystem-card")];
+    const count = document.getElementById("package-count");
+    const empty = document.getElementById("package-empty");
+
+    const filter = () => {
+      const query = search.value.trim().toLowerCase();
+      let matches = 0;
+      for (const card of cards) {
+        let visible = 0;
+        for (const pkg of card.querySelectorAll(".ecosystem-package")) {
+          pkg.hidden = (task.value !== "" && card.dataset.task !== task.value) ||
+            !pkg.dataset.name.toLowerCase().includes(query);
+          if (!pkg.hidden) visible += 1;
+        }
+        card.hidden = visible === 0;
+        matches += visible;
+      }
+      count.textContent = `${matches} ${matches === 1 ? "package" : "packages"}`;
+      empty.hidden = matches !== 0;
+    };
+
+    form.addEventListener("submit", (event) => event.preventDefault());
+    search.addEventListener("input", filter);
+    task.addEventListener("change", filter);
+    form.addEventListener("reset", () => {
+      search.value = "";
+      task.value = "";
+      filter();
+    });
+    filter();
+    form.hidden = false;
+  })();
+</script>

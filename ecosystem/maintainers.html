@@ -1,23 +1,26 @@
-<!-- The maintainer line of a package stays on one line. When the names that
-     packages.ejs.md shows do not fit, names are hidden from the end, and the
-     count after them grows, until the line fits or one name is left. -->
+<!-- Collapse long maintainer lists to one line, with a button to reveal all
+     names. Without JavaScript, every name remains visible. -->
 <script>
   (() => {
     const fit = (block) => {
       const line = block.querySelector("p");
       const names = [...block.querySelectorAll(".ecosystem-maintainer")];
       const more = block.querySelector(".ecosystem-maintainers-more");
+      const expanded = !block.classList.contains("is-collapsed");
+      const pkg = block.closest(".ecosystem-package").dataset.name;
       const show = (count) => {
         names.forEach((name, i) => {
           name.hidden = i >= count;
         });
-        more.hidden = count === names.length;
-        more.textContent = `+${names.length - count}`;
+        more.hidden = !expanded && count === names.length;
+        more.textContent = expanded ? "Show fewer" : `+${names.length - count}`;
+        more.setAttribute("aria-expanded", String(expanded));
+        more.setAttribute("aria-label", `${expanded ? "Show fewer" : "Show all"} maintainers for ${pkg}`);
       };
 
-      let count = Number(block.dataset.namedCount);
+      let count = expanded ? names.length : names.length > 4 ? 3 : names.length;
       show(count);
-      while (count > 1 && line.scrollWidth > line.clientWidth) {
+      while (!expanded && count > 1 && line.scrollWidth > line.clientWidth) {
         count -= 1;
         show(count);
       }
@@ -29,6 +32,14 @@
       }
     });
     for (const block of document.querySelectorAll(".ecosystem-maintainers")) {
+      block.classList.add("is-collapsed");
+      const more = block.querySelector(".ecosystem-maintainers-more");
+      more.addEventListener("click", () => {
+        block.classList.toggle("is-collapsed");
+        fit(block);
+        if (more.hidden) block.querySelector("a")?.focus();
+      });
+      fit(block);
       observer.observe(block);
     }
   })();

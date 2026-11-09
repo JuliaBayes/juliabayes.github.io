@@ -17,26 +17,20 @@ const maintainersOf = (pkg) =>
   people
     .filter((person) => (person.packages ?? []).includes(pkg.title));
 
-// Up to four maintainers are shown by name; with more, three names and a count
-// of the rest. ecosystem/maintainers.html hides further names when the line
-// would overflow.
-const maxNamedMaintainers = 4;
-const namedMaintainerCount = (count) =>
-  count > maxNamedMaintainers ? maxNamedMaintainers - 1 : count;
-
 // A backslash escapes any ASCII punctuation in Pandoc's Markdown.
 const escapeMarkdown = (text) => text.replace(/[!-\/:-@\[-`{-~]/g, "\\$&");
+const escapeHtml = (text) => text.replace(/[&<>]/g, (character) =>
+  ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[character]);
 
-const maintainersMarkdown = (maintainers) => {
-  const shown = namedMaintainerCount(maintainers.length);
-  const names = maintainers.map((person, i) => {
-    const name = escapeMarkdown(person.name);
-    const label = person.github ? `[${name}](https://github.com/${encodeURIComponent(person.github)})` : name;
-    return `[${label}]{.ecosystem-maintainer${i < shown ? "" : " hidden=hidden"}}`;
+const maintainersHtml = (maintainers, pkg) => {
+  const names = maintainers.map((person) => {
+    const name = escapeHtml(person.name);
+    const label = person.github ? `<a href="https://github.com/${encodeURIComponent(person.github)}">${name}</a>` : name;
+    return `<span class="ecosystem-maintainer">${label}</span>`;
   });
-  const hiddenCount = maintainers.length - shown;
-  const more = `[+${hiddenCount}]{.ecosystem-maintainers-more${hiddenCount ? "" : " hidden=hidden"}}`;
-  return names.join("") + more;
+  const id = `maintainers-${pkg.title.toLowerCase().replace(/[^a-z0-9-]/g, "-")}`;
+  const more = `<button type="button" class="ecosystem-maintainers-more" aria-controls="${id}" aria-expanded="false" hidden>Show all</button>`;
+  return `<span id="${id}">${names.join("")}</span>` + more;
 };
 
 for (const pkg of packages) {
@@ -127,8 +121,10 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 ::: {.ecosystem-meta}
 
 <% if (maintainers.length) { %>
-::: {.ecosystem-maintainers data-named-count="<%= namedMaintainerCount(maintainers.length) %>"}
-Maintained by: <%- maintainersMarkdown(maintainers) %>
+::: {.ecosystem-maintainers}
+```{=html}
+<p>Maintained by: <%= maintainersHtml(maintainers, pkg) %></p>
+```
 :::
 <% } %>
 
@@ -151,9 +147,6 @@ Release info unavailable.
 <% if (pkg.logo) { %>
 ::: {.ecosystem-logo}
 ![](<%= pkg.logo %>){alt=""}
-:::
-<% } else { %>
-::: {.ecosystem-logo .ecosystem-logo-empty}
 :::
 <% } %>
 

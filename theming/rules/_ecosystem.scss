@@ -186,12 +186,6 @@ $ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-t
   }
 }
 
-// Holds the place of a missing logo. A tint of the text colour darkens the
-// light theme and lightens the dark one.
-.ecosystem-logo-empty {
-  background-color: rgba($body-color, 0.05);
-}
-
 // The name's link stretches over the whole package, so the name itself reads
 // as plain text.
 .ecosystem-package-name {
@@ -235,6 +229,7 @@ $ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-t
 // These links sit above the package name's stretched link.
 .ecosystem-links a,
 .ecosystem-maintainer a,
+.ecosystem-maintainers-more,
 .ecosystem-release a {
   position: relative;
   z-index: 1;
@@ -245,9 +240,12 @@ $ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-t
   color: var(--bs-secondary-color);
 }
 
-// ecosystem/maintainers.html shortens the list when it overflows; the ellipsis
-// covers a single name that is too long by itself.
+// Only JavaScript collapses the list, so every name is reachable without it.
 .ecosystem-maintainers p {
+  overflow-wrap: anywhere;
+}
+
+.ecosystem-maintainers.is-collapsed p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -257,12 +255,18 @@ $ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-t
   content: ", ";
 }
 
-.ecosystem-maintainers-more::before {
-  content: " ";
+.ecosystem-maintainers-more {
+  margin-inline-start: 0.25rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--bs-link-color);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-// Stack small logos above full-width text on phones. Empty logo boxes take
-// no space.
+// Stack small logos above full-width text on phones.
 @include media-breakpoint-down(sm) {
   .ecosystem-package {
     flex-direction: column-reverse;
@@ -271,9 +275,5 @@ $ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-t
 
   .ecosystem-logo {
     width: 3.5rem;
-  }
-
-  .ecosystem-logo-empty {
-    display: none;
   }
 }

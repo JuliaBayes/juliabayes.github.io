@@ -10,6 +10,16 @@
   description: Plain, multiple and adaptive importance sampling, on CPU threads or GPUs.
   task: Sampling
   order: 2
+- title: MGVI.jl
+  path: https://juliabayes.org/MGVI.jl/stable/
+  description: Approximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.
+  task: Sampling
+  order: 2
+- title: UltraNest.jl
+  path: https://juliabayes.org/UltraNest.jl/stable/
+  description: Julia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.
+  task: Sampling
+  order: 2
 - title: FlexiChains.jl
   path: https://juliabayes.org/FlexiChains.jl/
   description: Markov chains that keep the type and structure of each sample.

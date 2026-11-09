@@ -18,7 +18,7 @@
     "href": "index.html",
     "title": "JuliaBayes",
     "section": "",
-    "text": "Almost surely,\n\n\n\n\n\n\nAbout us Ecosystem  Slack\n\n\n\nWe develop, maintain, and promote Bayesian methods and software in Julia.\nWe are community-driven and aim to be welcoming and inclusive.\nContributions and collaborations of all sizes are welcome.\n\n\n\n\nAll news →\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Almost surely,\n\n\n\n\n\n\n\n\nAbout us Ecosystem  Slack\n\n\n\nWe develop, maintain, and promote Bayesian methods and software in Julia.\nWe are community-driven and aim to be welcoming and inclusive.\nContributions and collaborations of all sizes are welcome.\n\n\n\n\nAll news →\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#news",
@@ -26,6 +26,27 @@
     "title": "JuliaBayes",
     "section": "",
     "text": "All news →"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact us",
+    "section": "",
+    "text": "Want to bring your package into JuliaBayes, suggest a collaboration, or talk Bayes? Come say hello in #bayes on the Julia Slack. If you are not on it yet, join here."
+  },
+  {
+    "objectID": "contact.html#julia-slack",
+    "href": "contact.html#julia-slack",
+    "title": "Contact us",
+    "section": "",
+    "text": "Want to bring your package into JuliaBayes, suggest a collaboration, or talk Bayes? Come say hello in #bayes on the Julia Slack. If you are not on it yet, join here."
+  },
+  {
+    "objectID": "contact.html#github",
+    "href": "contact.html#github",
+    "title": "Contact us",
+    "section": "GitHub",
+    "text": "GitHub\nFor questions or bug reports about a package, open an issue in its repository under JuliaBayes. For this website, open an issue in the website repository."
   },
   {
     "objectID": "about/index.html",

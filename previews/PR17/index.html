@@ -53,9 +53,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e33f864cd19b1f6131d17183a291c9b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-5e8b77bd40f2e1682de0d4ca7efa8a0e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-e33f864cd19b1f6131d17183a291c9b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-99cca559e0077c5d11b7485af9769c5e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-c5e3b663ed1f395f2101531ddb4f807e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-99cca559e0077c5d11b7485af9769c5e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,6 +105,9 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<!-- Match the font URLs in Quarto's compiled Bootstrap stylesheet. -->
+<link rel="preload" href="site_libs/bootstrap/theming/fonts/IBMPlexSans-Regular-Latin1.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="site_libs/bootstrap/theming/fonts/IBMPlexSans-Bold-Latin1.woff2" as="font" type="font/woff2" crossorigin="">
 
 
 <meta property="og:title" content="JuliaBayes">
@@ -324,6 +327,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./news/index.html"> 
 <span class="menu-text">News</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
@@ -425,7 +432,100 @@ ul.task-list li input[type="checkbox"] {
 </svg>
 </div>
 <div class="hero-text">
-<p>Almost surely,</p>
+<script>
+  (() => {
+    const taglines = [
+      "Almost surely,",
+      "In all likelihood,",
+      "Given the evidence,",
+      "In expectation,",
+      "With high probability,",
+      "Conditionally,",
+      "Up to normalization,",
+      "More likely than not,",
+      "Under mild assumptions,",
+      "On average,",
+      "Asymptotically,",
+      "After conditioning,",
+      "Under this model,",
+      "With sufficient data,",
+      "Pending more evidence,",
+      "After burn-in,",
+      "Up to Monte Carlo error,",
+      "Within credible bounds,",
+      "For a suitable prior,",
+      "Subject to convergence,",
+      "A priori,",
+      "A posteriori,",
+      "In the limit,",
+      "In probability,",
+      "In distribution,",
+      "With full support,",
+      "With positive probability,",
+      "Given enough samples,",
+      "To a first approximation,",
+      "By a change of measure,",
+      "Up to a null set,",
+      "After marginalization,",
+      "Given the likelihood,",
+      "With finite variance,",
+      "As the sample grows,",
+      "With reasonable priors,",
+      "Within credible limits,",
+      "After updating,",
+      "For almost every outcome,",
+      "By disintegration,",
+      "Almost everywhere,",
+      "On all Borel sets,",
+      "Through a measurable map,",
+      "Pending new data,",
+      "Under any prior,",
+      "Approximately,",
+      "Up to ordering,",
+      "After resampling,",
+      "After adaptation,",
+      "With a weak prior,",
+      "With compact support,",
+      "With finite moments,",
+      "With finite mass,",
+      "By detailed balance,",
+      "In natural parameters,",
+      "In unconstrained space,",
+      "By a change of variables,",
+      "Credibly,",
+      "Presumably,",
+      "Empirically,",
+      "Jointly,",
+      "Measurably,",
+      "Consistently,",
+      "Reproducibly,",
+      "Verifiably,",
+      "Numerically,",
+      "Analytically,",
+      "Uniformly,",
+      "Locally,",
+      "Globally,",
+      "Optimally,",
+      "Up to a constant,",
+      "Modulo rounding error,",
+      "Up to machine precision,",
+      "After enough iterations,",
+      "For sufficiently large N,",
+      "With bounded error,",
+    ];
+    // Insert the complete paragraph while the hero is parsed.
+    const tagline = document.createElement("p");
+    tagline.id = "hero-tagline";
+    tagline.textContent =
+      taglines[Math.floor(Math.random() * taglines.length)];
+    document.currentScript.replaceWith(tagline);
+  })();
+</script>
+<noscript>
+<p id="hero-tagline">
+Almost surely,
+</p>
+</noscript>
 <section id="juliabayes" class="level1">
 <h1>JuliaBayes</h1>
 </section>
@@ -448,7 +548,7 @@ Contributions and collaborations of all sizes are welcome.</p>
 <div class="landing-news-panel">
 <div id="listing-news-listing" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794236244741" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794238048511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./news/posts/2026-10-29-hello-world/index.html" class="no-external-icon">Hello, world!</a>
@@ -1080,7 +1180,7 @@ Oct 29, 2026
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© JuliaBayes contributors. Text and images: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Code: <a href="https://github.com/JuliaBayes/juliabayes.github.io/blob/main/LICENSE">MIT</a>.</p>
+<p><a href="./contact.html">Contact us</a> · © JuliaBayes contributors. Text and images: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Code: <a href="https://github.com/JuliaBayes/juliabayes.github.io/blob/main/LICENSE">MIT</a>.</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

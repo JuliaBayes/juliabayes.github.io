@@ -74,6 +74,10 @@
     &:focus-within {
       width: 400px;
     }
+
+    &:not(:focus-within) .aa-Input {
+      cursor: pointer;
+    }
   }
 
   // The loupe sits at the right end, so that it stays in place while the box

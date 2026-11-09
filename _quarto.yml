@@ -44,7 +44,7 @@ website:
         text: GitHub
       - icon: rss
         href: news/index.xml
-        text: RSS feed
+        text: Blog and news RSS
 
 format:
   html:

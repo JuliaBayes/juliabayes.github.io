@@ -130,3 +130,20 @@ $ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-t
 .ecosystem-maintainers-more::before {
   content: " ";
 }
+
+// Stack small logos above full-width text on phones. Empty logo boxes take
+// no space.
+@include media-breakpoint-down(sm) {
+  .ecosystem-package {
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+  }
+
+  .ecosystem-logo {
+    width: 3.5rem;
+  }
+
+  .ecosystem-logo-empty {
+    display: none;
+  }
+}

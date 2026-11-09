@@ -52,9 +52,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b1ff3e73f8e4c96a3b97269809dd71a6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-49bd44968a8eb898abcd740b138d08bf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-b1ff3e73f8e4c96a3b97269809dd71a6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-bac4025756a9e6d59f0bc9fba2288d81.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-68ab21fbf2a1703bb3a463ac203b1d35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-bac4025756a9e6d59f0bc9fba2288d81.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -369,13 +369,13 @@ ul.task-list li input[type="checkbox"] {
 <form id="ecosystem-filters" class="ecosystem-filters" role="search" aria-label="Find packages" hidden="">
   <div>
     <label for="package-search" class="form-label">Search packages</label>
-    <input id="package-search" class="form-control" type="search" placeholder="Package name" aria-controls="listing-packages" autocomplete="off">
+    <input id="package-search" class="form-control" type="search" placeholder="Name, description or maintainer" aria-controls="listing-packages" autocomplete="off">
   </div>
   <div>
     <span class="form-label d-block">Tasks</span>
-    <details id="package-tasks">
-      <summary aria-controls="package-task-menu"><span class="visually-hidden">Filter by task: </span><span id="package-task-summary">All tasks</span></summary>
-      <div id="package-task-menu" class="ecosystem-task-menu">
+    <details id="package-tasks" class="ecosystem-filter-dropdown">
+      <summary aria-controls="package-task-menu"><span class="visually-hidden">Filter by task: </span><span data-filter-summary="">All tasks</span></summary>
+      <div id="package-task-menu" class="ecosystem-filter-menu">
         <fieldset>
           <legend class="visually-hidden">Show packages for any selected task</legend>
       
@@ -393,6 +393,24 @@ ul.task-list li input[type="checkbox"] {
       </div>
     </details>
   </div>
+  <div>
+    <span class="form-label d-block">Status</span>
+    <details id="package-statuses" class="ecosystem-filter-dropdown">
+      <summary aria-controls="package-status-menu"><span class="visually-hidden">Filter by status: </span><span data-filter-summary="">All statuses</span></summary>
+      <div id="package-status-menu" class="ecosystem-filter-menu">
+        <fieldset>
+          <legend class="visually-hidden">Show packages with any selected status</legend>
+      
+          <label><input type="checkbox" name="status" value="unregistered" aria-controls="listing-packages"> Unregistered</label>
+      
+          <label><input type="checkbox" name="status" value="registered" aria-controls="listing-packages"> Registered</label>
+      
+          <label><input type="checkbox" name="status" value="stable" aria-controls="listing-packages"> Stable</label>
+      
+        </fieldset>
+      </div>
+    </details>
+  </div>
   <button type="reset" class="btn btn-outline-secondary">Clear</button>
   <p id="package-count" role="status" aria-live="polite" aria-atomic="true"></p>
 </form>
@@ -401,16 +419,18 @@ ul.task-list li input[type="checkbox"] {
 <div class="ecosystem-list">
 <section id="modelling" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue" data-task="Modelling">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="modelling">Modelling</h2>
-<div class="ecosystem-package" data-name="Wren.jl">
+<div class="ecosystem-package" data-name="Wren.jl" data-status="unregistered">
 <div class="ecosystem-package-text">
 <p><a href="https://pysm.dev/Wren.jl/" class="ecosystem-package-name stretched-link">Wren.jl</a></p>
+<div class="ecosystem-description">
 <p>Probabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.</p>
+</div>
 <div class="ecosystem-links">
 <p><a href="https://pysm.dev/Wren.jl/" aria-label="Wren.jl documentation">Docs</a></p>
 </div>
 <div class="ecosystem-meta">
-<div class="ecosystem-maintainers" data-named-count="1">
-<p>Maintained by: <span class="ecosystem-maintainer"><a href="https://github.com/BJMCox">Jessica Cox</a></span><span class="ecosystem-maintainers-more" hidden="hidden">+0</span></p>
+<div class="ecosystem-maintainers">
+<p>Maintained by: <span id="maintainers-wren-jl"><span class="ecosystem-maintainer"><a href="https://github.com/BJMCox">Jessica Cox</a></span></span><button type="button" class="ecosystem-maintainers-more" aria-controls="maintainers-wren-jl" aria-expanded="false" hidden="">Show all</button></p>
 </div>
 <p>Status: Unregistered</p>
 <div class="ecosystem-release">
@@ -425,16 +445,18 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="sampling" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue" data-task="Sampling">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="sampling">Sampling</h2>
-<div class="ecosystem-package" data-name="EnsembleMCMC.jl">
+<div class="ecosystem-package" data-name="EnsembleMCMC.jl" data-status="registered">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/EnsembleMCMC.jl/" class="ecosystem-package-name stretched-link">EnsembleMCMC.jl</a></p>
+<div class="ecosystem-description">
 <p>Gradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.</p>
+</div>
 <div class="ecosystem-links">
 <p><a href="https://juliabayes.org/EnsembleMCMC.jl/" aria-label="EnsembleMCMC.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/EnsembleMCMC.jl" aria-label="EnsembleMCMC.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/EnsembleMCMC.jl/issues" aria-label="EnsembleMCMC.jl issues">Issues</a></p>
 </div>
 <div class="ecosystem-meta">
-<div class="ecosystem-maintainers" data-named-count="1">
-<p>Maintained by: <span class="ecosystem-maintainer"><a href="https://github.com/BJMCox">Jessica Cox</a></span><span class="ecosystem-maintainers-more" hidden="hidden">+0</span></p>
+<div class="ecosystem-maintainers">
+<p>Maintained by: <span id="maintainers-ensemblemcmc-jl"><span class="ecosystem-maintainer"><a href="https://github.com/BJMCox">Jessica Cox</a></span></span><button type="button" class="ecosystem-maintainers-more" aria-controls="maintainers-ensemblemcmc-jl" aria-expanded="false" hidden="">Show all</button></p>
 </div>
 <p>Status: Registered</p>
 <div class="ecosystem-release">
@@ -442,20 +464,19 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div class="ecosystem-logo ecosystem-logo-empty">
-
 </div>
-</div>
-<div class="ecosystem-package" data-name="ImportanceSamplers.jl">
+<div class="ecosystem-package" data-name="ImportanceSamplers.jl" data-status="registered">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/ImportanceSamplers.jl/dev/" class="ecosystem-package-name stretched-link">ImportanceSamplers.jl</a></p>
+<div class="ecosystem-description">
 <p>Plain, multiple and adaptive importance sampling, on CPU threads or GPUs.</p>
+</div>
 <div class="ecosystem-links">
 <p><a href="https://juliabayes.org/ImportanceSamplers.jl/dev/" aria-label="ImportanceSamplers.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/ImportanceSamplers.jl" aria-label="ImportanceSamplers.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/ImportanceSamplers.jl/issues" aria-label="ImportanceSamplers.jl issues">Issues</a></p>
 </div>
 <div class="ecosystem-meta">
-<div class="ecosystem-maintainers" data-named-count="1">
-<p>Maintained by: <span class="ecosystem-maintainer"><a href="https://github.com/BJMCox">Jessica Cox</a></span><span class="ecosystem-maintainers-more" hidden="hidden">+0</span></p>
+<div class="ecosystem-maintainers">
+<p>Maintained by: <span id="maintainers-importancesamplers-jl"><span class="ecosystem-maintainer"><a href="https://github.com/BJMCox">Jessica Cox</a></span></span><button type="button" class="ecosystem-maintainers-more" aria-controls="maintainers-importancesamplers-jl" aria-expanded="false" hidden="">Show all</button></p>
 </div>
 <p>Status: Registered</p>
 <div class="ecosystem-release">
@@ -463,14 +484,13 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div class="ecosystem-logo ecosystem-logo-empty">
-
 </div>
-</div>
-<div class="ecosystem-package" data-name="MGVI.jl">
+<div class="ecosystem-package" data-name="MGVI.jl" data-status="stable">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/MGVI.jl/stable/" class="ecosystem-package-name stretched-link">MGVI.jl</a></p>
+<div class="ecosystem-description">
 <p>Approximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.</p>
+</div>
 <div class="ecosystem-links">
 <p><a href="https://juliabayes.org/MGVI.jl/stable/" aria-label="MGVI.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/MGVI.jl" aria-label="MGVI.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/MGVI.jl/issues" aria-label="MGVI.jl issues">Issues</a></p>
 </div>
@@ -481,14 +501,13 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div class="ecosystem-logo ecosystem-logo-empty">
-
 </div>
-</div>
-<div class="ecosystem-package" data-name="UltraNest.jl">
+<div class="ecosystem-package" data-name="UltraNest.jl" data-status="stable">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/UltraNest.jl/stable/" class="ecosystem-package-name stretched-link">UltraNest.jl</a></p>
+<div class="ecosystem-description">
 <p>Julia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.</p>
+</div>
 <div class="ecosystem-links">
 <p><a href="https://juliabayes.org/UltraNest.jl/stable/" aria-label="UltraNest.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/UltraNest.jl" aria-label="UltraNest.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/UltraNest.jl/issues" aria-label="UltraNest.jl issues">Issues</a></p>
 </div>
@@ -499,17 +518,16 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div class="ecosystem-logo ecosystem-logo-empty">
-
-</div>
 </div>
 </section>
 <section id="analysis" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue" data-task="Analysis">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="analysis">Analysis</h2>
-<div class="ecosystem-package" data-name="FlexiChains.jl">
+<div class="ecosystem-package" data-name="FlexiChains.jl" data-status="stable">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/FlexiChains.jl/" class="ecosystem-package-name stretched-link">FlexiChains.jl</a></p>
+<div class="ecosystem-description">
 <p>Markov chains that keep the type and structure of each sample.</p>
+</div>
 <div class="ecosystem-links">
 <p><a href="https://juliabayes.org/FlexiChains.jl/" aria-label="FlexiChains.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/FlexiChains.jl" aria-label="FlexiChains.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/FlexiChains.jl/issues" aria-label="FlexiChains.jl issues">Issues</a></p>
 </div>
@@ -527,10 +545,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="workflow" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue" data-task="Workflow">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="workflow">Workflow</h2>
-<div class="ecosystem-package" data-name="BayesianWorkflow.jl">
+<div class="ecosystem-package" data-name="BayesianWorkflow.jl" data-status="unregistered">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/BayesianWorkflow.jl/" class="ecosystem-package-name stretched-link">BayesianWorkflow.jl</a></p>
+<div class="ecosystem-description">
 <p>High-level tools for Bayesian workflows.</p>
+</div>
 <div class="ecosystem-links">
 <p><a href="https://juliabayes.org/BayesianWorkflow.jl/" aria-label="BayesianWorkflow.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/BayesianWorkflow.jl" aria-label="BayesianWorkflow.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/BayesianWorkflow.jl/issues" aria-label="BayesianWorkflow.jl issues">Issues</a></p>
 </div>
@@ -541,17 +561,16 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div class="ecosystem-logo ecosystem-logo-empty">
-
-</div>
 </div>
 </section>
 <section id="tooling" class="level2 unnumbered unlisted ecosystem-card accent-card accent-blue" data-task="Tooling">
 <h2 class="unnumbered unlisted anchored" data-anchor-id="tooling">Tooling</h2>
-<div class="ecosystem-package" data-name="MCMCProgress.jl">
+<div class="ecosystem-package" data-name="MCMCProgress.jl" data-status="registered">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/MCMCProgress.jl/" class="ecosystem-package-name stretched-link">MCMCProgress.jl</a></p>
+<div class="ecosystem-description">
 <p>A common interface for MCMC samplers to report progress, with plain-text and terminal backends.</p>
+</div>
 <div class="ecosystem-links">
 <p><a href="https://juliabayes.org/MCMCProgress.jl/" aria-label="MCMCProgress.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/MCMCProgress.jl" aria-label="MCMCProgress.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/MCMCProgress.jl/issues" aria-label="MCMCProgress.jl issues">Issues</a></p>
 </div>
@@ -562,14 +581,13 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div class="ecosystem-logo ecosystem-logo-empty">
-
 </div>
-</div>
-<div class="ecosystem-package" data-name="Plaice.jl">
+<div class="ecosystem-package" data-name="Plaice.jl" data-status="registered">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/Plaice.jl/" class="ecosystem-package-name stretched-link">Plaice.jl</a></p>
+<div class="ecosystem-description">
 <p>Converts samples from distributions to and from vectors, constrained or unconstrained.</p>
+</div>
 <div class="ecosystem-links">
 <p><a href="https://juliabayes.org/Plaice.jl/" aria-label="Plaice.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/Plaice.jl" aria-label="Plaice.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/Plaice.jl/issues" aria-label="Plaice.jl issues">Issues</a></p>
 </div>
@@ -580,14 +598,13 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div class="ecosystem-logo ecosystem-logo-empty">
-
 </div>
-</div>
-<div class="ecosystem-package" data-name="VarNames.jl">
+<div class="ecosystem-package" data-name="VarNames.jl" data-status="stable">
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/VarNames.jl/" class="ecosystem-package-name stretched-link">VarNames.jl</a></p>
+<div class="ecosystem-description">
 <p>Types to represent variable names and collections thereof.</p>
+</div>
 <div class="ecosystem-links">
 <p><a href="https://juliabayes.org/VarNames.jl/" aria-label="VarNames.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/VarNames.jl" aria-label="VarNames.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/VarNames.jl/issues" aria-label="VarNames.jl issues">Issues</a></p>
 </div>
@@ -597,9 +614,6 @@ ul.task-list li input[type="checkbox"] {
 <p>Latest release: <a href="https://github.com/JuliaBayes/VarNames.jl/releases/tag/v0.1.8">v0.1.8</a> · <time datetime="2026-11-01">1 Nov 2026</time></p>
 </div>
 </div>
-</div>
-<div class="ecosystem-logo ecosystem-logo-empty">
-
 </div>
 </div>
 </section>
@@ -690,26 +704,29 @@ ul.task-list li input[type="checkbox"] {
     }
   })();
 </script>
-<!-- The maintainer line of a package stays on one line. When the names that
-     packages.ejs.md shows do not fit, names are hidden from the end, and the
-     count after them grows, until the line fits or one name is left. -->
+<!-- Collapse long maintainer lists to one line, with a button to reveal all
+     names. Without JavaScript, every name remains visible. -->
 <script>
   (() => {
     const fit = (block) => {
       const line = block.querySelector("p");
       const names = [...block.querySelectorAll(".ecosystem-maintainer")];
       const more = block.querySelector(".ecosystem-maintainers-more");
+      const expanded = !block.classList.contains("is-collapsed");
+      const pkg = block.closest(".ecosystem-package").dataset.name;
       const show = (count) => {
         names.forEach((name, i) => {
           name.hidden = i >= count;
         });
-        more.hidden = count === names.length;
-        more.textContent = `+${names.length - count}`;
+        more.hidden = !expanded && count === names.length;
+        more.textContent = expanded ? "Show fewer" : `+${names.length - count}`;
+        more.setAttribute("aria-expanded", String(expanded));
+        more.setAttribute("aria-label", `${expanded ? "Show fewer" : "Show all"} maintainers for ${pkg}`);
       };
 
-      let count = Number(block.dataset.namedCount);
+      let count = expanded ? names.length : names.length > 4 ? 3 : names.length;
       show(count);
-      while (count > 1 && line.scrollWidth > line.clientWidth) {
+      while (!expanded && count > 1 && line.scrollWidth > line.clientWidth) {
         count -= 1;
         show(count);
       }
@@ -721,6 +738,14 @@ ul.task-list li input[type="checkbox"] {
       }
     });
     for (const block of document.querySelectorAll(".ecosystem-maintainers")) {
+      block.classList.add("is-collapsed");
+      const more = block.querySelector(".ecosystem-maintainers-more");
+      more.addEventListener("click", () => {
+        block.classList.toggle("is-collapsed");
+        fit(block);
+        if (more.hidden) block.querySelector("a")?.focus();
+      });
+      fit(block);
       observer.observe(block);
     }
   })();
@@ -730,23 +755,40 @@ ul.task-list li input[type="checkbox"] {
     const form = document.getElementById("ecosystem-filters");
     const search = document.getElementById("package-search");
     const tasks = document.getElementById("package-tasks");
-    const summary = document.getElementById("package-task-summary");
-    const checkboxes = [...tasks.querySelectorAll('input[name="task"]')];
+    const statuses = document.getElementById("package-statuses");
+    const dropdowns = [tasks, statuses];
+    const checkboxes = [...form.querySelectorAll('input[type="checkbox"]')];
     const cards = [...document.querySelectorAll(".ecosystem-card")];
     const count = document.getElementById("package-count");
     const empty = document.getElementById("package-empty");
+    const normalise = (text) => text.trim().toLowerCase().replace(/\s+/g, " ");
+    const searchText = new Map([...document.querySelectorAll(".ecosystem-package")].map((pkg) => [
+      pkg,
+      normalise([
+        pkg.dataset.name,
+        pkg.querySelector(".ecosystem-description").textContent,
+        ...[...pkg.querySelectorAll(".ecosystem-maintainer")].map((person) => person.textContent),
+      ].join(" ")),
+    ]));
+
+    const selection = (dropdown, plural) => {
+      const checked = [...dropdown.querySelectorAll("input:checked")];
+      dropdown.querySelector("[data-filter-summary]").textContent = checked.length === 0 ? `All ${plural}` :
+        checked.length === 1 ? checked[0].parentElement.textContent.trim() : `${checked.length} ${plural}`;
+      return new Set(checked.map((box) => box.value));
+    };
 
     const filter = () => {
-      const query = search.value.trim().toLowerCase();
-      const selected = new Set(checkboxes.filter((box) => box.checked).map((box) => box.value));
-      summary.textContent = selected.size === 0 ? "All tasks" :
-        selected.size === 1 ? [...selected][0] : `${selected.size} tasks`;
+      const query = normalise(search.value);
+      const selectedTasks = selection(tasks, "tasks");
+      const selectedStatuses = selection(statuses, "statuses");
       let matches = 0;
       for (const card of cards) {
         let visible = 0;
         for (const pkg of card.querySelectorAll(".ecosystem-package")) {
-          pkg.hidden = (selected.size > 0 && !selected.has(card.dataset.task)) ||
-            !pkg.dataset.name.toLowerCase().includes(query);
+          pkg.hidden = (selectedTasks.size > 0 && !selectedTasks.has(card.dataset.task)) ||
+            (selectedStatuses.size > 0 && !selectedStatuses.has(pkg.dataset.status)) ||
+            !searchText.get(pkg).includes(query);
           if (!pkg.hidden) visible += 1;
         }
         card.hidden = visible === 0;
@@ -758,20 +800,27 @@ ul.task-list li input[type="checkbox"] {
 
     form.addEventListener("submit", (event) => event.preventDefault());
     search.addEventListener("input", filter);
-    tasks.addEventListener("change", filter);
-    tasks.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        tasks.open = false;
-        tasks.querySelector("summary").focus();
-      }
-    });
+    for (const dropdown of dropdowns) {
+      dropdown.addEventListener("change", filter);
+      dropdown.addEventListener("focusout", (event) => {
+        if (!dropdown.contains(event.relatedTarget)) dropdown.open = false;
+      });
+      dropdown.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          dropdown.open = false;
+          dropdown.querySelector("summary").focus();
+        }
+      });
+    }
     document.addEventListener("pointerdown", (event) => {
-      if (!tasks.contains(event.target)) tasks.open = false;
+      for (const dropdown of dropdowns) {
+        if (!dropdown.contains(event.target)) dropdown.open = false;
+      }
     });
     form.addEventListener("reset", () => {
       search.value = "";
       checkboxes.forEach((box) => { box.checked = false; });
-      tasks.open = false;
+      dropdowns.forEach((dropdown) => { dropdown.open = false; });
       filter();
     });
     filter();

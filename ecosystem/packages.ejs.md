@@ -84,7 +84,7 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
       </div>
     </details>
   </div>
-  <button type="reset" class="btn btn-outline-secondary">Clear</button>
+  <button type="reset" class="btn">Clear</button>
   <p id="package-count" role="status" aria-live="polite" aria-atomic="true"></p>
 </form>
 
@@ -108,14 +108,14 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 
 [<%= pkg.title %>](<%= pkg.path %>){.ecosystem-package-name .stretched-link}
 
-::: {.ecosystem-description}
-<%= pkg.description %>
-:::
-
 ::: {.ecosystem-links}
 [Docs](<%= pkg.path %>){aria-label="<%= pkg.title %> documentation"}
 <% if (repository) { %>[GitHub](<%= repository %>){aria-label="<%= pkg.title %> on GitHub"}
 [Issues](<%= repository %>/issues){aria-label="<%= pkg.title %> issues"}<% } %>
+:::
+
+::: {.ecosystem-description}
+<%= pkg.description %>
 :::
 
 ::: {.ecosystem-meta}

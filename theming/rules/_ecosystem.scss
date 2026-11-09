@@ -1,3 +1,9 @@
+// The tint matches the card's blue border.
+$ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-tint-strength));
+$ecosystem-filter-border-radius: 0.375rem;
+// The hover colour of the landing page's accent buttons.
+$ecosystem-filter-hover-bg: mix($julia-blue, $accent-card-bg, percentage($tint-strength));
+
 .ecosystem-filters {
   display: flex;
   flex-wrap: wrap;
@@ -22,20 +28,43 @@
 }
 
 .ecosystem-filters input[type="search"],
-.ecosystem-filters button[type="reset"],
 .ecosystem-filter-dropdown summary {
   color: var(--bs-body-color);
   background-color: var(--bs-body-bg);
   border: 1px solid var(--bs-border-color);
-
-  &:focus-visible {
-    outline: 2px solid var(--bs-link-color);
-    outline-offset: 2px;
-  }
 }
 
-.ecosystem-filters button[type="reset"]:hover {
-  background-color: var(--bs-secondary-bg);
+// An open dropdown carries the same ring as a focused search field.
+.ecosystem-filters input[type="search"]:focus-visible,
+.ecosystem-filters button[type="reset"]:focus-visible,
+.ecosystem-filter-dropdown summary:focus-visible,
+.ecosystem-filter-dropdown[open] summary {
+  outline: 2px solid var(--bs-link-color);
+  outline-offset: 2px;
+}
+
+.ecosystem-filter-dropdown[open] summary {
+  border-color: $ecosystem-package-tint;
+}
+
+.ecosystem-filters input[type="search"],
+.ecosystem-filter-dropdown summary {
+  border-radius: $ecosystem-filter-border-radius;
+}
+
+// The hover colours match the landing page's accent buttons. Bootstrap's hover
+// and active states read these variables, so setting `background` or `color`
+// directly would disable them.
+.ecosystem-filters .btn[type="reset"] {
+  --bs-btn-color: var(--bs-body-color);
+  --bs-btn-bg: var(--bs-body-bg);
+  --bs-btn-border-color: var(--bs-border-color);
+  --bs-btn-hover-color: var(--bs-body-color);
+  --bs-btn-hover-bg: #{$ecosystem-filter-hover-bg};
+  --bs-btn-hover-border-color: var(--bs-border-color);
+  --bs-btn-active-color: var(--bs-body-color);
+  --bs-btn-active-bg: #{$ecosystem-filter-hover-bg};
+  --bs-btn-active-border-color: var(--bs-border-color);
 }
 
 .ecosystem-filters input[type="search"]::placeholder {
@@ -70,7 +99,7 @@ body.quarto-light .ecosystem-filters {
   color: var(--bs-body-color);
   background-color: var(--bs-body-bg);
   border: 1px solid var(--bs-border-color);
-  border-radius: 0.375rem;
+  border-radius: $ecosystem-filter-border-radius;
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
 
   fieldset {
@@ -87,7 +116,7 @@ body.quarto-light .ecosystem-filters {
     cursor: pointer;
 
     &:hover {
-      background-color: var(--bs-secondary-bg);
+      background-color: $ecosystem-filter-hover-bg;
     }
   }
 
@@ -123,9 +152,8 @@ body.quarto-light .ecosystem-filters {
   font-weight: 700;
 }
 
-// The tint matches the card's blue border. On hover, a little of the text
-// colour goes into it: it darkens the light theme and lightens the dark one.
-$ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-tint-strength));
+// On hover, a little of the text colour goes into the package tint: it darkens
+// the light theme and lightens the dark one.
 
 .ecosystem-package {
   position: relative;
@@ -141,7 +169,7 @@ $ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-t
   }
 
   & + & {
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
   }
 
   p {
@@ -208,15 +236,26 @@ $ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-t
   }
 }
 
+// The maintainer and release lines each sit in their own div, so the gap
+// spaces the lines evenly where paragraph margins would not.
 .ecosystem-meta {
   margin-top: auto;
   padding-top: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
   font-size: $landing-small-font-size;
   color: var(--bs-secondary-color);
+
+  p {
+    margin: 0;
+  }
 }
 
+$ecosystem-links-margin-top: 0.1rem;
+
 .ecosystem-links {
-  margin: 0.35rem 0;
+  margin: $ecosystem-links-margin-top 0 0.35rem;
   font-size: $landing-small-font-size;
 
   p {
@@ -266,14 +305,48 @@ $ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-t
   cursor: pointer;
 }
 
-// Stack small logos above full-width text on phones.
+// On phones the logo sits beside the name and link rows, as tall as both, and
+// the description and meta lines run full width below.
 @include media-breakpoint-down(sm) {
+  $ecosystem-name-row-height: $line-height-base * $font-size-base;
+  $ecosystem-links-row-height: $line-height-base * $landing-small-font-size + $ecosystem-links-margin-top;
+
   .ecosystem-package {
-    flex-direction: column-reverse;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "name logo"
+      "links logo"
+      "description description"
+      "meta meta";
+    gap: 0;
+  }
+
+  .ecosystem-package-text {
+    display: contents;
+  }
+
+  .ecosystem-package-text > p:first-child {
+    grid-area: name;
+  }
+
+  .ecosystem-links {
+    grid-area: links;
+    margin-bottom: 0;
+  }
+
+  .ecosystem-description {
+    grid-area: description;
+    margin-top: 0.35rem;
+  }
+
+  .ecosystem-meta {
+    grid-area: meta;
   }
 
   .ecosystem-logo {
-    width: 3.5rem;
+    grid-area: logo;
+    width: $ecosystem-name-row-height + $ecosystem-links-row-height;
+    margin-inline-start: 0.75rem;
   }
 }

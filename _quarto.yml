@@ -17,6 +17,7 @@ project:
     # src/favicon.jl generates them with favicon.svg.
     - favicon.ico
     - apple-touch-icon.png
+    - releases.xml
 
 website:
   title: "JuliaBayes"
@@ -54,6 +55,8 @@ format:
     # The first visit follows the visitor's system setting. The toggle still
     # overrides it.
     respect-user-color-scheme: true
+    include-in-header:
+      - theming/release-feed.html
     include-after-body:
       - theming/theme-switch.html
       - theming/search-shortcut.html

@@ -13,3 +13,8 @@ publish workflow runs daily. API errors fail the update without replacing the
 snapshot. Packages without a stable GitHub release show that explicitly.
 Private or unavailable repositories show no source links or release metadata,
 even when the local GitHub login can access them.
+
+The same command generates `releases.xml` from the full, paginated public
+release history. Drafts and prereleases are excluded. Items use GitHub release
+IDs, so edits to a tag or release notes keep the same feed identity. Commit the
+RSS snapshot for offline renders. The daily publish refreshes both snapshots.

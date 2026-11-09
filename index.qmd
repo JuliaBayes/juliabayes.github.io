@@ -2,6 +2,7 @@
 title: "JuliaBayes"
 description: "JuliaBayes is a shared home for Bayesian software in Julia."
 toc: false
+include-in-header: theming/hero-fonts.html
 # Quarto loads MathJax on every listing page. The landing page shows no maths.
 html-math-method: plain
 # The landing page shares the site theme, so that the next page needs no new

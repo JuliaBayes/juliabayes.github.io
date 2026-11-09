@@ -65,9 +65,11 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 
 ::: {.ecosystem-meta}
 
+<% if (maintainers.length) { %>
 ::: {.ecosystem-maintainers data-named-count="<%= namedMaintainerCount(maintainers.length) %>"}
 Maintained by: <%- maintainersMarkdown(maintainers) %>
 :::
+<% } %>
 
 Status: <%= capitalise(pkg.status) %>
 

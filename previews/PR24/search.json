@@ -18,7 +18,7 @@
     "href": "ecosystem/index.html#modelling",
     "title": "Ecosystem",
     "section": "Modelling",
-    "text": "Modelling\n\n\nWren.jl\nProbabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.\n\nDocs\n\n\n\nMaintained by: Jessica Cox+0\n\nStatus: Experimental\n\nRelease info unavailable."
+    "text": "Modelling\n\n\nWren.jl\nProbabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.\n\nDocs\n\n\n\nMaintained by: Jessica Cox+0\n\nStatus: Unregistered\n\nRelease info unavailable."
   },
   {
     "objectID": "ecosystem/index.html#sampling",
@@ -39,7 +39,7 @@
     "href": "ecosystem/index.html#workflow",
     "title": "Ecosystem",
     "section": "Workflow",
-    "text": "Workflow\n\n\nBayesianWorkflow.jl\nHigh-level tools for Bayesian workflows.\n\nDocs GitHub Issues\n\n\nStatus: Experimental\n\nNo stable GitHub release yet."
+    "text": "Workflow\n\n\nBayesianWorkflow.jl\nHigh-level tools for Bayesian workflows.\n\nDocs GitHub Issues\n\n\nStatus: Unregistered\n\nNo stable GitHub release yet."
   },
   {
     "objectID": "ecosystem/index.html#tooling",

@@ -1,3 +1,15 @@
+// Keep the initial page offset and collapsed navbar height equal in both
+// themes. Quarto's resize observer updates the offset after the first paint.
+$navbar-initial-height: 64px;
+
+body.nav-fixed {
+  padding-top: $navbar-initial-height;
+}
+
+#quarto-header > .navbar {
+  min-height: $navbar-initial-height;
+}
+
 // Quarto draws the colour-scheme toggle as a toggle switch, which does not say
 // what it switches. It shows the sun in the light theme and the moon in the
 // dark theme, as a font glyph so that it takes the navbar link colour.
@@ -73,6 +85,10 @@
     // the box with the same right edge.
     &:focus-within {
       width: 400px;
+    }
+
+    &:not(:focus-within) .aa-Input {
+      cursor: pointer;
     }
   }
 

@@ -77,6 +77,7 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 
 <% for (const pkg of packages.filter((p) => p.task === task)) { %>
 <% const maintainers = maintainersOf(pkg); %>
+<% const repository = pkg.repository ?? `https://github.com/JuliaBayes/${pkg.title}`; %>
 ::: {.ecosystem-package data-name="<%= pkg.title %>"}
 
 ::: {.ecosystem-package-text}
@@ -84,6 +85,12 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 [<%= pkg.title %>](<%= pkg.path %>){.ecosystem-package-name .stretched-link}
 
 <%= pkg.description %>
+
+::: {.ecosystem-links}
+[Docs](<%= pkg.path %>){aria-label="<%= pkg.title %> documentation"}
+[GitHub](<%= repository %>){aria-label="<%= pkg.title %> on GitHub"}
+[Issues](<%= repository %>/issues){aria-label="<%= pkg.title %> issues"}
+:::
 
 ::: {.ecosystem-meta}
 

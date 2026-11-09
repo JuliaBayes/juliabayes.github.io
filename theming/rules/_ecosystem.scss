@@ -144,6 +144,24 @@ $ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-t
   color: var(--bs-secondary-color);
 }
 
+.ecosystem-links {
+  margin: 0.35rem 0;
+  font-size: $landing-small-font-size;
+
+  p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+}
+
+// These links sit above the package name's stretched link.
+.ecosystem-links a,
+.ecosystem-release a {
+  position: relative;
+  z-index: 1;
+}
+
 // ecosystem/maintainers.html shortens the list when it overflows; the ellipsis
 // covers a single name that is too long by itself.
 .ecosystem-maintainers p {

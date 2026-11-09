@@ -7,7 +7,7 @@ const repo = (pkg) => `https://github.com/JuliaBayes/${pkg}`;
 ::: {.team-list}
 
 <% for (const item of items) { %>
-::: {.team-person <%= metadataAttrs(item) %>}
+::: {.team-person .accent-card .accent-blue <%= metadataAttrs(item) %>}
 
 <% if (item.image) { %>
 ![](people/<%= item.image %>){.team-avatar alt="" width="80" height="80"}

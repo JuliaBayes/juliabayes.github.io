@@ -1,0 +1,30 @@
+<script>
+  (() => {
+    const taglines = [
+      "Almost surely,",
+      "In all likelihood,",
+      "Given the evidence,",
+      "In expectation,",
+      "With high probability,",
+      "Conditionally,",
+      "Up to normalization,",
+      "More likely than not,",
+      "Under mild assumptions,",
+      "On average,",
+      "Asymptotically,",
+      "After conditioning,",
+      "Under this model,",
+      "With sufficient data,",
+      "Pending more evidence,",
+      "After burn-in,",
+      "Up to Monte Carlo error,",
+      "Within credible bounds,",
+      "For a suitable prior,",
+      "Subject to convergence,",
+      "According to the posterior,",
+    ];
+    // This include follows the tagline, so it runs before the hero is painted.
+    document.getElementById("hero-tagline").textContent =
+      taglines[Math.floor(Math.random() * taglines.length)];
+  })();
+</script>

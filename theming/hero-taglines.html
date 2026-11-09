@@ -33,9 +33,30 @@
       "To a first approximation,",
       "Within numerical precision,",
       "By a change of measure,",
+      "Without loss of generality,",
+      "Up to a null set,",
+      "After marginalization,",
+      "Given the likelihood,",
+      "With finite variance,",
+      "As the sample grows,",
+      "Under regularity conditions,",
+      "With reasonable priors,",
+      "Subject to identifiability,",
+      "Within credible limits,",
+      "After updating,",
+      "For almost every outcome,",
+      "By disintegration,",
+      "Almost everywhere,",
+      "Under the dominating measure,",
+      "On all Borel sets,",
+      "Through a measurable map,",
     ];
-    // This include follows the tagline, so it runs before the hero is painted.
-    document.getElementById("hero-tagline").textContent =
+    // Insert the complete paragraph while the hero is parsed.
+    const tagline = document.createElement("p");
+    tagline.id = "hero-tagline";
+    tagline.textContent =
       taglines[Math.floor(Math.random() * taglines.length)];
+    document.currentScript.replaceWith(tagline);
   })();
 </script>
+<noscript><p id="hero-tagline">Almost surely,</p></noscript>

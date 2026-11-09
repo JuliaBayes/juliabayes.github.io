@@ -26,8 +26,6 @@ listing:
 {{< include _hero-curve.md >}}
 
 ::: {.hero-text}
-[Almost surely,]{#hero-tagline}
-
 {{< include theming/hero-taglines.html >}}
 
 # JuliaBayes

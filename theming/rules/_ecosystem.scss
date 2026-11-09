@@ -9,7 +9,7 @@
     flex: 1 1 15rem;
   }
 
-  > div:nth-child(2) {
+  > div:not(:first-child) {
     flex: 1 1 10rem;
   }
 
@@ -23,7 +23,7 @@
 
 .ecosystem-filters input[type="search"],
 .ecosystem-filters button[type="reset"],
-#package-tasks summary {
+.ecosystem-filter-dropdown summary {
   color: var(--bs-body-color);
   background-color: var(--bs-body-bg);
   border: 1px solid var(--bs-border-color);
@@ -51,7 +51,7 @@ body.quarto-light .ecosystem-filters {
   color-scheme: light;
 }
 
-#package-tasks {
+.ecosystem-filter-dropdown {
   position: relative;
   margin: 0;
 
@@ -61,7 +61,7 @@ body.quarto-light .ecosystem-filters {
   }
 }
 
-.ecosystem-task-menu {
+.ecosystem-filter-menu {
   position: absolute;
   inset-inline: 0;
   top: calc(100% + 0.25rem);

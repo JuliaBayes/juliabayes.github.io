@@ -60,17 +60,31 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 <form id="ecosystem-filters" class="ecosystem-filters" role="search" aria-label="Find packages" hidden>
   <div>
     <label for="package-search" class="form-label">Search packages</label>
-    <input id="package-search" class="form-control" type="search" placeholder="Package name" aria-controls="listing-packages" autocomplete="off">
+    <input id="package-search" class="form-control" type="search" placeholder="Name, description or maintainer" aria-controls="listing-packages" autocomplete="off">
   </div>
   <div>
     <span class="form-label d-block">Tasks</span>
-    <details id="package-tasks">
-      <summary aria-controls="package-task-menu"><span class="visually-hidden">Filter by task: </span><span id="package-task-summary">All tasks</span></summary>
-      <div id="package-task-menu" class="ecosystem-task-menu">
+    <details id="package-tasks" class="ecosystem-filter-dropdown">
+      <summary aria-controls="package-task-menu"><span class="visually-hidden">Filter by task: </span><span data-filter-summary>All tasks</span></summary>
+      <div id="package-task-menu" class="ecosystem-filter-menu">
         <fieldset>
           <legend class="visually-hidden">Show packages for any selected task</legend>
       <% for (const task of tasks) { %>
           <label><input type="checkbox" name="task" value="<%= task %>" aria-controls="listing-packages"> <%= task %></label>
+      <% } %>
+        </fieldset>
+      </div>
+    </details>
+  </div>
+  <div>
+    <span class="form-label d-block">Status</span>
+    <details id="package-statuses" class="ecosystem-filter-dropdown">
+      <summary aria-controls="package-status-menu"><span class="visually-hidden">Filter by status: </span><span data-filter-summary>All statuses</span></summary>
+      <div id="package-status-menu" class="ecosystem-filter-menu">
+        <fieldset>
+          <legend class="visually-hidden">Show packages with any selected status</legend>
+      <% for (const status of statuses) { %>
+          <label><input type="checkbox" name="status" value="<%= status %>" aria-controls="listing-packages"> <%= capitalise(status) %></label>
       <% } %>
         </fieldset>
       </div>
@@ -94,13 +108,15 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 <% const maintainers = maintainersOf(pkg); %>
 <% const repository = releases.get(pkg.title).repository; %>
 <% const release = releases.get(pkg.title).release; %>
-::: {.ecosystem-package data-name="<%= pkg.title %>"}
+::: {.ecosystem-package data-name="<%= pkg.title %>" data-status="<%= pkg.status %>"}
 
 ::: {.ecosystem-package-text}
 
 [<%= pkg.title %>](<%= pkg.path %>){.ecosystem-package-name .stretched-link}
 
+::: {.ecosystem-description}
 <%= pkg.description %>
+:::
 
 ::: {.ecosystem-links}
 [Docs](<%= pkg.path %>){aria-label="<%= pkg.title %> documentation"}

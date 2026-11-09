@@ -39,7 +39,7 @@
     "href": "ecosystem/index.html#workflow",
     "title": "Ecosystem",
     "section": "Workflow",
-    "text": "Workflow\n\n\nBayesianWorkflow.jl\nHigh-level tools for Bayesian workflows.\n\nStatus: Experimental"
+    "text": "Workflow\n\n\nBayesianWorkflow.jl\nHigh-level tools for Bayesian workflows.\n\nStatus: Prototype"
   },
   {
     "objectID": "ecosystem/index.html#tooling",

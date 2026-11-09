@@ -1,7 +1,7 @@
 <%
 // The listing reads packages.yml and the team entries in about/people/.
 // Package entries carry a `task`; team entries carry a `name`.
-const statuses = ["prototype", "experimental", "established", "stable"];
+const statuses = ["experimental", "registered", "stable"];
 const capitalise = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
 const packages = items.filter((item) => item.task !== undefined);
@@ -15,8 +15,7 @@ const releaseDate = (date) => new Intl.DateTimeFormat("en-GB", {
 
 const maintainersOf = (pkg) =>
   people
-    .filter((person) => (person.packages ?? []).includes(pkg.title))
-    .map((person) => person.name);
+    .filter((person) => (person.packages ?? []).includes(pkg.title));
 
 // Up to four maintainers are shown by name; with more, three names and a count
 // of the rest. ecosystem/maintainers.html hides further names when the line
@@ -30,9 +29,11 @@ const escapeMarkdown = (text) => text.replace(/[!-\/:-@\[-`{-~]/g, "\\$&");
 
 const maintainersMarkdown = (maintainers) => {
   const shown = namedMaintainerCount(maintainers.length);
-  const names = maintainers.map((name, i) =>
-    `[${escapeMarkdown(name)}]{.ecosystem-maintainer${i < shown ? "" : " hidden=hidden"}}`
-  );
+  const names = maintainers.map((person, i) => {
+    const name = escapeMarkdown(person.name);
+    const label = person.github ? `[${name}](https://github.com/${encodeURIComponent(person.github)})` : name;
+    return `[${label}]{.ecosystem-maintainer${i < shown ? "" : " hidden=hidden"}}`;
+  });
   const hiddenCount = maintainers.length - shown;
   const more = `[+${hiddenCount}]{.ecosystem-maintainers-more${hiddenCount ? "" : " hidden=hidden"}}`;
   return names.join("") + more;

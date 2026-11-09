@@ -157,6 +157,7 @@ $ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-t
 
 // These links sit above the package name's stretched link.
 .ecosystem-links a,
+.ecosystem-maintainer a,
 .ecosystem-release a {
   position: relative;
   z-index: 1;

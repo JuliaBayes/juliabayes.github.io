@@ -15,6 +15,7 @@
   task: Sampling
   order: 2
   status: registered
+  logo: assets/ensemblemcmc.svg
 - title: ImportanceSamplers.jl
   path: https://juliabayes.org/ImportanceSamplers.jl/dev/
   description: Plain, multiple and adaptive importance sampling, on CPU threads or GPUs.

@@ -21,6 +21,7 @@
   task: Sampling
   order: 2
   status: registered
+  logo: assets/importancesamplers.svg
 - title: MGVI.jl
   path: https://juliabayes.org/MGVI.jl/stable/
   description: Approximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.

@@ -21,6 +21,10 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # 7.0.1
       - uses: quarto-dev/quarto-actions/setup@8a96df13519ee81fd526f2dfca5962811136661b # 2.2.0
+      - name: Refresh package releases
+        run: node src/package-releases.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
       # No need for julia here because outputs come from _freeze/
       - run: quarto render
 

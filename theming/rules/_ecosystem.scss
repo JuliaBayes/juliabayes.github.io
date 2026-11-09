@@ -162,6 +162,11 @@ $ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-t
   z-index: 1;
 }
 
+.ecosystem-release-note {
+  font-size: $landing-small-font-size;
+  color: var(--bs-secondary-color);
+}
+
 // ecosystem/maintainers.html shortens the list when it overflows; the ellipsis
 // covers a single name that is too long by itself.
 .ecosystem-maintainers p {

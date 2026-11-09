@@ -6,6 +6,12 @@ const capitalise = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
 const packages = items.filter((item) => item.task !== undefined);
 const people = items.filter((item) => item.name !== undefined);
+const releases = new Map(items
+  .filter((item) => item["release-package"] !== undefined)
+  .map((item) => [item["release-package"], item]));
+const releaseDate = (date) => new Intl.DateTimeFormat("en-GB", {
+  day: "numeric", month: "short", year: "numeric", timeZone: "UTC",
+}).format(new Date(date));
 
 const maintainersOf = (pkg) =>
   people
@@ -33,6 +39,9 @@ const maintainersMarkdown = (maintainers) => {
 };
 
 for (const pkg of packages) {
+  if (!releases.has(pkg.title)) {
+    throw new Error(`Add ${pkg.title} to ecosystem/releases.yml and run node src/package-releases.mjs`);
+  }
   if (!statuses.includes(pkg.status)) {
     throw new Error(
       `${pkg.title} in ecosystem/packages.yml has status "${pkg.status}"; ` +
@@ -50,11 +59,11 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 <form id="ecosystem-filters" class="ecosystem-filters" role="search" aria-label="Find packages" hidden>
   <div>
     <label for="package-search" class="form-label">Search packages</label>
-    <input id="package-search" class="form-control" type="search" placeholder="Package name" aria-controls="packages" autocomplete="off">
+    <input id="package-search" class="form-control" type="search" placeholder="Package name" aria-controls="listing-packages" autocomplete="off">
   </div>
   <div>
     <label for="package-task" class="form-label">Task</label>
-    <select id="package-task" class="form-select" aria-controls="packages">
+    <select id="package-task" class="form-select" aria-controls="listing-packages">
       <option value="">All tasks</option>
       <% for (const task of tasks) { %>
       <option value="<%= task %>"><%= task %></option>
@@ -78,6 +87,7 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 <% for (const pkg of packages.filter((p) => p.task === task)) { %>
 <% const maintainers = maintainersOf(pkg); %>
 <% const repository = pkg.repository ?? `https://github.com/JuliaBayes/${pkg.title}`; %>
+<% const release = releases.get(pkg.title).release; %>
 ::: {.ecosystem-package data-name="<%= pkg.title %>"}
 
 ::: {.ecosystem-package-text}
@@ -102,6 +112,14 @@ Maintained by: <%- maintainersMarkdown(maintainers) %>
 
 Status: <%= capitalise(pkg.status) %>
 
+::: {.ecosystem-release}
+<% if (release) { %>
+Latest release: [<%= escapeMarkdown(release.version) %>](<%= release.url %>) · <time datetime="<%= release.date %>"><%= releaseDate(release.date) %></time>
+<% } else { %>
+No stable GitHub release yet.
+<% } %>
+:::
+
 :::
 
 :::
@@ -116,9 +134,14 @@ Status: <%= capitalise(pkg.status) %>
 <% } %>
 
 :::
+
 <% } %>
 
 :::
 <% } %>
 
+:::
+
+::: {.ecosystem-release-note}
+GitHub release data checked <%= releaseDate([...releases.values()].map((item) => item.checked).sort()[0]) %>.
 :::

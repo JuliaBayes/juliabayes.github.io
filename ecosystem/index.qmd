@@ -6,7 +6,7 @@ html-math-method: plain
 listing:
   id: packages
   # The team entries list the packages each person maintains.
-  contents: [packages.yml, ../about/people/*.yml]
+  contents: [packages.yml, releases.yml, ../about/people/*.yml]
   template: packages.ejs.md
   sort: false
   sort-ui: false

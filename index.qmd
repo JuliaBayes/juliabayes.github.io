@@ -26,6 +26,8 @@ listing:
 {{< include _hero-curve.md >}}
 
 ::: {.hero-text}
+Almost surely,
+
 # JuliaBayes
 :::
 :::
@@ -39,9 +41,10 @@ listing:
 ::::
 
 :::: {.g-col-12 .landing-about}
-JuliaBayes is a community-driven endeavour to support the development, shared maintenance, and promotion of Bayesian methods and software in the Julia programming language.
+We develop, maintain, and promote Bayesian methods and software in Julia.
 
-We aim to provide a welcoming and inclusive environment for all who would like to collaborate and contribute to the ecosystem.
+We are community-driven and aim to be welcoming and inclusive. \
+Contributions and collaborations of all sizes are welcome.
 ::::
 
 :::: {.g-col-12 .accent-card .landing-card-news}

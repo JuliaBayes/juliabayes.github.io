@@ -11,42 +11,14 @@
     "href": "ecosystem/index.html",
     "title": "Ecosystem",
     "section": "",
-    "text": "An overview of the packages in JuliaBayes will appear here."
-  },
-  {
-    "objectID": "ecosystem/index.html#category-1",
-    "href": "ecosystem/index.html#category-1",
-    "title": "Ecosystem",
-    "section": "Category 1",
-    "text": "Category 1\nPlaceholder text describing the packages in this category."
-  },
-  {
-    "objectID": "ecosystem/index.html#category-2",
-    "href": "ecosystem/index.html#category-2",
-    "title": "Ecosystem",
-    "section": "Category 2",
-    "text": "Category 2\nPlaceholder text describing the packages in this category."
-  },
-  {
-    "objectID": "ecosystem/index.html#category-3",
-    "href": "ecosystem/index.html#category-3",
-    "title": "Ecosystem",
-    "section": "Category 3",
-    "text": "Category 3\nPlaceholder text describing the packages in this category."
-  },
-  {
-    "objectID": "ecosystem/index.html#category-4",
-    "href": "ecosystem/index.html#category-4",
-    "title": "Ecosystem",
-    "section": "Category 4",
-    "text": "Category 4\nPlaceholder text describing the packages in this category."
+    "text": "Package\n\n\n\nWhat it does\n\n\n\nTask\n\n\n\n\n\n\n\n\nEnsembleMCMC.jl\n\n\nGradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.\n\n\nSampling\n\n\n\n\n\n\nImportanceSamplers.jl\n\n\nPlain, multiple and adaptive importance sampling, on CPU threads or GPUs.\n\n\nSampling\n\n\n\n\n\n\nFlexiChains.jl\n\n\nMarkov chains that keep the type and structure of each sample.\n\n\nAnalysis\n\n\n\n\n\n\nBayesianWorkflow.jl\n\n\nHigh-level tools for Bayesian workflows.\n\n\nWorkflow\n\n\n\n\n\n\nMCMCProgress.jl\n\n\nA common interface for MCMC samplers to report progress, with plain-text and terminal backends.\n\n\nTooling\n\n\n\n\n\n\nPlaice.jl\n\n\nConverts samples from distributions to and from vectors, constrained or unconstrained.\n\n\nTooling\n\n\n\n\n\n\nVarNames.jl\n\n\nTypes to represent variable names and collections thereof.\n\n\nTooling\n\n\n\n\n\n\nNo matching items\n\nDo you want your package here? Come say hello in #bayes on Julia Slack!"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "JuliaBayes",
     "section": "",
-    "text": "About us Ecosystem  Slack\n\n\n\nJuliaBayes is a community-driven endeavour to support the development, shared maintenance, and promotion of Bayesian methods and software in the Julia programming language.\nWe aim to provide a welcoming and inclusive environment for all who would like to collaborate and contribute to the ecosystem.\n\n\n\n\nAll news →\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Almost surely,\n\n\n\n\n\n\nAbout us Ecosystem  Slack\n\n\n\nWe develop, maintain, and promote Bayesian methods and software in Julia.\nWe are community-driven and aim to be welcoming and inclusive.\nContributions and collaborations of all sizes are welcome.\n\n\n\n\nAll news →\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#news",
@@ -67,7 +39,7 @@
     "href": "about/index.html#team",
     "title": "About us",
     "section": "Team",
-    "text": "Team\nThese are some of the people behind JuliaBayes.\n\n\n\n\n\nJessica Cox she/her or they/them\n\nRole\n\nMember\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nEnsembleMCMC.jl, Wren.jl\n\nGitHub\n\nBJMCox\n\nWebsite\n\nbjmcox.github.io\n\nEmail\n\nbcox@mpp.mpg.de\n\n\n\n\n\nNo matching items"
+    "text": "Team\nThese are some of the people behind JuliaBayes.\n\n\n\n\n\nJessica Cox she/her or they/them\n\nRole\n\nMember\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nEnsembleMCMC.jl, ImportanceSamplers.jl, Wren.jl\n\nGitHub\n\nBJMCox\n\nWebsite\n\nbjmcox.github.io\n\nEmail\n\nbcox@mpp.mpg.de\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "news/index.html",

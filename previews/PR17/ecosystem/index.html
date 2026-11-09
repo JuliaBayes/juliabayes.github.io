@@ -26,6 +26,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
 
 
@@ -37,6 +38,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -49,9 +52,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e0ad987d4d49fa07e07ced9f40c7e477.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-9e2efc577101890ed4eb918e21dcebd6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-e0ad987d4d49fa07e07ced9f40c7e477.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e33f864cd19b1f6131d17183a291c9b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-5e8b77bd40f2e1682de0d4ca7efa8a0e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-e33f864cd19b1f6131d17183a291c9b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,6 +81,29 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-packages .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-description','listing-task',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-title","listing-description","listing-task","listing-order"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-packages'] = new List('listing-packages', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+  </script>
 
 
 <meta property="og:title" content="Ecosystem – JuliaBayes">
@@ -85,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
 <meta property="og:site_name" content="JuliaBayes">
 </head>
 
-<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -312,18 +338,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#category-1" id="toc-category-1" class="nav-link active" data-scroll-target="#category-1">Category 1</a></li>
-  <li><a href="#category-2" id="toc-category-2" class="nav-link" data-scroll-target="#category-2">Category 2</a></li>
-  <li><a href="#category-3" id="toc-category-3" class="nav-link" data-scroll-target="#category-3">Category 3</a></li>
-  <li><a href="#category-4" id="toc-category-4" class="nav-link" data-scroll-target="#category-4">Category 4</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
@@ -347,25 +362,126 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>An overview of the packages in JuliaBayes will appear here.</p>
-<section id="category-1" class="level2">
-<h2 class="anchored" data-anchor-id="category-1">Category 1</h2>
-<p>Placeholder text describing the packages in this category.</p>
-</section>
-<section id="category-2" class="level2">
-<h2 class="anchored" data-anchor-id="category-2">Category 2</h2>
-<p>Placeholder text describing the packages in this category.</p>
-</section>
-<section id="category-3" class="level2">
-<h2 class="anchored" data-anchor-id="category-3">Category 3</h2>
-<p>Placeholder text describing the packages in this category.</p>
-</section>
-<section id="category-4" class="level2">
-<h2 class="anchored" data-anchor-id="category-4">Category 4</h2>
-<p>Placeholder text describing the packages in this category.</p>
+<div id="listing-packages" class="quarto-listing quarto-listing-container-table">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+
+<th>
+Package
+</th>
+
+<th>
+What it does
+</th>
+
+<th>
+Task
+</th>
+
+</tr>
+</thead>
+<tbody class="list">
+
+<tr data-index="0" data-listing-title-sort="EnsembleMCMC.jl">
+<td>
+<a href="https://juliabayes.org/EnsembleMCMC.jl/" class="title listing-title">EnsembleMCMC.jl</a>
+</td>
+<td>
+<span class="listing-description">Gradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.</span>
+</td>
+<td>
+<span class="listing-task">Sampling</span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-listing-title-sort="ImportanceSamplers.jl">
+<td>
+<a href="https://juliabayes.org/ImportanceSamplers.jl/dev/" class="title listing-title">ImportanceSamplers.jl</a>
+</td>
+<td>
+<span class="listing-description">Plain, multiple and adaptive importance sampling, on CPU threads or GPUs.</span>
+</td>
+<td>
+<span class="listing-task">Sampling</span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-listing-title-sort="FlexiChains.jl">
+<td>
+<a href="https://juliabayes.org/FlexiChains.jl/" class="title listing-title">FlexiChains.jl</a>
+</td>
+<td>
+<span class="listing-description">Markov chains that keep the type and structure of each sample.</span>
+</td>
+<td>
+<span class="listing-task">Analysis</span>
+</td>
+
+</tr>
+
+<tr data-index="3" data-listing-title-sort="BayesianWorkflow.jl">
+<td>
+<a href="https://juliabayes.org/BayesianWorkflow.jl/" class="title listing-title">BayesianWorkflow.jl</a>
+</td>
+<td>
+<span class="listing-description">High-level tools for Bayesian workflows.</span>
+</td>
+<td>
+<span class="listing-task">Workflow</span>
+</td>
+
+</tr>
+
+<tr data-index="4" data-listing-title-sort="MCMCProgress.jl">
+<td>
+<a href="https://juliabayes.org/MCMCProgress.jl/" class="title listing-title">MCMCProgress.jl</a>
+</td>
+<td>
+<span class="listing-description">A common interface for MCMC samplers to report progress, with plain-text and terminal backends.</span>
+</td>
+<td>
+<span class="listing-task">Tooling</span>
+</td>
+
+</tr>
+
+<tr data-index="5" data-listing-title-sort="Plaice.jl">
+<td>
+<a href="https://juliabayes.org/Plaice.jl/" class="title listing-title">Plaice.jl</a>
+</td>
+<td>
+<span class="listing-description">Converts samples from distributions to and from vectors, constrained or unconstrained.</span>
+</td>
+<td>
+<span class="listing-task">Tooling</span>
+</td>
+
+</tr>
+
+<tr data-index="6" data-listing-title-sort="VarNames.jl">
+<td>
+<a href="https://juliabayes.org/VarNames.jl/" class="title listing-title">VarNames.jl</a>
+</td>
+<td>
+<span class="listing-description">Types to represent variable names and collections thereof.</span>
+</td>
+<td>
+<span class="listing-task">Tooling</span>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+<p>Do you want your package here? Come say hello in <a href="https://julialang.slack.com/archives/C0BKRUEN6CX"><code>#bayes</code> on Julia Slack</a>!</p>
 
 
-</section>
+
 
 </main> <!-- /main -->
 <!-- Quarto swaps the theme stylesheets at once, but elements with a CSS

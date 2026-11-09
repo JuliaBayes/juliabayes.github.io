@@ -14,6 +14,17 @@ const checked = new Date().toISOString().slice(0, 10);
 const releases = packages.map((pkg) => {
   const name = pkg["release-package"];
   const repo = `repos/JuliaBayes/${name}`;
+  const record = { "release-package": name, repository: null, release: null, checked };
+  let metadata;
+  try {
+    metadata = api(repo);
+  } catch (error) {
+    if (error.stdout && JSON.parse(error.stdout).status === "404") return record;
+    throw error;
+  }
+  // Local credentials can see private repos that CI and visitors cannot.
+  if (metadata.private) return record;
+  record.repository = metadata.html_url;
   let release;
   try {
     const data = api(`${repo}/releases/latest`);
@@ -23,12 +34,11 @@ const releases = packages.map((pkg) => {
       url: data.html_url,
     };
   } catch (error) {
-    // A missing release is normal. A missing repository or other API error
+    // A public repo without a stable release is normal. Other API errors
     // must fail the update instead of replacing known data with an empty row.
     if (!error.stdout || JSON.parse(error.stdout).status !== "404") throw error;
-    api(repo);
     release = null;
   }
-  return { "release-package": name, release, checked };
+  return { ...record, release };
 });
 writeFileSync(snapshot, `${JSON.stringify(releases, null, 2)}\n`);

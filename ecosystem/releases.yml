@@ -1,11 +1,13 @@
 [
   {
     "release-package": "Wren.jl",
+    "repository": null,
     "release": null,
     "checked": "2026-11-09"
   },
   {
     "release-package": "EnsembleMCMC.jl",
+    "repository": "https://github.com/JuliaBayes/EnsembleMCMC.jl",
     "release": {
       "version": "v0.0.5",
       "date": "2026-11-02",
@@ -15,11 +17,13 @@
   },
   {
     "release-package": "ImportanceSamplers.jl",
+    "repository": "https://github.com/JuliaBayes/ImportanceSamplers.jl",
     "release": null,
     "checked": "2026-11-09"
   },
   {
     "release-package": "MGVI.jl",
+    "repository": "https://github.com/JuliaBayes/MGVI.jl",
     "release": {
       "version": "v0.6.0",
       "date": "2026-08-10",
@@ -29,6 +33,7 @@
   },
   {
     "release-package": "UltraNest.jl",
+    "repository": "https://github.com/JuliaBayes/UltraNest.jl",
     "release": {
       "version": "v0.2.0",
       "date": "2026-07-31",
@@ -38,6 +43,7 @@
   },
   {
     "release-package": "FlexiChains.jl",
+    "repository": "https://github.com/JuliaBayes/FlexiChains.jl",
     "release": {
       "version": "v0.7.2",
       "date": "2026-11-05",
@@ -47,16 +53,19 @@
   },
   {
     "release-package": "BayesianWorkflow.jl",
+    "repository": "https://github.com/JuliaBayes/BayesianWorkflow.jl",
     "release": null,
     "checked": "2026-11-09"
   },
   {
     "release-package": "MCMCProgress.jl",
+    "repository": "https://github.com/JuliaBayes/MCMCProgress.jl",
     "release": null,
     "checked": "2026-11-09"
   },
   {
     "release-package": "Plaice.jl",
+    "repository": "https://github.com/JuliaBayes/Plaice.jl",
     "release": {
       "version": "v0.1.4",
       "date": "2026-11-07",
@@ -66,6 +75,7 @@
   },
   {
     "release-package": "VarNames.jl",
+    "repository": "https://github.com/JuliaBayes/VarNames.jl",
     "release": {
       "version": "v0.1.8",
       "date": "2026-11-01",

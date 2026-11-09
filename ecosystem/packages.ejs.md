@@ -86,7 +86,7 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 
 <% for (const pkg of packages.filter((p) => p.task === task)) { %>
 <% const maintainers = maintainersOf(pkg); %>
-<% const repository = pkg.repository ?? `https://github.com/JuliaBayes/${pkg.title}`; %>
+<% const repository = releases.get(pkg.title).repository; %>
 <% const release = releases.get(pkg.title).release; %>
 ::: {.ecosystem-package data-name="<%= pkg.title %>"}
 
@@ -98,8 +98,8 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 
 ::: {.ecosystem-links}
 [Docs](<%= pkg.path %>){aria-label="<%= pkg.title %> documentation"}
-[GitHub](<%= repository %>){aria-label="<%= pkg.title %> on GitHub"}
-[Issues](<%= repository %>/issues){aria-label="<%= pkg.title %> issues"}
+<% if (repository) { %>[GitHub](<%= repository %>){aria-label="<%= pkg.title %> on GitHub"}
+[Issues](<%= repository %>/issues){aria-label="<%= pkg.title %> issues"}<% } %>
 :::
 
 ::: {.ecosystem-meta}
@@ -115,8 +115,10 @@ Status: <%= capitalise(pkg.status) %>
 ::: {.ecosystem-release}
 <% if (release) { %>
 Latest release: [<%= escapeMarkdown(release.version) %>](<%= release.url %>) · <time datetime="<%= release.date %>"><%= releaseDate(release.date) %></time>
-<% } else { %>
+<% } else if (repository) { %>
 No stable GitHub release yet.
+<% } else { %>
+Release info unavailable.
 <% } %>
 :::
 

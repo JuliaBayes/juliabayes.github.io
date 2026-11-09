@@ -1,8 +1,7 @@
 # One entry per package. `path` links the name to the package's docs. `order`
 # sorts the cards by task; packages with the same task sort by name. `status` is
 # one of prototype, experimental, established or stable. `logo` is optional,
-# a path from this folder. `repository` defaults to the JuliaBayes GitHub repo
-# with the same name as the package.
+# a path from this folder.
 - title: Wren.jl
   path: https://pysm.dev/Wren.jl/
   description: Probabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.

@@ -1,0 +1,35 @@
+<!-- The maintainer line of a package stays on one line. When the names that
+     packages.ejs.md shows do not fit, names are hidden from the end, and the
+     count after them grows, until the line fits or one name is left. -->
+<script>
+  (() => {
+    const fit = (block) => {
+      const line = block.querySelector("p");
+      const names = [...block.querySelectorAll(".ecosystem-maintainer")];
+      const more = block.querySelector(".ecosystem-maintainers-more");
+      const show = (count) => {
+        names.forEach((name, i) => {
+          name.hidden = i >= count;
+        });
+        more.hidden = count === names.length;
+        more.textContent = `+${names.length - count}`;
+      };
+
+      let count = Number(block.dataset.namedCount);
+      show(count);
+      while (count > 1 && line.scrollWidth > line.clientWidth) {
+        count -= 1;
+        show(count);
+      }
+    };
+
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        fit(entry.target);
+      }
+    });
+    for (const block of document.querySelectorAll(".ecosystem-maintainers")) {
+      observer.observe(block);
+    }
+  })();
+</script>

@@ -1,37 +1,54 @@
 # One entry per package. `path` links the name to the package's docs. `order`
-# sorts the table by task; packages with the same task sort by name.
+# sorts the cards by task; packages with the same task sort by name. `status` is
+# one of experimental, established or stable. `logo` is optional, a path from
+# this folder.
+- title: Wren.jl
+  path: https://pysm.dev/Wren.jl/
+  description: Probabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.
+  task: Modelling
+  order: 1
+  logo: assets/wren.svg
+  status: experimental
 - title: EnsembleMCMC.jl
   path: https://juliabayes.org/EnsembleMCMC.jl/
   description: Gradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.
   task: Sampling
   order: 2
+  status: experimental
 - title: ImportanceSamplers.jl
   path: https://juliabayes.org/ImportanceSamplers.jl/dev/
   description: Plain, multiple and adaptive importance sampling, on CPU threads or GPUs.
   task: Sampling
   order: 2
+  status: experimental
 - title: FlexiChains.jl
   path: https://juliabayes.org/FlexiChains.jl/
   description: Markov chains that keep the type and structure of each sample.
   task: Analysis
   order: 3
+  status: established
+  logo: assets/flexichains.svg
 - title: BayesianWorkflow.jl
   path: https://juliabayes.org/BayesianWorkflow.jl/
   description: High-level tools for Bayesian workflows.
   task: Workflow
   order: 4
+  status: experimental
 - title: MCMCProgress.jl
   path: https://juliabayes.org/MCMCProgress.jl/
   description: A common interface for MCMC samplers to report progress, with plain-text and terminal backends.
   task: Tooling
   order: 5
+  status: experimental
 - title: Plaice.jl
   path: https://juliabayes.org/Plaice.jl/
   description: Converts samples from distributions to and from vectors, constrained or unconstrained.
   task: Tooling
   order: 5
+  status: experimental
 - title: VarNames.jl
   path: https://juliabayes.org/VarNames.jl/
   description: Types to represent variable names and collections thereof.
   task: Tooling
   order: 5
+  status: established

@@ -1,0 +1,79 @@
+[
+  {
+    "objectID": "news/posts/2026-10-29-hello-world/index.html",
+    "href": "news/posts/2026-10-29-hello-world/index.html",
+    "title": "Hello, world!",
+    "section": "",
+    "text": "Welcome to JuliaBayes news! Posts here can contain Julia code. It runs when the author renders the post, and the site shows the saved output:\n\nusing Statistics\n\nx = randn(1000)\nmean(x), std(x)\n\n(0.004524789299067646, 0.9581874573980756)"
+  },
+  {
+    "objectID": "ecosystem/index.html",
+    "href": "ecosystem/index.html",
+    "title": "Ecosystem",
+    "section": "",
+    "text": "An overview of the packages in JuliaBayes will appear here."
+  },
+  {
+    "objectID": "ecosystem/index.html#category-1",
+    "href": "ecosystem/index.html#category-1",
+    "title": "Ecosystem",
+    "section": "Category 1",
+    "text": "Category 1\nPlaceholder text describing the packages in this category."
+  },
+  {
+    "objectID": "ecosystem/index.html#category-2",
+    "href": "ecosystem/index.html#category-2",
+    "title": "Ecosystem",
+    "section": "Category 2",
+    "text": "Category 2\nPlaceholder text describing the packages in this category."
+  },
+  {
+    "objectID": "ecosystem/index.html#category-3",
+    "href": "ecosystem/index.html#category-3",
+    "title": "Ecosystem",
+    "section": "Category 3",
+    "text": "Category 3\nPlaceholder text describing the packages in this category."
+  },
+  {
+    "objectID": "ecosystem/index.html#category-4",
+    "href": "ecosystem/index.html#category-4",
+    "title": "Ecosystem",
+    "section": "Category 4",
+    "text": "Category 4\nPlaceholder text describing the packages in this category."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "JuliaBayes",
+    "section": "",
+    "text": "About us Ecosystem  Slack\n\n\n\nJuliaBayes is a community-driven endeavour to support the development, shared maintenance, and promotion of Bayesian methods and software in the Julia programming language.\nWe aim to provide a welcoming and inclusive environment for all who would like to collaborate and contribute to the ecosystem.\n\n\n\n\nAll news →\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#news",
+    "href": "index.html#news",
+    "title": "JuliaBayes",
+    "section": "",
+    "text": "All news →"
+  },
+  {
+    "objectID": "about/index.html",
+    "href": "about/index.html",
+    "title": "About us",
+    "section": "",
+    "text": "JuliaBayes is a shared home for Bayesian software in Julia. Our goal is to make it easier to collaborate, share maintenance, and keep packages supported over time.\nWe are an open and welcoming community of people interested in Bayesian statistics, whether in theory, in applications, or in software engineering. Our projects span modelling, inference, and tools for working with the results.\nWe welcome collaboration across probabilistic programming languages, research groups, and institutions. Most of us contribute alongside our day jobs, so contributions of all sizes are welcome.\nWant to bring your package into JuliaBayes, or just talk Bayes with us? Come say hello in #bayes on the Julia Slack (join here if you are not on it yet)!"
+  },
+  {
+    "objectID": "about/index.html#team",
+    "href": "about/index.html#team",
+    "title": "About us",
+    "section": "Team",
+    "text": "Team\nThese are some of the people behind JuliaBayes.\n\n\n\n\n\nJessica Cox she/her or they/them\n\nRole\n\nMember\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nEnsembleMCMC.jl, Wren.jl\n\nGitHub\n\nBJMCox\n\nWebsite\n\nbjmcox.github.io\n\nEmail\n\nbcox@mpp.mpg.de\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "news/index.html",
+    "href": "news/index.html",
+    "title": "News",
+    "section": "",
+    "text": "Hello, world!\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\nJuliaBayes\n\n\n\n\n\nNo matching items"
+  }
+]

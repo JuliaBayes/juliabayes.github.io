@@ -425,7 +425,6 @@ ul.task-list li input[type="checkbox"] {
 </svg>
 </div>
 <div class="hero-text">
-<p><span id="hero-tagline">Almost surely,</span></p>
 <script>
   (() => {
     const taglines = [
@@ -461,12 +460,37 @@ ul.task-list li input[type="checkbox"] {
       "To a first approximation,",
       "Within numerical precision,",
       "By a change of measure,",
+      "Without loss of generality,",
+      "Up to a null set,",
+      "After marginalization,",
+      "Given the likelihood,",
+      "With finite variance,",
+      "As the sample grows,",
+      "Under regularity conditions,",
+      "With reasonable priors,",
+      "Subject to identifiability,",
+      "Within credible limits,",
+      "After updating,",
+      "For almost every outcome,",
+      "By disintegration,",
+      "Almost everywhere,",
+      "Under the dominating measure,",
+      "On all Borel sets,",
+      "Through a measurable map,",
     ];
-    // This include follows the tagline, so it runs before the hero is painted.
-    document.getElementById("hero-tagline").textContent =
+    // Insert the complete paragraph while the hero is parsed.
+    const tagline = document.createElement("p");
+    tagline.id = "hero-tagline";
+    tagline.textContent =
       taglines[Math.floor(Math.random() * taglines.length)];
+    document.currentScript.replaceWith(tagline);
   })();
 </script>
+<noscript>
+<p id="hero-tagline">
+Almost surely,
+</p>
+</noscript>
 <section id="juliabayes" class="level1">
 <h1>JuliaBayes</h1>
 </section>
@@ -489,7 +513,7 @@ Contributions and collaborations of all sizes are welcome.</p>
 <div class="landing-news-panel">
 <div id="listing-news-listing" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794229424567" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794229974350" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./news/posts/2026-10-29-hello-world/index.html" class="no-external-icon">Hello, world!</a>

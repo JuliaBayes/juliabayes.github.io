@@ -12,3 +12,13 @@
   justify-content: center;
   gap: 0.5rem;
 }
+
+// On touch screens, the buttons reach the 44px target size.
+@include media-breakpoint-down(lg) {
+  .landing-buttons .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-height: 2.75rem;
+  }
+}

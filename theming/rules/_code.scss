@@ -3,3 +3,31 @@
 a code {
   color: var(--bs-code-color);
 }
+
+// Below md, code runs to the screen edges, which gives long lines the most
+// room. Text fades out in the side padding, so a line that runs on past an
+// edge shows that it scrolls. The code element carries the right padding,
+// because a scroll area leaves out its own right padding in Firefox, and the
+// last characters would then end in the fade.
+@include media-breakpoint-down(md) {
+  // Quarto lets the output wrapper scroll too, so it takes the margin, or it
+  // would clip the edges of its text block.
+  main div.sourceCode,
+  main div.cell-output:has(> pre) {
+    margin-inline: -1.5rem;
+    border-inline: 0;
+    border-radius: 0;
+  }
+
+  main div.sourceCode pre.sourceCode,
+  main div.cell-output > pre {
+    padding-inline: 1.5rem 0;
+    mask-image: linear-gradient(to right, transparent, #000 1.5rem, #000 calc(100% - 1.5rem), transparent);
+
+    > code {
+      display: inline-block;
+      min-width: 100%;
+      padding-right: 1.5rem;
+    }
+  }
+}

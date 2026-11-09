@@ -63,13 +63,18 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
     <input id="package-search" class="form-control" type="search" placeholder="Package name" aria-controls="listing-packages" autocomplete="off">
   </div>
   <div>
-    <label for="package-task" class="form-label">Task</label>
-    <select id="package-task" class="form-select" aria-controls="listing-packages">
-      <option value="">All tasks</option>
+    <span class="form-label d-block">Tasks</span>
+    <details id="package-tasks">
+      <summary aria-controls="package-task-menu"><span class="visually-hidden">Filter by task: </span><span id="package-task-summary">All tasks</span></summary>
+      <div id="package-task-menu" class="ecosystem-task-menu">
+        <fieldset>
+          <legend class="visually-hidden">Show packages for any selected task</legend>
       <% for (const task of tasks) { %>
-      <option value="<%= task %>"><%= task %></option>
+          <label><input type="checkbox" name="task" value="<%= task %>" aria-controls="listing-packages"> <%= task %></label>
       <% } %>
-    </select>
+        </fieldset>
+      </div>
+    </details>
   </div>
   <button type="reset" class="btn btn-outline-secondary">Clear</button>
   <p id="package-count" role="status" aria-live="polite" aria-atomic="true"></p>

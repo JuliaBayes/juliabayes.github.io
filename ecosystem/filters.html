@@ -2,18 +2,23 @@
   (() => {
     const form = document.getElementById("ecosystem-filters");
     const search = document.getElementById("package-search");
-    const task = document.getElementById("package-task");
+    const tasks = document.getElementById("package-tasks");
+    const summary = document.getElementById("package-task-summary");
+    const checkboxes = [...tasks.querySelectorAll('input[name="task"]')];
     const cards = [...document.querySelectorAll(".ecosystem-card")];
     const count = document.getElementById("package-count");
     const empty = document.getElementById("package-empty");
 
     const filter = () => {
       const query = search.value.trim().toLowerCase();
+      const selected = new Set(checkboxes.filter((box) => box.checked).map((box) => box.value));
+      summary.textContent = selected.size === 0 ? "All tasks" :
+        selected.size === 1 ? [...selected][0] : `${selected.size} tasks`;
       let matches = 0;
       for (const card of cards) {
         let visible = 0;
         for (const pkg of card.querySelectorAll(".ecosystem-package")) {
-          pkg.hidden = (task.value !== "" && card.dataset.task !== task.value) ||
+          pkg.hidden = (selected.size > 0 && !selected.has(card.dataset.task)) ||
             !pkg.dataset.name.toLowerCase().includes(query);
           if (!pkg.hidden) visible += 1;
         }
@@ -26,10 +31,20 @@
 
     form.addEventListener("submit", (event) => event.preventDefault());
     search.addEventListener("input", filter);
-    task.addEventListener("change", filter);
+    tasks.addEventListener("change", filter);
+    tasks.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        tasks.open = false;
+        tasks.querySelector("summary").focus();
+      }
+    });
+    document.addEventListener("pointerdown", (event) => {
+      if (!tasks.contains(event.target)) tasks.open = false;
+    });
     form.addEventListener("reset", () => {
       search.value = "";
-      task.value = "";
+      checkboxes.forEach((box) => { box.checked = false; });
+      tasks.open = false;
       filter();
     });
     filter();

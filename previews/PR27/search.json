@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "news/posts/2026-10-29-hello-world/index.html",
+    "href": "news/posts/2026-10-29-hello-world/index.html",
+    "title": "Hello, world!",
+    "section": "",
+    "text": "Welcome to JuliaBayes news! Posts here can contain Julia code. It runs when the author renders the post, and the site shows the saved output:\n\nusing Statistics\n\nx = randn(1000)\nmean(x), std(x)\n\n(0.004524789299067646, 0.9581874573980756)"
+  },
+  {
+    "objectID": "ecosystem/index.html",
+    "href": "ecosystem/index.html",
+    "title": "Ecosystem",
+    "section": "",
+    "text": "Package\n\n\n\nWhat it does\n\n\n\nTask\n\n\n\n\n\n\n\n\nEnsembleMCMC.jl\n\n\nGradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.\n\n\nSampling\n\n\n\n\n\n\nImportanceSamplers.jl\n\n\nPlain, multiple and adaptive importance sampling, on CPU threads or GPUs.\n\n\nSampling\n\n\n\n\n\n\nFlexiChains.jl\n\n\nMarkov chains that keep the type and structure of each sample.\n\n\nAnalysis\n\n\n\n\n\n\nBayesianWorkflow.jl\n\n\nHigh-level tools for Bayesian workflows.\n\n\nWorkflow\n\n\n\n\n\n\nMCMCProgress.jl\n\n\nA common interface for MCMC samplers to report progress, with plain-text and terminal backends.\n\n\nTooling\n\n\n\n\n\n\nPlaice.jl\n\n\nConverts samples from distributions to and from vectors, constrained or unconstrained.\n\n\nTooling\n\n\n\n\n\n\nVarNames.jl\n\n\nTypes to represent variable names and collections thereof.\n\n\nTooling\n\n\n\n\n\n\nNo matching items\n\nDo you want your package here? Come say hello in #bayes on Julia Slack!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "JuliaBayes",
+    "section": "",
+    "text": "Almost surely,\n\n\n\n\n\n\n\n\nAbout us Ecosystem  Slack\n\n\n\nWe develop, maintain, and promote Bayesian methods and software in Julia.\nWe are community-driven and aim to be welcoming and inclusive.\nContributions and collaborations of all sizes are welcome.\n\n\n\n\nAll news →\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#news",
+    "href": "index.html#news",
+    "title": "JuliaBayes",
+    "section": "",
+    "text": "All news →"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact us",
+    "section": "",
+    "text": "Want to bring your package into JuliaBayes, suggest a collaboration, or talk Bayes? Come say hello in #bayes on the Julia Slack. If you are not on it yet, join here."
+  },
+  {
+    "objectID": "contact.html#julia-slack",
+    "href": "contact.html#julia-slack",
+    "title": "Contact us",
+    "section": "",
+    "text": "Want to bring your package into JuliaBayes, suggest a collaboration, or talk Bayes? Come say hello in #bayes on the Julia Slack. If you are not on it yet, join here."
+  },
+  {
+    "objectID": "contact.html#github",
+    "href": "contact.html#github",
+    "title": "Contact us",
+    "section": "GitHub",
+    "text": "GitHub\nFor questions or bug reports about a package, open an issue in its repository under JuliaBayes. For this website, open an issue in the website repository."
+  },
+  {
+    "objectID": "about/index.html",
+    "href": "about/index.html",
+    "title": "About us",
+    "section": "",
+    "text": "JuliaBayes is a shared home for Bayesian software in Julia. Our goal is to make it easier to collaborate, share maintenance, and keep packages supported over time.\nWe are an open and welcoming community of people interested in Bayesian statistics, whether in theory, in applications, or in software engineering. Our projects span modelling, inference, and tools for working with the results.\nWe welcome collaboration across probabilistic programming languages, research groups, and institutions. Most of us contribute alongside our day jobs, so contributions of all sizes are welcome.\nWant to bring your package into JuliaBayes, or just talk Bayes with us? Come say hello in #bayes on the Julia Slack (join here if you are not on it yet)!"
+  },
+  {
+    "objectID": "about/index.html#team",
+    "href": "about/index.html#team",
+    "title": "About us",
+    "section": "Team",
+    "text": "Team\nThese are some of the people behind JuliaBayes.\n\n\n\n\n\nJessica Cox she/her or they/them\n\nRole\n\nMember\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nEnsembleMCMC.jl, ImportanceSamplers.jl, Wren.jl\n\nGitHub\n\nBJMCox\n\nWebsite\n\nbjmcox.github.io\n\nEmail\n\nbcox@mpp.mpg.de\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "news/index.html",
+    "href": "news/index.html",
+    "title": "News",
+    "section": "",
+    "text": "Hello, world!\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\nJuliaBayes\n\n\n\n\n\nNo matching items"
+  }
+]

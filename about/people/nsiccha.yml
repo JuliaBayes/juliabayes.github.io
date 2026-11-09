@@ -1,0 +1,8 @@
+name: Nikolas Siccha
+github: nsiccha
+role: Member
+order: 20
+image: nsiccha.jpg
+affiliation: Independent contractor
+bio: I tend to write code that writes code.
+packages: [BayesianRegressionModels.jl, StanBlocks.jl]

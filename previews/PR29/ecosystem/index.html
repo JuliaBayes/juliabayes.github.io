@@ -52,9 +52,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-bac4025756a9e6d59f0bc9fba2288d81.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-68ab21fbf2a1703bb3a463ac203b1d35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-bac4025756a9e6d59f0bc9fba2288d81.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-1d8a7e1f664e17cc3db05e76d2168f9f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-0690f68f7301574dc471e6c3aa56b9d3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-1d8a7e1f664e17cc3db05e76d2168f9f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -331,7 +331,21 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
     <a href="https://github.com/JuliaBayes" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
-    <a href="../news/index.xml" title="Blog and news RSS" class="quarto-navigation-tool px-1" aria-label="Blog and news RSS"><i class="bi bi-rss"></i></a>
+    <div class="dropdown">
+      <a href="" title="RSS feeds" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="RSS feeds"><i class="bi bi-rss"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="../releases.xml">
+            Package releases
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="../news/index.xml">
+            Blog and news
+            </a>
+          </li>
+      </ul>
+    </div>
   <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -466,6 +480,9 @@ ul.task-list li input[type="checkbox"] {
 <p>Latest release: <a href="https://github.com/JuliaBayes/EnsembleMCMC.jl/releases/tag/v0.0.5">v0.0.5</a> · <time datetime="2026-11-02">2 Nov 2026</time></p>
 </div>
 </div>
+</div>
+<div class="ecosystem-logo">
+<p><img src="assets/ensemblemcmc.svg" class="img-fluid" alt=""></p>
 </div>
 </div>
 <div class="ecosystem-package" data-name="ImportanceSamplers.jl" data-status="registered">
@@ -708,6 +725,72 @@ ul.task-list li input[type="checkbox"] {
     for (const element of categories) {
       observer.observe(element, { childList: true, subtree: true });
     }
+  })();
+</script>
+<script>
+  (() => {
+    const root = document.querySelector(".quarto-navbar-tools .bi-rss").closest(".dropdown");
+    const toggle = root.querySelector(".dropdown-toggle");
+    const menu = root.querySelector(".dropdown-menu");
+    menu.id = "rss-feed-menu";
+    menu.classList.add("rss-feed-menu", "dropdown-menu-end");
+    toggle.classList.add("rss-feed-toggle");
+    toggle.setAttribute("role", "button");
+    toggle.setAttribute("aria-controls", menu.id);
+
+    const status = document.createElement("div");
+    status.className = "visually-hidden";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+    root.append(status);
+    const controls = [];
+    for (const link of menu.querySelectorAll("a.dropdown-item")) {
+      const label = link.textContent.trim();
+      const row = document.createElement("div");
+      row.className = "rss-feed-row";
+      link.before(row);
+      row.append(link);
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "dropdown-item rss-feed-copy";
+      button.textContent = "Copy";
+      button.setAttribute("aria-label", `Copy ${label.toLowerCase()} feed URL`);
+      row.append(button);
+
+      const url = document.createElement("input");
+      url.type = "text";
+      url.readOnly = true;
+      url.value = link.href;
+      url.hidden = true;
+      url.className = "form-control rss-feed-url";
+      url.setAttribute("aria-label", `${label} feed URL`);
+      row.after(url);
+      controls.push({ button, url });
+
+      button.addEventListener("click", async (event) => {
+        event.stopPropagation();
+        try {
+          await navigator.clipboard.writeText(link.href);
+          button.textContent = "Copied";
+          url.hidden = true;
+          status.textContent = `${label} feed URL copied.`;
+        } catch {
+          url.hidden = false;
+          url.focus();
+          url.select();
+          status.textContent = "Copy the selected URL.";
+        }
+        window.bootstrap.Dropdown.getInstance(toggle).update();
+      });
+    }
+    root.addEventListener("hidden.bs.dropdown", () => {
+      for (const { button, url } of controls) {
+        button.textContent = "Copy";
+        url.hidden = true;
+      }
+      status.textContent = "";
+    });
   })();
 </script>
 <!-- Collapse long maintainer lists to one line, with a button to reveal all

@@ -52,9 +52,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-1d8a7e1f664e17cc3db05e76d2168f9f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0690f68f7301574dc471e6c3aa56b9d3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-1d8a7e1f664e17cc3db05e76d2168f9f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-4a680e9c58353916250ee891dc13ebcb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e3a4c4fb46e1a46e00822da508ce5ba3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-4a680e9c58353916250ee891dc13ebcb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -385,7 +385,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794258314922" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794258746279" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../news/posts/2026-10-29-hello-world/index.html" class="no-external-icon">Hello, world!</a>
@@ -502,59 +502,6 @@ JuliaBayes
     toggle.setAttribute("role", "button");
     toggle.setAttribute("aria-controls", menu.id);
 
-    const status = document.createElement("div");
-    status.className = "visually-hidden";
-    status.setAttribute("role", "status");
-    status.setAttribute("aria-live", "polite");
-    root.append(status);
-    const controls = [];
-    for (const link of menu.querySelectorAll("a.dropdown-item")) {
-      const label = link.textContent.trim();
-      const row = document.createElement("div");
-      row.className = "rss-feed-row";
-      link.before(row);
-      row.append(link);
-
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "dropdown-item rss-feed-copy";
-      button.textContent = "Copy";
-      button.setAttribute("aria-label", `Copy ${label.toLowerCase()} feed URL`);
-      row.append(button);
-
-      const url = document.createElement("input");
-      url.type = "text";
-      url.readOnly = true;
-      url.value = link.href;
-      url.hidden = true;
-      url.className = "form-control rss-feed-url";
-      url.setAttribute("aria-label", `${label} feed URL`);
-      row.after(url);
-      controls.push({ button, url });
-
-      button.addEventListener("click", async (event) => {
-        event.stopPropagation();
-        try {
-          await navigator.clipboard.writeText(link.href);
-          button.textContent = "Copied";
-          url.hidden = true;
-          status.textContent = `${label} feed URL copied.`;
-        } catch {
-          url.hidden = false;
-          url.focus();
-          url.select();
-          status.textContent = "Copy the selected URL.";
-        }
-        window.bootstrap.Dropdown.getInstance(toggle).update();
-      });
-    }
-    root.addEventListener("hidden.bs.dropdown", () => {
-      for (const { button, url } of controls) {
-        button.textContent = "Copy";
-        url.hidden = true;
-      }
-      status.textContent = "";
-    });
   })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">

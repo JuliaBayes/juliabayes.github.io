@@ -133,13 +133,8 @@ body.quarto-light .ecosystem-filters {
   display: none;
 }
 
-// One card per task, bordered like the accent buttons.
 .ecosystem-card {
   margin-bottom: 1.25rem;
-  padding: 1rem 1.25rem 1.25rem;
-  background-color: $accent-card-bg;
-  border: $accent-border-width solid var(--accent-color);
-  border-radius: $accent-button-border-radius;
 }
 
 // Quarto gives the first h2 of a section a top margin through an ID selector;

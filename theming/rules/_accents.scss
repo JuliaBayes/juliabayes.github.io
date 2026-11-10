@@ -5,7 +5,15 @@
   .accent-button.accent-#{$name} {
     --accent-color: #{$color};
     --accent-button-hover-bg: #{mix($color, $accent-card-bg, percentage($tint-strength))};
+    --accent-panel-bg: #{mix($color, $accent-card-bg, percentage($package-tint-strength))};
   }
+}
+
+.accent-card {
+  padding: 1rem 1.25rem 1.25rem;
+  background-color: $accent-card-bg;
+  border: $accent-border-width solid var(--accent-color);
+  border-radius: $accent-button-border-radius;
 }
 
 // Bootstrap's hover and active states read their colours from these

@@ -17,20 +17,20 @@ const AVERAGE_ADVANCE_EM = 0.52
 # theming/rules/_hero.scss.
 const TAGLINE_LINE_HEIGHT = 1.5
 const TAGLINE_MARGIN_BOTTOM_PX = 0.25 * REM_PX
-# Advance of "Through a measurable map,", the widest tagline in
-# theming/hero-taglines.html, in IBM Plex Sans Regular, as a multiple of the
-# font size. Read from the font's advance widths, without kerning.
-const WIDEST_TAGLINE_EM = 12.55
 const CLEARANCE_PX = 12
 const TAIL_TOLERANCE_PX = 8
 const CURVE_STROKE_PX = 6
 
 # Font sizes must match the hero rules in theming/rules/_hero.scss. The phone layout applies
 # below Bootstrap's sm breakpoint (576px); its row is the card row at that width.
+# `widest_tagline_em` is the limit that theming/hero-taglines.html applies to the
+# layout's taglines: their advance in IBM Plex Sans Regular, without kerning, as
+# a multiple of the font size.
 const HERO_LAYOUTS = (
     desktop=(;
         title_font_px=4 * REM_PX,
         tagline_font_px=1.5 * REM_PX,
+        widest_tagline_em=12.55,
         row_half_width_px=400,
         curve_width_px=800,
         gradient_inset=0.0,
@@ -38,6 +38,7 @@ const HERO_LAYOUTS = (
     phone=(;
         title_font_px=2.5 * REM_PX,
         tagline_font_px=1.25 * REM_PX,
+        widest_tagline_em=9.0,
         row_half_width_px=272,
         curve_width_px=544,
         gradient_inset=0.15,
@@ -229,19 +230,23 @@ function write_hero_curve(path, svgs_by_layout)
     return path
 end
 
-function hero_text_boxes(; title_font_px, tagline_font_px)
+function hero_text_boxes(; title_font_px, tagline_font_px, widest_tagline_em)
     title_top = title_font_px * TITLE_LINE_HEIGHT
     title_half_width = TITLE_GLYPHS * AVERAGE_ADVANCE_EM * title_font_px / 2
     tagline_top =
         title_top + TAGLINE_MARGIN_BOTTOM_PX + tagline_font_px * TAGLINE_LINE_HEIGHT
-    tagline_half_width = WIDEST_TAGLINE_EM * tagline_font_px / 2
+    tagline_half_width = widest_tagline_em * tagline_font_px / 2
     return [(title_half_width, title_top), (tagline_half_width, tagline_top)]
 end
 
 function solve_hero_curves()
     return map(HERO_LAYOUTS) do layout
         solve_curve(;
-            text_boxes=hero_text_boxes(; layout.title_font_px, layout.tagline_font_px),
+            text_boxes=hero_text_boxes(;
+                layout.title_font_px,
+                layout.tagline_font_px,
+                layout.widest_tagline_em,
+            ),
             row_half_width=layout.row_half_width_px,
             clearance=CLEARANCE_PX,
             tail_tolerance=TAIL_TOLERANCE_PX,

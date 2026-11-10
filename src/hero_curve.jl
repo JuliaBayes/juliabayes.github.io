@@ -1,7 +1,7 @@
 # 100% vibe coded woopsies
 
 # Generates `_hero-curve.md`: the Normal-density curve drawn behind the landing
-# page title. Distances are in CSS px and measured from the curve base, which
+# page title and tagline. Distances are in CSS px and measured from the curve base, which
 # sits at the bottom of the title.
 #
 # Run from the repository root: `julia src/hero_curve.jl`.
@@ -13,6 +13,14 @@ const TITLE_GLYPHS = length("JuliaBayes")
 # Average glyph advance of "JuliaBayes" in IBM Plex Sans Bold, as a fraction of
 # the font size. Measured in the browser as 0.513.
 const AVERAGE_ADVANCE_EM = 0.52
+# Bootstrap's body line height and the tagline's bottom margin in
+# theming/rules/_hero.scss.
+const TAGLINE_LINE_HEIGHT = 1.5
+const TAGLINE_MARGIN_BOTTOM_PX = 0.25 * REM_PX
+# Advance of "Through a measurable map,", the widest tagline in
+# theming/hero-taglines.html, in IBM Plex Sans Regular, as a multiple of the
+# font size. Read from the font's advance widths, without kerning.
+const WIDEST_TAGLINE_EM = 12.55
 const CLEARANCE_PX = 12
 const TAIL_TOLERANCE_PX = 8
 const CURVE_STROKE_PX = 6
@@ -22,12 +30,14 @@ const CURVE_STROKE_PX = 6
 const HERO_LAYOUTS = (
     desktop=(;
         title_font_px=4 * REM_PX,
+        tagline_font_px=1.5 * REM_PX,
         row_half_width_px=400,
         curve_width_px=800,
         gradient_inset=0.0,
     ),
     phone=(;
         title_font_px=2.5 * REM_PX,
+        tagline_font_px=1.25 * REM_PX,
         row_half_width_px=272,
         curve_width_px=544,
         gradient_inset=0.15,
@@ -46,7 +56,7 @@ linear_to_srgb(c) = c ≤ 0.0031308 ? 12.92c : 1.055c^(1 / 2.4) - 0.055
 # Matrices from Björn Ottosson, "A perceptual color space for image processing"
 # (2020).
 function hex_to_oklch(hex)
-    r, g, b = (srgb_to_linear(parse(Int, hex[i:(i + 1)]; base=16) / 255) for i in (2, 4, 6))
+    r, g, b = (srgb_to_linear(parse(Int, hex[i:(i+1)]; base=16) / 255) for i in (2, 4, 6))
     l, m, s = cbrt.((
         0.4122214708r + 0.5363325363g + 0.0514459929b,
         0.2119034982r + 0.6806995451g + 0.1073969566b,
@@ -60,11 +70,12 @@ end
 
 function oklch_to_hex((; L, C, h))
     a, b = C * cos(h), C * sin(h)
-    l, m, s = (
-        L + 0.3963377774a + 0.2158037573b,
-        L - 0.1055613458a - 0.0638541728b,
-        L - 0.0894841775a - 1.2914855480b,
-    ) .^ 3
+    l, m, s =
+        (
+            L + 0.3963377774a + 0.2158037573b,
+            L - 0.1055613458a - 0.0638541728b,
+            L - 0.0894841775a - 1.2914855480b,
+        ) .^ 3
     rgb = (
         4.0767416621l - 3.3077115913m + 0.2309699292s,
         -1.2684380046l + 2.6097574011m - 0.3413193965s,
@@ -77,7 +88,11 @@ end
 # The hue takes the shorter way round the colour wheel.
 function interpolate_oklch(from, to, t)
     Δh = rem2pi(to.h - from.h, RoundNearest)
-    return (; L=from.L + t * (to.L - from.L), C=from.C + t * (to.C - from.C), h=from.h + t * Δh)
+    return (;
+        L=from.L + t * (to.L - from.L),
+        C=from.C + t * (to.C - from.C),
+        h=from.h + t * Δh,
+    )
 end
 
 """
@@ -90,10 +105,11 @@ function gradient_stops(offsets; colors=GRADIENT_COLORS)
     oklch = map(hex_to_oklch, colors)
     n = GRADIENT_STOPS_PER_SEGMENT
     stops = [(first(offsets), first(colors))]
-    for i in 1:(length(colors) - 1), k in 1:n
+    for i in 1:(length(colors)-1), k in 1:n
         t = k / n
-        offset = offsets[i] + t * (offsets[i + 1] - offsets[i])
-        color = k == n ? colors[i + 1] : oklch_to_hex(interpolate_oklch(oklch[i], oklch[i + 1], t))
+        offset = offsets[i] + t * (offsets[i+1] - offsets[i])
+        color =
+            k == n ? colors[i+1] : oklch_to_hex(interpolate_oklch(oklch[i], oklch[i+1], t))
         push!(stops, (round(offset; digits=4), color))
     end
     return stops
@@ -213,15 +229,19 @@ function write_hero_curve(path, svgs_by_layout)
     return path
 end
 
-function hero_text_boxes(; title_font_px)
-    half_width = TITLE_GLYPHS * AVERAGE_ADVANCE_EM * title_font_px / 2
-    return [(half_width, title_font_px * TITLE_LINE_HEIGHT)]
+function hero_text_boxes(; title_font_px, tagline_font_px)
+    title_top = title_font_px * TITLE_LINE_HEIGHT
+    title_half_width = TITLE_GLYPHS * AVERAGE_ADVANCE_EM * title_font_px / 2
+    tagline_top =
+        title_top + TAGLINE_MARGIN_BOTTOM_PX + tagline_font_px * TAGLINE_LINE_HEIGHT
+    tagline_half_width = WIDEST_TAGLINE_EM * tagline_font_px / 2
+    return [(title_half_width, title_top), (tagline_half_width, tagline_top)]
 end
 
 function solve_hero_curves()
     return map(HERO_LAYOUTS) do layout
         solve_curve(;
-            text_boxes=hero_text_boxes(; layout.title_font_px),
+            text_boxes=hero_text_boxes(; layout.title_font_px, layout.tagline_font_px),
             row_half_width=layout.row_half_width_px,
             clearance=CLEARANCE_PX,
             tail_tolerance=TAIL_TOLERANCE_PX,

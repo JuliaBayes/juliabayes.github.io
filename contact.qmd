@@ -1,0 +1,15 @@
+---
+title: "Contact us"
+toc: false
+---
+
+## Julia Slack
+
+Want to bring your package into JuliaBayes, suggest a collaboration, or talk Bayes?
+Come say hello in [`#bayes`](https://julialang.slack.com/archives/C0BKRUEN6CX) on the Julia Slack.
+If you are not on the Julia Slack yet, [join here](https://julialang.org/slack/).
+
+## GitHub
+
+For questions or bug reports about a package, open an issue in its repository under [JuliaBayes](https://github.com/JuliaBayes).
+For this website, [open an issue in the website repository](https://github.com/JuliaBayes/juliabayes.github.io/issues).

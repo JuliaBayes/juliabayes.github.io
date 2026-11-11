@@ -1,10 +1,10 @@
 name: Peter Thestrup Waade
 github: PTWaade
 role: Member
-order: 15 
+order: 15
 image: PTWaade.jpg
 pronouns: he/him
 affiliation: ETH Zürich and Aarhus University
-bio: Applied computational modelling of cogition, psychiatry and phenomenology Specialised in Bayesian mind models. Interest in social interaction.
+bio: Applied computational modelling of cognition, psychiatry and phenomenology. Specialised in Bayesian mind models. Interest in social interaction.
 packages: [BayesianWorkflow.jl, BayesianRegressionModels.jl]
 email: pthestrup@ethz.ch

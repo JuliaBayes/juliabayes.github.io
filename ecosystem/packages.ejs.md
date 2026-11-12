@@ -132,7 +132,7 @@ Status: <%= capitalise(pkg.status) %>
 
 ::: {.ecosystem-release}
 <% if (release) { %>
-Latest release: [<%= escapeMarkdown(release.version) %>](<%= release.url %>) · <time datetime="<%= release.date %>"><%= releaseDate(release.date) %></time>
+Latest release: [<%= escapeMarkdown(release.version) %>](<%= release.url %>) on <time datetime="<%= release.date %>"><%= releaseDate(release.date) %></time>
 <% } else if (repository) { %>
 No stable GitHub release yet.
 <% } else { %>

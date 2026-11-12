@@ -1,0 +1,13 @@
+<script>
+  (() => {
+    const root = document.querySelector(".quarto-navbar-tools .bi-rss").closest(".dropdown");
+    const toggle = root.querySelector(".dropdown-toggle");
+    const menu = root.querySelector(".dropdown-menu");
+    menu.id = "rss-feed-menu";
+    menu.classList.add("rss-feed-menu", "dropdown-menu-end");
+    toggle.classList.add("rss-feed-toggle");
+    toggle.setAttribute("role", "button");
+    toggle.setAttribute("aria-controls", menu.id);
+
+  })();
+</script>

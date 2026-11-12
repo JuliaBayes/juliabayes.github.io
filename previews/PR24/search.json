@@ -25,14 +25,14 @@
     "href": "ecosystem/index.html#sampling",
     "title": "Ecosystem",
     "section": "Sampling",
-    "text": "Sampling\n\n\nEnsembleMCMC.jl\n\nDocs GitHub Issues\n\n\nGradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.5 · 2 Nov 2026\n\n\n\n\n\n\n\n\n\nImportanceSamplers.jl\n\nDocs GitHub Issues\n\n\nPlain, multiple and adaptive importance sampling, on CPU threads or GPUs.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nNo stable GitHub release yet.\n\n\n\n\n\n\n\n\n\nMGVI.jl\n\nDocs GitHub Issues\n\n\nApproximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.\n\n\nStatus: Stable\n\nLatest release: v0.6.0 · 10 Aug 2026\n\n\n\n\n\n\nUltraNest.jl\n\nDocs GitHub Issues\n\n\nJulia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.\n\n\nStatus: Stable\n\nLatest release: v0.2.0 · 31 Jul 2026"
+    "text": "Sampling\n\n\nEnsembleMCMC.jl\n\nDocs GitHub Issues\n\n\nGradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.5 on 2 Nov 2026\n\n\n\n\n\n\n\n\n\nImportanceSamplers.jl\n\nDocs GitHub Issues\n\n\nPlain, multiple and adaptive importance sampling, on CPU threads or GPUs.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nNo stable GitHub release yet.\n\n\n\n\n\n\n\n\n\nMGVI.jl\n\nDocs GitHub Issues\n\n\nApproximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.\n\n\nStatus: Stable\n\nLatest release: v0.6.0 on 10 Aug 2026\n\n\n\n\n\n\nUltraNest.jl\n\nDocs GitHub Issues\n\n\nJulia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.\n\n\nStatus: Stable\n\nLatest release: v0.2.0 on 31 Jul 2026"
   },
   {
     "objectID": "ecosystem/index.html#analysis",
     "href": "ecosystem/index.html#analysis",
     "title": "Ecosystem",
     "section": "Analysis",
-    "text": "Analysis\n\n\nFlexiChains.jl\n\nDocs GitHub Issues\n\n\nMarkov chains that keep the type and structure of each sample.\n\n\nStatus: Stable\n\nLatest release: v0.7.2 · 5 Nov 2026"
+    "text": "Analysis\n\n\nFlexiChains.jl\n\nDocs GitHub Issues\n\n\nMarkov chains that keep the type and structure of each sample.\n\n\nStatus: Stable\n\nLatest release: v0.7.2 on 5 Nov 2026"
   },
   {
     "objectID": "ecosystem/index.html#workflow",
@@ -46,7 +46,7 @@
     "href": "ecosystem/index.html#tooling",
     "title": "Ecosystem",
     "section": "Tooling",
-    "text": "Tooling\n\n\nMCMCProgress.jl\n\nDocs GitHub Issues\n\n\nA common interface for MCMC samplers to report progress, with plain-text and terminal backends.\n\n\nStatus: Registered\n\nNo stable GitHub release yet.\n\n\n\n\n\n\nPlaice.jl\n\nDocs GitHub Issues\n\n\nConverts samples from distributions to and from vectors, constrained or unconstrained.\n\n\nStatus: Registered\n\nLatest release: v0.1.4 · 7 Nov 2026\n\n\n\n\n\n\nVarNames.jl\n\nDocs GitHub Issues\n\n\nTypes to represent variable names and collections thereof.\n\n\nStatus: Stable\n\nLatest release: v0.1.8 · 1 Nov 2026"
+    "text": "Tooling\n\n\nMCMCProgress.jl\n\nDocs GitHub Issues\n\n\nA common interface for MCMC samplers to report progress, with plain-text and terminal backends.\n\n\nStatus: Registered\n\nNo stable GitHub release yet.\n\n\n\n\n\n\nPlaice.jl\n\nDocs GitHub Issues\n\n\nConverts samples from distributions to and from vectors, constrained or unconstrained.\n\n\nStatus: Registered\n\nLatest release: v0.1.4 on 7 Nov 2026\n\n\n\n\n\n\nVarNames.jl\n\nDocs GitHub Issues\n\n\nTypes to represent variable names and collections thereof.\n\n\nStatus: Stable\n\nLatest release: v0.1.8 on 1 Nov 2026"
   },
   {
     "objectID": "index.html",

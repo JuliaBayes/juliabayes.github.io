@@ -1,0 +1,46 @@
+<!-- Collapse long maintainer lists to one line, with a button to reveal all
+     names. Without JavaScript, every name remains visible. -->
+<script>
+  (() => {
+    const fit = (block) => {
+      const line = block.querySelector("p");
+      const names = [...block.querySelectorAll(".ecosystem-maintainer")];
+      const more = block.querySelector(".ecosystem-maintainers-more");
+      const expanded = !block.classList.contains("is-collapsed");
+      const pkg = block.closest(".ecosystem-package").dataset.name;
+      const show = (count) => {
+        names.forEach((name, i) => {
+          name.hidden = i >= count;
+        });
+        more.hidden = !expanded && count === names.length;
+        more.textContent = expanded ? "Show fewer" : `+${names.length - count}`;
+        more.setAttribute("aria-expanded", String(expanded));
+        more.setAttribute("aria-label", `${expanded ? "Show fewer" : "Show all"} maintainers for ${pkg}`);
+      };
+
+      let count = expanded ? names.length : names.length > 4 ? 3 : names.length;
+      show(count);
+      while (!expanded && count > 1 && line.scrollWidth > line.clientWidth) {
+        count -= 1;
+        show(count);
+      }
+    };
+
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        fit(entry.target);
+      }
+    });
+    for (const block of document.querySelectorAll(".ecosystem-maintainers")) {
+      block.classList.add("is-collapsed");
+      const more = block.querySelector(".ecosystem-maintainers-more");
+      more.addEventListener("click", () => {
+        block.classList.toggle("is-collapsed");
+        fit(block);
+        if (more.hidden) block.querySelector("a")?.focus();
+      });
+      fit(block);
+      observer.observe(block);
+    }
+  })();
+</script>

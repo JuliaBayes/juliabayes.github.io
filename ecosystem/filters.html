@@ -1,0 +1,77 @@
+<script>
+  (() => {
+    const form = document.getElementById("ecosystem-filters");
+    const search = document.getElementById("package-search");
+    const tasks = document.getElementById("package-tasks");
+    const statuses = document.getElementById("package-statuses");
+    const dropdowns = [tasks, statuses];
+    const checkboxes = [...form.querySelectorAll('input[type="checkbox"]')];
+    const cards = [...document.querySelectorAll(".ecosystem-card")];
+    const count = document.getElementById("package-count");
+    const empty = document.getElementById("package-empty");
+    const normalise = (text) => text.trim().toLowerCase().replace(/\s+/g, " ");
+    const searchText = new Map([...document.querySelectorAll(".ecosystem-package")].map((pkg) => [
+      pkg,
+      normalise([
+        pkg.dataset.name,
+        pkg.querySelector(".ecosystem-description").textContent,
+        ...[...pkg.querySelectorAll(".ecosystem-maintainer")].map((person) => person.textContent),
+      ].join(" ")),
+    ]));
+
+    const selection = (dropdown, plural) => {
+      const checked = [...dropdown.querySelectorAll("input:checked")];
+      dropdown.querySelector("[data-filter-summary]").textContent = checked.length === 0 ? `All ${plural}` :
+        checked.length === 1 ? checked[0].parentElement.textContent.trim() : `${checked.length} ${plural}`;
+      return new Set(checked.map((box) => box.value));
+    };
+
+    const filter = () => {
+      const query = normalise(search.value);
+      const selectedTasks = selection(tasks, "tasks");
+      const selectedStatuses = selection(statuses, "statuses");
+      let matches = 0;
+      for (const card of cards) {
+        let visible = 0;
+        for (const pkg of card.querySelectorAll(".ecosystem-package")) {
+          pkg.hidden = (selectedTasks.size > 0 && !selectedTasks.has(card.dataset.task)) ||
+            (selectedStatuses.size > 0 && !selectedStatuses.has(pkg.dataset.status)) ||
+            !searchText.get(pkg).includes(query);
+          if (!pkg.hidden) visible += 1;
+        }
+        card.hidden = visible === 0;
+        matches += visible;
+      }
+      count.textContent = `${matches} ${matches === 1 ? "package" : "packages"}`;
+      empty.hidden = matches !== 0;
+    };
+
+    form.addEventListener("submit", (event) => event.preventDefault());
+    search.addEventListener("input", filter);
+    for (const dropdown of dropdowns) {
+      dropdown.addEventListener("change", filter);
+      dropdown.addEventListener("focusout", (event) => {
+        if (!dropdown.contains(event.relatedTarget)) dropdown.open = false;
+      });
+      dropdown.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          dropdown.open = false;
+          dropdown.querySelector("summary").focus();
+        }
+      });
+    }
+    document.addEventListener("pointerdown", (event) => {
+      for (const dropdown of dropdowns) {
+        if (!dropdown.contains(event.target)) dropdown.open = false;
+      }
+    });
+    form.addEventListener("reset", () => {
+      search.value = "";
+      checkboxes.forEach((box) => { box.checked = false; });
+      dropdowns.forEach((dropdown) => { dropdown.open = false; });
+      filter();
+    });
+    filter();
+    form.hidden = false;
+  })();
+</script>

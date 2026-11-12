@@ -5,4 +5,4 @@ order: 20
 image: nsiccha.jpg
 affiliation: Independent contractor
 bio: I tend to write code that writes code.
-packages: [BayesianRegressionModels.jl, StanBlocks.jl]
+packages: [BayesianRegressionModels.jl]

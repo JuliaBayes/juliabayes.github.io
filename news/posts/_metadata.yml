@@ -6,3 +6,7 @@ engine: julia
 julia:
   exeflags: ["--project=@."]
 author: "JuliaBayes"
+# theming/rules/_news-post.scss styles post pages by this class.
+format:
+  html:
+    body-classes: news-post

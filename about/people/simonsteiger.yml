@@ -1,0 +1,11 @@
+name: Simon Steiger
+github: simonsteiger
+role: Member
+order: 10
+image: simonsteiger.png
+pronouns: he/him
+affiliation: Karolinska Institutet
+bio: I like Bayesian statistics because the rest made less sense to me.
+packages: [FlexiChains.jl, Wren.jl]
+website: https://birdsotherwi.se/
+email: simon.steiger@ki.se

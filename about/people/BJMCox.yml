@@ -5,6 +5,7 @@ order: 10
 image: BJMCox.png
 pronouns: she/her or they/them
 affiliation: Max-Planck-Institut für Physik
+bio: I care about Bayesian software that still works years after its paper came out.
 packages: [EnsembleMCMC.jl, ImportanceSamplers.jl, Wren.jl]
 website: https://bjmcox.github.io/
 email: bcox@mpp.mpg.de

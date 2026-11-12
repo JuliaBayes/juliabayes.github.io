@@ -1,0 +1,65 @@
+// Token colours follow the DocumenterCodeBlocks.jl plugin's
+// `assets/juliasyntax-tokens.css`. Pandoc's token classes stand in for the
+// plugin's `julia-*` classes.
+
+$documenter-is-dark: lightness($body-bg) < 50%;
+
+$documenter-tokens: if(
+  $documenter-is-dark,
+  (
+    keyword: #ff7b72,
+    string: #a5d6ff,
+    comment: #8b949e,
+    number: #79c0ff,
+    macro: #d2a8ff,
+    function: #61afef,
+    type: #e5c07b,
+  ),
+  (
+    keyword: #d73a49,
+    string: #032f62,
+    comment: #6a737d,
+    number: #005cc5,
+    macro: #6f42c1,
+    function: #4078f2,
+    type: #c18401,
+  )
+);
+
+$documenter-token-classes: (
+  keyword: (kw, cf, im),
+  string: (st, ss, ch, vs, sc),
+  comment: (co, do),
+  number: (dv, fl, bn, cn),
+  macro: (pp, at),
+  function: (fu, bu, op),
+  type: (dt),
+);
+
+// The code block sits in a card-coloured panel, outlined like a category pill.
+main div.sourceCode {
+  background-color: $accent-card-bg;
+  border: $accent-pill-border-width solid var(--bs-border-color);
+  border-radius: 0.5rem;
+
+  code span {
+    color: var(--bs-body-color);
+  }
+
+  @each $role, $classes in $documenter-token-classes {
+    @each $class in $classes {
+      code span.#{$class} {
+        color: map-get($documenter-tokens, $role);
+      }
+    }
+  }
+
+  code span.co,
+  code span.do {
+    font-style: italic;
+  }
+
+  code span.bu {
+    font-weight: 600;
+  }
+}

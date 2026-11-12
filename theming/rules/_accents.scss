@@ -5,7 +5,9 @@
   .accent-button.accent-#{$name} {
     --accent-color: #{$color};
     --accent-button-hover-bg: #{mix($color, $accent-card-bg, percentage($tint-strength))};
-    --accent-panel-bg: #{mix($color, $accent-card-bg, percentage($package-tint-strength))};
+    $panel-bg: mix($color, $accent-card-bg, percentage($package-tint-strength));
+    --accent-panel-bg: #{$panel-bg};
+    --accent-panel-hover-bg: #{mix($body-color, $panel-bg, percentage($panel-hover-strength))};
   }
 }
 

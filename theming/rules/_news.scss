@@ -1,6 +1,8 @@
+// The panel clips the hover background of the first and last post to its
+// rounded corners.
 .landing-news-panel {
   margin-top: 0.75rem;
-  padding: 0.6rem 0.8rem;
+  overflow: hidden;
   border-radius: 0.5rem;
   background-color: var(--accent-panel-bg);
 
@@ -12,25 +14,38 @@
     margin-right: 0;
   }
 
-  div.quarto-post:first-child {
-    padding-top: 0;
-  }
-
-  div.quarto-post:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
+  div.quarto-post:last-child::before {
+    content: none;
   }
 }
+
+$news-row-padding-x: 0.8rem;
 
 // Overrides Quarto's default listing: one row per post, date first, at every
 // width.
 .landing-card-news div.quarto-post {
+  position: relative;
   flex-direction: row;
   align-items: baseline;
   gap: 0.75rem;
   margin: 0;
-  padding: 0.4rem 0;
-  border-bottom: 1px solid var(--bs-border-color-translucent);
+  padding: 0.5rem $news-row-padding-x;
+  border-bottom: none;
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover {
+    background-color: var(--accent-panel-hover-bg);
+  }
+
+  // The separator between posts stops where the text does, not at the edge
+  // of the panel.
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline: $news-row-padding-x;
+    bottom: 0;
+    border-bottom: 1px solid var(--bs-border-color-translucent);
+  }
 
   .metadata {
     order: -1;
@@ -50,29 +65,40 @@
     min-width: 0;
   }
 
-  // Long titles end in an ellipsis after one line. The colour is for the
-  // ellipsis, and the line height stops `overflow` from cutting off the
-  // underline.
+  // Long titles end in an ellipsis after one line.
   .listing-title {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     font-size: $landing-small-font-size;
     line-height: 1.5;
-    color: var(--bs-link-color);
-    // Quarto dims titles to 0.9, which takes the link green under 4.5:1.
+    color: var(--bs-body-color);
+    // Quarto dims titles to 0.9.
     opacity: 1;
   }
 
-  // Quarto strips the link styling from post titles. Restores it so that they
-  // look clickable, like every other link on the page.
+  // The title's link stretches over the whole row, so the title itself reads
+  // as plain text.
   .listing-title a {
-    color: var(--bs-link-color);
-    text-decoration: underline;
-  }
+    color: inherit;
+    text-decoration: none;
 
-  .listing-title a:hover {
-    color: var(--bs-link-hover-color);
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      &::after {
+        outline: 2px solid var(--accent-color);
+        outline-offset: -2px;
+        border-radius: 0.5rem;
+      }
+    }
   }
 }
 
@@ -98,12 +124,6 @@
       -webkit-line-clamp: 2;
       line-clamp: 2;
       white-space: normal;
-    }
-
-    // Stacked, the date and title links need to be at least 24px tall.
-    .metadata a,
-    .listing-title a {
-      padding-block: 0.125rem;
     }
   }
 }

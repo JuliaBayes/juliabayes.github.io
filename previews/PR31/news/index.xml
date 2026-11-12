@@ -10,7 +10,45 @@
 <atom:link href="https://juliabayes.org/news/index.xml" rel="self" type="application/rss+xml"/>
 <description>JuliaBayes is a shared home for Bayesian software in Julia.</description>
 <generator>quarto-1.11.9</generator>
-<lastBuildDate>Thu, 29 Oct 2026 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 10 Nov 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Mock post: a third entry with a much longer title, so that it runs past the width of the card and ends in an ellipsis</title>
+  <dc:creator>JuliaBayes </dc:creator>
+  <link>https://juliabayes.org/news/posts/2026-11-10-mock-third/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Placeholder post for testing the news listing on the landing page.</p>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <guid>https://juliabayes.org/news/posts/2026-11-10-mock-third/</guid>
+  <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Mock post: a second entry</title>
+  <dc:creator>JuliaBayes </dc:creator>
+  <link>https://juliabayes.org/news/posts/2026-11-05-mock-second/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Placeholder post for testing the news listing on the landing page.</p>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <guid>https://juliabayes.org/news/posts/2026-11-05-mock-second/</guid>
+  <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Hello, world!</title>
   <dc:creator>JuliaBayes </dc:creator>

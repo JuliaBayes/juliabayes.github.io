@@ -52,9 +52,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-2e0d44d99b7d251f2177c4fca50cb5e0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-70acf23743d4096f0a7835f37c612170.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-2e0d44d99b7d251f2177c4fca50cb5e0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-bccf82c00491b62c7cc8464060874ef2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7ea782865690d5b5d3b1b5695024d69c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-bccf82c00491b62c7cc8464060874ef2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -84,20 +84,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-news-posts .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-date','listing-author','listing-title','listing-subtitle','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-subtitle','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-news-posts'] = new List('listing-news-posts', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -339,7 +339,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV3cw==">news <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="bmV3cw==">news <span class="quarto-category-count">(3)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
@@ -363,13 +363,58 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="accent-card accent-blue news-card">
+<div id="listing-news-posts" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794287675968" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1794268800000" data-listing-file-modified-sort="1794490016267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../news/posts/2026-11-10-mock-third/index.html" class="no-external-icon">Mock post: a third entry with a much longer title, so that it runs past the width of the card and ends in an ellipsis</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
+
+</div>
+<div class="listing-description">
+<a href="../news/posts/2026-11-10-mock-third/index.html" class="no-external-icon">
+Placeholder post for testing the news listing on the landing page.
+</a>
+</div>
+</div>
+<div class="metadata">
+<a href="../news/posts/2026-11-10-mock-third/index.html" class="no-external-icon">
+<div class="listing-date">
+Nov 10, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="bmV3cw==" data-listing-date-sort="1793836800000" data-listing-file-modified-sort="1794490016267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../news/posts/2026-11-05-mock-second/index.html" class="no-external-icon">Mock post: a second entry</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
+
+</div>
+<div class="listing-description">
+<a href="../news/posts/2026-11-05-mock-second/index.html" class="no-external-icon">
+Placeholder post for testing the news listing on the landing page.
+</a>
+</div>
+</div>
+<div class="metadata">
+<a href="../news/posts/2026-11-05-mock-second/index.html" class="no-external-icon">
+<div class="listing-date">
+Nov 5, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794490016267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../news/posts/2026-10-29-hello-world/index.html" class="no-external-icon">Hello, world!</a>
@@ -390,15 +435,18 @@ Welcome to JuliaBayes news! Posts here can contain Julia code. It runs when the 
 <div class="listing-date">
 Oct 29, 2026
 </div>
-<div class="listing-author">
-JuliaBayes
-</div>
 </a>
 </div>
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</div>
+</div>
+
+
+
+
+</main> <!-- /main -->
 <!-- Quarto swaps the theme stylesheets at once, but elements with a CSS
      transition, such as the buttons, then fade to the new colours and lag
      behind the page. Transitions stay off until the new stylesheet applies,
@@ -473,6 +521,39 @@ JuliaBayes
     for (const element of categories) {
       observer.observe(element, { childList: true, subtree: true });
     }
+  })();
+</script>
+<!-- Quarto marks the selected category only in the sidebar. The pills under
+     each post take the same `active` state, so that a selected category stays
+     highlighted. A pill names its category only in its onclick handler, with
+     the same encoding as the sidebar's data-category. Filtering replaces the
+     posts with new elements, so the pills are looked up on every change. -->
+<script>
+  (() => {
+    const sidebarCategories = document.querySelectorAll(
+      ".quarto-listing-category .category",
+    );
+    const listing = document.querySelector(".news-card .quarto-listing");
+    if (sidebarCategories.length === 0 || listing === null) {
+      return;
+    }
+    const markActivePills = () => {
+      const activeCategory = document.querySelector(
+        ".quarto-listing-category .category.active",
+      )?.dataset.category;
+      for (const pill of listing.querySelectorAll(".listing-category")) {
+        const isActive =
+          Boolean(activeCategory) &&
+          pill.getAttribute("onclick").includes(`'${activeCategory}'`);
+        pill.classList.toggle("active", isActive);
+      }
+    };
+    const observer = new MutationObserver(markActivePills);
+    for (const category of sidebarCategories) {
+      observer.observe(category, { attributes: true, attributeFilter: ["class"] });
+    }
+    observer.observe(listing, { childList: true, subtree: true });
+    markActivePills();
   })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">

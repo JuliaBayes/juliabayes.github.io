@@ -6,6 +6,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/news/posts/2026-11-10-mock-third/index.html",
+      "/news/posts/2026-11-05-mock-second/index.html",
       "/news/posts/2026-10-29-hello-world/index.html"
     ]
   },
@@ -16,6 +18,8 @@
   {
     "listing": "/news/index.html",
     "items": [
+      "/news/posts/2026-11-10-mock-third/index.html",
+      "/news/posts/2026-11-05-mock-second/index.html",
       "/news/posts/2026-10-29-hello-world/index.html"
     ]
   }

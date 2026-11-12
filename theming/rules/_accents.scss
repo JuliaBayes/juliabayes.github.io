@@ -7,8 +7,7 @@
     --accent-button-hover-bg: #{mix($color, $accent-card-bg, percentage($tint-strength))};
     $panel-bg: mix($color, $accent-card-bg, percentage($package-tint-strength));
     --accent-panel-bg: #{$panel-bg};
-    --accent-panel-hover-bg: #{mix($body-color, $panel-bg, percentage($panel-hover-strength))};
-  }
+    --accent-panel-hover-bg: #{mix($body-color, $panel-bg, percentage($panel-hover-strength))};  }
 }
 
 .accent-card {
@@ -16,6 +15,41 @@
   background-color: $accent-card-bg;
   border: $accent-border-width solid var(--accent-color);
   border-radius: $accent-button-border-radius;
+}
+
+// For a tinted entry inside an accent card. The title's link stretches over
+// the whole entry, so the title itself reads as plain text. Other links in
+// the entry need `position: relative` and a z-index above 1 to stay
+// clickable.
+@mixin accent-panel-link($title-link) {
+  position: relative;
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover {
+    background-color: var(--accent-panel-hover-bg);
+  }
+
+  #{$title-link} {
+    color: inherit;
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      &::after {
+        outline: 2px solid var(--accent-color);
+        outline-offset: -2px;
+        border-radius: 0.5rem;
+      }
+    }
+  }
 }
 
 // Bootstrap's hover and active states read their colours from these

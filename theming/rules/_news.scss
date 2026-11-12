@@ -141,25 +141,25 @@ $news-row-padding-x: 0.8rem;
   }
 
   // Clicking a category filters the listing instead of opening the post, so
-  // the pill sits above the post's stretched link. A selected category keeps
-  // the hover tint; news/category-pills.html sets `active`.
+  // the pill sits above the post's stretched link. A hovered or selected pill
+  // takes the card's border colour; news/category-pills.html sets `active`.
   div.quarto-post .listing-category {
     position: relative;
     z-index: 2;
     margin: 0;
     padding: 0.1rem 0.6rem;
-    border: $accent-pill-border-width solid $julia-purple;
+    border: $accent-pill-border-width solid var(--bs-border-color);
     border-radius: 0.375rem;
-    background-color: $accent-card-bg;
+    background-color: transparent;
     font-size: $landing-small-font-size;
     text-transform: none;
     color: var(--bs-body-color);
-    transition: background-color 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out;
 
     &:hover,
     &:active,
     &.active {
-      background-color: mix($julia-purple, $accent-card-bg, percentage($package-tint-strength));
+      border-color: var(--accent-color);
     }
   }
 }

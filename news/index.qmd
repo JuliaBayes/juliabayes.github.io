@@ -1,15 +1,23 @@
 ---
 title: "News"
 listing:
+  id: news-posts
   contents: posts
   sort: "date desc"
   type: default
   # Without `image`, Quarto does not keep an empty thumbnail column.
-  fields: [date, author, title, subtitle, description, categories]
+  fields: [date, title, subtitle, description, categories]
   categories: true
   sort-ui: false
   filter-ui: false
   feed: true
 # Quarto loads MathJax on every listing page. The listing shows no maths.
 html-math-method: plain
+include-after-body:
+  - category-pills.html
 ---
+
+:::: {.accent-card .accent-blue .news-card}
+::: {#news-posts}
+:::
+::::

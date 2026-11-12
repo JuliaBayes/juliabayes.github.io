@@ -1,1 +1,4 @@
 $navbar-bg: darken($body-bg, 3%);
+// On hover, this much of the text colour goes into a tinted panel: it darkens
+// the light theme and lightens the dark one.
+$panel-hover-strength: 0.06;

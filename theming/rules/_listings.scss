@@ -15,8 +15,8 @@ div.quarto-post .listing-categories .listing-category {
 }
 
 // Quarto gives the date a third of the row, which leaves a large gap before
-// each title. A fixed width is enough for a date and an author name. Below
-// the md breakpoint, Quarto puts the date above the title instead.
+// each title. A fixed width is enough for a date. Below the md breakpoint,
+// Quarto puts the date above the title instead.
 @include media-breakpoint-up(md) {
   div.quarto-post .metadata {
     flex: 0 0 7rem;
@@ -40,8 +40,8 @@ div.quarto-post .listing-subtitle:has(> a:empty) {
   }
 }
 
-// Below md, Quarto puts each post's date and author under its description. They
-// lead instead, on one line, as on the landing page.
+// Below md, Quarto puts each post's date under its description. It leads
+// instead, as on the landing page.
 @include media-breakpoint-down(md) {
   div.quarto-post {
     flex-direction: column;
@@ -50,16 +50,6 @@ div.quarto-post .listing-subtitle:has(> a:empty) {
 
   div.quarto-post .metadata {
     order: -1;
-
-    a {
-      display: flex;
-      flex-wrap: wrap;
-      column-gap: 0.5ch;
-    }
-
-    .listing-author::before {
-      content: "· ";
-    }
   }
 }
 

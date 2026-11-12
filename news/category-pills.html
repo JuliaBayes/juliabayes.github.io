@@ -1,0 +1,33 @@
+<!-- Quarto marks the selected category only in the sidebar. The pills under
+     each post take the same `active` state, so that a selected category stays
+     highlighted. A pill names its category only in its onclick handler, with
+     the same encoding as the sidebar's data-category. Filtering replaces the
+     posts with new elements, so the pills are looked up on every change. -->
+<script>
+  (() => {
+    const sidebarCategories = document.querySelectorAll(
+      ".quarto-listing-category .category",
+    );
+    const listing = document.querySelector(".news-card .quarto-listing");
+    if (sidebarCategories.length === 0 || listing === null) {
+      return;
+    }
+    const markActivePills = () => {
+      const activeCategory = document.querySelector(
+        ".quarto-listing-category .category.active",
+      )?.dataset.category;
+      for (const pill of listing.querySelectorAll(".listing-category")) {
+        const isActive =
+          Boolean(activeCategory) &&
+          pill.getAttribute("onclick").includes(`'${activeCategory}'`);
+        pill.classList.toggle("active", isActive);
+      }
+    };
+    const observer = new MutationObserver(markActivePills);
+    for (const category of sidebarCategories) {
+      observer.observe(category, { attributes: true, attributeFilter: ["class"] });
+    }
+    observer.observe(listing, { childList: true, subtree: true });
+    markActivePills();
+  })();
+</script>

@@ -35,7 +35,8 @@
   }
 }
 
-.hero-curve-phone {
+.hero-curve-phone,
+.hero-curve-phone-wide {
   display: none;
 }
 
@@ -62,6 +63,22 @@
 
   .hero-curve-phone {
     display: flex;
+  }
+
+  // Keep the chosen text during rotation. Its own curve clears two lines.
+  .hero-stage:has(#hero-tagline[data-wide]) {
+    .hero-curve-phone {
+      display: none;
+    }
+
+    .hero-curve-phone-wide {
+      display: flex;
+    }
+
+    #hero-tagline {
+      max-width: 9em;
+      margin-inline: auto;
+    }
   }
 
   .hero-text h1 {

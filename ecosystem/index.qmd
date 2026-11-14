@@ -19,5 +19,7 @@ include-after-body:
 Do you want your package here?
 Come say hello in [`#bayes` on Julia Slack](https://julialang.slack.com/archives/C0BKRUEN6CX)!
 
+[Subscribe to package releases (RSS)](/releases.xml).
+
 ::: {#packages}
 :::

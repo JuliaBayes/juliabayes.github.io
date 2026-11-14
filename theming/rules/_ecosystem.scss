@@ -1,49 +1,352 @@
-// The task is short, and reads badly when it wraps.
-#listing-packages .quarto-listing-table td:nth-child(3) {
+// The tint matches the card's blue border.
+$ecosystem-package-tint: mix($julia-blue, $accent-card-bg, percentage($package-tint-strength));
+$ecosystem-filter-border-radius: 0.375rem;
+// The hover colour of the landing page's accent buttons.
+$ecosystem-filter-hover-bg: mix($julia-blue, $accent-card-bg, percentage($tint-strength));
+
+.ecosystem-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+
+  > div:first-child {
+    flex: 1 1 15rem;
+  }
+
+  > div:not(:first-child) {
+    flex: 1 1 10rem;
+  }
+
+  #package-count {
+    flex-basis: 100%;
+    margin: 0;
+    font-size: $landing-small-font-size;
+    color: var(--bs-secondary-color);
+  }
+}
+
+.ecosystem-filters input[type="search"],
+.ecosystem-filter-dropdown summary {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+}
+
+// An open dropdown carries the same ring as a focused search field.
+.ecosystem-filters input[type="search"]:focus-visible,
+.ecosystem-filters button[type="reset"]:focus-visible,
+.ecosystem-filter-dropdown summary:focus-visible,
+.ecosystem-filter-dropdown[open] summary {
+  outline: 2px solid var(--bs-link-color);
+  outline-offset: 2px;
+}
+
+.ecosystem-filter-dropdown[open] summary {
+  border-color: $ecosystem-package-tint;
+}
+
+.ecosystem-filters input[type="search"],
+.ecosystem-filter-dropdown summary {
+  border-radius: $ecosystem-filter-border-radius;
+}
+
+// The hover colours match the landing page's accent buttons. Bootstrap's hover
+// and active states read these variables, so setting `background` or `color`
+// directly would disable them.
+.ecosystem-filters .btn[type="reset"] {
+  --bs-btn-color: var(--bs-body-color);
+  --bs-btn-bg: var(--bs-body-bg);
+  --bs-btn-border-color: var(--bs-border-color);
+  --bs-btn-hover-color: var(--bs-body-color);
+  --bs-btn-hover-bg: #{$ecosystem-filter-hover-bg};
+  --bs-btn-hover-border-color: var(--bs-border-color);
+  --bs-btn-active-color: var(--bs-body-color);
+  --bs-btn-active-bg: #{$ecosystem-filter-hover-bg};
+  --bs-btn-active-border-color: var(--bs-border-color);
+}
+
+.ecosystem-filters input[type="search"]::placeholder {
+  color: var(--bs-secondary-color);
+  opacity: 1;
+}
+
+body.quarto-dark .ecosystem-filters {
+  color-scheme: dark;
+}
+
+body.quarto-light .ecosystem-filters {
+  color-scheme: light;
+}
+
+.ecosystem-filter-dropdown {
+  position: relative;
+  margin: 0;
+
+  summary {
+    padding: 0.375rem 0.75rem;
+    cursor: pointer;
+  }
+}
+
+.ecosystem-filter-menu {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(100% + 0.25rem);
+  z-index: 3;
+  padding: 0.5rem;
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: $ecosystem-filter-border-radius;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+
+  fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $ecosystem-filter-hover-bg;
+    }
+  }
+
+  input {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--bs-link-color);
+  }
+}
+
+.ecosystem-filters[hidden],
+.ecosystem-card[hidden],
+.ecosystem-package[hidden] {
+  display: none;
+}
+
+// One card per task, bordered like the accent buttons.
+.ecosystem-card {
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.25rem 1.25rem;
+  background-color: $accent-card-bg;
+  border: $accent-border-width solid var(--accent-color);
+  border-radius: $accent-button-border-radius;
+}
+
+// Quarto gives the first h2 of a section a top margin through an ID selector;
+// overriding it needs the ID too.
+#quarto-content .ecosystem-card h2 {
+  margin: 0 0 0.75rem;
+  padding: 0;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+// On hover, a little of the text colour goes into the package tint: it darkens
+// the light theme and lightens the dark one.
+
+.ecosystem-package {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.5rem;
+  background-color: $ecosystem-package-tint;
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover {
+    background-color: mix($body-color, $ecosystem-package-tint, 6%);
+  }
+
+  & + & {
+    margin-top: 0.75rem;
+  }
+
+  p {
+    margin: 0.2rem 0 0;
+  }
+
+  p:first-child {
+    margin-top: 0;
+  }
+}
+
+// The maintainer and status lines sit at the bottom of the package; any spare
+// height goes above them.
+.ecosystem-package-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+// As high as a package with a name, a two-line description, a maintainer line
+// and a status line.
+.ecosystem-logo {
+  flex: 0 0 auto;
+  width: 7.5rem;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+
+  // Pandoc wraps the image in a paragraph.
+  p {
+    display: contents;
+  }
+
+  // The package name says what the logo shows, so the image has empty alt text.
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+// The name's link stretches over the whole package, so the name itself reads
+// as plain text.
+.ecosystem-package-name {
+  font-weight: 700;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    &::after {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 2px;
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+// The maintainer and release lines each sit in their own div, so the gap
+// spaces the lines evenly where paragraph margins would not.
+.ecosystem-meta {
+  margin-top: auto;
+  padding-top: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: $landing-small-font-size;
+  color: var(--bs-secondary-color);
+
+  p {
+    margin: 0;
+  }
+}
+
+$ecosystem-links-margin-top: 0.1rem;
+
+.ecosystem-links {
+  margin: $ecosystem-links-margin-top 0 0.35rem;
+  font-size: $landing-small-font-size;
+
+  p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+}
+
+// These links sit above the package name's stretched link.
+.ecosystem-links a,
+.ecosystem-maintainer a,
+.ecosystem-maintainers-more,
+.ecosystem-release a {
+  position: relative;
+  z-index: 1;
+}
+
+.ecosystem-release-note {
+  font-size: $landing-small-font-size;
+  color: var(--bs-secondary-color);
+}
+
+// Only JavaScript collapses the list, so every name is reachable without it.
+.ecosystem-maintainers p {
+  overflow-wrap: anywhere;
+}
+
+.ecosystem-maintainers.is-collapsed p {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-// Stripes help the eye follow a row across the wide description column. They
-// go on the row, so that they also cover a row stacked as a block on phones.
-// A tint of the text colour darkens the light theme and lightens the dark one.
-// On a stripe, the link green falls under 4.5:1, so the names take the
-// stronger green of inline code.
-#listing-packages .quarto-listing-table {
-  tbody tr:nth-of-type(odd) {
-    background-color: mix($body-color, $body-bg, 4%);
-  }
-
-  td {
-    background-color: transparent;
-  }
-
-  a {
-    color: var(--bs-code-color);
-  }
+.ecosystem-maintainer + .ecosystem-maintainer::before {
+  content: ", ";
 }
 
-// On phones, three columns do not fit. Each package becomes a block: the name,
-// what it does, then its task.
+.ecosystem-maintainers-more {
+  margin-inline-start: 0.25rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--bs-link-color);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+// On phones the logo sits beside the name and link rows, as tall as both, and
+// the description and meta lines run full width below.
 @include media-breakpoint-down(sm) {
-  #listing-packages .quarto-listing-table {
-    thead {
-      display: none;
-    }
+  $ecosystem-name-row-height: $line-height-base * $font-size-base;
+  $ecosystem-links-row-height: $line-height-base * $landing-small-font-size + $ecosystem-links-margin-top;
 
-    tr {
-      display: block;
-      padding: 0.75rem 0.5rem;
-      border-bottom: 1px solid var(--bs-border-color);
-    }
+  .ecosystem-package {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "name logo"
+      "links logo"
+      "description description"
+      "meta meta";
+    gap: 0;
+  }
 
-    td {
-      display: block;
-      padding: 0;
-      border: 0;
-    }
+  .ecosystem-package-text {
+    display: contents;
+  }
 
-    td:nth-child(3) {
-      color: var(--bs-secondary-color);
-    }
+  .ecosystem-package-text > p:first-child {
+    grid-area: name;
+  }
+
+  .ecosystem-links {
+    grid-area: links;
+    margin-bottom: 0;
+  }
+
+  .ecosystem-description {
+    grid-area: description;
+    margin-top: 0.35rem;
+  }
+
+  .ecosystem-meta {
+    grid-area: meta;
+  }
+
+  .ecosystem-logo {
+    grid-area: logo;
+    width: $ecosystem-name-row-height + $ecosystem-links-row-height;
+    margin-inline-start: 0.75rem;
   }
 }

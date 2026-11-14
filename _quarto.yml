@@ -51,6 +51,7 @@ format:
       light: [cosmo, theming/theme-light.scss]
       dark: [darkly, theming/theme-dark.scss]
     toc: true
+    syntax-highlighting: a11y
     # The first visit follows the visitor's system setting. The toggle still
     # overrides it.
     respect-user-color-scheme: true

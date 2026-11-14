@@ -133,13 +133,8 @@ body.quarto-light .ecosystem-filters {
   display: none;
 }
 
-// One card per task, bordered like the accent buttons.
 .ecosystem-card {
   margin-bottom: 1.25rem;
-  padding: 1rem 1.25rem 1.25rem;
-  background-color: $accent-card-bg;
-  border: $accent-border-width solid var(--accent-color);
-  border-radius: $accent-button-border-radius;
 }
 
 // Quarto gives the first h2 of a section a top margin through an ID selector;
@@ -152,9 +147,6 @@ body.quarto-light .ecosystem-filters {
   font-weight: 700;
 }
 
-// On hover, a little of the text colour goes into the package tint: it darkens
-// the light theme and lightens the dark one.
-
 .ecosystem-package {
   position: relative;
   display: flex;
@@ -165,7 +157,7 @@ body.quarto-light .ecosystem-filters {
   transition: background-color 0.15s ease-in-out;
 
   &:hover {
-    background-color: mix($body-color, $ecosystem-package-tint, 6%);
+    background-color: mix($body-color, $ecosystem-package-tint, percentage($panel-hover-strength));
   }
 
   & + & {

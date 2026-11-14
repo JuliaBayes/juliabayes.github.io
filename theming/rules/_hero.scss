@@ -14,7 +14,6 @@
 // come from src/hero_curve/hero_curve.jl, which assumes the font sizes below.
 .hero-stage {
   display: grid;
-  position: relative;
 }
 
 .hero-curve,
@@ -57,45 +56,23 @@
   }
 }
 
-.hero-tagline-toggle {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  padding: 0;
-  border: 0;
-  border-radius: 0.375rem;
-  background: transparent;
-  color: var(--bs-secondary-color);
+.hero-tagline-caret {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 1em;
+  vertical-align: -0.12em;
 
-  &:hover {
-    color: var(--bs-body-color);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0.1em;
+    border-left: 1px solid currentColor;
   }
 
-  &:focus-visible {
-    outline: 2px solid var(--bs-link-color);
-    outline-offset: 2px;
+  &[hidden] {
+    display: none;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  #hero-tagline.is-rotating {
-    // Start past the first fade-in so the initial choice appears immediately.
-    animation: hero-tagline-fade 8s ease-in-out -0.64s infinite;
-  }
-
-  .hero-tagline-toggle {
-    display: inline-flex;
-  }
-}
-
-@keyframes hero-tagline-fade {
-  0%, 100% { opacity: 0; }
-  8%, 92% { opacity: 1; }
 }
 
 @include media-breakpoint-down(sm) {

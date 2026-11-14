@@ -170,43 +170,58 @@
     if (wideTaglines.includes(tagline.textContent)) tagline.dataset.wide = "";
     document.currentScript.replaceWith(tagline);
 
-    // The first choice stays visible if motion or CSS animation is unavailable.
+    // Leave the complete first choice in place when animation is unavailable.
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (!window.CSS?.supports("animation-name", "hero-tagline-fade") ||
-        reducedMotion.matches) return;
+    if (!window.Intl?.Segmenter || reducedMotion.matches) return;
 
     // Reserve the wider phone curve for this visit, so later choices cannot
     // move the title or cards after a desktop window becomes narrow.
     if (!isPhone) tagline.dataset.wide = "";
 
-    const toggle = document.createElement("button");
-    toggle.type = "button";
-    toggle.className = "hero-tagline-toggle";
-    toggle.setAttribute("aria-controls", "hero-tagline");
-    toggle.innerHTML = '<span class="bi" aria-hidden="true"></span>';
-    tagline.closest(".hero-stage").append(toggle);
+    const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" });
+    const split = (value) => [...segmenter.segment(value)].map((part) => part.segment);
+    const text = tagline.firstChild;
+    const caret = document.createElement("span");
+    caret.className = "hero-tagline-caret";
+    caret.setAttribute("aria-hidden", "true");
+    tagline.append(caret);
 
-    let paused = false;
-    const update = () => {
-      tagline.classList.toggle("is-rotating", !paused && !document.hidden);
-      const label = paused ? "Resume tagline rotation" : "Pause tagline rotation";
-      toggle.setAttribute("aria-label", label);
-      toggle.title = label;
-      toggle.firstElementChild.className = `bi bi-${paused ? "play" : "pause"}-fill`;
+    let current = candidates.indexOf(text.data);
+    let letters = split(candidates[current]);
+    let count = letters.length;
+    let erasing = true;
+    let timer;
+    const step = () => {
+      if (document.hidden || reducedMotion.matches) {
+        update();
+        return;
+      }
+      count += erasing ? -1 : 1;
+      text.data = letters.slice(0, count).join("");
+      let delay = erasing ? 35 : 65;
+      if (erasing && count === 0) {
+        const offset = 1 + Math.floor(Math.random() * (candidates.length - 1));
+        current = (current + offset) % candidates.length;
+        letters = split(candidates[current]);
+        erasing = false;
+        delay = 250;
+      } else if (!erasing && count === letters.length) {
+        erasing = true;
+        delay = 4500;
+      }
+      timer = window.setTimeout(step, delay);
     };
-    toggle.addEventListener("click", () => {
-      paused = !paused;
-      update();
-    });
+    const update = () => {
+      window.clearTimeout(timer);
+      letters = split(candidates[current]);
+      count = letters.length;
+      erasing = true;
+      text.data = candidates[current];
+      caret.hidden = document.hidden || reducedMotion.matches;
+      if (!caret.hidden) timer = window.setTimeout(step, 4500);
+    };
     document.addEventListener("visibilitychange", update);
-    tagline.addEventListener("animationiteration", (event) => {
-      if (event.animationName !== "hero-tagline-fade" || paused ||
-          document.hidden || reducedMotion.matches) return;
-      // The CSS is transparent at the cycle boundary. Skip the current choice.
-      const current = candidates.indexOf(tagline.textContent);
-      const offset = 1 + Math.floor(Math.random() * (candidates.length - 1));
-      tagline.textContent = candidates[(current + offset) % candidates.length];
-    });
+    reducedMotion.addEventListener("change", update);
     update();
   })();
 </script>

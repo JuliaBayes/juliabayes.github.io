@@ -169,6 +169,45 @@
       candidates[Math.floor(Math.random() * candidates.length)];
     if (wideTaglines.includes(tagline.textContent)) tagline.dataset.wide = "";
     document.currentScript.replaceWith(tagline);
+
+    // The first choice stays visible if motion or CSS animation is unavailable.
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!window.CSS?.supports("animation-name", "hero-tagline-fade") ||
+        reducedMotion.matches) return;
+
+    // Reserve the wider phone curve for this visit, so later choices cannot
+    // move the title or cards after a desktop window becomes narrow.
+    if (!isPhone) tagline.dataset.wide = "";
+
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "hero-tagline-toggle";
+    toggle.setAttribute("aria-controls", "hero-tagline");
+    toggle.innerHTML = '<span class="bi" aria-hidden="true"></span>';
+    tagline.closest(".hero-stage").append(toggle);
+
+    let paused = false;
+    const update = () => {
+      tagline.classList.toggle("is-rotating", !paused && !document.hidden);
+      const label = paused ? "Resume tagline rotation" : "Pause tagline rotation";
+      toggle.setAttribute("aria-label", label);
+      toggle.title = label;
+      toggle.firstElementChild.className = `bi bi-${paused ? "play" : "pause"}-fill`;
+    };
+    toggle.addEventListener("click", () => {
+      paused = !paused;
+      update();
+    });
+    document.addEventListener("visibilitychange", update);
+    tagline.addEventListener("animationiteration", (event) => {
+      if (event.animationName !== "hero-tagline-fade" || paused ||
+          document.hidden || reducedMotion.matches) return;
+      // The CSS is transparent at the cycle boundary. Skip the current choice.
+      const current = candidates.indexOf(tagline.textContent);
+      const offset = 1 + Math.floor(Math.random() * (candidates.length - 1));
+      tagline.textContent = candidates[(current + offset) % candidates.length];
+    });
+    update();
   })();
 </script>
 <noscript><p id="hero-tagline">Almost surely,</p></noscript>

@@ -194,7 +194,10 @@
       }
       count += erasing ? -1 : 1;
       text.data = letters.slice(0, count).join("");
-      let delay = erasing ? 35 : 65;
+      // Punctuation uses the upper end of the same ±20% timing range.
+      const punctuation = !erasing && /[,.!?;:]/u.test(letters[count - 1]);
+      let delay = (erasing ? 35 : 65) *
+        (punctuation ? 1.2 : 0.8 + Math.random() * 0.4);
       if (erasing && count === 0) {
         const offset = 1 + Math.floor(Math.random() * (candidates.length - 1));
         current = (current + offset) % candidates.length;

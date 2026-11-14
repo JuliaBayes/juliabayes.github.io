@@ -1,9 +1,7 @@
 <script>
   (() => {
-    // The hero curve in src/hero_curve.jl clears the widest tagline of each
-    // layout. Widths are in IBM Plex Sans Regular, as multiples of the font
-    // size: `taglines` are at most 9 (the phone limit), `wideTaglines` at most
-    // 12.55 (the desktop limit).
+    // The generated curves clear advances up to 9em on phones and 13.5em on
+    // desktop. Wide text wraps to two lines if a desktop visit becomes narrow.
     const taglines = [
       "Almost surely,",
       "In all likelihood,",
@@ -72,6 +70,26 @@
       "After one more run,",
       "In theory, at least,",
       "Aleatorically,",
+      "As it was foretold,",
+      "As predicted,",
+      "Predictably,",
+      "Understandably,",
+      "Rigorously,",
+      "Oh no! It's",
+      "Here comes the",
+      "Not without my",
+      "It's all",
+      "Mother, I saw a",
+      "Go NUTS for",
+      "OwO",
+      "Claude said to use",
+      "🎉",
+      "Until next time,",
+      "The Notorious",
+      "🐦",
+      "Finally,",
+      "I am become",
+      "My God, it's full of",
     ];
     const wideTaglines = [
       "With high probability,",
@@ -128,6 +146,15 @@
       "In a manner of speaking,",
       "Despite label-switching,",
       "Beyond reasonable doubt,",
+      "As we had foreseen,",
+      "By our powers combined,",
+      "After postprocessing,",
+      "Congratulations, it's a",
+      "With or without you,",
+      "😵‍💫 you are now Bayesian 😵‍💫",
+      "Ask your doctor about",
+      "Made in: The Internet",
+      "9/10 statisticians recommend",
       "Under regularity conditions,",
       "According to the posterior,",
       "Without loss of generality,",
@@ -140,6 +167,7 @@
     tagline.id = "hero-tagline";
     tagline.textContent =
       candidates[Math.floor(Math.random() * candidates.length)];
+    if (wideTaglines.includes(tagline.textContent)) tagline.dataset.wide = "";
     document.currentScript.replaceWith(tagline);
   })();
 </script>

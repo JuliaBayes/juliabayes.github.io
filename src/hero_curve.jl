@@ -30,7 +30,8 @@ const HERO_LAYOUTS = (
     desktop=(;
         title_font_px=4 * REM_PX,
         tagline_font_px=1.5 * REM_PX,
-        widest_tagline_em=12.55,
+        widest_tagline_em=13.5,
+        tagline_lines=1,
         row_half_width_px=400,
         curve_width_px=800,
         gradient_inset=0.0,
@@ -39,6 +40,18 @@ const HERO_LAYOUTS = (
         title_font_px=2.5 * REM_PX,
         tagline_font_px=1.25 * REM_PX,
         widest_tagline_em=9.0,
+        tagline_lines=1,
+        row_half_width_px=272,
+        curve_width_px=544,
+        gradient_inset=0.15,
+    ),
+    # A wide tagline stays selected when a desktop visit becomes a phone view.
+    # The CSS caps its width at 9em; the current list fits in two lines.
+    phone_wide=(;
+        title_font_px=2.5 * REM_PX,
+        tagline_font_px=1.25 * REM_PX,
+        widest_tagline_em=9.0,
+        tagline_lines=2,
         row_half_width_px=272,
         curve_width_px=544,
         gradient_inset=0.15,
@@ -213,7 +226,7 @@ end
 function write_hero_curve(path, svgs_by_layout)
     wrappers = join(
         (
-            """<div class="hero-curve hero-curve-$layout">\n$svg\n</div>""" for
+            """<div class="hero-curve hero-curve-$(replace(string(layout), "_" => "-"))">\n$svg\n</div>""" for
             (layout, svg) in pairs(svgs_by_layout)
         ),
         "\n",
@@ -230,11 +243,11 @@ function write_hero_curve(path, svgs_by_layout)
     return path
 end
 
-function hero_text_boxes(; title_font_px, tagline_font_px, widest_tagline_em)
+function hero_text_boxes(; title_font_px, tagline_font_px, widest_tagline_em, tagline_lines)
     title_top = title_font_px * TITLE_LINE_HEIGHT
     title_half_width = TITLE_GLYPHS * AVERAGE_ADVANCE_EM * title_font_px / 2
     tagline_top =
-        title_top + TAGLINE_MARGIN_BOTTOM_PX + tagline_font_px * TAGLINE_LINE_HEIGHT
+        title_top + TAGLINE_MARGIN_BOTTOM_PX + tagline_font_px * TAGLINE_LINE_HEIGHT * tagline_lines
     tagline_half_width = widest_tagline_em * tagline_font_px / 2
     return [(title_half_width, title_top), (tagline_half_width, tagline_top)]
 end
@@ -246,6 +259,7 @@ function solve_hero_curves()
                 layout.title_font_px,
                 layout.tagline_font_px,
                 layout.widest_tagline_em,
+                layout.tagline_lines,
             ),
             row_half_width=layout.row_half_width_px,
             clearance=CLEARANCE_PX,

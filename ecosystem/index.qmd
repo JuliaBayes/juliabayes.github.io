@@ -5,20 +5,19 @@ toc: false
 html-math-method: plain
 listing:
   id: packages
-  contents: packages.yml
-  type: table
-  fields: [title, description, task]
-  field-display-names:
-    title: Package
-    description: What it does
-    task: Task
-  sort: [order, title]
+  # The team entries list the packages each person maintains.
+  contents: [packages.yml, releases.yml, ../about/people/*.yml]
+  template: packages.ejs.md
+  sort: false
   sort-ui: false
   filter-ui: false
+include-after-body:
+  - maintainers.html
+  - filters.html
 ---
-
-::: {#packages}
-:::
 
 Do you want your package here?
 Come say hello in [`#bayes` on Julia Slack](https://julialang.slack.com/archives/C0BKRUEN6CX)!
+
+::: {#packages}
+:::

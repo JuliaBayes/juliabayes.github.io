@@ -4,6 +4,21 @@ a code {
   color: var(--bs-code-color);
 }
 
+// The output of a code cell sits in a blue-tinted panel, like the author and
+// date on a post. rules/_code-documenter.scss styles the code itself.
+main div.cell-output:has(> pre) {
+  margin-top: 0.5rem;
+  background-color: mix($julia-blue, $accent-card-bg, percentage($package-tint-strength));
+  border: none;
+  border-radius: 0.5rem;
+
+  > pre {
+    margin: 0;
+    padding: 0.6rem 0.8rem;
+    background-color: transparent;
+  }
+}
+
 // Below md, code runs to the screen edges, which gives long lines the most
 // room. Text fades out in the side padding, so a line that runs on past an
 // edge shows that it scrolls. The code element carries the right padding,

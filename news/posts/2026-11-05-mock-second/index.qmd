@@ -1,0 +1,8 @@
+---
+title: "Mock post: a second entry"
+date: 2026-11-05
+categories: [news]
+engine: markdown
+---
+
+Placeholder post for testing the news listing on the landing page.

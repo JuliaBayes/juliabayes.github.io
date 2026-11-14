@@ -56,25 +56,6 @@
   }
 }
 
-.hero-tagline-caret {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 1em;
-  vertical-align: -0.12em;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0 auto 0 0.1em;
-    border-left: 1px solid currentColor;
-  }
-
-  &[hidden] {
-    display: none;
-  }
-}
-
 @include media-breakpoint-down(sm) {
   .hero-curve-desktop {
     display: none;

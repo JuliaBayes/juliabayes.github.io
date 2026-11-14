@@ -181,10 +181,6 @@
     const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" });
     const split = (value) => [...segmenter.segment(value)].map((part) => part.segment);
     const text = tagline.firstChild;
-    const caret = document.createElement("span");
-    caret.className = "hero-tagline-caret";
-    caret.setAttribute("aria-hidden", "true");
-    tagline.append(caret);
 
     let current = candidates.indexOf(text.data);
     let letters = split(candidates[current]);
@@ -217,8 +213,7 @@
       count = letters.length;
       erasing = true;
       text.data = candidates[current];
-      caret.hidden = document.hidden || reducedMotion.matches;
-      if (!caret.hidden) timer = window.setTimeout(step, 4500);
+      if (!document.hidden && !reducedMotion.matches) timer = window.setTimeout(step, 4500);
     };
     document.addEventListener("visibilitychange", update);
     reducedMotion.addEventListener("change", update);

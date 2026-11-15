@@ -35,6 +35,8 @@ website:
       - about/index.qmd
       - ecosystem/index.qmd
       - news/index.qmd
+      - href: contact.qmd
+        text: Contact
     # The links sit in the tools, next to the colour-scheme toggle and outside the
     # collapse, so that the search can come before them.
     tools:

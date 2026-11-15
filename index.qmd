@@ -48,7 +48,7 @@ We are community-driven and aim to be welcoming and inclusive. \
 Contributions and collaborations of all sizes are welcome.
 ::::
 
-:::: {.g-col-12 .accent-card .landing-card-news}
+:::: {.g-col-12 .accent-card .accent-blue .landing-card-news}
 
 ::: {.landing-card-header}
 ## News

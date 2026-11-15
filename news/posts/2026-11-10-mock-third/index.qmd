@@ -1,0 +1,8 @@
+---
+title: "Mock post: a third entry with a much longer title, so that it runs past the width of the card and ends in an ellipsis"
+date: 2026-11-10
+categories: [news]
+engine: markdown
+---
+
+Placeholder post for testing the news listing on the landing page.

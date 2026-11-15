@@ -27,6 +27,14 @@ website:
   open-graph: true
   search:
     type: textbox
+  # CC BY asks that the licence shows where people read the content, not only
+  # in the repository.
+  page-footer:
+    center: >
+      [Contact us](/contact.qmd) ·
+      © JuliaBayes contributors.
+      Text and images: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+      Code: [MIT](https://github.com/JuliaBayes/juliabayes.github.io/blob/main/LICENSE).
   navbar:
     logo: favicon.svg
     # Quarto puts the logo in a link of its own, so it needs a name.
@@ -35,6 +43,8 @@ website:
       - about/index.qmd
       - ecosystem/index.qmd
       - news/index.qmd
+      - href: contact.qmd
+        text: Contact
     # The links sit in the tools, next to the colour-scheme toggle and outside the
     # collapse, so that the search can come before them.
     tools:
@@ -51,6 +61,7 @@ format:
       light: [cosmo, theming/theme-light.scss]
       dark: [darkly, theming/theme-dark.scss]
     toc: true
+    syntax-highlighting: a11y
     # The first visit follows the visitor's system setting. The toggle still
     # overrides it.
     respect-user-color-scheme: true

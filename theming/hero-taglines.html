@@ -1,49 +1,32 @@
 <script>
   (() => {
+    // The generated curves clear advances up to 9em on phones and 13.5em on
+    // desktop. Wide text wraps to two lines if a desktop visit becomes narrow.
     const taglines = [
       "Almost surely,",
       "In all likelihood,",
       "Given the evidence,",
       "In expectation,",
-      "With high probability,",
       "Conditionally,",
-      "Up to normalization,",
-      "More likely than not,",
-      "Under mild assumptions,",
       "On average,",
       "Asymptotically,",
       "After conditioning,",
       "Under this model,",
       "With sufficient data,",
-      "Pending more evidence,",
       "After burn-in,",
-      "Up to Monte Carlo error,",
-      "Within credible bounds,",
       "For a suitable prior,",
-      "Subject to convergence,",
       "A priori,",
       "A posteriori,",
       "In the limit,",
       "In probability,",
       "In distribution,",
       "With full support,",
-      "With positive probability,",
-      "Given enough samples,",
-      "To a first approximation,",
-      "By a change of measure,",
       "Up to a null set,",
-      "After marginalization,",
-      "Given the likelihood,",
       "With finite variance,",
-      "As the sample grows,",
-      "With reasonable priors,",
-      "Within credible limits,",
       "After updating,",
-      "For almost every outcome,",
       "By disintegration,",
       "Almost everywhere,",
       "On all Borel sets,",
-      "Through a measurable map,",
       "Pending new data,",
       "Under any prior,",
       "Approximately,",
@@ -51,13 +34,7 @@
       "After resampling,",
       "After adaptation,",
       "With a weak prior,",
-      "With compact support,",
-      "With finite moments,",
       "With finite mass,",
-      "By detailed balance,",
-      "In natural parameters,",
-      "In unconstrained space,",
-      "By a change of variables,",
       "Credibly,",
       "Presumably,",
       "Empirically,",
@@ -73,18 +50,198 @@
       "Globally,",
       "Optimally,",
       "Up to a constant,",
+      "With bounded error,",
+      "At random,",
+      "After tempering,",
+      "After warm-up,",
+      "With mass to spare,",
+      "By sheer likelihood,",
+      "In mixed company,",
+      "With a little luck,",
+      "Within reason,",
+      "With more to learn,",
+      "In the long run,",
+      "By symmetry,",
+      "By construction,",
+      "On balance,",
+      "Allegedly,",
+      "In this economy,",
+      "At an ungodly hour,",
+      "After one more run,",
+      "In theory, at least,",
+      "Aleatorically,",
+      "As it was foretold,",
+      "As predicted,",
+      "Predictably,",
+      "Understandably,",
+      "Rigorously,",
+      "Oh no! It's",
+      "Here comes the",
+      "Not without my",
+      "It's all",
+      "Mother, I saw a",
+      "Go NUTS for",
+      "OwO",
+      "Claude said to use",
+      "🎉",
+      "Until next time,",
+      "The Notorious",
+      "🐦",
+      "Finally,",
+      "I am become",
+      "My God, it's full of",
+    ];
+    const wideTaglines = [
+      "With high probability,",
+      "Up to normalization,",
+      "More likely than not,",
+      "Under mild assumptions,",
+      "Pending more evidence,",
+      "Up to Monte Carlo error,",
+      "Within credible bounds,",
+      "Subject to convergence,",
+      "With positive probability,",
+      "Given enough samples,",
+      "To a first approximation,",
+      "By a change of measure,",
+      "After marginalization,",
+      "Given the likelihood,",
+      "As the sample grows,",
+      "With reasonable priors,",
+      "Within credible limits,",
+      "For almost every outcome,",
+      "Through a measurable map,",
+      "With compact support,",
+      "With finite moments,",
+      "By detailed balance,",
+      "In natural parameters,",
+      "In unconstrained space,",
+      "By a change of variables,",
       "Modulo rounding error,",
       "Up to machine precision,",
       "After enough iterations,",
       "For sufficiently large N,",
-      "With bounded error,",
+      "With tuned step size,",
+      "Without divergences,",
+      "As the prior foretold,",
+      "Somewhere in the tails,",
+      "Between two modes,",
+      "With suspicious certainty,",
+      "Almost surely eventually,",
+      "By mutual information,",
+      "Through shared evidence,",
+      "As a mixture of experts,",
+      "With common support,",
+      "With overlapping beliefs,",
+      "As far as we can tell,",
+      "With the odds on our side,",
+      "More or less certainly,",
+      "For reasons yet unknown,",
+      "On closer inspection,",
+      "By the usual arguments,",
+      "In a surprising twist,",
+      "With the usual caveats,",
+      "Unless we are mistaken,",
+      "As one might expect,",
+      "In a manner of speaking,",
+      "Despite label-switching,",
+      "Beyond reasonable doubt,",
+      "As we had foreseen,",
+      "By our powers combined,",
+      "After postprocessing,",
+      "Congratulations, it's a",
+      "With or without you,",
+      "😵‍💫 you are now Bayesian 😵‍💫",
+      "Ask your doctor about",
+      "Made in: The Internet",
+      "9/10 statisticians recommend",
+      "Under regularity conditions,",
+      "According to the posterior,",
+      "Without loss of generality,",
     ];
+    // Matches media-breakpoint-down(sm) in theming/rules/_hero.scss.
+    const isPhone = window.matchMedia("(max-width: 575.98px)").matches;
+    const candidates = isPhone ? taglines : taglines.concat(wideTaglines);
     // Insert the complete paragraph while the hero is parsed.
     const tagline = document.createElement("p");
     tagline.id = "hero-tagline";
     tagline.textContent =
-      taglines[Math.floor(Math.random() * taglines.length)];
+      candidates[Math.floor(Math.random() * candidates.length)];
+    if (wideTaglines.includes(tagline.textContent)) tagline.dataset.wide = "";
     document.currentScript.replaceWith(tagline);
+
+    // Leave the complete first choice in place when animation is unavailable.
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!window.Intl?.Segmenter || !window.CSS?.supports("display", "inline-grid") ||
+        reducedMotion.matches) return;
+
+    // Reserve the wider phone curve for this visit, so later choices cannot
+    // move the title or cards after a desktop window becomes narrow.
+    if (!isPhone) tagline.dataset.wide = "";
+
+    const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" });
+    const split = (value) => [...segmenter.segment(value)].map((part) => part.segment);
+    const initial = tagline.textContent;
+    const screenReaderText = document.createElement("span");
+    screenReaderText.className = "visually-hidden";
+    screenReaderText.textContent = initial;
+    const phrase = document.createElement("span");
+    phrase.className = "hero-tagline-phrase";
+    phrase.setAttribute("aria-hidden", "true");
+    const reserve = document.createElement("span");
+    reserve.className = "hero-tagline-reserve";
+    reserve.textContent = initial;
+    const typed = document.createElement("span");
+    typed.className = "hero-tagline-typed";
+    const text = document.createTextNode(initial);
+    typed.append(text);
+    phrase.append(reserve, typed);
+    // Assistive technology keeps the initial line while only the visual copy
+    // changes. The hidden full phrase reserves the typing anchor and height.
+    tagline.replaceChildren(screenReaderText, phrase);
+    const holdMs = 12000;
+
+    let current = candidates.indexOf(text.data);
+    let letters = split(candidates[current]);
+    let count = letters.length;
+    let erasing = true;
+    let timer;
+    const step = () => {
+      if (document.hidden || reducedMotion.matches) {
+        update();
+        return;
+      }
+      count += erasing ? -1 : 1;
+      text.data = letters.slice(0, count).join("");
+      // Spaces and punctuation use the upper end of the same ±20% range.
+      const pauseAfter = !erasing && /[\s,.!?;:]/u.test(letters[count - 1]);
+      let delay = (erasing ? 35 : 75) *
+        (pauseAfter ? 1.2 : 0.8 + Math.random() * 0.4);
+      if (erasing && count === 0) {
+        const offset = 1 + Math.floor(Math.random() * (candidates.length - 1));
+        current = (current + offset) % candidates.length;
+        letters = split(candidates[current]);
+        reserve.textContent = candidates[current];
+        erasing = false;
+        delay = 350;
+      } else if (!erasing && count === letters.length) {
+        erasing = true;
+        delay = holdMs;
+      }
+      timer = window.setTimeout(step, delay);
+    };
+    const update = () => {
+      window.clearTimeout(timer);
+      letters = split(candidates[current]);
+      count = letters.length;
+      erasing = true;
+      text.data = candidates[current];
+      reserve.textContent = candidates[current];
+      if (!document.hidden && !reducedMotion.matches) timer = window.setTimeout(step, holdMs);
+    };
+    document.addEventListener("visibilitychange", update);
+    reducedMotion.addEventListener("change", update);
+    update();
   })();
 </script>
 <noscript><p id="hero-tagline">Almost surely,</p></noscript>

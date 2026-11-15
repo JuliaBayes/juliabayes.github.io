@@ -35,7 +35,8 @@
   }
 }
 
-.hero-curve-phone {
+.hero-curve-phone,
+.hero-curve-phone-wide {
   display: none;
 }
 
@@ -55,6 +56,22 @@
   }
 }
 
+.hero-tagline-phrase {
+  display: inline-grid;
+  max-width: 100%;
+  text-align: left;
+  vertical-align: top;
+}
+
+.hero-tagline-reserve,
+.hero-tagline-typed {
+  grid-area: 1 / 1;
+}
+
+.hero-tagline-reserve {
+  visibility: hidden;
+}
+
 @include media-breakpoint-down(sm) {
   .hero-curve-desktop {
     display: none;
@@ -62,6 +79,22 @@
 
   .hero-curve-phone {
     display: flex;
+  }
+
+  // Keep the chosen text during rotation. Its own curve clears two lines.
+  .hero-stage:has(#hero-tagline[data-wide]) {
+    .hero-curve-phone {
+      display: none;
+    }
+
+    .hero-curve-phone-wide {
+      display: flex;
+    }
+
+    #hero-tagline {
+      max-width: 9em;
+      margin-inline: auto;
+    }
   }
 
   .hero-text h1 {

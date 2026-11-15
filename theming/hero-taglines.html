@@ -196,7 +196,7 @@
       text.data = letters.slice(0, count).join("");
       // Punctuation uses the upper end of the same ±20% timing range.
       const punctuation = !erasing && /[,.!?;:]/u.test(letters[count - 1]);
-      let delay = (erasing ? 35 : 65) *
+      let delay = (erasing ? 35 : 75) *
         (punctuation ? 1.2 : 0.8 + Math.random() * 0.4);
       if (erasing && count === 0) {
         const offset = 1 + Math.floor(Math.random() * (candidates.length - 1));
@@ -206,7 +206,7 @@
         delay = 250;
       } else if (!erasing && count === letters.length) {
         erasing = true;
-        delay = 4500;
+        delay = 9000;
       }
       timer = window.setTimeout(step, delay);
     };
@@ -216,7 +216,7 @@
       count = letters.length;
       erasing = true;
       text.data = candidates[current];
-      if (!document.hidden && !reducedMotion.matches) timer = window.setTimeout(step, 4500);
+      if (!document.hidden && !reducedMotion.matches) timer = window.setTimeout(step, 9000);
     };
     document.addEventListener("visibilitychange", update);
     reducedMotion.addEventListener("change", update);

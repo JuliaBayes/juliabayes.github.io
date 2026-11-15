@@ -181,6 +181,7 @@
     const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" });
     const split = (value) => [...segmenter.segment(value)].map((part) => part.segment);
     const text = tagline.firstChild;
+    const holdMs = 12000;
 
     let current = candidates.indexOf(text.data);
     let letters = split(candidates[current]);
@@ -203,10 +204,10 @@
         current = (current + offset) % candidates.length;
         letters = split(candidates[current]);
         erasing = false;
-        delay = 250;
+        delay = 350;
       } else if (!erasing && count === letters.length) {
         erasing = true;
-        delay = 12000;
+        delay = holdMs;
       }
       timer = window.setTimeout(step, delay);
     };
@@ -216,7 +217,7 @@
       count = letters.length;
       erasing = true;
       text.data = candidates[current];
-      if (!document.hidden && !reducedMotion.matches) timer = window.setTimeout(step, 9000);
+      if (!document.hidden && !reducedMotion.matches) timer = window.setTimeout(step, holdMs);
     };
     document.addEventListener("visibilitychange", update);
     reducedMotion.addEventListener("change", update);

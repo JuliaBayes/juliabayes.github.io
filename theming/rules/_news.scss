@@ -92,6 +92,11 @@ $news-row-padding-x: 0.8rem;
     border-radius: 0.5rem;
     background-color: var(--accent-panel-bg);
 
+    // Align the date with the title's first line, including wrapped titles.
+    @include media-breakpoint-up(md) {
+      align-items: baseline;
+    }
+
     & + div.quarto-post {
       margin-top: 0.75rem;
     }

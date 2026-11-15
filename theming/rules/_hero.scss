@@ -56,6 +56,22 @@
   }
 }
 
+.hero-tagline-phrase {
+  display: inline-grid;
+  max-width: 100%;
+  text-align: left;
+  vertical-align: top;
+}
+
+.hero-tagline-reserve,
+.hero-tagline-typed {
+  grid-area: 1 / 1;
+}
+
+.hero-tagline-reserve {
+  visibility: hidden;
+}
+
 @include media-breakpoint-down(sm) {
   .hero-curve-desktop {
     display: none;

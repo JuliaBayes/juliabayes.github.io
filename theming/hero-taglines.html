@@ -172,7 +172,8 @@
 
     // Leave the complete first choice in place when animation is unavailable.
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (!window.Intl?.Segmenter || reducedMotion.matches) return;
+    if (!window.Intl?.Segmenter || !window.CSS?.supports("display", "inline-grid") ||
+        reducedMotion.matches) return;
 
     // Reserve the wider phone curve for this visit, so later choices cannot
     // move the title or cards after a desktop window becomes narrow.
@@ -180,7 +181,24 @@
 
     const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" });
     const split = (value) => [...segmenter.segment(value)].map((part) => part.segment);
-    const text = tagline.firstChild;
+    const initial = tagline.textContent;
+    const screenReaderText = document.createElement("span");
+    screenReaderText.className = "visually-hidden";
+    screenReaderText.textContent = initial;
+    const phrase = document.createElement("span");
+    phrase.className = "hero-tagline-phrase";
+    phrase.setAttribute("aria-hidden", "true");
+    const reserve = document.createElement("span");
+    reserve.className = "hero-tagline-reserve";
+    reserve.textContent = initial;
+    const typed = document.createElement("span");
+    typed.className = "hero-tagline-typed";
+    const text = document.createTextNode(initial);
+    typed.append(text);
+    phrase.append(reserve, typed);
+    // Assistive technology keeps the initial line while only the visual copy
+    // changes. The hidden full phrase reserves the typing anchor and height.
+    tagline.replaceChildren(screenReaderText, phrase);
     const holdMs = 12000;
 
     let current = candidates.indexOf(text.data);
@@ -195,14 +213,15 @@
       }
       count += erasing ? -1 : 1;
       text.data = letters.slice(0, count).join("");
-      // Punctuation uses the upper end of the same ±20% timing range.
-      const punctuation = !erasing && /[,.!?;:]/u.test(letters[count - 1]);
+      // Spaces and punctuation use the upper end of the same ±20% range.
+      const pauseAfter = !erasing && /[\s,.!?;:]/u.test(letters[count - 1]);
       let delay = (erasing ? 35 : 75) *
-        (punctuation ? 1.2 : 0.8 + Math.random() * 0.4);
+        (pauseAfter ? 1.2 : 0.8 + Math.random() * 0.4);
       if (erasing && count === 0) {
         const offset = 1 + Math.floor(Math.random() * (candidates.length - 1));
         current = (current + offset) % candidates.length;
         letters = split(candidates[current]);
+        reserve.textContent = candidates[current];
         erasing = false;
         delay = 350;
       } else if (!erasing && count === letters.length) {
@@ -217,6 +236,7 @@
       count = letters.length;
       erasing = true;
       text.data = candidates[current];
+      reserve.textContent = candidates[current];
       if (!document.hidden && !reducedMotion.matches) timer = window.setTimeout(step, holdMs);
     };
     document.addEventListener("visibilitychange", update);

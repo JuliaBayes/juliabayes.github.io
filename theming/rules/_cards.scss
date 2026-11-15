@@ -24,6 +24,41 @@
   }
 }
 
+// The panel clips the hover background of the first and last row to its
+// rounded corners.
+.landing-panel {
+  margin-top: 0.75rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: var(--accent-panel-bg);
+
+  .quarto-listing {
+    padding-bottom: 0;
+  }
+
+  .quarto-listing-container-default {
+    margin-right: 0;
+  }
+}
+
+$landing-row-padding-x: 0.8rem;
+
+// The separator between rows stops where the text does, not at the edge of
+// the panel. The row needs `position: relative`.
+@mixin landing-row-separator {
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline: $landing-row-padding-x;
+    bottom: 0;
+    border-bottom: 1px solid var(--bs-border-color-translucent);
+  }
+
+  &:last-child::before {
+    content: none;
+  }
+}
+
 .landing-about {
   width: 100%;
   max-width: 36rem;

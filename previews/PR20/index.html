@@ -53,9 +53,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5d29ddc9f09f07c9342778317fac1b82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d8bcc47cc4592590064c6bc26a466cb8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-5d29ddc9f09f07c9342778317fac1b82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ce1ca4cf237d7e0f1044af067e2a2229.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-61173ee940413801108ef875ad2a4343.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-ce1ca4cf237d7e0f1044af067e2a2229.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -99,6 +99,28 @@ ul.task-list li input[type="checkbox"] {
 
     window['quarto-listings'] = window['quarto-listings'] || {};
     window['quarto-listings']['listing-news-listing'] = new List('listing-news-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-packages-overview .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-description','listing-task','listing-order','listing-logo','listing-status','listing-release-package','listing-repository','listing-release','listing-checked',{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: ["listing-title","listing-description","listing-task","listing-order","listing-logo","listing-status","listing-release-package","listing-repository","listing-release","listing-checked"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-packages-overview'] = new List('listing-packages-overview', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -728,10 +750,10 @@ Contributions and collaborations of all sizes are welcome.</p>
 <h2 class="anchored" data-anchor-id="news">News</h2>
 <p><a href="./news/index.html">All news →</a></p>
 </section>
-<div class="landing-news-panel">
+<div class="landing-panel">
 <div id="listing-news-listing" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1794268800000" data-listing-file-modified-sort="1794760565002" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1794268800000" data-listing-file-modified-sort="1794831044823" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./news/posts/2026-11-10-mock-third/index.html" class="no-external-icon">Mock post: a third entry with a much longer title, so that it runs past the width of the card and ends in an ellipsis</a>
@@ -745,7 +767,7 @@ Nov 10, 2026
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="bmV3cw==" data-listing-date-sort="1793836800000" data-listing-file-modified-sort="1794760565002" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<div class="quarto-post image-right" data-index="1" data-categories="bmV3cw==" data-listing-date-sort="1793836800000" data-listing-file-modified-sort="1794831044823" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./news/posts/2026-11-05-mock-second/index.html" class="no-external-icon">Mock post: a second entry</a>
@@ -759,7 +781,7 @@ Nov 5, 2026
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794760565002" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<div class="quarto-post image-right" data-index="2" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794831044823" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./news/posts/2026-10-29-hello-world/index.html" class="no-external-icon">Hello, world!</a>
@@ -773,6 +795,110 @@ Oct 29, 2026
 </a>
 </div>
 </div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</div>
+</div>
+<div class="g-col-12 accent-card accent-blue landing-card-ecosystem">
+<section id="ecosystem" class="level2 landing-card-header">
+<h2 class="anchored" data-anchor-id="ecosystem">Ecosystem</h2>
+<p><a href="./ecosystem/index.html">All packages →</a></p>
+</section>
+<div class="landing-panel">
+<div id="listing-packages-overview" class="quarto-listing quarto-listing-container-custom">
+<div class="landing-packages">
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://pysm.dev/Wren.jl/">Wren.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Unregistered</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>—</span>
+    <span class="landing-package-date" aria-hidden="true">—</span>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/EnsembleMCMC.jl/">EnsembleMCMC.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Registered</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.0.5</span>
+    <time class="landing-package-date" datetime="2026-11-02">2 Nov 2026</time>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/ImportanceSamplers.jl/dev/">ImportanceSamplers.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Registered</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.0.1</span>
+    <time class="landing-package-date" datetime="2026-11-12">12 Nov 2026</time>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/MGVI.jl/stable/">MGVI.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Stable</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.6.1</span>
+    <time class="landing-package-date" datetime="2026-11-13">13 Nov 2026</time>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/UltraNest.jl/stable/">UltraNest.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Stable</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.2.0</span>
+    <time class="landing-package-date" datetime="2026-07-31">31 Jul 2026</time>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/FlexiChains.jl/">FlexiChains.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Stable</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.7.2</span>
+    <time class="landing-package-date" datetime="2026-11-05">5 Nov 2026</time>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/BayesianWorkflow.jl/">BayesianWorkflow.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Unregistered</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>—</span>
+    <span class="landing-package-date" aria-hidden="true">—</span>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/MCMCProgress.jl/">MCMCProgress.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Registered</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>—</span>
+    <span class="landing-package-date" aria-hidden="true">—</span>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/Plaice.jl/">Plaice.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Registered</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.1.4</span>
+    <time class="landing-package-date" datetime="2026-11-07">7 Nov 2026</time>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/VarNames.jl/">VarNames.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Stable</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.1.9</span>
+    <time class="landing-package-date" datetime="2026-11-14">14 Nov 2026</time>
+
+  </div>
+
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>

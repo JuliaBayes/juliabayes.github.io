@@ -60,7 +60,7 @@
     "href": "index.html",
     "title": "JuliaBayes",
     "section": "",
-    "text": "Almost surely,\n\n\n\n\n\n\n\n\nAbout us Ecosystem  Slack\n\n\n\nWe develop, maintain, and promote Bayesian methods and software in Julia.\nWe are community-driven and aim to be welcoming and inclusive.\nContributions and collaborations of all sizes are welcome.\n\n\n\n\nAll news →\n\n\n\n\n\n\n\n\n\n\n\nNov 10, 2026\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2026\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Almost surely,\n\n\n\n\n\n\n\n\nAbout us Ecosystem  Slack\n\n\n\nWe develop, maintain, and promote Bayesian methods and software in Julia.\nWe are community-driven and aim to be welcoming and inclusive.\nContributions and collaborations of all sizes are welcome.\n\n\n\n\nAll news →\n\n\n\n\n\n\n\n\n\n\n\nNov 10, 2026\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2026\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\nAll packages →\n\n\n\n\n\n  \n    Wren.jl\n    Status: Unregistered\n\n    Latest release: —\n    —\n\n  \n\n  \n    EnsembleMCMC.jl\n    Status: Registered\n\n    Latest release: v0.0.5\n    2 Nov 2026\n\n  \n\n  \n    ImportanceSamplers.jl\n    Status: Registered\n\n    Latest release: v0.0.1\n    12 Nov 2026\n\n  \n\n  \n    MGVI.jl\n    Status: Stable\n\n    Latest release: v0.6.1\n    13 Nov 2026\n\n  \n\n  \n    UltraNest.jl\n    Status: Stable\n\n    Latest release: v0.2.0\n    31 Jul 2026\n\n  \n\n  \n    FlexiChains.jl\n    Status: Stable\n\n    Latest release: v0.7.2\n    5 Nov 2026\n\n  \n\n  \n    BayesianWorkflow.jl\n    Status: Unregistered\n\n    Latest release: —\n    —\n\n  \n\n  \n    MCMCProgress.jl\n    Status: Registered\n\n    Latest release: —\n    —\n\n  \n\n  \n    Plaice.jl\n    Status: Registered\n\n    Latest release: v0.1.4\n    7 Nov 2026\n\n  \n\n  \n    VarNames.jl\n    Status: Stable\n\n    Latest release: v0.1.9\n    14 Nov 2026\n\n  \n\n\nNo matching items"
   },
   {
     "objectID": "index.html#news",
@@ -68,6 +68,13 @@
     "title": "JuliaBayes",
     "section": "",
     "text": "All news →"
+  },
+  {
+    "objectID": "index.html#ecosystem",
+    "href": "index.html#ecosystem",
+    "title": "JuliaBayes",
+    "section": "",
+    "text": "All packages →"
   },
   {
     "objectID": "contact.html",
@@ -102,7 +109,7 @@
     "href": "about/index.html#team",
     "title": "About us",
     "section": "Team",
-    "text": "Team\nThese are some of the people behind JuliaBayes.\n\n\n\n\n\nJessica Cox she/her or they/them\n\nRole\n\nMember\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nEnsembleMCMC.jl, ImportanceSamplers.jl, Wren.jl\n\nBio\n\nI care about Bayesian software that still works years after its paper came out.\n\nGitHub\n\nBJMCox\n\nWebsite\n\nbjmcox.github.io\n\nEmail\n\nbcox@mpp.mpg.de\n\n\n\n\n\n\n\nSimon Steiger he/him\n\nRole\n\nMember\n\nAffiliation\n\nKarolinska Institutet\n\nPackages\n\nFlexiChains.jl, Wren.jl\n\nBio\n\nI like Bayesian statistics because the rest made less sense to me.\n\nGitHub\n\nsimonsteiger\n\nWebsite\n\nbirdsotherwi.se\n\nEmail\n\nsimon.steiger@ki.se\n\n\n\n\n\n\n\nPeter Thestrup Waade he/him\n\nRole\n\nMember\n\nAffiliation\n\nETH Zürich and Aarhus University\n\nPackages\n\nBayesianWorkflow.jl, BayesianRegressionModels.jl\n\nBio\n\nApplied computational modelling of cognition, psychiatry and phenomenology. Specialised in Bayesian mind models. Interest in social interaction.\n\nGitHub\n\nPTWaade\n\nEmail\n\npthestrup@ethz.ch\n\n\n\n\n\n\n\nNikolas Siccha\n\nRole\n\nMember\n\nAffiliation\n\nIndependent contractor\n\nPackages\n\nBayesianRegressionModels.jl\n\nBio\n\nI tend to write code that writes code.\n\nGitHub\n\nnsiccha\n\n\n\n\n\n\n\nOliver Schulz\n\nRole\n\nMember\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nMGVI.jl, UltraNest.jl\n\nGitHub\n\noschulz\n\n\n\n\n\nNo matching items"
+    "text": "Team\nThese are some of the people behind JuliaBayes.\n\n\n\n\n\nJessica Cox she/her\n\nRole\n\nMember\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nEnsembleMCMC.jl, ImportanceSamplers.jl, Wren.jl\n\nBio\n\nI research and implement new methods to sample parameters, and ways to use those methods. I also work on preservable models that are decoupled from any particular backend.\n\nGitHub\n\nBJMCox\n\nWebsite\n\nbjmcox.github.io\n\nEmail\n\nbcox@mpp.mpg.de\n\n\n\n\n\n\n\nSimon Steiger he/him\n\nRole\n\nMember\n\nAffiliation\n\nKarolinska Institutet\n\nPackages\n\nFlexiChains.jl, Wren.jl\n\nBio\n\nI like Bayesian statistics because the rest made less sense to me.\n\nGitHub\n\nsimonsteiger\n\nWebsite\n\nbirdsotherwi.se\n\nEmail\n\nsimon.steiger@ki.se\n\n\n\n\n\n\n\nPeter Thestrup Waade he/him\n\nRole\n\nMember\n\nAffiliation\n\nETH Zürich and Aarhus University\n\nPackages\n\nBayesianWorkflow.jl, BayesianRegressionModels.jl\n\nBio\n\nApplied computational modelling of cognition, psychiatry and phenomenology. Specialised in Bayesian mind models. Interest in social interaction.\n\nGitHub\n\nPTWaade\n\nEmail\n\npthestrup@ethz.ch\n\n\n\n\n\n\n\nNikolas Siccha\n\nRole\n\nMember\n\nAffiliation\n\nIndependent contractor\n\nPackages\n\nBayesianRegressionModels.jl\n\nBio\n\nI tend to write code that writes code.\n\nGitHub\n\nnsiccha\n\n\n\n\n\n\n\nOliver Schulz\n\nRole\n\nMember\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nMGVI.jl, UltraNest.jl\n\nGitHub\n\noschulz\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "news/index.html",

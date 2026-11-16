@@ -1,0 +1,60 @@
+// The landing page's ecosystem card: one row per package, name first, then
+// status, version and release date in fixed-width columns, so that each column
+// lines up across rows.
+.landing-package {
+  @include accent-panel-link(".landing-package-name");
+  @include landing-row-separator;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.5rem $landing-row-padding-x;
+  font-size: $landing-small-font-size;
+  line-height: 1.5;
+}
+
+// Without min-width, a long name stretches the column instead of being cut
+// off.
+.landing-package .landing-package-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--bs-body-color);
+}
+
+.landing-package-status,
+.landing-package-version,
+.landing-package-date {
+  color: var(--bs-secondary-color);
+  font-variant-numeric: tabular-nums;
+}
+
+.landing-package-status {
+  flex: 0 0 6.5rem;
+}
+
+.landing-package-version {
+  flex: 0 0 4rem;
+}
+
+.landing-package-date {
+  flex: 0 0 6rem;
+  text-align: end;
+}
+
+// On phones, the name takes the first line and the details share the second.
+@include media-breakpoint-down(sm) {
+  .landing-package {
+    flex-wrap: wrap;
+    row-gap: 0;
+  }
+
+  .landing-package .landing-package-name {
+    flex-basis: 100%;
+  }
+
+  .landing-package-date {
+    text-align: start;
+  }
+}

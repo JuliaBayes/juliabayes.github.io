@@ -1,46 +1,14 @@
-// The panel clips the hover background of the first and last post to its
-// rounded corners.
-.landing-news-panel {
-  margin-top: 0.75rem;
-  overflow: hidden;
-  border-radius: 0.5rem;
-  background-color: var(--accent-panel-bg);
-
-  .quarto-listing {
-    padding-bottom: 0;
-  }
-
-  .quarto-listing-container-default {
-    margin-right: 0;
-  }
-
-  div.quarto-post:last-child::before {
-    content: none;
-  }
-}
-
-$news-row-padding-x: 0.8rem;
-
 // Overrides Quarto's default listing: one row per post, date first, at every
 // width.
 .landing-card-news div.quarto-post {
   @include accent-panel-link(".listing-title a");
+  @include landing-row-separator;
   flex-direction: row;
   align-items: baseline;
   gap: 0.75rem;
   margin: 0;
-  padding: 0.5rem $news-row-padding-x;
+  padding: 0.5rem $landing-row-padding-x;
   border-bottom: none;
-
-  // The separator between posts stops where the text does, not at the edge
-  // of the panel.
-  &::before {
-    content: "";
-    position: absolute;
-    inset-inline: $news-row-padding-x;
-    bottom: 0;
-    border-bottom: 1px solid var(--bs-border-color-translucent);
-  }
 
   .metadata {
     order: -1;

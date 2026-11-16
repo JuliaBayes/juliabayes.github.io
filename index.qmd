@@ -9,14 +9,22 @@ html-math-method: plain
 # stylesheet. Its own rules hang off this class.
 body-classes: landing
 listing:
-  id: news-listing
-  contents: news/posts
-  sort: "date desc"
-  max-items: 9
-  type: default
-  fields: [date, title]
-  sort-ui: false
-  filter-ui: false
+  - id: news-listing
+    contents: news/posts
+    sort: "date desc"
+    max-items: 9
+    type: default
+    fields: [date, title]
+    sort-ui: false
+    filter-ui: false
+  # The template keeps the ecosystem page's order and its row limit, since
+  # `max-items` would also count the release entries.
+  - id: packages-overview
+    contents: [ecosystem/packages.yml, ecosystem/releases.yml]
+    template: ecosystem/overview.ejs.md
+    sort: false
+    sort-ui: false
+    filter-ui: false
 ---
 
 ::::::: {.grid}
@@ -56,8 +64,23 @@ Contributions and collaborations of all sizes are welcome.
 [All news →](news/index.qmd)
 :::
 
-:::: {.landing-news-panel}
+:::: {.landing-panel}
 ::: {#news-listing}
+:::
+::::
+
+::::
+
+:::: {.g-col-12 .accent-card .accent-blue .landing-card-ecosystem}
+
+::: {.landing-card-header}
+## Ecosystem
+
+[All packages →](ecosystem/index.qmd)
+:::
+
+:::: {.landing-panel}
+::: {#packages-overview}
 :::
 ::::
 

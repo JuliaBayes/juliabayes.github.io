@@ -1,6 +1,8 @@
-// Team list on the About page: one row per person, with the avatar on the
-// left and the details as a list of labelled items.
+// Team list on the About page: one card per person, with the avatar on the
+// left and the details as a list of labelled items in a tinted panel.
 .team-list {
+  display: grid;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
@@ -8,12 +10,6 @@
   display: flex;
   gap: 1.25rem;
   align-items: flex-start;
-  padding: 1.25rem 0;
-  border-top: 1px solid var(--bs-border-color);
-
-  &:last-child {
-    border-bottom: 1px solid var(--bs-border-color);
-  }
 
   // Pandoc wraps the avatar in a paragraph.
   > p:first-child {
@@ -44,7 +40,10 @@
     display: grid;
     grid-template-columns: 7rem 1fr;
     gap: 0.25rem 1rem;
-    margin: 0.5rem 0 0;
+    margin: 0.75rem 0 0;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--accent-panel-bg);
     font-size: $landing-small-font-size;
   }
 

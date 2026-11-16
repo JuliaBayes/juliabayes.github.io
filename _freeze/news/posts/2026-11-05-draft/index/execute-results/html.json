@@ -1,0 +1,12 @@
+{
+  "hash": "29f387fd6b248f53d93e874ef97bbf1b",
+  "result": {
+    "engine": "julia",
+    "markdown": "---\ntitle: \"TITLE TBD\"\ndate: 2026-11-05\nauthor: \"Ryan Senne\"\ncategories: [news]\ndescription: \"One-line summary shown in the News listing.\"\ndraft: true  # remove when ready to publish\n---\n\nIntro paragraph here.\n\n## Section\n\n::: {#2 .cell execution_count=1}\n``` {.julia .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-display execution_count=1}\n```\n2\n```\n:::\n:::\n\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

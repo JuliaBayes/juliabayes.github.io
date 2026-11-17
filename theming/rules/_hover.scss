@@ -1,3 +1,10 @@
+@media (forced-colors: none) {
+  ::selection {
+    color: $body-color;
+    background-color: mix($julia-purple, $body-bg, 40%);
+  }
+}
+
 // The stretched links make their whole row clickable. The underline shows
 // which title that hit area opens, including when tabbing through the row.
 $row-title-links: ".landing-package-name, .ecosystem-package-name, .landing-card-news div.quarto-post .listing-title a, .news-card div.quarto-post .listing-title a";

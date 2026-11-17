@@ -3,7 +3,7 @@
 # one of unregistered, registered or stable. `logo` is optional,
 # a path from this folder.
 - title: Wren.jl
-  path: https://pysm.dev/Wren.jl/
+  path: https://juliabayes.org/Wren.jl/
   description: Probabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.
   task: Modelling
   order: 1

@@ -181,7 +181,7 @@ function solve_curve(;
 end
 
 """
-    curve_svg(; σ, peak_height, width, gradient_id, gradient_inset=0.0, step=4, stroke_width=2)
+    curve_svg(; σ, peak_height, width, gradient_id, flat_tagline_top, gradient_inset=0.0, step=4, stroke_width=2)
 
 `gradient_inset` moves the green and red stops inward from the SVG's edges, as a
 fraction of its width, so they stay visible when the edges are clipped.
@@ -191,12 +191,14 @@ function curve_svg(;
     peak_height,
     width,
     gradient_id,
+    flat_tagline_top,
     gradient_inset=0.0,
     step=4,
     stroke_width=2,
 )
     base_y = peak_height + stroke_width
     height = base_y + stroke_width
+    flat_y = round(height - flat_tagline_top - CLEARANCE_PX - stroke_width / 2; digits=1)
     centre = width / 2
     points = join(
         (
@@ -215,11 +217,11 @@ function curve_svg(;
     return """
     <svg width="$width" height="$height" viewBox="0 0 $width $height" aria-hidden="true" focusable="false">
       <defs>
-        <linearGradient id="$gradient_id" x1="0" x2="1" y1="0" y2="0">
+        <linearGradient id="$gradient_id" gradientUnits="userSpaceOnUse" x1="0" x2="$width" y1="0" y2="0">
           $stops
         </linearGradient>
       </defs>
-      <path d="M$points" fill="none" stroke="url(#$gradient_id)" stroke-width="$stroke_width" stroke-linejoin="round"/>
+      <path d="M$points" data-flat-y="$flat_y" fill="none" stroke="url(#$gradient_id)" stroke-width="$stroke_width" stroke-linejoin="round"/>
     </svg>"""
 end
 
@@ -243,13 +245,17 @@ function write_hero_curve(path, svgs_by_layout)
     return path
 end
 
+function tagline_top(title_font_px, tagline_font_px, tagline_lines)
+    return title_font_px * TITLE_LINE_HEIGHT + TAGLINE_MARGIN_BOTTOM_PX +
+        tagline_font_px * TAGLINE_LINE_HEIGHT * tagline_lines
+end
+
 function hero_text_boxes(; title_font_px, tagline_font_px, widest_tagline_em, tagline_lines)
     title_top = title_font_px * TITLE_LINE_HEIGHT
     title_half_width = TITLE_GLYPHS * AVERAGE_ADVANCE_EM * title_font_px / 2
-    tagline_top =
-        title_top + TAGLINE_MARGIN_BOTTOM_PX + tagline_font_px * TAGLINE_LINE_HEIGHT * tagline_lines
     tagline_half_width = widest_tagline_em * tagline_font_px / 2
-    return [(title_half_width, title_top), (tagline_half_width, tagline_top)]
+    return [(title_half_width, title_top),
+        (tagline_half_width, tagline_top(title_font_px, tagline_font_px, tagline_lines))]
 end
 
 function solve_hero_curves()
@@ -274,12 +280,14 @@ function main(path=joinpath(dirname(@__DIR__), "_hero-curve.md"))
     svgs_by_layout = NamedTuple{layouts}(
         map(layouts) do layout
             (; σ, peak_height) = curves[layout]
+            dimensions = HERO_LAYOUTS[layout]
             curve_svg(;
                 σ,
                 peak_height,
-                width=HERO_LAYOUTS[layout].curve_width_px,
-                gradient_inset=HERO_LAYOUTS[layout].gradient_inset,
+                width=dimensions.curve_width_px,
+                gradient_inset=dimensions.gradient_inset,
                 gradient_id="hero-curve-gradient-$layout",
+                flat_tagline_top=tagline_top(dimensions.title_font_px, dimensions.tagline_font_px, 1),
                 stroke_width=CURVE_STROKE_PX,
             )
         end,

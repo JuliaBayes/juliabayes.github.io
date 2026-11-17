@@ -2,9 +2,8 @@
 (() => {
   const selector = ".accent-card, body.news-post #title-block-header";
   const enabled = matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none)");
-  if (!enabled.matches || !CSS.supports("color", "color-mix(in srgb, red, blue)") ||
-      !document.querySelector(selector)) return;
-  let card, frame = 0, x, y;
+  if (!CSS.supports("color", "color-mix(in srgb, red, blue)") || !document.querySelector(selector)) return;
+  let card, frame = 0, point;
   const clear = () => {
     card?.removeAttribute("data-card-pointer");
     card = null;
@@ -19,15 +18,12 @@
       card = next;
     }
     if (!card) return;
-    x = event.clientX;
-    y = event.clientY;
-    if (frame) return;
-    frame = requestAnimationFrame(() => {
+    point = event;
+    frame ||= requestAnimationFrame(() => {
       frame = 0;
-      const bounds = card.getBoundingClientRect();
-      card.style.setProperty("--card-x", `${x - bounds.left}px`);
-      card.style.setProperty("--card-y", `${y - bounds.top}px`);
-      card.setAttribute("data-card-pointer", "");
+      const { left, top } = card.getBoundingClientRect();
+      card.style.setProperty("--card-point", `${point.clientX - left}px ${point.clientY - top}px`);
+      card.toggleAttribute("data-card-pointer", true);
     });
   }, { passive: true });
   document.addEventListener("pointerleave", clear);

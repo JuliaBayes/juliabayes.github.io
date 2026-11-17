@@ -1,3 +1,21 @@
+// The stretched links make their whole row clickable. The underline shows
+// which title that hit area opens, including when tabbing through the row.
+$row-title-links: ".landing-package-name, .ecosystem-package-name, .landing-card-news div.quarto-post .listing-title a, .news-card div.quarto-post .listing-title a";
+
+:is(#{$row-title-links}):focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.17em;
+}
+
+@media (hover: hover) {
+  :is(#{$row-title-links}):hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.17em;
+  }
+}
+
 @supports (color: color-mix(in srgb, red, blue)) {
   // Keep a faint underline at rest, including on wrapped text links. The second
   // layer stays visible while the first draws over it on hover or keyboard focus.
@@ -45,7 +63,7 @@
       border-color: transparent;
       background-image:
         linear-gradient($accent-card-bg, $accent-card-bg),
-        radial-gradient(140px circle at var(--card-x) var(--card-y),
+        radial-gradient(140px circle at var(--card-point),
           color-mix(in srgb, var(--accent-color) 65%, #{$body-color}), var(--accent-color) 100%);
       background-origin: border-box;
       background-clip: padding-box, border-box;

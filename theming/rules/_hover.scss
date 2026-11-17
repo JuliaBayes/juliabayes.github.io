@@ -23,6 +23,12 @@ $row-title-links: ".landing-package-name, .ecosystem-package-name, .landing-card
   }
 }
 
+@property --card-highlight-strength {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
 @supports (color: color-mix(in srgb, red, blue)) {
   // Keep a faint underline at rest, including on wrapped text links. The second
   // layer stays visible while the first draws over it on hover or keyboard focus.
@@ -66,14 +72,21 @@ $row-title-links: ".landing-package-name, .ecosystem-package-name, .landing-card
   // The solid inner layer covers the radial layer everywhere except the border.
   // No overlay sits above links, and neither the border width nor layout changes.
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none) {
-    :is(.accent-card, body.news-post #title-block-header)[data-card-pointer] {
+    :is(.accent-card, body.news-post #title-block-header) {
+      --card-highlight-strength: 0%;
       border-color: transparent;
       background-image:
         linear-gradient($accent-card-bg, $accent-card-bg),
-        radial-gradient(140px circle at var(--card-point),
-          color-mix(in srgb, var(--accent-color) 65%, #{$body-color}), var(--accent-color) 100%);
+        radial-gradient(140px circle at var(--card-point, center),
+          color-mix(in srgb, #{$body-color} var(--card-highlight-strength), var(--accent-color)),
+          var(--accent-color) 100%);
       background-origin: border-box;
       background-clip: padding-box, border-box;
+      transition: --card-highlight-strength 150ms ease-out;
+
+      &[data-card-pointer] {
+        --card-highlight-strength: 35%;
+      }
     }
   }
 

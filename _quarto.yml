@@ -65,7 +65,9 @@ format:
     # The first visit follows the visitor's system setting. The toggle still
     # overrides it.
     respect-user-color-scheme: true
+    include-before-body: theming/skip-link.html
     include-after-body:
+      - theming/keyboard.html
       - theming/theme-switch.html
       - theming/search-shortcut.html
       - theming/category-links.html

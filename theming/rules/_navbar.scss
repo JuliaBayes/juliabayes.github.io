@@ -2,6 +2,10 @@
 // themes. Quarto's resize observer updates the offset after the first paint.
 $navbar-initial-height: 64px;
 
+html {
+  scroll-padding-top: calc(#{$navbar-initial-height} + 0.5rem);
+}
+
 body.nav-fixed {
   padding-top: $navbar-initial-height;
 }
@@ -107,6 +111,11 @@ body.nav-fixed {
 
   .aa-Autocomplete:focus-within .aa-Form {
     border-color: var(--bs-border-color);
+  }
+
+  .aa-Autocomplete:has(.aa-Input:focus-visible) .aa-Form {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
 
   // The loupe lies over the right end of the input, and clicks pass through it.
@@ -248,6 +257,13 @@ body.nav-fixed {
 // GitHub, RSS and the theme toggle move into the open menu, under the page
 // links, so the bar has room for the logo.
 @include media-breakpoint-down(lg) {
+  // On short screens, let Tab scroll the open menu to tools below the fold.
+  #quarto-header:has(.navbar-collapse:is(.show, .collapsing)) {
+    max-height: 100dvh;
+    overflow-y: auto;
+    scroll-padding-block: 0.5rem;
+  }
+
   .navbar .navbar-container {
     flex-wrap: wrap;
     column-gap: 0.25rem;

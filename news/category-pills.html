@@ -1,33 +1,62 @@
-<!-- Quarto marks the selected category only in the sidebar. The pills under
-     each post take the same `active` state, so that a selected category stays
-     highlighted. A pill names its category only in its onclick handler, with
-     the same encoding as the sidebar's data-category. Filtering replaces the
-     posts with new elements, so the pills are looked up on every change. -->
+<!-- Quarto renders category controls as clickable divs. Give them native
+     keyboard behaviour and keep sidebar and in-list selection in sync. -->
 <script>
   (() => {
-    const sidebarCategories = document.querySelectorAll(
-      ".quarto-listing-category .category",
-    );
     const listing = document.querySelector(".news-card .quarto-listing");
-    if (sidebarCategories.length === 0 || listing === null) {
-      return;
-    }
-    const markActivePills = () => {
+    const clear = document.getElementById("news-clear-category");
+    const sidebar = document.querySelector(".quarto-listing-category");
+    if (!listing || !clear || !sidebar) return;
+
+    const asButton = (element) => {
+      if (element instanceof HTMLButtonElement) return element;
+      const button = document.createElement("button");
+      for (const { name, value } of element.attributes) button.setAttribute(name, value);
+      button.type = "button";
+      button.append(...element.childNodes);
+      element.replaceWith(button);
+      return button;
+    };
+
+    // Replace sidebar controls before Quarto attaches its click handlers.
+    const sidebarCategories = [...sidebar.querySelectorAll(".category")].map(asButton);
+    const update = () => {
       const activeCategory = document.querySelector(
         ".quarto-listing-category .category.active",
       )?.dataset.category;
-      for (const pill of listing.querySelectorAll(".listing-category")) {
+      for (const button of sidebarCategories) {
+        button.setAttribute("aria-pressed", String((activeCategory ?? "") === button.dataset.category));
+      }
+      clear.hidden = !activeCategory;
+      for (const element of listing.querySelectorAll(".listing-category")) {
+        const pill = asButton(element);
         const isActive =
           Boolean(activeCategory) &&
-          pill.getAttribute("onclick").includes(`'${activeCategory}'`);
+          pill.getAttribute("onclick")?.includes(`'${activeCategory}'`);
         pill.classList.toggle("active", isActive);
+        pill.setAttribute("aria-pressed", String(Boolean(isActive)));
       }
     };
-    const observer = new MutationObserver(markActivePills);
+    const observer = new MutationObserver(update);
     for (const category of sidebarCategories) {
       observer.observe(category, { attributes: true, attributeFilter: ["class"] });
     }
     observer.observe(listing, { childList: true, subtree: true });
-    markActivePills();
+    update();
+
+    // List.js moves rows in the DOM when it filters. Restore a keyboard
+    // user's focus to the same control once the row is back in place.
+    listing.addEventListener("click", (event) => {
+      const pill = event.target.closest("button.listing-category:focus-visible");
+      if (pill) requestAnimationFrame(() => {
+        if (document.activeElement === document.body) {
+          (pill.isConnected ? pill : clear).focus();
+        }
+      });
+    }, true);
+
+    clear.addEventListener("click", () => {
+      window.quartoListingCategory("");
+      listing.querySelector(".listing-title a")?.focus();
+    });
   })();
 </script>

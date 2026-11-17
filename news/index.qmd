@@ -17,6 +17,10 @@ include-after-body:
   - category-pills.html
 ---
 
+```{=html}
+<button type="button" id="news-clear-category" class="listing-category" hidden>Clear category filter</button>
+```
+
 :::: {.accent-card .accent-blue .news-card}
 ::: {#news-posts}
 :::

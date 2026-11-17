@@ -1,0 +1,58 @@
+@supports (color: color-mix(in srgb, red, blue)) {
+  // Keep a faint underline at rest, including on wrapped text links. The second
+  // layer stays visible while the first draws over it on hover or keyboard focus.
+  main.content :is(p, li, dd) a:not(.btn, .stretched-link, .anchorjs-link, .landing-package-name):not(:has(img, svg)),
+  .nav-footer-center a {
+    text-decoration: none;
+    background-image:
+      linear-gradient(currentColor, currentColor),
+      linear-gradient(color-mix(in srgb, currentColor 40%, transparent), color-mix(in srgb, currentColor 40%, transparent));
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 0 1px, 100% 1px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    transition: background-size 0.14s ease-out;
+
+    &:focus-visible {
+      background-size: 100% 1px, 100% 1px;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-size: 100% 1px, 100% 1px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+
+    @media (forced-colors: active) {
+      text-decoration: underline;
+      background-image: none;
+    }
+  }
+
+  body.news-post #title-block-header {
+    --accent-color: #{$julia-blue};
+  }
+
+  // The solid inner layer covers the radial layer everywhere except the border.
+  // No overlay sits above links, and neither the border width nor layout changes.
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none) {
+    :is(.accent-card, body.news-post #title-block-header)[data-card-pointer] {
+      border-color: transparent;
+      background-image:
+        linear-gradient($accent-card-bg, $accent-card-bg),
+        radial-gradient(140px circle at var(--card-x) var(--card-y),
+          color-mix(in srgb, var(--accent-color) 65%, #{$body-color}), var(--accent-color) 100%);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+    }
+  }
+
+  :is(.accent-card, body.news-post #title-block-header):has(:focus-visible) {
+    border-color: color-mix(in srgb, var(--accent-color) 65%, #{$body-color});
+  }
+}

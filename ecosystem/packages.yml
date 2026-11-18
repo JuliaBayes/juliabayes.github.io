@@ -54,6 +54,7 @@
   task: Tooling
   order: 5
   status: registered
+  logo: assets/mcmcprogress.svg
 - title: Plaice.jl
   path: https://juliabayes.org/Plaice.jl/
   description: Converts samples from distributions to and from vectors, constrained or unconstrained.

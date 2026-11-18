@@ -1,6 +1,6 @@
-name: Suggest a Bayesian Julia package
+name: Showcase a Bayesian Julia package
 description: Request a package listing on the JuliaBayes Ecosystem page.
-title: "Package suggestion: "
+title: "Package showcase: "
 body:
   - type: markdown
     attributes:

@@ -5,6 +5,21 @@ toc: false
 
 Not all who sample are lost.
 
-But this time you found a region with zero probability density. The posterior may have moved along with the page you were looking for.
+```{=html}
+<p id="lost-page-passage">P.P.P.S. We asked Butterbur to forward this page. Given the 404, most of the posterior mass now lies behind the bar at the Prancing Pony.</p>
+<template id="lost-page-alternatives">
+  <p>The previous page ended with “they are coming.” This one returns a 404. We are beginning to doubt that the pages went missing at random.</p>
+  <p>We sent four chains down different paths to find your page. All four ended up at this 404. Tom Bombadil says they do that at the Withywindle, too.</p>
+  <p>Gandalf got into Moria by reading the door more carefully. We have now read your URL twice. The posterior still favours “there is no door.”</p>
+</template>
+<script>
+  (() => {
+    const passage = document.getElementById("lost-page-passage");
+    const alternatives = document.getElementById("lost-page-alternatives").content.children;
+    const passages = [passage, ...alternatives];
+    passage.textContent = passages[Math.floor(Math.random() * passages.length)].textContent;
+  })();
+</script>
+```
 
 Go to the [home page](/) or the [news](/news/).

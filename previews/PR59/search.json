@@ -18,7 +18,7 @@
     "href": "ecosystem/index.html",
     "title": "Ecosystem",
     "section": "",
-    "text": "Skip to main content\nDo you want your package here? Come say hello in #bayes on Julia Slack!\nFor development discussion, use #bayes-dev on Julia Slack."
+    "text": "Skip to main content\nDo you want your package here? Come say hello in #bayes on Julia Slack!\nGot code to talk about? Join the development discussion in #bayes-dev on Julia Slack."
   },
   {
     "objectID": "ecosystem/index.html#modelling",
@@ -88,7 +88,7 @@
     "href": "contact.html#julia-slack",
     "title": "Contact us",
     "section": "Julia Slack",
-    "text": "Julia Slack\nUse #bayes for general JuliaBayes chat and #bayes-dev for development discussion. Join Julia Slack if you need an account."
+    "text": "Julia Slack\nCome say hello in #bayes, our home for general JuliaBayes chat! Got code to talk about? Join the development discussion in #bayes-dev. New to the workspace? Join Julia Slack."
   },
   {
     "objectID": "contact.html#github",
@@ -102,7 +102,7 @@
     "href": "about/index.html",
     "title": "About us",
     "section": "",
-    "text": "Skip to main content\nJuliaBayes is a shared home for Bayesian software in Julia. Our goal is to make it easier to collaborate, share maintenance, and keep packages supported over time.\nWe are an open and welcoming community of people interested in Bayesian statistics, whether in theory, in applications, or in software engineering. Our projects span modelling, inference, and tools for working with the results.\nWe welcome collaboration across probabilistic programming languages, research groups, and institutions. Most of us contribute alongside our day jobs, so contributions of all sizes are welcome.\nWant to bring your package into JuliaBayes, or just talk Bayes with us? Use #bayes for general JuliaBayes chat and #bayes-dev for development discussion. Join Julia Slack if you need an account."
+    "text": "Skip to main content\nJuliaBayes is a shared home for Bayesian software in Julia. Our goal is to make it easier to collaborate, share maintenance, and keep packages supported over time.\nWe are an open and welcoming community of people interested in Bayesian statistics, whether in theory, in applications, or in software engineering. Our projects span modelling, inference, and tools for working with the results.\nWe welcome collaboration across probabilistic programming languages, research groups, and institutions. Most of us contribute alongside our day jobs, so contributions of all sizes are welcome.\nWant to bring your package into JuliaBayes, or just talk Bayes with us? Come say hello in #bayes, our home for general JuliaBayes chat! Got code to talk about? Join the development discussion in #bayes-dev. New to the workspace? Join Julia Slack."
   },
   {
     "objectID": "about/index.html#team",

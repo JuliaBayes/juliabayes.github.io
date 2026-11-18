@@ -3,7 +3,9 @@
 Each file in this folder adds one person to the team section of the About page.
 Only add yourself. Your entry is there because you chose to add it.
 
-1. Copy the example below into `<github-handle>.yml` in this folder.
+1. Copy `_template.yml` to `<github-handle>.yml` in this folder and fill it in.
+   The example below shows a filled-in entry.
+   Quarto skips files that start with `_`, so the template does not show on the page.
 1. Add a square image as `<github-handle>.jpg` or `.png`, about 200 by 200 pixels.
    To use your GitHub avatar, save `https://github.com/<github-handle>.png?size=200`.
    The site serves the photo itself, so visitors' browsers do not contact GitHub.

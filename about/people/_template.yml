@@ -1,0 +1,14 @@
+# Copy this file to <github-handle>.yml in this folder and fill it in.
+# README.md in this folder describes the fields. Optional fields left empty
+# do not show on the page.
+name:         # required
+github:       # required, your GitHub handle
+role:         # required, for example Maintainer or Member
+order: 10     # required, position on the page, lowest first
+image:        # optional, file name in this folder, for example janedoe.jpg
+pronouns:     # optional
+affiliation:  # optional
+bio:          # optional, one or two sentences
+packages: []  # optional, JuliaBayes repository names, for example [FlexiChains.jl]
+website:      # optional
+email:        # optional, shown publicly

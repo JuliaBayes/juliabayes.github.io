@@ -18,7 +18,7 @@ include-after-body:
 ---
 
 ```{=html}
-<button type="button" id="news-clear-category" class="listing-category" hidden>Clear category filter</button>
+<button type="button" id="news-clear-category" class="listing-category" disabled>Clear category filter</button>
 ```
 
 :::: {.accent-card .accent-blue .news-card}

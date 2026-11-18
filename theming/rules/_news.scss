@@ -20,6 +20,10 @@ button.listing-category {
   color: var(--bs-body-color);
   background: var(--bs-body-bg);
   font-size: $landing-small-font-size;
+
+  &:disabled {
+    opacity: 0.6;
+  }
 }
 
 :is(.quarto-listing-category button.category, button.listing-category):focus-visible {

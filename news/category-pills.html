@@ -26,7 +26,7 @@
       for (const button of sidebarCategories) {
         button.setAttribute("aria-pressed", String((activeCategory ?? "") === button.dataset.category));
       }
-      clear.hidden = !activeCategory;
+      clear.disabled = !activeCategory;
       for (const element of listing.querySelectorAll(".listing-category")) {
         const pill = asButton(element);
         const isActive =

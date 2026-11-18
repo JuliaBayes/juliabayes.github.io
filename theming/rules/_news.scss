@@ -1,3 +1,36 @@
+.quarto-listing-category button.category,
+button.listing-category {
+  font-family: inherit;
+  text-align: start;
+}
+
+.quarto-listing-category button.category {
+  display: block;
+  background: none;
+  border: 0;
+  padding-inline: 0;
+  color: inherit;
+}
+
+#news-clear-category {
+  margin-bottom: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.375rem;
+  color: var(--bs-body-color);
+  background: var(--bs-body-bg);
+  font-size: $landing-small-font-size;
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+:is(.quarto-listing-category button.category, button.listing-category):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
 // Overrides Quarto's default listing: one row per post, date first, at every
 // width.
 .landing-card-news div.quarto-post {

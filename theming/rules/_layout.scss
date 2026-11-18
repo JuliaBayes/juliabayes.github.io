@@ -1,3 +1,14 @@
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.75rem;
+  z-index: $zindex-fixed + 1;
+  padding: 0.5rem 0.75rem;
+  color: $body-color;
+  background-color: $body-bg;
+  outline: 2px solid currentColor;
+}
+
 // Quarto centres the content only on pages without margin content. A table of
 // contents or a listing's categories adds a margin column on the right and
 // moves the content left, so pages started at different offsets. The margin

@@ -2,12 +2,26 @@
 // One row per file in about/people/. See about/people/README.md for the
 // fields. Optional fields render only when set.
 const repo = (pkg) => `https://github.com/JuliaBayes/${pkg}`;
+const groups = [
+  { role: "Steering Committee", title: "Steering Committee", accent: "purple", people: [] },
+  { role: "Maintainer", title: "Maintainers", accent: "blue", people: [] },
+  { role: "Member", title: "Members", accent: "blue", people: [] },
+];
+for (const item of items) {
+  const group = groups.find(({ role }) => role === item.role);
+  if (!group) throw new Error(`Unknown team role "${item.role}" for ${item.name}. See about/people/README.md.`);
+  group.people.push(item);
+}
 %>
+
+<% for (const group of groups) { %>
+<% if (group.people.length === 0) continue; %>
+### <%= group.title %>
 
 ::: {.team-list}
 
-<% for (const item of items) { %>
-::: {.team-person .accent-card .accent-blue <%= metadataAttrs(item) %>}
+<% for (const item of group.people) { %>
+::: {.team-person .accent-card .accent-<%= group.accent %> <%= metadataAttrs(item) %>}
 
 <% if (item.image) { %>
 ![](people/<%= item.image %>){.team-avatar alt="" width="80" height="80"}
@@ -17,7 +31,7 @@ const repo = (pkg) => `https://github.com/JuliaBayes/${pkg}`;
 
 ::: {.team-body}
 
-### <%= item.name %><% if (item.pronouns) { %> [<%= item.pronouns %>]{.team-pronouns}<% } %> {.team-name .unnumbered .unlisted}
+#### <%= item.name %><% if (item.pronouns) { %> [<%= item.pronouns %>]{.team-pronouns}<% } %> {.team-name .unnumbered .unlisted}
 
 Role
 : <%= item.role %>
@@ -56,3 +70,4 @@ Email
 <% } %>
 
 :::
+<% } %>

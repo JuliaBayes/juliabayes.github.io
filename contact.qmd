@@ -5,9 +5,8 @@ toc: false
 
 ## Julia Slack
 
-Want to bring your package into JuliaBayes, suggest a collaboration, or talk Bayes?
-Come say hello in [`#bayes`](https://julialang.slack.com/archives/C0BKRUEN6CX) on the Julia Slack.
-If you are not on the Julia Slack yet, [join here](https://julialang.org/slack/).
+Use [`#bayes`](https://julialang.slack.com/archives/C0BKRUEN6CX) for general JuliaBayes chat and [`#bayes-dev`](https://julialang.slack.com/app_redirect?channel=bayes-dev) for development discussion.
+[Join Julia Slack](https://julialang.org/slack/) if you need an account.
 
 ## GitHub
 

@@ -18,7 +18,8 @@ We welcome collaboration across probabilistic programming languages, research gr
 Most of us contribute alongside our day jobs, so contributions of all sizes are welcome.
 
 Want to bring your package into JuliaBayes, or just talk Bayes with us?
-Come say hello in [`#bayes`](https://julialang.slack.com/archives/C0BKRUEN6CX) on the Julia Slack ([join here](https://julialang.org/slack/) if you are not on it yet)!
+Use [`#bayes`](https://julialang.slack.com/archives/C0BKRUEN6CX) for general JuliaBayes chat and [`#bayes-dev`](https://julialang.slack.com/app_redirect?channel=bayes-dev) for development discussion.
+[Join Julia Slack](https://julialang.org/slack/) if you need an account.
 
 ## Team
 

@@ -18,6 +18,15 @@ CI should only read from `_freeze` and render the post.
 
 If you need to rerun the code in a post, you can delete the `_freeze/news/posts/YYYY-MM-DD-slug` folder (do _not_ delete the entire `_freeze` folder!) and rerun `quarto render`.
 
+## Writing a gist
+
+1. Copy [the gist template](gists/_template.md) to `gists/entries/YYYY-MM-DD-slug/index.md`.
+1. Fill in the title, author, date, summary, and tags. Add Julia code you have run. Use `{.julia .cell-code}` on fenced blocks for syntax highlighting and folding.
+1. Add any saved output, figures, or source links. Keep assets next to `index.md`. Code-only gists are welcome.
+1. Render with `quarto render gists/` and open a PR with the Markdown and assets.
+
+Gists use Quarto's Markdown engine with execution disabled. Include code and results as static content.
+
 ## License
 
 - Code, such as the theme, scripts, templates and configuration, is under the [MIT License](LICENSE).

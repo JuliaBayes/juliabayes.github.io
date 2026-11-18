@@ -1,0 +1,20 @@
+---
+title: Gists
+toc: false
+html-math-method: plain
+listing:
+  id: gist-entries
+  contents: entries
+  sort: "date desc"
+  template: entries.ejs.md
+  sort-ui: false
+  filter-ui: false
+include-after-body: filters.html
+---
+
+[Contribute a gist](https://github.com/JuliaBayes/juliabayes.github.io#writing-a-gist)
+
+:::: {.accent-card .accent-blue .gist-card}
+::: {#gist-entries}
+:::
+::::

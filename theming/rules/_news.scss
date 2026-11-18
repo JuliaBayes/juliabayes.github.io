@@ -76,7 +76,7 @@ button.listing-category {
 
 // The news page: one accent card, with each post in a tinted panel like the
 // packages on the ecosystem page.
-.news-card {
+:is(.news-card, .gist-card) {
   .quarto-listing {
     padding-bottom: 0;
   }
@@ -168,6 +168,16 @@ button.listing-category {
       border-color: var(--accent-color);
     }
   }
+}
+
+.gist-card .listing-title {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.gist-card .listing-category {
+  cursor: default;
 }
 
 // On phones, a date column leaves too little room for the title. The date

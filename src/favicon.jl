@@ -12,8 +12,6 @@
 include("hero_curve.jl")
 
 const ICON_SIZE = 32
-# Space between the drawing and the edge of the view box.
-const ICON_MARGIN = 1.5
 # In julia-dots.svg from JuliaLang/julia-logo-graphics, the dot centres form an
 # equilateral triangle with side 173.205 and the dots have radius 75.
 const JULIA_DOT_SPACING = 173.205 / 75
@@ -34,15 +32,14 @@ const TAIL_DROP = 1.3
 const TAIL_LENGTH = 2.0
 const TOUCH_ICON_PX = 180
 const TOUCH_ICON_BACKGROUND = "#FFFFFF"
-# Apple's icon grid keeps the artwork inside about 80% of the icon.
-const TOUCH_ICON_SCALE = 0.8
 
 """
-    icon_svg(; id="favicon", background=nothing, scale=1.0)
+    icon_svg(; id="favicon", background=nothing, square=false)
 
-Return the icon as SVG markup in a $(ICON_SIZE)×$(ICON_SIZE) view box.
+Return the icon cropped to its painted bounds. Keep a square canvas for
+raster icons.
 """
-function icon_svg(; id="favicon", background=nothing, scale=1.0)
+function icon_svg(; id="favicon", background=nothing, square=false)
     # Lay out the mark with dot radius 1, the top dot at the origin and y down.
     side = JULIA_DOT_SPACING * DOT_SPREAD
     half_side, drop = side / 2, side * sqrt(3) / 2
@@ -53,7 +50,7 @@ function icon_svg(; id="favicon", background=nothing, scale=1.0)
     width = max(2tail_end + CURVE_STROKE, side + 2)
     top, bottom = -1.0, max(base + CURVE_STROKE / 2, drop + 1)
     # Scale and centre the mark in the icon.
-    k = (ICON_SIZE - 2ICON_MARGIN) / max(width, bottom - top)
+    k = ICON_SIZE / max(width, bottom - top)
     centre = ICON_SIZE / 2
     to_x(x) = round(centre + k * x; digits=2)
     to_y(y) = round(centre + k * (y - (top + bottom) / 2); digits=2)
@@ -62,7 +59,9 @@ function icon_svg(; id="favicon", background=nothing, scale=1.0)
     points = join(("$(to_x(x)),$(to_y(curve_y(x)))" for x in range(-tail_end, tail_end; length=121)), " L")
     x_lo, x_hi = to_x(-tail_end), to_x(tail_end)
     dot_offsets = round.((first.(dots) .- x_lo) ./ (x_hi - x_lo); digits=4)
-    radius, stroke = round(k; digits=2), round(k * CURVE_STROKE; digits=2)
+    radius = round(k; digits=2)
+    # Rounding the tail centres can leave slightly less room for the caps.
+    stroke = round(min(k * CURVE_STROKE, 2x_lo, 2(ICON_SIZE - x_hi)); digits=2)
     stops = join(
         (
             """<stop offset="$offset" stop-color="$color"/>""" for
@@ -82,18 +81,28 @@ function icon_svg(; id="favicon", background=nothing, scale=1.0)
         ),
     )
     backdrop = isnothing(background) ? "" : """<rect width="$ICON_SIZE" height="$ICON_SIZE" fill="$background"/>"""
-    offset = round((1 - scale) * centre; digits=2)
+    view_box = if square
+        "0 0 $ICON_SIZE $ICON_SIZE"
+    else
+        # Use the rounded drawing coordinates so neither a dot nor a round
+        # stroke cap gets clipped by the crop.
+        left_dot, right_dot = extrema(first.(dots))
+        top_dot, bottom_dot = extrema(last.(dots))
+        left = min(left_dot - radius, x_lo - stroke / 2)
+        right = max(right_dot + radius, x_hi + stroke / 2)
+        upper = min(top_dot - radius, to_y(0) - stroke / 2)
+        lower = max(bottom_dot + radius, to_y(curve_y(tail_end)) + stroke / 2)
+        join(round.((left, upper, right - left, lower - upper); digits=3), ' ')
+    end
     return """
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 $ICON_SIZE $ICON_SIZE">\
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="$view_box">\
     <defs>\
     <linearGradient id="$id-curve" gradientUnits="userSpaceOnUse" x1="$x_lo" x2="$x_hi" y1="0" y2="0">$stops</linearGradient>\
     <mask id="$id-gaps"><rect width="$ICON_SIZE" height="$ICON_SIZE" fill="#fff"/><g fill="#000">$holes</g></mask>\
     </defs>\
     $backdrop\
-    <g transform="translate($offset $offset) scale($scale)">\
     <path d="M$points" fill="none" stroke="url(#$id-curve)" stroke-width="$stroke" stroke-linecap="round" mask="url(#$id-gaps)"/>\
     $circles\
-    </g>\
     </svg>
     """
 end
@@ -117,8 +126,8 @@ end
 function write_icons(root=dirname(@__DIR__))
     svg = icon_svg()
     write(joinpath(root, "favicon.svg"), svg)
-    write_ico(joinpath(root, "favicon.ico"), rasterize(svg, ICON_SIZE), ICON_SIZE)
-    touch_svg = icon_svg(; background=TOUCH_ICON_BACKGROUND, scale=TOUCH_ICON_SCALE)
+    write_ico(joinpath(root, "favicon.ico"), rasterize(icon_svg(; square=true), ICON_SIZE), ICON_SIZE)
+    touch_svg = icon_svg(; background=TOUCH_ICON_BACKGROUND, square=true)
     write(joinpath(root, "apple-touch-icon.png"), rasterize(touch_svg, TOUCH_ICON_PX))
     return root
 end

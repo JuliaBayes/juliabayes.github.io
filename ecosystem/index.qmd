@@ -16,7 +16,7 @@ include-after-body:
   - filters.html
 ---
 
-Do you want your package here?
+[Suggest a Bayesian Julia package](https://github.com/JuliaBayes/juliabayes.github.io/issues/new?template=suggest-package.yml).
 Come say hello in [`#bayes` on Julia Slack](https://julialang.slack.com/archives/C0BKRUEN6CX)!
 
 ::: {#packages}

@@ -1,0 +1,31 @@
+name: Suggest a Bayesian Julia package
+description: Request a package listing on the JuliaBayes Ecosystem page.
+title: "Package suggestion: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Packages outside the JuliaBayes organization are welcome. Your submission will open a public issue for review.
+  - type: input
+    id: package-name
+    attributes:
+      label: Package name
+    validations:
+      required: true
+  - type: input
+    id: repository
+    attributes:
+      label: Repository URL
+    validations:
+      required: true
+  - type: textarea
+    id: bayesian-use
+    attributes:
+      label: How does the package support Bayesian work in Julia?
+      description: Briefly describe what the package does and how someone might use it.
+    validations:
+      required: true
+  - type: input
+    id: docs
+    attributes:
+      label: Documentation or example URL

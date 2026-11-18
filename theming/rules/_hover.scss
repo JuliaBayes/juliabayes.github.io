@@ -30,38 +30,27 @@ $row-title-links: ".landing-package-name, .ecosystem-package-name, .landing-card
 }
 
 @supports (color: color-mix(in srgb, red, blue)) {
-  // Keep a faint underline at rest, including on wrapped text links. The second
-  // layer stays visible while the first draws over it on hover or keyboard focus.
+  // A native underline follows wrapped links. Interacting with a link only
+  // changes the underline colour.
   main.content :is(p, li, dd) a:not(.btn, .stretched-link, .anchorjs-link, .landing-package-name):not(:has(img, svg)),
   .nav-footer-center a {
-    text-decoration: none;
-    background-image:
-      linear-gradient(currentColor, currentColor),
-      linear-gradient(color-mix(in srgb, currentColor 40%, transparent), color-mix(in srgb, currentColor 40%, transparent));
-    background-position: left bottom;
-    background-repeat: no-repeat;
-    background-size: 0 1px, 100% 1px;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-    transition: background-size 0.14s ease-out;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 50%, transparent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.17em;
 
     &:focus-visible {
-      background-size: 100% 1px, 100% 1px;
+      text-decoration-color: currentColor;
     }
 
     @media (hover: hover) {
       &:hover {
-        background-size: 100% 1px, 100% 1px;
+        text-decoration-color: currentColor;
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      transition: none;
-    }
-
     @media (forced-colors: active) {
-      text-decoration: underline;
-      background-image: none;
+      text-decoration-color: currentColor;
     }
   }
 

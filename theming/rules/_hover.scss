@@ -1,0 +1,85 @@
+@media (forced-colors: none) {
+  ::selection {
+    color: $body-color;
+    background-color: mix($julia-purple, $body-bg, 40%);
+  }
+}
+
+// The stretched links make their whole row clickable. The underline shows
+// which title that hit area opens, including when tabbing through the row.
+$row-title-links: ".landing-package-name, .ecosystem-package-name, .landing-card-news div.quarto-post .listing-title a, .news-card div.quarto-post .listing-title a";
+
+:is(#{$row-title-links}):focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.17em;
+}
+
+@media (hover: hover) {
+  :is(#{$row-title-links}):hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.17em;
+  }
+}
+
+@property --card-highlight-strength {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+@supports (color: color-mix(in srgb, red, blue)) {
+  // A native underline follows wrapped links. Interacting with a link only
+  // changes the underline colour.
+  main.content :is(p, li, dd) a:not(.btn, .stretched-link, .anchorjs-link, .landing-package-name):not(:has(img, svg)),
+  .nav-footer-center a {
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 50%, transparent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.17em;
+
+    &:focus-visible {
+      text-decoration-color: currentColor;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        text-decoration-color: currentColor;
+      }
+    }
+
+    @media (forced-colors: active) {
+      text-decoration-color: currentColor;
+    }
+  }
+
+  body.news-post #title-block-header {
+    --accent-color: #{$julia-blue};
+  }
+
+  // The solid inner layer covers the radial layer everywhere except the border.
+  // No overlay sits above links, and neither the border width nor layout changes.
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none) {
+    :is(.accent-card, body.news-post #title-block-header) {
+      --card-highlight-strength: 0%;
+      border-color: transparent;
+      background-image:
+        linear-gradient($accent-card-bg, $accent-card-bg),
+        radial-gradient(140px circle at var(--card-point, center),
+          color-mix(in srgb, #{$body-color} var(--card-highlight-strength), var(--accent-color)),
+          var(--accent-color) 100%);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      transition: --card-highlight-strength 150ms ease-out;
+
+      &[data-card-pointer] {
+        --card-highlight-strength: 35%;
+      }
+    }
+  }
+
+  :is(.accent-card, body.news-post #title-block-header):has(:focus-visible) {
+    border-color: color-mix(in srgb, var(--accent-color) 65%, #{$body-color});
+  }
+}

@@ -26,7 +26,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
       # No need for julia here because outputs come from _freeze/
-      - run: quarto render
+      - name: Render preview
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # Quarto gives 404 pages absolute links so they work from nested URLs.
+          printf 'website:\n  site-path: /previews/PR%s/\n' "$PR_NUMBER" > _quarto-pr-preview.yml
+          quarto render --profile pr-preview
 
       - name: Deploy preview
         if: ${{ env.IS_PR_BUT_NOT_FORK == 'true' }}

@@ -4,28 +4,28 @@
     "href": "news/posts/2026-11-10-mock-third/index.html",
     "title": "Mock post: a third entry with a much longer title, so that it runs past the width of the card and ends in an ellipsis",
     "section": "",
-    "text": "Placeholder post for testing the news listing on the landing page."
+    "text": "Skip to main content\n\n\n\n\nPlaceholder post for testing the news listing on the landing page."
   },
   {
     "objectID": "news/posts/2026-10-29-hello-world/index.html",
     "href": "news/posts/2026-10-29-hello-world/index.html",
     "title": "Hello, world!",
     "section": "",
-    "text": "Welcome to JuliaBayes news! Posts here can contain Julia code. It runs when the author renders the post, and the site shows the saved output:\n\nusing Statistics\n\nx = randn(1000)\nmean(x), std(x)\n\n(0.004524789299067646, 0.9581874573980756)"
+    "text": "Skip to main content\n\n\n\n\nWelcome to JuliaBayes news! Posts here can contain Julia code. It runs when the author renders the post, and the site shows the saved output:\n\nusing Statistics\n\nx = randn(1000)\nmean(x), std(x)\n\n(0.004524789299067646, 0.9581874573980756)"
   },
   {
     "objectID": "ecosystem/index.html",
     "href": "ecosystem/index.html",
     "title": "Ecosystem",
     "section": "",
-    "text": "Do you want your package here? Come say hello in #bayes on Julia Slack!"
+    "text": "Skip to main content\nDo you want your package here? Come say hello in #bayes on Julia Slack!"
   },
   {
     "objectID": "ecosystem/index.html#modelling",
     "href": "ecosystem/index.html#modelling",
     "title": "Ecosystem",
     "section": "Modelling",
-    "text": "Modelling\n\n\nWren.jl\n\nDocs GitHub Issues\n\n\nProbabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Unregistered\n\nNo stable GitHub release yet."
+    "text": "Modelling\n\n\nWren.jl\n\nDocs GitHub Issues\n\n\nProbabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Unregistered\n\nNo stable GitHub release or version tag yet."
   },
   {
     "objectID": "ecosystem/index.html#sampling",
@@ -46,7 +46,7 @@
     "href": "ecosystem/index.html#workflow",
     "title": "Ecosystem",
     "section": "Workflow",
-    "text": "Workflow\n\n\nBayesianWorkflow.jl\n\nDocs GitHub Issues\n\n\nHigh-level tools for Bayesian workflows.\n\n\nStatus: Unregistered\n\nNo stable GitHub release yet."
+    "text": "Workflow\n\n\nBayesianWorkflow.jl\n\nDocs GitHub Issues\n\n\nHigh-level tools for Bayesian workflows.\n\n\nStatus: Unregistered\n\nNo stable GitHub release or version tag yet."
   },
   {
     "objectID": "ecosystem/index.html#tooling",
@@ -60,35 +60,35 @@
     "href": "index.html",
     "title": "JuliaBayes",
     "section": "",
-    "text": "Almost surely,\n\n\n\n\n\n\n\n\nAbout us Ecosystem  Slack\n\n\n\nWe develop, maintain, and promote Bayesian methods and software in Julia.\nWe are community-driven and aim to be welcoming and inclusive.\nContributions and collaborations of all sizes are welcome.\n\n\n\n\nAll news →\n\n\n\n\n\n\n\n\n\n\n\nNov 10, 2026\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2026\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\nAll packages →\n\n\n\n\n\n  \n    Wren.jl\n    Status: Unregistered\n\n    Latest release: —\n    —\n\n  \n\n  \n    EnsembleMCMC.jl\n    Status: Registered\n\n    Latest release: v0.0.5\n    2 Nov 2026\n\n  \n\n  \n    ImportanceSamplers.jl\n    Status: Registered\n\n    Latest release: v0.0.1\n    12 Nov 2026\n\n  \n\n  \n    MGVI.jl\n    Status: Stable\n\n    Latest release: v0.6.1\n    13 Nov 2026\n\n  \n\n  \n    UltraNest.jl\n    Status: Stable\n\n    Latest release: v0.2.0\n    31 Jul 2026\n\n  \n\n  \n    FlexiChains.jl\n    Status: Stable\n\n    Latest release: v0.7.2\n    5 Nov 2026\n\n  \n\n  \n    BayesianWorkflow.jl\n    Status: Unregistered\n\n    Latest release: —\n    —\n\n  \n\n  \n    MCMCProgress.jl\n    Status: Registered\n\n    Latest release: v0.1.0\n    18 Nov 2026\n\n  \n\n  \n    Plaice.jl\n    Status: Registered\n\n    Latest release: v0.1.4\n    7 Nov 2026\n\n  \n\n  \n    VarNames.jl\n    Status: Stable\n\n    Latest release: v0.1.9\n    14 Nov 2026\n\n  \n\n\nNo matching items"
+    "text": "Skip to main content"
   },
   {
     "objectID": "index.html#news",
     "href": "index.html#news",
     "title": "JuliaBayes",
-    "section": "",
-    "text": "All news →"
+    "section": "News",
+    "text": "News\nAll news →"
   },
   {
     "objectID": "index.html#ecosystem",
     "href": "index.html#ecosystem",
     "title": "JuliaBayes",
-    "section": "",
-    "text": "All packages →"
+    "section": "Ecosystem",
+    "text": "Ecosystem\nAll packages →"
   },
   {
     "objectID": "contact.html",
     "href": "contact.html",
     "title": "Contact us",
     "section": "",
-    "text": "Want to bring your package into JuliaBayes, suggest a collaboration, or talk Bayes? Come say hello in #bayes on the Julia Slack. If you are not on the Julia Slack yet, join here."
+    "text": "Skip to main content"
   },
   {
     "objectID": "contact.html#julia-slack",
     "href": "contact.html#julia-slack",
     "title": "Contact us",
-    "section": "",
-    "text": "Want to bring your package into JuliaBayes, suggest a collaboration, or talk Bayes? Come say hello in #bayes on the Julia Slack. If you are not on the Julia Slack yet, join here."
+    "section": "Julia Slack",
+    "text": "Julia Slack\nWant to bring your package into JuliaBayes, suggest a collaboration, or talk Bayes? Come say hello in #bayes on the Julia Slack. If you are not on the Julia Slack yet, join here."
   },
   {
     "objectID": "contact.html#github",
@@ -102,7 +102,7 @@
     "href": "about/index.html",
     "title": "About us",
     "section": "",
-    "text": "JuliaBayes is a shared home for Bayesian software in Julia. Our goal is to make it easier to collaborate, share maintenance, and keep packages supported over time.\nWe are an open and welcoming community of people interested in Bayesian statistics, whether in theory, in applications, or in software engineering. Our projects span modelling, inference, and tools for working with the results.\nWe welcome collaboration across probabilistic programming languages, research groups, and institutions. Most of us contribute alongside our day jobs, so contributions of all sizes are welcome.\nWant to bring your package into JuliaBayes, or just talk Bayes with us? Come say hello in #bayes on the Julia Slack (join here if you are not on it yet)!"
+    "text": "Skip to main content\nJuliaBayes is a shared home for Bayesian software in Julia. Our goal is to make it easier to collaborate, share maintenance, and keep packages supported over time.\nWe are an open and welcoming community of people interested in Bayesian statistics, whether in theory, in applications, or in software engineering. Our projects span modelling, inference, and tools for working with the results.\nWe welcome collaboration across probabilistic programming languages, research groups, and institutions. Most of us contribute alongside our day jobs, so contributions of all sizes are welcome.\nWant to bring your package into JuliaBayes, or just talk Bayes with us? Come say hello in #bayes on the Julia Slack (join here if you are not on it yet)!"
   },
   {
     "objectID": "about/index.html#team",
@@ -116,13 +116,13 @@
     "href": "news/index.html",
     "title": "News",
     "section": "",
-    "text": "Mock post: a third entry with a much longer title, so that it runs past the width of the card and ends in an ellipsis\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 10, 2026\n\n\n\n\n\n\n\nMock post: a second entry\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2026\n\n\n\n\n\n\n\nHello, world!\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Skip to main content\n\n\n\n\nClear category filter\n\n\n\n\n\n\nMock post: a third entry with a much longer title, so that it runs past the width of the card and ends in an ellipsis\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 10, 2026\n\n\n\n\n\n\n\nMock post: a second entry\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2026\n\n\n\n\n\n\n\nHello, world!\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "news/posts/2026-11-05-mock-second/index.html",
     "href": "news/posts/2026-11-05-mock-second/index.html",
     "title": "Mock post: a second entry",
     "section": "",
-    "text": "Placeholder post for testing the news listing on the landing page."
+    "text": "Skip to main content\n\n\n\n\nPlaceholder post for testing the news listing on the landing page."
   }
 ]

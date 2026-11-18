@@ -52,9 +52,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-7999042e89332264d978e6278364bbc7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-9238dcb96481fa51f24cb61655c27589.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-7999042e89332264d978e6278364bbc7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e5b8adced84f5618b85917823811c738.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-db8d8fa7a3959636149825220879c989.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-e5b8adced84f5618b85917823811c738.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -347,6 +347,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
+<a class="skip-link visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -367,10 +368,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<button type="button" id="news-clear-category" class="listing-category" disabled="">Clear category filter</button>
 <div class="accent-card accent-blue news-card">
 <div id="listing-news-posts" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1794268800000" data-listing-file-modified-sort="1794987335148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1794268800000" data-listing-file-modified-sort="1794987402276" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../news/posts/2026-11-10-mock-third/index.html" class="no-external-icon">Mock post: a third entry with a much longer title, so that it runs past the width of the card and ends in an ellipsis</a>
@@ -394,7 +396,7 @@ Nov 10, 2026
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="bmV3cw==" data-listing-date-sort="1793836800000" data-listing-file-modified-sort="1794987335148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<div class="quarto-post image-right" data-index="1" data-categories="bmV3cw==" data-listing-date-sort="1793836800000" data-listing-file-modified-sort="1794987402276" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../news/posts/2026-11-05-mock-second/index.html" class="no-external-icon">Mock post: a second entry</a>
@@ -418,7 +420,7 @@ Nov 5, 2026
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794987335148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<div class="quarto-post image-right" data-index="2" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1794987402276" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../news/posts/2026-10-29-hello-world/index.html" class="no-external-icon">Hello, world!</a>
@@ -451,6 +453,93 @@ Oct 29, 2026
 
 
 </main> <!-- /main -->
+<script>
+  (() => {
+    // Quarto puts the before-body include after the header.
+    const skip = document.querySelector(".skip-link");
+    const main = document.getElementById("quarto-document-content");
+    if (skip && main) {
+      document.body.prepend(skip);
+      main.tabIndex = -1;
+    }
+
+    const header = document.getElementById("quarto-header");
+    const menu = header?.querySelector(".navbar-toggler");
+    if (menu) {
+      menu.removeAttribute("role");
+      const menuOpen = () => menu.getClientRects().length && menu.getAttribute("aria-expanded") === "true";
+      header.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape" || event.defaultPrevented || !menuOpen()) return;
+        event.preventDefault();
+        menu.click();
+        menu.focus();
+      });
+      header.addEventListener("focusout", (event) => {
+        if (event.relatedTarget && !header.contains(event.relatedTarget) && menuOpen()) menu.click();
+      });
+    }
+
+    for (const toggle of document.querySelectorAll("a.quarto-color-scheme-toggle")) {
+      toggle.setAttribute("role", "button");
+      toggle.addEventListener("keydown", (event) => {
+        if (event.key !== " ") return;
+        event.preventDefault();
+        if (!event.repeat) toggle.click();
+      });
+    }
+
+    // The desktop loupe is decoration over the input. Enter in the input
+    // activates the selected result, so the loupe needs no separate Tab stop.
+    const search = document.getElementById("quarto-search");
+    if (search) {
+      const skipLoupe = () => {
+        const loupe = search.querySelector(".aa-SubmitButton");
+        if (loupe) loupe.tabIndex = -1;
+      };
+      new MutationObserver(skipLoupe).observe(search, { childList: true, subtree: true });
+      skipLoupe();
+    }
+
+    // Quarto's detached search is full-screen. Keep Tab in the search until
+    // it closes, then return focus to the search button or shortcut origin.
+    let overlay;
+    let opener = document.activeElement;
+    document.addEventListener("focusin", (event) => {
+      if (!event.target.closest(".aa-DetachedOverlay")) opener = event.target;
+    });
+    new MutationObserver(() => {
+      const next = document.querySelector(".aa-DetachedOverlay");
+      if (next === overlay) return;
+      if (next) {
+        next.setAttribute("role", "dialog");
+        next.setAttribute("aria-modal", "true");
+        next.setAttribute("aria-label", "Search");
+      } else if (overlay && document.activeElement === document.body) {
+        opener?.focus();
+      }
+      overlay = next;
+    }).observe(document.body, { childList: true });
+
+    document.addEventListener("keydown", (event) => {
+      if (!overlay?.isConnected || event.defaultPrevented) return;
+      if (event.key === "Escape") {
+        overlay.querySelector(".aa-DetachedCancelButton")?.click();
+        event.preventDefault();
+      } else if (event.key === "Tab") {
+        const controls = [...overlay.querySelectorAll("a[href], button, input, [tabindex]")]
+          .filter((element) => element.tabIndex >= 0 && !element.matches(":disabled") &&
+            element.getClientRects().length && getComputedStyle(element).visibility === "visible");
+        const first = controls[0];
+        const last = controls.at(-1);
+        const active = document.activeElement;
+        if (!overlay.contains(active) || active === (event.shiftKey ? first : last)) {
+          event.preventDefault();
+          (event.shiftKey ? last : first)?.focus();
+        }
+      }
+    });
+  })();
+</script>
 <!-- Quarto swaps the theme stylesheets at once, but elements with a CSS
      transition, such as the buttons, then fade to the new colours and lag
      behind the page. Transitions stay off until the new stylesheet applies,
@@ -561,37 +650,66 @@ Oct 29, 2026
   enabled.addEventListener("change", clear);
 })();
 </script>
-<!-- Quarto marks the selected category only in the sidebar. The pills under
-     each post take the same `active` state, so that a selected category stays
-     highlighted. A pill names its category only in its onclick handler, with
-     the same encoding as the sidebar's data-category. Filtering replaces the
-     posts with new elements, so the pills are looked up on every change. -->
+<!-- Quarto renders category controls as clickable divs. Give them native
+     keyboard behaviour and keep sidebar and in-list selection in sync. -->
 <script>
   (() => {
-    const sidebarCategories = document.querySelectorAll(
-      ".quarto-listing-category .category",
-    );
     const listing = document.querySelector(".news-card .quarto-listing");
-    if (sidebarCategories.length === 0 || listing === null) {
-      return;
-    }
-    const markActivePills = () => {
+    const clear = document.getElementById("news-clear-category");
+    const sidebar = document.querySelector(".quarto-listing-category");
+    if (!listing || !clear || !sidebar) return;
+
+    const asButton = (element) => {
+      if (element instanceof HTMLButtonElement) return element;
+      const button = document.createElement("button");
+      for (const { name, value } of element.attributes) button.setAttribute(name, value);
+      button.type = "button";
+      button.append(...element.childNodes);
+      element.replaceWith(button);
+      return button;
+    };
+
+    // Replace sidebar controls before Quarto attaches its click handlers.
+    const sidebarCategories = [...sidebar.querySelectorAll(".category")].map(asButton);
+    const update = () => {
       const activeCategory = document.querySelector(
         ".quarto-listing-category .category.active",
       )?.dataset.category;
-      for (const pill of listing.querySelectorAll(".listing-category")) {
+      for (const button of sidebarCategories) {
+        button.setAttribute("aria-pressed", String((activeCategory ?? "") === button.dataset.category));
+      }
+      clear.disabled = !activeCategory;
+      for (const element of listing.querySelectorAll(".listing-category")) {
+        const pill = asButton(element);
         const isActive =
           Boolean(activeCategory) &&
-          pill.getAttribute("onclick").includes(`'${activeCategory}'`);
+          pill.getAttribute("onclick")?.includes(`'${activeCategory}'`);
         pill.classList.toggle("active", isActive);
+        pill.setAttribute("aria-pressed", String(Boolean(isActive)));
       }
     };
-    const observer = new MutationObserver(markActivePills);
+    const observer = new MutationObserver(update);
     for (const category of sidebarCategories) {
       observer.observe(category, { attributes: true, attributeFilter: ["class"] });
     }
     observer.observe(listing, { childList: true, subtree: true });
-    markActivePills();
+    update();
+
+    // List.js moves rows in the DOM when it filters. Restore a keyboard
+    // user's focus to the same control once the row is back in place.
+    listing.addEventListener("click", (event) => {
+      const pill = event.target.closest("button.listing-category:focus-visible");
+      if (pill) requestAnimationFrame(() => {
+        if (document.activeElement === document.body) {
+          (pill.isConnected ? pill : clear).focus();
+        }
+      });
+    }, true);
+
+    clear.addEventListener("click", () => {
+      window.quartoListingCategory("");
+      listing.querySelector(".listing-title a")?.focus();
+    });
   })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">

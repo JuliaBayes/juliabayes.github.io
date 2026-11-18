@@ -43,18 +43,29 @@
   text-align: end;
 }
 
-// On phones, the name takes the first line and the details share the second.
+// On phones, keep the package name and version in one row. The ecosystem page
+// has the status and release date.
 @include media-breakpoint-down(sm) {
   .landing-package {
-    flex-wrap: wrap;
-    row-gap: 0;
+    align-items: center;
+    column-gap: 0.5rem;
+    min-height: 2.75rem;
   }
 
   .landing-package .landing-package-name {
-    flex-basis: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
+  .landing-package-status,
   .landing-package-date {
-    text-align: start;
+    display: none;
+  }
+
+  .landing-package-version {
+    flex: 0 0 auto;
+    max-width: 40%;
+    overflow-wrap: anywhere;
+    text-align: end;
   }
 }

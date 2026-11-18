@@ -1,5 +1,7 @@
 <script>
   (() => {
+    const uniformTagline = "Uniformly,";
+    const bimodalTagline = "Between two modes,";
     // The generated curves clear advances up to 9em on phones and 13.5em on
     // desktop. Wide text wraps to two lines if a desktop visit becomes narrow.
     const taglines = [
@@ -45,7 +47,7 @@
       "Verifiably,",
       "Numerically,",
       "Analytically,",
-      "Uniformly,",
+      uniformTagline,
       "Locally,",
       "Globally,",
       "Optimally,",
@@ -125,7 +127,7 @@
       "Without divergences,",
       "As the prior foretold,",
       "Somewhere in the tails,",
-      "Between two modes,",
+      bimodalTagline,
       "With suspicious certainty,",
       "Almost surely eventually,",
       "By mutual information,",
@@ -162,16 +164,53 @@
     // Matches media-breakpoint-down(sm) in theming/rules/_hero.scss.
     const isPhone = window.matchMedia("(max-width: 575.98px)").matches;
     const candidates = isPhone ? taglines : taglines.concat(wideTaglines);
+    const stage = document.currentScript.closest(".hero-stage");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let shapes;
+    let currentShape = "curve";
+    const setCurve = (value, immediate = false) => {
+      const nextShape = value === uniformTagline ? "line" : value === bimodalTagline ? "bimodal" : "curve";
+      if ((!shapes && nextShape === "curve") || (nextShape === currentShape && !immediate)) return;
+      currentShape = nextShape;
+
+      // Replace the Y coordinates only, so both shapes have the same SVG
+      // commands and the browser can interpolate between them.
+      shapes ??= [...stage.querySelectorAll("path[data-flat-y]")].map((path) => {
+        const curve = path.getAttribute("d");
+        const line = curve.replace(/,-?[\d.]+/g, `,${path.dataset.flatY}`);
+        return { path, curve, line, bimodal: path.dataset.bimodal };
+      });
+      for (const shape of shapes) {
+        const { path } = shape;
+        const previous = path.getAttribute("d");
+        const next = shape[nextShape];
+        path.querySelector("animate")?.remove();
+        path.setAttribute("d", next);
+        if (immediate || reducedMotion.matches || previous === next) continue;
+
+        const morph = document.createElementNS(path.namespaceURI, "animate");
+        morph.setAttribute("attributeName", "d");
+        morph.setAttribute("begin", "indefinite");
+        morph.setAttribute("dur", "300ms");
+        morph.setAttribute("values", `${previous};${next}`);
+        morph.setAttribute("calcMode", "spline");
+        morph.setAttribute("keyTimes", "0;1");
+        morph.setAttribute("keySplines", "0.4 0 0.2 1");
+        morph.addEventListener("endEvent", () => morph.remove(), { once: true });
+        path.append(morph);
+        morph.beginElement?.();
+      }
+    };
     // Insert the complete paragraph while the hero is parsed.
     const tagline = document.createElement("p");
     tagline.id = "hero-tagline";
     tagline.textContent =
       candidates[Math.floor(Math.random() * candidates.length)];
+    setCurve(tagline.textContent, true);
     if (wideTaglines.includes(tagline.textContent)) tagline.dataset.wide = "";
     document.currentScript.replaceWith(tagline);
 
     // Leave the complete first choice in place when animation is unavailable.
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (!window.Intl?.Segmenter || !window.CSS?.supports("display", "inline-grid") ||
         reducedMotion.matches) return;
 
@@ -218,6 +257,7 @@
       let delay = (erasing ? 35 : 75) *
         (pauseAfter ? 1.2 : 0.8 + Math.random() * 0.4);
       if (erasing && count === 0) {
+        setCurve("");
         const offset = 1 + Math.floor(Math.random() * (candidates.length - 1));
         current = (current + offset) % candidates.length;
         letters = split(candidates[current]);
@@ -225,6 +265,7 @@
         erasing = false;
         delay = 350;
       } else if (!erasing && count === letters.length) {
+        setCurve(text.data);
         erasing = true;
         delay = holdMs;
       }
@@ -236,6 +277,7 @@
       count = letters.length;
       erasing = true;
       text.data = candidates[current];
+      setCurve(text.data, document.hidden || reducedMotion.matches);
       reserve.textContent = candidates[current];
       if (!document.hidden && !reducedMotion.matches) timer = window.setTimeout(step, holdMs);
     };

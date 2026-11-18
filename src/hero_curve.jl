@@ -200,13 +200,20 @@ function curve_svg(;
     height = base_y + stroke_width
     flat_y = round(height - flat_tagline_top - CLEARANCE_PX - stroke_width / 2; digits=1)
     centre = width / 2
-    points = join(
-        (
-            "$x,$(round(base_y - normal_height(x - centre, σ, peak_height); digits=1))"
-            for x in 0:step:width
-        ),
-        " L",
-    )
+    xs = 0:step:width
+    function path_data(heights)
+        points = ("$x,$(round(base_y - y; digits=1))" for (x, y) in zip(xs, heights))
+        return "M" * join(points, " L")
+    end
+    curve = path_data(normal_height(x - centre, σ, peak_height) for x in xs)
+
+    # Sum two equally weighted Normal curves. Leave the valley high enough to
+    # clear the tagline, and match the existing curve's peak height.
+    offset = width / 6
+    spread = offset / 1.47
+    heights = [normal_height(x - centre - offset, spread, 1) +
+               normal_height(x - centre + offset, spread, 1) for x in xs]
+    bimodal = path_data(heights .* (peak_height / maximum(heights)))
     stops = join(
         (
             """<stop offset="$offset" stop-color="$color"/>""" for
@@ -221,7 +228,7 @@ function curve_svg(;
           $stops
         </linearGradient>
       </defs>
-      <path d="M$points" data-flat-y="$flat_y" fill="none" stroke="url(#$gradient_id)" stroke-width="$stroke_width" stroke-linejoin="round"/>
+      <path d="$curve" data-flat-y="$flat_y" data-bimodal="$bimodal" fill="none" stroke="url(#$gradient_id)" stroke-width="$stroke_width" stroke-linejoin="round"/>
     </svg>"""
 end
 

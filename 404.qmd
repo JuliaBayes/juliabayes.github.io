@@ -3,6 +3,8 @@ title: "Page not found"
 toc: false
 ---
 
-This page does not exist. It may have moved.
+Not all who sample are lost.
+
+But this time you found a region with zero probability density. The posterior may have moved along with the page you were looking for.
 
 Go to the [home page](/) or the [news](/news/).

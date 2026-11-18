@@ -25,28 +25,28 @@
     "href": "ecosystem/index.html#modelling",
     "title": "Ecosystem",
     "section": "Modelling",
-    "text": "Modelling\n\n\nWren.jl\n\nDocs GitHub Issues\n\n\nProbabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Unregistered\n\nNo stable GitHub release or version tag yet."
+    "text": "Modelling\n\n\nWren.jl\n\nDocs GitHub Issues\n\n\nProbabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.\n\n\n\nMaintained by: Jessica CoxSimon SteigerShow all\n\nStatus: Unregistered\n\nNo stable GitHub release or version tag yet."
   },
   {
     "objectID": "ecosystem/index.html#sampling",
     "href": "ecosystem/index.html#sampling",
     "title": "Ecosystem",
     "section": "Sampling",
-    "text": "Sampling\n\n\nEnsembleMCMC.jl\n\nDocs GitHub Issues\n\n\nGradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.5 on 2 Nov 2026\n\n\n\n\n\n\n\n\n\nImportanceSamplers.jl\n\nDocs GitHub Issues\n\n\nPlain, multiple and adaptive importance sampling, on CPU threads or GPUs.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.1 on 12 Nov 2026\n\n\n\n\n\n\n\n\n\nMGVI.jl\n\nDocs GitHub Issues\n\n\nApproximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.\n\n\nStatus: Stable\n\nLatest release: v0.6.1 on 13 Nov 2026\n\n\n\n\n\n\nUltraNest.jl\n\nDocs GitHub Issues\n\n\nJulia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.\n\n\nStatus: Stable\n\nLatest release: v0.2.0 on 31 Jul 2026"
+    "text": "Sampling\n\n\nEnsembleMCMC.jl\n\nDocs GitHub Issues\n\n\nGradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.5 on 2 Nov 2026\n\n\n\n\n\n\n\n\n\nImportanceSamplers.jl\n\nDocs GitHub Issues\n\n\nPlain, multiple and adaptive importance sampling, on CPU threads or GPUs.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.1 on 12 Nov 2026\n\n\n\n\n\n\n\n\n\nMGVI.jl\n\nDocs GitHub Issues\n\n\nApproximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.\n\n\n\nMaintained by: Oliver SchulzShow all\n\nStatus: Stable\n\nLatest release: v0.6.1 on 13 Nov 2026\n\n\n\n\n\n\nUltraNest.jl\n\nDocs GitHub Issues\n\n\nJulia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.\n\n\n\nMaintained by: Oliver SchulzShow all\n\nStatus: Stable\n\nLatest release: v0.2.0 on 31 Jul 2026"
   },
   {
     "objectID": "ecosystem/index.html#analysis",
     "href": "ecosystem/index.html#analysis",
     "title": "Ecosystem",
     "section": "Analysis",
-    "text": "Analysis\n\n\nFlexiChains.jl\n\nDocs GitHub Issues\n\n\nMarkov chains that keep the type and structure of each sample.\n\n\nStatus: Stable\n\nLatest release: v0.7.2 on 5 Nov 2026"
+    "text": "Analysis\n\n\nFlexiChains.jl\n\nDocs GitHub Issues\n\n\nMarkov chains that keep the type and structure of each sample.\n\n\n\nMaintained by: Simon SteigerShow all\n\nStatus: Stable\n\nLatest release: v0.7.2 on 5 Nov 2026"
   },
   {
     "objectID": "ecosystem/index.html#workflow",
     "href": "ecosystem/index.html#workflow",
     "title": "Ecosystem",
     "section": "Workflow",
-    "text": "Workflow\n\n\nBayesianWorkflow.jl\n\nDocs GitHub Issues\n\n\nHigh-level tools for Bayesian workflows.\n\n\nStatus: Unregistered\n\nNo stable GitHub release or version tag yet."
+    "text": "Workflow\n\n\nBayesianWorkflow.jl\n\nDocs GitHub Issues\n\n\nHigh-level tools for Bayesian workflows.\n\n\n\nMaintained by: Peter Thestrup WaadeShow all\n\nStatus: Unregistered\n\nNo stable GitHub release or version tag yet."
   },
   {
     "objectID": "ecosystem/index.html#tooling",
@@ -109,7 +109,7 @@
     "href": "about/index.html#team",
     "title": "About us",
     "section": "Team",
-    "text": "Team\nThese are some of the people behind JuliaBayes.\n\n\n\n\n\nJessica Cox she/her or they/them\n\nRole\n\nMember\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nEnsembleMCMC.jl, ImportanceSamplers.jl, Wren.jl\n\nGitHub\n\nBJMCox\n\nWebsite\n\nbjmcox.github.io\n\nEmail\n\nbcox@mpp.mpg.de\n\n\n\n\n\nNo matching items"
+    "text": "Team\nThese are some of the people behind JuliaBayes.\n\n\n\n\n\nJessica Cox she/her\n\nRole\n\nMember\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nEnsembleMCMC.jl, ImportanceSamplers.jl, Wren.jl\n\nBio\n\nI research and implement new methods to sample parameters, and ways to use those methods. I also work on preservable models that are decoupled from any particular backend.\n\nGitHub\n\nBJMCox\n\nWebsite\n\nbjmcox.github.io\n\nEmail\n\nbcox@mpp.mpg.de\n\n\n\n\n\n\n\nSimon Steiger he/him\n\nRole\n\nMember\n\nAffiliation\n\nKarolinska Institutet\n\nPackages\n\nFlexiChains.jl, Wren.jl\n\nBio\n\nI like Bayesian statistics because the rest made less sense to me.\n\nGitHub\n\nsimonsteiger\n\nWebsite\n\nbirdsotherwi.se\n\nEmail\n\nsimon.steiger@ki.se\n\n\n\n\n\n\n\nPeter Thestrup Waade he/him\n\nRole\n\nMember\n\nAffiliation\n\nETH Zürich and Aarhus University\n\nPackages\n\nBayesianWorkflow.jl, BayesianRegressionModels.jl\n\nBio\n\nApplied computational modelling of cognition, psychiatry and phenomenology. Specialised in Bayesian mind models. Interest in social interaction.\n\nGitHub\n\nPTWaade\n\nEmail\n\npthestrup@ethz.ch\n\n\n\n\n\n\n\nNikolas Siccha\n\nRole\n\nMember\n\nAffiliation\n\nIndependent contractor\n\nPackages\n\nBayesianRegressionModels.jl\n\nBio\n\nI tend to write code that writes code.\n\nGitHub\n\nnsiccha\n\n\n\n\n\n\n\nOliver Schulz\n\nRole\n\nMember\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nMGVI.jl, UltraNest.jl\n\nGitHub\n\noschulz\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "news/index.html",

@@ -52,9 +52,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-302cad3ccaaa5fb4e74e3b4a70f68ba3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-357ca3057aa4fc95343a393060d36a32.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-302cad3ccaaa5fb4e74e3b4a70f68ba3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-fbe8a13ce83ce79684f8f0cddcaa2bb3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-6a293bffd619f41d10b893ab97ce0137.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-fbe8a13ce83ce79684f8f0cddcaa2bb3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -91,9 +91,10 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-description','listing-task','listing-order','listing-logo','listing-status','listing-release-package','listing-repository','listing-release','listing-checked','listing-name','listing-github','listing-role','listing-image','listing-pronouns','listing-affiliation','listing-packages','listing-website','listing-email',{ data: ['index'] },{ data: ['categories'] }],
-      
-      searchColumns: ["listing-title","listing-description","listing-task","listing-order","listing-logo","listing-status","listing-release-package","listing-repository","listing-release","listing-checked","listing-name","listing-github","listing-role","listing-image","listing-pronouns","listing-affiliation","listing-packages","listing-website","listing-email"],
+      valueNames: ['listing-title','listing-description','listing-task','listing-order','listing-logo','listing-status','listing-release-package','listing-repository','listing-release','listing-checked','listing-name','listing-github','listing-role','listing-image','listing-pronouns','listing-affiliation','listing-bio','listing-packages','listing-website','listing-email',{ data: ['index'] },{ data: ['categories'] }],
+      page: 25,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-title","listing-description","listing-task","listing-order","listing-logo","listing-status","listing-release-package","listing-repository","listing-release","listing-checked","listing-name","listing-github","listing-role","listing-image","listing-pronouns","listing-affiliation","listing-bio","listing-packages","listing-website","listing-email"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -435,7 +436,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="ecosystem-meta">
 <div class="ecosystem-maintainers">
-<p>Maintained by: <span id="maintainers-wren-jl"><span class="ecosystem-maintainer"><a href="https://github.com/BJMCox">Jessica Cox</a></span></span><button type="button" class="ecosystem-maintainers-more" aria-controls="maintainers-wren-jl" aria-expanded="false" hidden="">Show all</button></p>
+<p>Maintained by: <span id="maintainers-wren-jl"><span class="ecosystem-maintainer"><a href="https://github.com/BJMCox">Jessica Cox</a></span><span class="ecosystem-maintainer"><a href="https://github.com/simonsteiger">Simon Steiger</a></span></span><button type="button" class="ecosystem-maintainers-more" aria-controls="maintainers-wren-jl" aria-expanded="false" hidden="">Show all</button></p>
 </div>
 <p>Status: Unregistered</p>
 <div class="ecosystem-release">
@@ -506,6 +507,9 @@ ul.task-list li input[type="checkbox"] {
 <p>Approximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.</p>
 </div>
 <div class="ecosystem-meta">
+<div class="ecosystem-maintainers">
+<p>Maintained by: <span id="maintainers-mgvi-jl"><span class="ecosystem-maintainer"><a href="https://github.com/oschulz">Oliver Schulz</a></span></span><button type="button" class="ecosystem-maintainers-more" aria-controls="maintainers-mgvi-jl" aria-expanded="false" hidden="">Show all</button></p>
+</div>
 <p>Status: Stable</p>
 <div class="ecosystem-release">
 <p>Latest release: <a href="https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.6.1">v0.6.1</a> on <time datetime="2026-11-13">13 Nov 2026</time></p>
@@ -523,6 +527,9 @@ ul.task-list li input[type="checkbox"] {
 <p>Julia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.</p>
 </div>
 <div class="ecosystem-meta">
+<div class="ecosystem-maintainers">
+<p>Maintained by: <span id="maintainers-ultranest-jl"><span class="ecosystem-maintainer"><a href="https://github.com/oschulz">Oliver Schulz</a></span></span><button type="button" class="ecosystem-maintainers-more" aria-controls="maintainers-ultranest-jl" aria-expanded="false" hidden="">Show all</button></p>
+</div>
 <p>Status: Stable</p>
 <div class="ecosystem-release">
 <p>Latest release: <a href="https://github.com/JuliaBayes/UltraNest.jl/releases/tag/v0.2.0">v0.2.0</a> on <time datetime="2026-07-31">31 Jul 2026</time></p>
@@ -543,6 +550,9 @@ ul.task-list li input[type="checkbox"] {
 <p>Markov chains that keep the type and structure of each sample.</p>
 </div>
 <div class="ecosystem-meta">
+<div class="ecosystem-maintainers">
+<p>Maintained by: <span id="maintainers-flexichains-jl"><span class="ecosystem-maintainer"><a href="https://github.com/simonsteiger">Simon Steiger</a></span></span><button type="button" class="ecosystem-maintainers-more" aria-controls="maintainers-flexichains-jl" aria-expanded="false" hidden="">Show all</button></p>
+</div>
 <p>Status: Stable</p>
 <div class="ecosystem-release">
 <p>Latest release: <a href="https://github.com/JuliaBayes/FlexiChains.jl/releases/tag/v0.7.2">v0.7.2</a> on <time datetime="2026-11-05">5 Nov 2026</time></p>
@@ -566,6 +576,9 @@ ul.task-list li input[type="checkbox"] {
 <p>High-level tools for Bayesian workflows.</p>
 </div>
 <div class="ecosystem-meta">
+<div class="ecosystem-maintainers">
+<p>Maintained by: <span id="maintainers-bayesianworkflow-jl"><span class="ecosystem-maintainer"><a href="https://github.com/PTWaade">Peter Thestrup Waade</a></span></span><button type="button" class="ecosystem-maintainers-more" aria-controls="maintainers-bayesianworkflow-jl" aria-expanded="false" hidden="">Show all</button></p>
+</div>
 <p>Status: Unregistered</p>
 <div class="ecosystem-release">
 <p>No stable GitHub release or version tag yet.</p>
@@ -636,6 +649,9 @@ ul.task-list li input[type="checkbox"] {
 <p>GitHub release and tag data checked 18 Nov 2026.</p>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
+<nav id="packages-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div>
 
 

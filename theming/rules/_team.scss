@@ -63,7 +63,7 @@
 
 // The name is a heading for screen-reader navigation, but it sits in a row,
 // so it takes a smaller size than the section heading.
-#quarto-content .team-person h3.team-name {
+#quarto-content .team-person h4.team-name {
   margin: 0;
   font-size: 1.15rem;
   font-weight: 700;
@@ -97,7 +97,7 @@
     display: contents;
   }
 
-  #quarto-content .team-person h3.team-name {
+  #quarto-content .team-person h4.team-name {
     grid-column: 2;
     grid-row: 1;
   }

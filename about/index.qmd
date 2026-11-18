@@ -4,7 +4,7 @@ listing:
   id: team
   contents: people/*.yml
   template: people.ejs.md
-  # `order` sets the position. Entries with the same `order` sort by name.
+  # `order` sets the position within each role. Ties sort by name.
   sort: [order, name]
 ---
 

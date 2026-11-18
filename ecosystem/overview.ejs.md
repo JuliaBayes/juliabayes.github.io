@@ -31,10 +31,13 @@ const shown = packages.sort(byOrderThenTitle).slice(0, maxPackages);
     <a class="landing-package-name" href="<%= pkg.path %>"><%= pkg.title %></a>
     <span class="landing-package-status"><span class="visually-hidden">Status: </span><%= capitalise(pkg.status) %></span>
 <% if (release) { %>
-    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span><%= release.version %></span>
-    <time class="landing-package-date" datetime="<%= release.date %>"><%= releaseDate(release.date) %></time>
+    <span class="landing-package-version"><span class="visually-hidden"><%= release.source === "tag" ? "Latest tag" : "Latest release" %>: </span><%= release.version %></span>
 <% } else { %>
     <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>—</span>
+<% } %>
+<% if (release?.date) { %>
+    <time class="landing-package-date" datetime="<%= release.date %>"><%= releaseDate(release.date) %></time>
+<% } else { %>
     <span class="landing-package-date" aria-hidden="true">—</span>
 <% } %>
   </div>

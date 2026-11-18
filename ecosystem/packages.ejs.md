@@ -132,9 +132,9 @@ Status: <%= capitalise(pkg.status) %>
 
 ::: {.ecosystem-release}
 <% if (release) { %>
-Latest release: [<%= escapeMarkdown(release.version) %>](<%= release.url %>) on <time datetime="<%= release.date %>"><%= releaseDate(release.date) %></time>
+<%= release.source === "tag" ? "Latest tag" : "Latest release" %>: [<%= escapeMarkdown(release.version) %>](<%= release.url %>)<% if (release.date) { %> on <time datetime="<%= release.date %>"><%= releaseDate(release.date) %></time><% } %>
 <% } else if (repository) { %>
-No stable GitHub release yet.
+No stable GitHub release or version tag yet.
 <% } else { %>
 Release info unavailable.
 <% } %>
@@ -160,5 +160,5 @@ Release info unavailable.
 :::
 
 ::: {.ecosystem-release-note}
-GitHub release data checked <%= releaseDate([...releases.values()].map((item) => item.checked).sort()[0]) %>.
+GitHub release and tag data checked <%= releaseDate([...releases.values()].map((item) => item.checked).sort()[0]) %>.
 :::

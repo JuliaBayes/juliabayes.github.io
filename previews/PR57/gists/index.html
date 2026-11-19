@@ -52,9 +52,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-83bbae662df7372a3b92057eab17c222.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-47cf7a8b29114d62b6591ad0be71bb93.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-83bbae662df7372a3b92057eab17c222.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3c3aaea33fb2b2a4f52b8bfed9319229.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-8842c7578fd20be36a05ea14c3cd1bc0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-3c3aaea33fb2b2a4f52b8bfed9319229.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -91,9 +91,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-engines','listing-language','listing-engine','listing-code-fold','listing-code-copy','listing-title','listing-author','listing-date','listing-description','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-engines","listing-language","listing-engine","listing-code-fold","listing-code-copy","listing-title","listing-author","listing-date","listing-description","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -374,7 +374,55 @@ ul.task-list li input[type="checkbox"] {
 <p><a href="https://github.com/JuliaBayes/juliabayes.github.io#writing-a-gist">Contribute a gist</a></p>
 <div class="accent-card accent-blue gist-card">
 <div id="listing-gist-entries" class="quarto-listing quarto-listing-container-custom">
-<p>No gists yet.</p>
+<form id="gist-filters" class="listing-filters" role="search" aria-label="Find gists" hidden="">
+  <div>
+    <label for="gist-search" class="form-label">Search gists</label>
+    <input id="gist-search" class="form-control" type="search" placeholder="Title, summary, author or tag" aria-controls="listing-gist-entries" autocomplete="off">
+  </div>
+  
+  <div>
+    <span class="form-label d-block">Tags</span>
+    <details class="listing-filter-dropdown">
+      <summary aria-controls="gist-tag-menu"><span class="visually-hidden">Filter by tag: </span><span data-filter-summary="">All tags</span></summary>
+      <div id="gist-tag-menu" class="listing-filter-menu">
+        <fieldset>
+          <legend class="visually-hidden">Show gists with any selected tag</legend>
+          
+          <label><input type="checkbox" value="FlexiChains" aria-controls="listing-gist-entries"> FlexiChains</label>
+          
+          <label><input type="checkbox" value="Wren" aria-controls="listing-gist-entries"> Wren</label>
+          
+        </fieldset>
+      </div>
+    </details>
+  </div>
+  
+  <button type="reset" class="btn">Clear</button>
+  <p role="status" aria-live="polite" aria-atomic="true"></p>
+</form>
+
+<p id="gist-empty" hidden="">No gists match.</p>
+
+<div class="quarto-post gist-entry">
+  <div class="body">
+    <h2 class="no-anchor listing-title"><a href="../gists/entries/wren_new_individuals/index.html">New individuals in a hierarchical model</a></h2>
+    <div class="listing-description">Calculate results for hypothetical individuals by dropping parameters from your FlexiChain.</div>
+    
+    <div class="listing-categories">
+      
+      <span class="listing-category">Wren</span>
+      
+      <span class="listing-category">FlexiChains</span>
+      
+    </div>
+    
+  </div>
+  <div class="metadata">
+    <div class="listing-author">Simon Steiger</div>
+    <div class="listing-date">Nov 19, 2026</div>
+  </div>
+</div>
+
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </div>

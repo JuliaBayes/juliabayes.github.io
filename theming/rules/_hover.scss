@@ -33,6 +33,7 @@ $row-title-links: ".landing-package-name, .ecosystem-package-name, .landing-card
   // A native underline follows wrapped links. Interacting with a link only
   // changes the underline colour.
   main.content :is(p, li, dd) a:not(.btn, .stretched-link, .anchorjs-link, .landing-package-name):not(:has(img, svg)),
+  main.content .ecosystem-maintainers-more,
   .nav-footer-center a {
     text-decoration: underline;
     text-decoration-color: color-mix(in srgb, currentColor 50%, transparent);

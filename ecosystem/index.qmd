@@ -19,5 +19,7 @@ include-after-body:
 You can [showcase a Bayesian Julia package](https://github.com/JuliaBayes/juliabayes.github.io/issues/new?template=suggest-package.yml) or [request to bring a package into JuliaBayes](https://github.com/JuliaBayes/juliabayes.github.io/issues/new?template=bring-package.yml).
 Come say hello in [`#bayes` on Julia Slack](https://julialang.slack.com/archives/C0BKRUEN6CX)!
 
+Got code to talk about? Join the development discussion in [`#bayes-dev` on Julia Slack](https://julialang.slack.com/app_redirect?channel=bayes-dev).
+
 ::: {#packages}
 :::

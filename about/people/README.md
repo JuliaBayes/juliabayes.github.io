@@ -13,11 +13,15 @@ Only add yourself. Your entry is there because you chose to add it.
 
 To leave the page, delete your files.
 
+Use `Steering Committee`, `Maintainer`, or `Member` for `role`. The page
+groups people in that order. Within each group, lower `order` values come
+first and ties sort by name. Set Steering Committee order by surname.
+
 ```yaml
 name: Jane Doe                       # required
 github: janedoe                      # required
 role: Maintainer                     # required
-order: 10                            # required, position on the page, lowest first
+order: 10                            # required, position within the role
 image: janedoe.jpg                   # optional, file name in this folder
 pronouns: she/her                    # optional
 affiliation: University of Example   # optional

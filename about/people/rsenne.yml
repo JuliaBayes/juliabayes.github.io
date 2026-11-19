@@ -1,0 +1,11 @@
+name: Ryan Senne
+github: rsenne
+role: Steering Committee
+order: 20
+image: rsenne.jpg
+pronouns: he/him
+affiliation: Boston University
+bio: Computational neuroscience PhD student building statistical models that infer the hidden states shaping behavior and neural activity, and open-source Julia tools that make these models easy to use.
+packages: [Wren.jl, FlexiChains.jl]
+website: https://ryguy.io
+email: rsenne@bu.edu

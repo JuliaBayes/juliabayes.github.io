@@ -2,8 +2,8 @@
 title: "New individuals in a hierarchical model"
 author: "Simon Steiger"
 date: 2026-11-19
-description: "This snippet shows how to predict for new individuals from a hierarchical model in Wren."
-categories: [Wren, ]
+description: "Calculate results for hypothetical individuals by dropping parameters from your FlexiChain."
+categories: [Wren, FlexiChains]
 ---
 
 Fitting a hierarchical model usually locks you into parameter vectors that share dimensions with the number of individuals you work with.

@@ -1,0 +1,32 @@
+name: Request to bring a package into JuliaBayes
+description: Discuss bringing a Julia package into the JuliaBayes organization.
+title: "Package to join JuliaBayes: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Your submission opens a public issue to discuss bringing the package into the JuliaBayes organization.
+  - type: input
+    id: package-name
+    attributes:
+      label: Package name
+    validations:
+      required: true
+  - type: input
+    id: repository
+    attributes:
+      label: Repository URL
+    validations:
+      required: true
+  - type: textarea
+    id: maintainers
+    attributes:
+      label: Current maintainers
+      description: List their GitHub handles and say whether you have discussed this request with them.
+    validations:
+      required: true
+  - type: input
+    id: website-blurb
+    attributes:
+      label: Ecosystem listing blurb
+      description: Share one sentence for the website and a suggested category if you have one.

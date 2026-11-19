@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="JuliaBayes is a shared home for Bayesian software in Julia.">
+
+<title>JuliaBayes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-3db608c3aac2db220582703da11e8ac9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-cc73ab23b2229f98e6fb16dd63dee59c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-f68d82644f78a58425884f27da982638.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-cc73ab23b2229f98e6fb16dd63dee59c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-news-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-news-listing'] = new List('listing-news-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-packages-overview .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-description','listing-task','listing-order','listing-logo','listing-status','listing-release-package','listing-repository','listing-release','listing-checked',{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: ["listing-title","listing-description","listing-task","listing-order","listing-logo","listing-status","listing-release-package","listing-repository","listing-release","listing-checked"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-packages-overview'] = new List('listing-packages-overview', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+  </script>
+<!-- Match the font URLs in Quarto's compiled Bootstrap stylesheet. -->
+<link rel="preload" href="site_libs/bootstrap/theming/fonts/IBMPlexSans-Regular-Latin1.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="site_libs/bootstrap/theming/fonts/IBMPlexSans-Bold-Latin1.woff2" as="font" type="font/woff2" crossorigin="">
+
+
+<meta property="og:title" content="JuliaBayes">
+<meta property="og:description" content="JuliaBayes is a shared home for Bayesian software in Julia.">
+<meta property="og:site_name" content="JuliaBayes">
+</head>
+
+<body class="nav-fixed landing fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
+        setTimeout(() => {
+          window.scrollTo(0, scrollY);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      refreshSafariScrollbar();
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./favicon.svg" alt="JuliaBayes home" class="navbar-logo light-content">
+    <img src="./favicon.svg" alt="JuliaBayes home" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">JuliaBayes</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./about/index.html"> 
+<span class="menu-text">About us</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./ecosystem/index.html"> 
+<span class="menu-text">Ecosystem</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./news/index.html"> 
+<span class="menu-text">News</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/JuliaBayes" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="./news/index.xml" title="RSS feed" class="quarto-navigation-tool px-1" aria-label="RSS feed"><i class="bi bi-rss"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<a class="skip-link visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">JuliaBayes</h1>
+</div>
+
+<div>
+  <div class="description">
+    JuliaBayes is a shared home for Bayesian software in Julia.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="grid">
+<div class="g-col-12 landing-hero">
+<div class="hero-stage">
+<!-- Generated by src/hero_curve.jl -->
+<div class="hero-curve hero-curve-desktop">
+<svg width="800" height="286" viewbox="0 0 800 286" aria-hidden="true" focusable="false">
+  <defs>
+    <lineargradient id="hero-curve-gradient-desktop" gradientunits="userSpaceOnUse" x1="0" x2="800" y1="0" y2="0">
+      <stop offset="0.0" stop-color="#389826"></stop>
+      <stop offset="0.0625" stop-color="#009C5F"></stop>
+      <stop offset="0.125" stop-color="#009B89"></stop>
+      <stop offset="0.1875" stop-color="#0095AB"></stop>
+      <stop offset="0.25" stop-color="#008AC4"></stop>
+      <stop offset="0.3125" stop-color="#097DD2"></stop>
+      <stop offset="0.375" stop-color="#5870D3"></stop>
+      <stop offset="0.4375" stop-color="#7C63C7"></stop>
+      <stop offset="0.5" stop-color="#9558B2"></stop>
+      <stop offset="0.5625" stop-color="#A053A9"></stop>
+      <stop offset="0.625" stop-color="#A94E9E"></stop>
+      <stop offset="0.6875" stop-color="#B24991"></stop>
+      <stop offset="0.75" stop-color="#BA4482"></stop>
+      <stop offset="0.8125" stop-color="#C04072"></stop>
+      <stop offset="0.875" stop-color="#C53D60"></stop>
+      <stop offset="0.9375" stop-color="#C93C4C"></stop>
+      <stop offset="1.0" stop-color="#CB3C33"></stop>
+    </lineargradient>
+  </defs>
+  <path d="M0,272.1 L4,271.5 L8,270.9 L12,270.2 L16,269.5 L20,268.8 L24,268.0 L28,267.2 L32,266.3 L36,265.4 L40,264.4 L44,263.4 L48,262.4 L52,261.2 L56,260.0 L60,258.8 L64,257.5 L68,256.1 L72,254.7 L76,253.2 L80,251.6 L84,249.9 L88,248.2 L92,246.4 L96,244.6 L100,242.6 L104,240.6 L108,238.5 L112,236.3 L116,234.0 L120,231.7 L124,229.2 L128,226.7 L132,224.1 L136,221.4 L140,218.6 L144,215.8 L148,212.8 L152,209.8 L156,206.6 L160,203.4 L164,200.1 L168,196.8 L172,193.3 L176,189.8 L180,186.1 L184,182.4 L188,178.7 L192,174.8 L196,170.9 L200,167.0 L204,162.9 L208,158.8 L212,154.7 L216,150.5 L220,146.2 L224,142.0 L228,137.6 L232,133.3 L236,128.9 L240,124.5 L244,120.1 L248,115.7 L252,111.3 L256,106.8 L260,102.4 L264,98.0 L268,93.7 L272,89.3 L276,85.0 L280,80.8 L284,76.6 L288,72.4 L292,68.3 L296,64.3 L300,60.4 L304,56.6 L308,52.8 L312,49.2 L316,45.6 L320,42.2 L324,38.9 L328,35.7 L332,32.7 L336,29.7 L340,27.0 L344,24.4 L348,21.9 L352,19.6 L356,17.5 L360,15.5 L364,13.7 L368,12.1 L372,10.7 L376,9.5 L380,8.4 L384,7.5 L388,6.9 L392,6.4 L396,6.1 L400,6.0 L404,6.1 L408,6.4 L412,6.9 L416,7.5 L420,8.4 L424,9.5 L428,10.7 L432,12.1 L436,13.7 L440,15.5 L444,17.5 L448,19.6 L452,21.9 L456,24.4 L460,27.0 L464,29.7 L468,32.7 L472,35.7 L476,38.9 L480,42.2 L484,45.6 L488,49.2 L492,52.8 L496,56.6 L500,60.4 L504,64.3 L508,68.3 L512,72.4 L516,76.6 L520,80.8 L524,85.0 L528,89.3 L532,93.7 L536,98.0 L540,102.4 L544,106.8 L548,111.3 L552,115.7 L556,120.1 L560,124.5 L564,128.9 L568,133.3 L572,137.6 L576,142.0 L580,146.2 L584,150.5 L588,154.7 L592,158.8 L596,162.9 L600,167.0 L604,170.9 L608,174.8 L612,178.7 L616,182.4 L620,186.1 L624,189.8 L628,193.3 L632,196.8 L636,200.1 L640,203.4 L644,206.6 L648,209.8 L652,212.8 L656,215.8 L660,218.6 L664,221.4 L668,224.1 L672,226.7 L676,229.2 L680,231.7 L684,234.0 L688,236.3 L692,238.5 L696,240.6 L700,242.6 L704,244.6 L708,246.4 L712,248.2 L716,249.9 L720,251.6 L724,253.2 L728,254.7 L732,256.1 L736,257.5 L740,258.8 L744,260.0 L748,261.2 L752,262.4 L756,263.4 L760,264.4 L764,265.4 L768,266.3 L772,267.2 L776,268.0 L780,268.8 L784,269.5 L788,270.2 L792,270.9 L796,271.5 L800,272.1" data-flat-y="153.7" data-bimodal="M0,276.4 L4,275.9 L8,275.4 L12,274.8 L16,274.1 L20,273.3 L24,272.5 L28,271.5 L32,270.5 L36,269.4 L40,268.1 L44,266.7 L48,265.2 L52,263.6 L56,261.8 L60,259.8 L64,257.7 L68,255.5 L72,253.0 L76,250.3 L80,247.5 L84,244.4 L88,241.2 L92,237.7 L96,234.0 L100,230.0 L104,225.9 L108,221.5 L112,216.9 L116,212.0 L120,206.9 L124,201.6 L128,196.0 L132,190.2 L136,184.3 L140,178.1 L144,171.7 L148,165.1 L152,158.4 L156,151.6 L160,144.6 L164,137.5 L168,130.4 L172,123.2 L176,115.9 L180,108.7 L184,101.5 L188,94.3 L192,87.2 L196,80.3 L200,73.4 L204,66.8 L208,60.4 L212,54.2 L216,48.2 L220,42.6 L224,37.3 L228,32.3 L232,27.7 L236,23.5 L240,19.8 L244,16.4 L248,13.5 L252,11.1 L256,9.1 L260,7.6 L264,6.6 L268,6.1 L272,6.0 L276,6.4 L280,7.2 L284,8.5 L288,10.2 L292,12.3 L296,14.7 L300,17.6 L304,20.7 L308,24.1 L312,27.8 L316,31.6 L320,35.7 L324,39.9 L328,44.2 L332,48.5 L336,52.9 L340,57.3 L344,61.5 L348,65.7 L352,69.8 L356,73.7 L360,77.3 L364,80.8 L368,83.9 L372,86.8 L376,89.3 L380,91.5 L384,93.3 L388,94.7 L392,95.7 L396,96.4 L400,96.6 L404,96.4 L408,95.7 L412,94.7 L416,93.3 L420,91.5 L424,89.3 L428,86.8 L432,83.9 L436,80.8 L440,77.3 L444,73.7 L448,69.8 L452,65.7 L456,61.5 L460,57.3 L464,52.9 L468,48.5 L472,44.2 L476,39.9 L480,35.7 L484,31.6 L488,27.8 L492,24.1 L496,20.7 L500,17.6 L504,14.7 L508,12.3 L512,10.2 L516,8.5 L520,7.2 L524,6.4 L528,6.0 L532,6.1 L536,6.6 L540,7.6 L544,9.1 L548,11.1 L552,13.5 L556,16.4 L560,19.8 L564,23.5 L568,27.7 L572,32.3 L576,37.3 L580,42.6 L584,48.2 L588,54.2 L592,60.4 L596,66.8 L600,73.4 L604,80.3 L608,87.2 L612,94.3 L616,101.5 L620,108.7 L624,115.9 L628,123.2 L632,130.4 L636,137.5 L640,144.6 L644,151.6 L648,158.4 L652,165.1 L656,171.7 L660,178.1 L664,184.3 L668,190.2 L672,196.0 L676,201.6 L680,206.9 L684,212.0 L688,216.9 L692,221.5 L696,225.9 L700,230.0 L704,234.0 L708,237.7 L712,241.2 L716,244.4 L720,247.5 L724,250.3 L728,253.0 L732,255.5 L736,257.7 L740,259.8 L744,261.8 L748,263.6 L752,265.2 L756,266.7 L760,268.1 L764,269.4 L768,270.5 L772,271.5 L776,272.5 L780,273.3 L784,274.1 L788,274.8 L792,275.4 L796,275.9 L800,276.4" fill="none" stroke="url(#hero-curve-gradient-desktop)" stroke-width="6" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="hero-curve hero-curve-phone">
+<svg width="544" height="163" viewbox="0 0 544 163" aria-hidden="true" focusable="false">
+  <defs>
+    <lineargradient id="hero-curve-gradient-phone" gradientunits="userSpaceOnUse" x1="0" x2="544" y1="0" y2="0">
+      <stop offset="0.15" stop-color="#389826"></stop>
+      <stop offset="0.1937" stop-color="#009C5F"></stop>
+      <stop offset="0.2375" stop-color="#009B89"></stop>
+      <stop offset="0.2812" stop-color="#0095AB"></stop>
+      <stop offset="0.325" stop-color="#008AC4"></stop>
+      <stop offset="0.3688" stop-color="#097DD2"></stop>
+      <stop offset="0.4125" stop-color="#5870D3"></stop>
+      <stop offset="0.4562" stop-color="#7C63C7"></stop>
+      <stop offset="0.5" stop-color="#9558B2"></stop>
+      <stop offset="0.5438" stop-color="#A053A9"></stop>
+      <stop offset="0.5875" stop-color="#A94E9E"></stop>
+      <stop offset="0.6312" stop-color="#B24991"></stop>
+      <stop offset="0.675" stop-color="#BA4482"></stop>
+      <stop offset="0.7188" stop-color="#C04072"></stop>
+      <stop offset="0.7625" stop-color="#C53D60"></stop>
+      <stop offset="0.8062" stop-color="#C93C4C"></stop>
+      <stop offset="0.85" stop-color="#CB3C33"></stop>
+    </lineargradient>
+  </defs>
+  <path d="M0,149.2 L4,148.5 L8,147.8 L12,146.9 L16,146.1 L20,145.1 L24,144.2 L28,143.1 L32,142.0 L36,140.8 L40,139.5 L44,138.2 L48,136.8 L52,135.3 L56,133.7 L60,132.1 L64,130.3 L68,128.5 L72,126.6 L76,124.6 L80,122.5 L84,120.4 L88,118.1 L92,115.8 L96,113.4 L100,110.9 L104,108.3 L108,105.6 L112,102.9 L116,100.1 L120,97.2 L124,94.2 L128,91.2 L132,88.2 L136,85.0 L140,81.9 L144,78.7 L148,75.5 L152,72.2 L156,68.9 L160,65.7 L164,62.4 L168,59.1 L172,55.9 L176,52.6 L180,49.4 L184,46.3 L188,43.2 L192,40.2 L196,37.2 L200,34.3 L204,31.5 L208,28.9 L212,26.3 L216,23.8 L220,21.5 L224,19.3 L228,17.3 L232,15.4 L236,13.6 L240,12.1 L244,10.7 L248,9.4 L252,8.4 L256,7.5 L260,6.9 L264,6.4 L268,6.1 L272,6.0 L276,6.1 L280,6.4 L284,6.9 L288,7.5 L292,8.4 L296,9.4 L300,10.7 L304,12.1 L308,13.6 L312,15.4 L316,17.3 L320,19.3 L324,21.5 L328,23.8 L332,26.3 L336,28.9 L340,31.5 L344,34.3 L348,37.2 L352,40.2 L356,43.2 L360,46.3 L364,49.4 L368,52.6 L372,55.9 L376,59.1 L380,62.4 L384,65.7 L388,68.9 L392,72.2 L396,75.5 L400,78.7 L404,81.9 L408,85.0 L412,88.2 L416,91.2 L420,94.2 L424,97.2 L428,100.1 L432,102.9 L436,105.6 L440,108.3 L444,110.9 L448,113.4 L452,115.8 L456,118.1 L460,120.4 L464,122.5 L468,124.6 L472,126.6 L476,128.5 L480,130.3 L484,132.1 L488,133.7 L492,135.3 L496,136.8 L500,138.2 L504,139.5 L508,140.8 L512,142.0 L516,143.1 L520,144.2 L524,145.1 L528,146.1 L532,146.9 L536,147.8 L540,148.5 L544,149.2" data-flat-y="65.1" data-bimodal="M0,155.0 L4,154.6 L8,154.1 L12,153.6 L16,152.9 L20,152.1 L24,151.2 L28,150.2 L32,149.1 L36,147.7 L40,146.2 L44,144.5 L48,142.6 L52,140.5 L56,138.1 L60,135.5 L64,132.6 L68,129.5 L72,126.1 L76,122.4 L80,118.4 L84,114.1 L88,109.6 L92,104.8 L96,99.8 L100,94.6 L104,89.1 L108,83.5 L112,77.8 L116,72.0 L120,66.1 L124,60.3 L128,54.4 L132,48.7 L136,43.2 L140,37.8 L144,32.7 L148,28.0 L152,23.6 L156,19.6 L160,16.1 L164,13.0 L168,10.5 L172,8.5 L176,7.1 L180,6.3 L184,6.0 L188,6.3 L192,7.1 L196,8.4 L200,10.2 L204,12.4 L208,15.0 L212,17.9 L216,21.0 L220,24.4 L224,27.9 L228,31.4 L232,35.0 L236,38.4 L240,41.7 L244,44.7 L248,47.5 L252,50.0 L256,52.1 L260,53.7 L264,54.9 L268,55.7 L272,55.9 L276,55.7 L280,54.9 L284,53.7 L288,52.1 L292,50.0 L296,47.5 L300,44.7 L304,41.7 L308,38.4 L312,35.0 L316,31.4 L320,27.9 L324,24.4 L328,21.0 L332,17.9 L336,15.0 L340,12.4 L344,10.2 L348,8.4 L352,7.1 L356,6.3 L360,6.0 L364,6.3 L368,7.1 L372,8.5 L376,10.5 L380,13.0 L384,16.1 L388,19.6 L392,23.6 L396,28.0 L400,32.7 L404,37.8 L408,43.2 L412,48.7 L416,54.4 L420,60.3 L424,66.1 L428,72.0 L432,77.8 L436,83.5 L440,89.1 L444,94.6 L448,99.8 L452,104.8 L456,109.6 L460,114.1 L464,118.4 L468,122.4 L472,126.1 L476,129.5 L480,132.6 L484,135.5 L488,138.1 L492,140.5 L496,142.6 L500,144.5 L504,146.2 L508,147.7 L512,149.1 L516,150.2 L520,151.2 L524,152.1 L528,152.9 L532,153.6 L536,154.1 L540,154.6 L544,155.0" fill="none" stroke="url(#hero-curve-gradient-phone)" stroke-width="6" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="hero-curve hero-curve-phone-wide">
+<svg width="544" height="224" viewbox="0 0 544 224" aria-hidden="true" focusable="false">
+  <defs>
+    <lineargradient id="hero-curve-gradient-phone_wide" gradientunits="userSpaceOnUse" x1="0" x2="544" y1="0" y2="0">
+      <stop offset="0.15" stop-color="#389826"></stop>
+      <stop offset="0.1937" stop-color="#009C5F"></stop>
+      <stop offset="0.2375" stop-color="#009B89"></stop>
+      <stop offset="0.2812" stop-color="#0095AB"></stop>
+      <stop offset="0.325" stop-color="#008AC4"></stop>
+      <stop offset="0.3688" stop-color="#097DD2"></stop>
+      <stop offset="0.4125" stop-color="#5870D3"></stop>
+      <stop offset="0.4562" stop-color="#7C63C7"></stop>
+      <stop offset="0.5" stop-color="#9558B2"></stop>
+      <stop offset="0.5438" stop-color="#A053A9"></stop>
+      <stop offset="0.5875" stop-color="#A94E9E"></stop>
+      <stop offset="0.6312" stop-color="#B24991"></stop>
+      <stop offset="0.675" stop-color="#BA4482"></stop>
+      <stop offset="0.7188" stop-color="#C04072"></stop>
+      <stop offset="0.7625" stop-color="#C53D60"></stop>
+      <stop offset="0.8062" stop-color="#C93C4C"></stop>
+      <stop offset="0.85" stop-color="#CB3C33"></stop>
+    </lineargradient>
+  </defs>
+  <path d="M0,210.0 L4,209.2 L8,208.4 L12,207.4 L16,206.4 L20,205.3 L24,204.1 L28,202.9 L32,201.5 L36,200.1 L40,198.5 L44,196.8 L48,195.1 L52,193.2 L56,191.2 L60,189.1 L64,186.9 L68,184.5 L72,182.0 L76,179.4 L80,176.6 L84,173.8 L88,170.7 L92,167.6 L96,164.3 L100,160.9 L104,157.3 L108,153.7 L112,149.9 L116,145.9 L120,141.9 L124,137.7 L128,133.5 L132,129.1 L136,124.6 L140,120.1 L144,115.5 L148,110.8 L152,106.0 L156,101.2 L160,96.4 L164,91.6 L168,86.8 L172,81.9 L176,77.1 L180,72.3 L184,67.6 L188,62.9 L192,58.4 L196,53.9 L200,49.5 L204,45.3 L208,41.2 L212,37.3 L216,33.5 L220,29.9 L224,26.6 L228,23.4 L232,20.5 L236,17.8 L240,15.4 L244,13.2 L248,11.3 L252,9.7 L256,8.4 L260,7.3 L264,6.6 L268,6.2 L272,6.0 L276,6.2 L280,6.6 L284,7.3 L288,8.4 L292,9.7 L296,11.3 L300,13.2 L304,15.4 L308,17.8 L312,20.5 L316,23.4 L320,26.6 L324,29.9 L328,33.5 L332,37.3 L336,41.2 L340,45.3 L344,49.5 L348,53.9 L352,58.4 L356,62.9 L360,67.6 L364,72.3 L368,77.1 L372,81.9 L376,86.8 L380,91.6 L384,96.4 L388,101.2 L392,106.0 L396,110.8 L400,115.5 L404,120.1 L408,124.6 L412,129.1 L416,133.5 L420,137.7 L424,141.9 L428,145.9 L432,149.9 L436,153.7 L440,157.3 L444,160.9 L448,164.3 L452,167.6 L456,170.7 L460,173.8 L464,176.6 L468,179.4 L472,182.0 L476,184.5 L480,186.9 L484,189.1 L488,191.2 L492,193.2 L496,195.1 L500,196.8 L504,198.5 L508,200.1 L512,201.5 L516,202.9 L520,204.1 L524,205.3 L528,206.4 L532,207.4 L536,208.4 L540,209.2 L544,210.0" data-flat-y="126.1" data-bimodal="M0,215.2 L4,214.6 L8,214.0 L12,213.2 L16,212.2 L20,211.2 L24,209.9 L28,208.5 L32,206.8 L36,205.0 L40,202.9 L44,200.5 L48,197.8 L52,194.8 L56,191.5 L60,187.8 L64,183.8 L68,179.4 L72,174.6 L76,169.4 L80,163.8 L84,157.8 L88,151.5 L92,144.8 L96,137.7 L100,130.3 L104,122.7 L108,114.9 L112,106.8 L116,98.6 L120,90.4 L124,82.2 L128,74.0 L132,66.0 L136,58.2 L140,50.7 L144,43.6 L148,36.9 L152,30.7 L156,25.1 L160,20.1 L164,15.9 L168,12.3 L172,9.6 L176,7.6 L180,6.4 L184,6.0 L188,6.4 L192,7.5 L196,9.4 L200,11.9 L204,15.0 L208,18.6 L212,22.7 L216,27.1 L220,31.8 L224,36.7 L228,41.7 L232,46.7 L236,51.5 L240,56.1 L244,60.4 L248,64.3 L252,67.8 L256,70.7 L260,73.0 L264,74.7 L268,75.7 L272,76.1 L276,75.7 L280,74.7 L284,73.0 L288,70.7 L292,67.8 L296,64.3 L300,60.4 L304,56.1 L308,51.5 L312,46.7 L316,41.7 L320,36.7 L324,31.8 L328,27.1 L332,22.7 L336,18.6 L340,15.0 L344,11.9 L348,9.4 L352,7.5 L356,6.4 L360,6.0 L364,6.4 L368,7.6 L372,9.6 L376,12.3 L380,15.9 L384,20.1 L388,25.1 L392,30.7 L396,36.9 L400,43.6 L404,50.7 L408,58.2 L412,66.0 L416,74.0 L420,82.2 L424,90.4 L428,98.6 L432,106.8 L436,114.9 L440,122.7 L444,130.3 L448,137.7 L452,144.8 L456,151.5 L460,157.8 L464,163.8 L468,169.4 L472,174.6 L476,179.4 L480,183.8 L484,187.8 L488,191.5 L492,194.8 L496,197.8 L500,200.5 L504,202.9 L508,205.0 L512,206.8 L516,208.5 L520,209.9 L524,211.2 L528,212.2 L532,213.2 L536,214.0 L540,214.6 L544,215.2" fill="none" stroke="url(#hero-curve-gradient-phone_wide)" stroke-width="6" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="hero-text">
+<script>
+  (() => {
+    const uniformTagline = "Uniformly,";
+    const bimodalTagline = "Between two modes,";
+    // The generated curves clear advances up to 9em on phones and 13.5em on
+    // desktop. Wide text wraps to two lines if a desktop visit becomes narrow.
+    const taglines = [
+      "Almost surely,",
+      "In all likelihood,",
+      "Given the evidence,",
+      "In expectation,",
+      "Conditionally,",
+      "On average,",
+      "Asymptotically,",
+      "After conditioning,",
+      "Under this model,",
+      "With sufficient data,",
+      "After burn-in,",
+      "For a suitable prior,",
+      "A priori,",
+      "A posteriori,",
+      "In the limit,",
+      "In probability,",
+      "In distribution,",
+      "With full support,",
+      "Up to a null set,",
+      "With finite variance,",
+      "After updating,",
+      "By disintegration,",
+      "Almost everywhere,",
+      "On all Borel sets,",
+      "Pending new data,",
+      "Under any prior,",
+      "Approximately,",
+      "Up to ordering,",
+      "After resampling,",
+      "After adaptation,",
+      "With a weak prior,",
+      "With finite mass,",
+      "Credibly,",
+      "Presumably,",
+      "Empirically,",
+      "Jointly,",
+      "Measurably,",
+      "Consistently,",
+      "Reproducibly,",
+      "Verifiably,",
+      "Numerically,",
+      "Analytically,",
+      uniformTagline,
+      "Locally,",
+      "Globally,",
+      "Optimally,",
+      "Up to a constant,",
+      "With bounded error,",
+      "At random,",
+      "After tempering,",
+      "After warm-up,",
+      "With mass to spare,",
+      "By sheer likelihood,",
+      "In mixed company,",
+      "With a little luck,",
+      "Within reason,",
+      "With more to learn,",
+      "In the long run,",
+      "By symmetry,",
+      "By construction,",
+      "On balance,",
+      "Allegedly,",
+      "In this economy,",
+      "At an ungodly hour,",
+      "After one more run,",
+      "In theory, at least,",
+      "Aleatorically,",
+      "As it was foretold,",
+      "As predicted,",
+      "Predictably,",
+      "Understandably,",
+      "Rigorously,",
+      "Oh no! It's",
+      "Here comes the",
+      "Not without my",
+      "It's all",
+      "Mother, I saw a",
+      "Go NUTS for",
+      "OwO",
+      "Claude said to use",
+      "🎉",
+      "Until next time,",
+      "The Notorious",
+      "🐦",
+      "Finally,",
+      "I am become",
+      "My God, it's full of",
+    ];
+    const wideTaglines = [
+      "With high probability,",
+      "Up to normalization,",
+      "More likely than not,",
+      "Under mild assumptions,",
+      "Pending more evidence,",
+      "Up to Monte Carlo error,",
+      "Within credible bounds,",
+      "Subject to convergence,",
+      "With positive probability,",
+      "Given enough samples,",
+      "To a first approximation,",
+      "By a change of measure,",
+      "After marginalization,",
+      "Given the likelihood,",
+      "As the sample grows,",
+      "With reasonable priors,",
+      "Within credible limits,",
+      "For almost every outcome,",
+      "Through a measurable map,",
+      "With compact support,",
+      "With finite moments,",
+      "By detailed balance,",
+      "In natural parameters,",
+      "In unconstrained space,",
+      "By a change of variables,",
+      "Modulo rounding error,",
+      "Up to machine precision,",
+      "After enough iterations,",
+      "For sufficiently large N,",
+      "With tuned step size,",
+      "Without divergences,",
+      "As the prior foretold,",
+      "Somewhere in the tails,",
+      bimodalTagline,
+      "With suspicious certainty,",
+      "Almost surely eventually,",
+      "By mutual information,",
+      "Through shared evidence,",
+      "As a mixture of experts,",
+      "With common support,",
+      "With overlapping beliefs,",
+      "As far as we can tell,",
+      "With the odds on our side,",
+      "More or less certainly,",
+      "For reasons yet unknown,",
+      "On closer inspection,",
+      "By the usual arguments,",
+      "In a surprising twist,",
+      "With the usual caveats,",
+      "Unless we are mistaken,",
+      "As one might expect,",
+      "In a manner of speaking,",
+      "Despite label-switching,",
+      "Beyond reasonable doubt,",
+      "As we had foreseen,",
+      "By our powers combined,",
+      "After postprocessing,",
+      "Congratulations, it's a",
+      "With or without you,",
+      "😵‍💫 you are now Bayesian 😵‍💫",
+      "Ask your doctor about",
+      "Made in: The Internet",
+      "9/10 statisticians recommend",
+      "Under regularity conditions,",
+      "According to the posterior,",
+      "Without loss of generality,",
+    ];
+    // Matches media-breakpoint-down(sm) in theming/rules/_hero.scss.
+    const isPhone = window.matchMedia("(max-width: 575.98px)").matches;
+    const candidates = isPhone ? taglines : taglines.concat(wideTaglines);
+    const stage = document.currentScript.closest(".hero-stage");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let shapes;
+    let currentShape = "curve";
+    const setCurve = (value, immediate = false) => {
+      const nextShape = value === uniformTagline ? "line" : value === bimodalTagline ? "bimodal" : "curve";
+      if ((!shapes && nextShape === "curve") || (nextShape === currentShape && !immediate)) return;
+      currentShape = nextShape;
+
+      // Replace the Y coordinates only, so both shapes have the same SVG
+      // commands and the browser can interpolate between them.
+      shapes ??= [...stage.querySelectorAll("path[data-flat-y]")].map((path) => {
+        const curve = path.getAttribute("d");
+        const line = curve.replace(/,-?[\d.]+/g, `,${path.dataset.flatY}`);
+        return { path, curve, line, bimodal: path.dataset.bimodal };
+      });
+      for (const shape of shapes) {
+        const { path } = shape;
+        const previous = path.getAttribute("d");
+        const next = shape[nextShape];
+        path.querySelector("animate")?.remove();
+        path.setAttribute("d", next);
+        if (immediate || reducedMotion.matches || previous === next) continue;
+
+        const morph = document.createElementNS(path.namespaceURI, "animate");
+        morph.setAttribute("attributeName", "d");
+        morph.setAttribute("begin", "indefinite");
+        morph.setAttribute("dur", "300ms");
+        morph.setAttribute("values", `${previous};${next}`);
+        morph.setAttribute("calcMode", "spline");
+        morph.setAttribute("keyTimes", "0;1");
+        morph.setAttribute("keySplines", "0.4 0 0.2 1");
+        morph.addEventListener("endEvent", () => morph.remove(), { once: true });
+        path.append(morph);
+        morph.beginElement?.();
+      }
+    };
+    // Insert the complete paragraph while the hero is parsed.
+    const tagline = document.createElement("p");
+    tagline.id = "hero-tagline";
+    tagline.textContent =
+      candidates[Math.floor(Math.random() * candidates.length)];
+    setCurve(tagline.textContent, true);
+    if (wideTaglines.includes(tagline.textContent)) tagline.dataset.wide = "";
+    document.currentScript.replaceWith(tagline);
+
+    // Leave the complete first choice in place when animation is unavailable.
+    if (!window.Intl?.Segmenter || !window.CSS?.supports("display", "inline-grid") ||
+        reducedMotion.matches) return;
+
+    // Reserve the wider phone curve for this visit, so later choices cannot
+    // move the title or cards after a desktop window becomes narrow.
+    if (!isPhone) tagline.dataset.wide = "";
+
+    const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" });
+    const split = (value) => [...segmenter.segment(value)].map((part) => part.segment);
+    const initial = tagline.textContent;
+    const screenReaderText = document.createElement("span");
+    screenReaderText.className = "visually-hidden";
+    screenReaderText.textContent = initial;
+    const phrase = document.createElement("span");
+    phrase.className = "hero-tagline-phrase";
+    phrase.setAttribute("aria-hidden", "true");
+    const reserve = document.createElement("span");
+    reserve.className = "hero-tagline-reserve";
+    reserve.textContent = initial;
+    const typed = document.createElement("span");
+    typed.className = "hero-tagline-typed";
+    const text = document.createTextNode(initial);
+    typed.append(text);
+    phrase.append(reserve, typed);
+    // Assistive technology keeps the initial line while only the visual copy
+    // changes. The hidden full phrase reserves the typing anchor and height.
+    tagline.replaceChildren(screenReaderText, phrase);
+    const holdMs = 12000;
+
+    let current = candidates.indexOf(text.data);
+    let letters = split(candidates[current]);
+    let count = letters.length;
+    let erasing = true;
+    let timer;
+    const step = () => {
+      if (document.hidden || reducedMotion.matches) {
+        update();
+        return;
+      }
+      count += erasing ? -1 : 1;
+      text.data = letters.slice(0, count).join("");
+      // Spaces and punctuation use the upper end of the same ±20% range.
+      const pauseAfter = !erasing && /[\s,.!?;:]/u.test(letters[count - 1]);
+      let delay = (erasing ? 35 : 75) *
+        (pauseAfter ? 1.2 : 0.8 + Math.random() * 0.4);
+      if (erasing && count === 0) {
+        setCurve("");
+        const offset = 1 + Math.floor(Math.random() * (candidates.length - 1));
+        current = (current + offset) % candidates.length;
+        letters = split(candidates[current]);
+        reserve.textContent = candidates[current];
+        erasing = false;
+        delay = 350;
+      } else if (!erasing && count === letters.length) {
+        setCurve(text.data);
+        erasing = true;
+        delay = holdMs;
+      }
+      timer = window.setTimeout(step, delay);
+    };
+    const update = () => {
+      window.clearTimeout(timer);
+      letters = split(candidates[current]);
+      count = letters.length;
+      erasing = true;
+      text.data = candidates[current];
+      setCurve(text.data, document.hidden || reducedMotion.matches);
+      reserve.textContent = candidates[current];
+      if (!document.hidden && !reducedMotion.matches) timer = window.setTimeout(step, holdMs);
+    };
+    document.addEventListener("visibilitychange", update);
+    reducedMotion.addEventListener("change", update);
+    update();
+  })();
+</script>
+<noscript>
+<p id="hero-tagline">
+Almost surely,
+</p>
+</noscript>
+<section id="juliabayes" class="level1">
+<h1>JuliaBayes</h1>
+</section>
+</div>
+</div>
+<div class="landing-buttons">
+<p><a href="./about/index.html" class="btn accent-button accent-blue">About us</a> <a href="./ecosystem/index.html" class="btn accent-button accent-blue">Ecosystem</a> <a href="https://julialang.slack.com/archives/C0BKRUEN6CX" class="btn accent-button accent-blue"><span class="bi bi-slack"></span> Slack</a></p>
+</div>
+</div>
+<div class="g-col-12 landing-about">
+<p>We develop, maintain, and promote Bayesian methods and software in Julia.</p>
+<p>We are community-driven and aim to be welcoming and inclusive.<br>
+Contributions and collaborations of all sizes are welcome.</p>
+</div>
+<div class="g-col-12 accent-card accent-blue landing-card-news">
+<section id="news" class="level2 landing-card-header">
+<h2 class="anchored" data-anchor-id="news">News</h2>
+<p><a href="./news/index.html">All news →</a></p>
+</section>
+<div class="landing-panel">
+<div id="listing-news-listing" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="bmV3cw==" data-listing-date-sort="1794268800000" data-listing-file-modified-sort="1795091905589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./news/posts/2026-11-10-mock-third/index.html" class="no-external-icon">Mock post: a third entry with a much longer title, so that it runs past the width of the card and ends in an ellipsis</a>
+</h3>
+</div>
+<div class="metadata">
+<a href="./news/posts/2026-11-10-mock-third/index.html" class="no-external-icon">
+<div class="listing-date">
+Nov 10, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="bmV3cw==" data-listing-date-sort="1793836800000" data-listing-file-modified-sort="1795091905589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./news/posts/2026-11-05-mock-second/index.html" class="no-external-icon">Mock post: a second entry</a>
+</h3>
+</div>
+<div class="metadata">
+<a href="./news/posts/2026-11-05-mock-second/index.html" class="no-external-icon">
+<div class="listing-date">
+Nov 5, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="bmV3cw==" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1795091905589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./news/posts/2026-10-29-hello-world/index.html" class="no-external-icon">Hello, world!</a>
+</h3>
+</div>
+<div class="metadata">
+<a href="./news/posts/2026-10-29-hello-world/index.html" class="no-external-icon">
+<div class="listing-date">
+Oct 29, 2026
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</div>
+</div>
+<div class="g-col-12 accent-card accent-blue landing-card-ecosystem">
+<section id="ecosystem" class="level2 landing-card-header">
+<h2 class="anchored" data-anchor-id="ecosystem">Ecosystem</h2>
+<p><a href="./ecosystem/index.html">All packages →</a></p>
+</section>
+<div class="landing-panel">
+<div id="listing-packages-overview" class="quarto-listing quarto-listing-container-custom">
+<div class="landing-packages">
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/Wren.jl/">Wren.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Unregistered</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>—</span>
+
+    <span class="landing-package-date" aria-hidden="true">—</span>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/EnsembleMCMC.jl/">EnsembleMCMC.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Registered</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.0.5</span>
+
+    <time class="landing-package-date" datetime="2026-11-02">2 Nov 2026</time>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/ImportanceSamplers.jl/dev/">ImportanceSamplers.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Registered</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.0.1</span>
+
+    <time class="landing-package-date" datetime="2026-11-12">12 Nov 2026</time>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/MGVI.jl/stable/">MGVI.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Stable</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.6.1</span>
+
+    <time class="landing-package-date" datetime="2026-11-13">13 Nov 2026</time>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/UltraNest.jl/stable/">UltraNest.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Stable</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.2.0</span>
+
+    <time class="landing-package-date" datetime="2026-07-31">31 Jul 2026</time>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/FlexiChains.jl/">FlexiChains.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Stable</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.7.2</span>
+
+    <time class="landing-package-date" datetime="2026-11-05">5 Nov 2026</time>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/BayesianWorkflow.jl/">BayesianWorkflow.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Unregistered</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>—</span>
+
+    <span class="landing-package-date" aria-hidden="true">—</span>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/MCMCProgress.jl/">MCMCProgress.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Registered</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.1.0</span>
+
+    <time class="landing-package-date" datetime="2026-11-18">18 Nov 2026</time>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/Plaice.jl/">Plaice.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Registered</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.1.4</span>
+
+    <time class="landing-package-date" datetime="2026-11-07">7 Nov 2026</time>
+
+  </div>
+
+  <div class="landing-package">
+    <a class="landing-package-name" href="https://juliabayes.org/VarNames.jl/">VarNames.jl</a>
+    <span class="landing-package-status"><span class="visually-hidden">Status: </span>Stable</span>
+
+    <span class="landing-package-version"><span class="visually-hidden">Latest release: </span>v0.1.9</span>
+
+    <time class="landing-package-date" datetime="2026-11-14">14 Nov 2026</time>
+
+  </div>
+
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+</main> <!-- /main -->
+<script>
+  (() => {
+    // Quarto puts the before-body include after the header.
+    const skip = document.querySelector(".skip-link");
+    const main = document.getElementById("quarto-document-content");
+    if (skip && main) {
+      document.body.prepend(skip);
+      main.tabIndex = -1;
+    }
+
+    const header = document.getElementById("quarto-header");
+    const menu = header?.querySelector(".navbar-toggler");
+    if (menu) {
+      menu.removeAttribute("role");
+      const menuOpen = () => menu.getClientRects().length && menu.getAttribute("aria-expanded") === "true";
+      header.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape" || event.defaultPrevented || !menuOpen()) return;
+        event.preventDefault();
+        menu.click();
+        menu.focus();
+      });
+      header.addEventListener("focusout", (event) => {
+        if (event.relatedTarget && !header.contains(event.relatedTarget) && menuOpen()) menu.click();
+      });
+    }
+
+    for (const toggle of document.querySelectorAll("a.quarto-color-scheme-toggle")) {
+      toggle.setAttribute("role", "button");
+      toggle.addEventListener("keydown", (event) => {
+        if (event.key !== " ") return;
+        event.preventDefault();
+        if (!event.repeat) toggle.click();
+      });
+    }
+
+    // The desktop loupe is decoration over the input. Enter in the input
+    // activates the selected result, so the loupe needs no separate Tab stop.
+    const search = document.getElementById("quarto-search");
+    if (search) {
+      const skipLoupe = () => {
+        const loupe = search.querySelector(".aa-SubmitButton");
+        if (loupe) loupe.tabIndex = -1;
+      };
+      new MutationObserver(skipLoupe).observe(search, { childList: true, subtree: true });
+      skipLoupe();
+    }
+
+    // Quarto's detached search is full-screen. Keep Tab in the search until
+    // it closes, then return focus to the search button or shortcut origin.
+    let overlay;
+    let opener = document.activeElement;
+    document.addEventListener("focusin", (event) => {
+      if (!event.target.closest(".aa-DetachedOverlay")) opener = event.target;
+    });
+    new MutationObserver(() => {
+      const next = document.querySelector(".aa-DetachedOverlay");
+      if (next === overlay) return;
+      if (next) {
+        next.setAttribute("role", "dialog");
+        next.setAttribute("aria-modal", "true");
+        next.setAttribute("aria-label", "Search");
+      } else if (overlay && document.activeElement === document.body) {
+        opener?.focus();
+      }
+      overlay = next;
+    }).observe(document.body, { childList: true });
+
+    document.addEventListener("keydown", (event) => {
+      if (!overlay?.isConnected || event.defaultPrevented) return;
+      if (event.key === "Escape") {
+        overlay.querySelector(".aa-DetachedCancelButton")?.click();
+        event.preventDefault();
+      } else if (event.key === "Tab") {
+        const controls = [...overlay.querySelectorAll("a[href], button, input, [tabindex]")]
+          .filter((element) => element.tabIndex >= 0 && !element.matches(":disabled") &&
+            element.getClientRects().length && getComputedStyle(element).visibility === "visible");
+        const first = controls[0];
+        const last = controls.at(-1);
+        const active = document.activeElement;
+        if (!overlay.contains(active) || active === (event.shiftKey ? first : last)) {
+          event.preventDefault();
+          (event.shiftKey ? last : first)?.focus();
+        }
+      }
+    });
+  })();
+</script>
+<!-- Quarto swaps the theme stylesheets at once, but elements with a CSS
+     transition, such as the buttons, then fade to the new colours and lag
+     behind the page. Transitions stay off until the new stylesheet applies,
+     which can take a frame or more, so the script waits for the page
+     background to change. The frame limit ends the wait if it never does. -->
+<style>
+  .theme-switching * {
+    transition: none !important;
+  }
+</style>
+<script>
+  (() => {
+    const toggle = window.quartoToggleColorScheme;
+    const maxFrames = 30;
+    window.quartoToggleColorScheme = () => {
+      const root = document.documentElement;
+      const background = () => getComputedStyle(document.body).backgroundColor;
+      const before = background();
+      root.classList.add("theme-switching");
+      toggle();
+      let frames = 0;
+      const settle = () => {
+        if (background() === before && ++frames < maxFrames) {
+          requestAnimationFrame(settle);
+        } else {
+          requestAnimationFrame(() => root.classList.remove("theme-switching"));
+        }
+      };
+      requestAnimationFrame(settle);
+    };
+  })();
+</script>
+<!-- Quarto opens the search on the keyup of "/". Firefox opens its Quick Find
+     bar on the keydown, and the find bar then keeps the key. The page takes the
+     keydown first, so "/" opens the search box and no "/" lands in it. -->
+<script>
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "/" || event.ctrlKey || event.metaKey || event.altKey) {
+      return;
+    }
+    const target = event.target;
+    if (target.isContentEditable || target.closest("input, select, textarea")) {
+      return;
+    }
+    event.preventDefault();
+    window.quartoOpenSearch?.();
+  });
+</script>
+<!-- Quarto links the categories under a post title to the listing nearest the
+     post. Its search compares paths with and without a leading slash, so it
+     never matches, and the links fall back to the first listing: the home page,
+     which has no category filter. The links go to the News listing instead. -->
+<script>
+  (() => {
+    const categories = document.querySelectorAll(
+      "header.quarto-title-block .quarto-categories",
+    );
+    const offset = document.querySelector('meta[name="quarto:offset"]')?.content;
+    if (categories.length === 0 || offset === undefined) {
+      return;
+    }
+    const listing = new URL(`${offset}news/`, window.location).pathname;
+    // Quarto adds the links after it fetches listings.json.
+    const retarget = () => {
+      for (const link of document.querySelectorAll(
+        "header.quarto-title-block .quarto-category a",
+      )) {
+        link.setAttribute("href", listing + new URL(link.href).hash);
+      }
+    };
+    const observer = new MutationObserver(retarget);
+    for (const element of categories) {
+      observer.observe(element, { childList: true, subtree: true });
+    }
+  })();
+</script>
+<script>
+(() => {
+  const selector = ".accent-card, body.news-post #title-block-header";
+  const enabled = matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none)");
+  if (!CSS.supports("color", "color-mix(in srgb, red, blue)") || !document.querySelector(selector)) return;
+  let card, frame = 0, point;
+  const clear = () => {
+    card?.removeAttribute("data-card-pointer");
+    card = null;
+    cancelAnimationFrame(frame);
+    frame = 0;
+  };
+  document.addEventListener("pointermove", (event) => {
+    if (!enabled.matches || event.pointerType === "touch") return;
+    const next = event.target.closest(selector);
+    if (next !== card) {
+      clear();
+      card = next;
+    }
+    if (!card) return;
+    point = event;
+    frame ||= requestAnimationFrame(() => {
+      frame = 0;
+      const { left, top } = card.getBoundingClientRect();
+      card.style.setProperty("--card-point", `${point.clientX - left}px ${point.clientY - top}px`);
+      card.toggleAttribute("data-card-pointer", true);
+    });
+  }, { passive: true });
+  document.addEventListener("pointerleave", clear);
+  document.addEventListener("scroll", clear, { capture: true, passive: true });
+  window.addEventListener("blur", clear);
+  enabled.addEventListener("change", clear);
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/juliabayes\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><a href="./contact.html">Contact us</a> · © JuliaBayes contributors. Text and images: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Code: <a href="https://github.com/JuliaBayes/juliabayes.github.io/blob/main/LICENSE">MIT</a>.</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -8,6 +8,8 @@ project:
     - "ecosystem/*.qmd"
     - "news/*.qmd"
     - "news/posts/**/*.qmd"
+    - "gists/index.qmd"
+    - "gists/entries/**/index.md"
   resources:
     - CNAME
     # The font licence asks that it ships with the fonts. Quarto copies the
@@ -43,6 +45,7 @@ website:
       - about/index.qmd
       - ecosystem/index.qmd
       - news/index.qmd
+      - gists/index.qmd
       - href: contact.qmd
         text: Contact
     # The links sit in the tools, next to the colour-scheme toggle and outside the

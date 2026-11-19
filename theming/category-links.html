@@ -1,7 +1,7 @@
 <!-- Quarto links the categories under a post title to the listing nearest the
      post. Its search compares paths with and without a leading slash, so it
      never matches, and the links fall back to the first listing: the home page,
-     which has no category filter. The links go to the News listing instead. -->
+     which has no category filter. Send links to the right section instead. -->
 <script>
   (() => {
     const categories = document.querySelectorAll(
@@ -11,7 +11,8 @@
     if (categories.length === 0 || offset === undefined) {
       return;
     }
-    const listing = new URL(`${offset}news/`, window.location).pathname;
+    const section = document.body.classList.contains("gist-page") ? "gists" : "news";
+    const listing = new URL(`${offset}${section}/`, window.location).pathname;
     // Quarto adds the links after it fetches listings.json.
     const retarget = () => {
       for (const link of document.querySelectorAll(

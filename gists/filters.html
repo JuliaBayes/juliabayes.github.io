@@ -1,0 +1,66 @@
+<script>
+  (() => {
+    const form = document.getElementById("gist-filters");
+    if (!form) return;
+
+    const search = document.getElementById("gist-search");
+    const dropdown = form.querySelector("details");
+    const checkboxes = [...form.querySelectorAll('input[type="checkbox"]')];
+    const count = form.querySelector('[role="status"]');
+    const empty = document.getElementById("gist-empty");
+    const normalise = (text) => text.trim().toLowerCase().replace(/\s+/g, " ");
+    const entries = [...document.querySelectorAll(".gist-entry")].map((row) => ({
+      row,
+      text: normalise(row.textContent),
+      tags: new Set([...row.querySelectorAll(".listing-category")].map((tag) => tag.textContent)),
+    }));
+
+    const filter = () => {
+      const query = normalise(search.value);
+      const selected = checkboxes.filter((box) => box.checked).map((box) => box.value);
+      if (dropdown) {
+        dropdown.querySelector("[data-filter-summary]").textContent = selected.length === 0 ? "All tags" :
+          selected.length === 1 ? selected[0] : `${selected.length} tags`;
+      }
+      let matches = 0;
+      for (const { row, text, tags } of entries) {
+        row.hidden = !text.includes(query) || (selected.length > 0 && !selected.some((tag) => tags.has(tag)));
+        if (!row.hidden) matches += 1;
+      }
+      count.textContent = `${matches} ${matches === 1 ? "gist" : "gists"}`;
+      empty.hidden = matches > 0;
+    };
+
+    form.addEventListener("submit", (event) => event.preventDefault());
+    search.addEventListener("input", filter);
+    form.addEventListener("change", filter);
+    form.addEventListener("reset", () => {
+      if (dropdown) dropdown.open = false;
+      const url = new URL(window.location.href);
+      if (url.hash.startsWith("#category=")) {
+        url.hash = "";
+        history.replaceState(null, "", url);
+      }
+      requestAnimationFrame(filter);
+    });
+    if (dropdown) {
+      dropdown.addEventListener("focusout", (event) => {
+        if (!dropdown.contains(event.relatedTarget)) dropdown.open = false;
+      });
+      dropdown.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          dropdown.open = false;
+          dropdown.querySelector("summary").focus();
+        }
+      });
+      document.addEventListener("pointerdown", (event) => {
+        if (!dropdown.contains(event.target)) dropdown.open = false;
+      });
+    }
+    const linkedTag = new URLSearchParams(window.location.hash.slice(1)).get("category");
+    const linkedCheckbox = checkboxes.find((box) => box.value === linkedTag);
+    if (linkedCheckbox) linkedCheckbox.checked = true;
+    filter();
+    form.hidden = false;
+  })();
+</script>

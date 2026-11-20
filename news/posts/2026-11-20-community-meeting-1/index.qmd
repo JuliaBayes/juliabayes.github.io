@@ -38,3 +38,5 @@ You can find the statutes on [GitHub](https://github.com/JuliaBayes/community).
 - **JuliaCon in Tallinn.** There is interest in a joint symposium on Bayesian inference in Julia. Get in touch if you would like to join!
 - **Funding.** Being a formal organisation makes it easier to apply for money to pay for developers, compute, travel and collaborations. We're still surveying our options here.
 - **Collaborations.** We want to avoid reinventing the wheel and collaborate with existing projects wherever possible. Contact us if you have a package you want to collaborate on!
+
+See you in January!

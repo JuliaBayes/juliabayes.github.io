@@ -23,36 +23,18 @@ Nobody objected.
 Jessica presented the draft rules for the organisation.
 Here goes an overview:
 
-- **Code of conduct.** We are part of the Julia community and follow its 
-  standards: treat each other with respect, disagree about code, not people.
-- **Your package stays yours.** Maintainers keep full control of their
-  packages, including the option to move them out of the organisation again.
-- **Account security.** Use 2FA, make sure only you can log into your
-  account, and ideally sign your commits.
-- **Contributing.** We loosely follow
-  [ColPrac](https://github.com/SciML/ColPrac): PRs need an approval from 
-  someone else before merging. Draft PRs and half-formed ideas are
-  welcome. You are responsible for what you submit, including AI-assisted code.
-  Oliver shared an [AI policy template](https://github.com/flatppl/flatppl-js/blob/main/AI_POLICY.md)
-  that repositories can adopt.
-- **Getting involved.** If you want to work on a package, ask the maintainers.
-  Feel free to come and talk to us in the `#bayes` channel on [Julia Slack](https://julialang.slack.com/archives/C0BKRUEN6CX)!
+- **Code of conduct.** We are part of the Julia community and follow its standards: treat each other with respect, disagree about code, not people.
+- **Your package stays yours.** Maintainers keep full control of their packages, including the option to move them out of the organisation again.
+- **Account security.** Use 2FA, make sure only you can log into your account, and ideally sign your commits.
+- **Contributing.** We loosely follow [ColPrac](https://github.com/SciML/ColPrac): PRs need an approval from someone else before merging. Draft PRs and half-formed ideas are welcome. You are responsible for what you submit, including AI-assisted code. Oliver shared an [AI policy template](https://github.com/flatppl/flatppl-js/blob/main/AI_POLICY.md) that repositories can adopt.
+- **Getting involved.** If you want to work on a package, ask the maintainers. Feel free to come and talk to us in the `#bayes` channel on [Julia Slack](https://julialang.slack.com/archives/C0BKRUEN6CX)!
 
 You can find the statutes on [GitHub](https://github.com/JuliaBayes/community).
 
 ## What's next?
 
-- **Who else should know about us?** If you know people or communities that
-  would be interested in JuliaBayes, it would be great if you tell them 
-  (or tell us about those communities, for example on Slack).
-- **The wider ecosystem.** We want to list packages outside the organisation
-  that are relevant to Bayesian inference in Julia. We're currently working 
-  on a way for you to submit proposals to this list.
-- **JuliaCon in Tallinn.** There is interest in a joint symposium on
-  Bayesian inference in Julia. Get in touch if you would like to join!
-- **Funding.** Being a formal organisation makes it easier to apply for money 
-  to pay for developers, compute, travel and collaborations. We're still 
-  surveying our options here.
-- **Collaborations.** We want to avoid reinventing the wheel and collaborate
-  with existing projects wherever possible. Contact us if you have a package
-  you want to collaborate on!
+- **Who else should know about us?** If you know people or communities that would be interested in JuliaBayes, it would be great if you tell them (or tell us about those communities, for example on Slack).
+- **The wider ecosystem.** We want to list packages outside the organisation that are relevant to Bayesian inference in Julia. We're currently working on a way for you to submit proposals to this list.
+- **JuliaCon in Tallinn.** There is interest in a joint symposium on Bayesian inference in Julia. Get in touch if you would like to join!
+- **Funding.** Being a formal organisation makes it easier to apply for money to pay for developers, compute, travel and collaborations. We're still surveying our options here.
+- **Collaborations.** We want to avoid reinventing the wheel and collaborate with existing projects wherever possible. Contact us if you have a package you want to collaborate on!

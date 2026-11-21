@@ -4,7 +4,7 @@
     "href": "news/posts/2026-11-20-community-meeting-1/index.html",
     "title": "JuliaBayes community meeting recap",
     "section": "",
-    "text": "Skip to main content\nOn 18 November, we met for the first JuliaBayes community meeting. 🎉\nRoughly 15 people from a wide variety of backgrounds attended the meeting - both package developers and users (!!). There was an agenda to go through, but the main goal was simply to meet each other and take the first steps towards building a community."
+    "text": "Skip to main content\nOn 18 November, we met for the first JuliaBayes community meeting. 🎉\nThe meeting was chaired by Peter Thestrup Waade. Roughly 15 people from a wide variety of backgrounds attended the meeting - both package developers and users (!!). There was an agenda to go through, but the main goal was simply to meet each other and take the first steps towards building a community."
   },
   {
     "objectID": "news/posts/2026-11-20-community-meeting-1/index.html#interim-steering-committee",
@@ -18,7 +18,7 @@
     "href": "news/posts/2026-11-20-community-meeting-1/index.html#draft-statutes",
     "title": "JuliaBayes community meeting recap",
     "section": "Draft statutes",
-    "text": "Draft statutes\nJessica presented the draft rules for the organisation. Here goes an overview:\n\nCode of conduct. We are part of the Julia community and follow its standards: treat each other with respect, disagree about code, not people.\nYour package stays yours. Maintainers keep full control of their packages, including the option to move them out of the organisation again. If you want to bring your package into JuliaBayes, let us know here.\nAccount security. Use 2FA, make sure only you can log into your account, and ideally sign your commits.\nContributing. We loosely follow ColPrac: PRs need an approval from someone else before merging. Draft PRs and half-formed ideas are welcome. You are responsible for what you submit, including AI-assisted code. Oliver shared an AI policy template that repositories can adopt.\nGetting involved. If you want to work on a package, ask the maintainers. Feel free to come and talk to us in the #bayes channel on Julia Slack!\n\nYou can find the statutes on GitHub."
+    "text": "Draft statutes\nJessica presented the draft rules for the organisation. Here goes an overview:\n\nCode of conduct. We are part of the Julia community and follow its standards: treat each other with respect, disagree about code, not people.\nYour package stays yours. Maintainers keep full control of their packages, including the option to move them out of the organisation again. If you want to bring your package into JuliaBayes, let us know here.\nAccount security. Use 2FA, make sure only you can log into your account, and ideally sign your commits.\nContributing. We loosely follow ColPrac: PRs need an approval from someone else before merging. Draft PRs and half-formed ideas are welcome. You are responsible for what you submit, including AI-assisted code. Oliver Schulz shared an AI policy template that repositories can adopt.\nGetting involved. If you want to work on a package, ask the maintainers. Feel free to come and talk to us in the #bayes channel on Julia Slack!\n\nYou can find the statutes on GitHub."
   },
   {
     "objectID": "news/posts/2026-11-20-community-meeting-1/index.html#whats-next",

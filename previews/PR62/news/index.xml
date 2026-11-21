@@ -23,7 +23,7 @@ Skip to main content
 
 
 <p>On 18 November, we met for the first JuliaBayes community meeting. 🎉</p>
-<p>Roughly 15 people from a wide variety of backgrounds attended the meeting - both package developers and users (!!). There was an agenda to go through, but the main goal was simply to meet each other and take the first steps towards building a community.</p>
+<p>The meeting was chaired by Peter Thestrup Waade. Roughly 15 people from a wide variety of backgrounds attended the meeting - both package developers and users (!!). There was an agenda to go through, but the main goal was simply to meet each other and take the first steps towards building a community.</p>
 <section id="interim-steering-committee" class="level2">
 <h2 class="anchored" data-anchor-id="interim-steering-committee">Interim steering committee</h2>
 <p>An interim <a href="https://juliabayes.org/about/#steering-committee">steering committee</a> made up of Jessica Cox, Ryan Senne and Simon Steiger was announced. They will approve package transfers, keep an eye on package maintenance, and make decisions if there should be a need. The committee is temporary and will be replaced by an elected committee at the next community meeting, likely in January. Nobody objected.</p>
@@ -35,7 +35,7 @@ Skip to main content
 <li><strong>Code of conduct.</strong> We are part of the Julia community and follow its standards: treat each other with respect, disagree about code, not people.</li>
 <li><strong>Your package stays yours.</strong> Maintainers keep full control of their packages, including the option to move them out of the organisation again. If you want to bring your package into JuliaBayes, let us know <a href="https://github.com/JuliaBayes/juliabayes.github.io/issues/new?template=bring-package.yml">here</a>.</li>
 <li><strong>Account security.</strong> Use 2FA, make sure only you can log into your account, and ideally sign your commits.</li>
-<li><strong>Contributing.</strong> We loosely follow <a href="https://github.com/SciML/ColPrac">ColPrac</a>: PRs need an approval from someone else before merging. Draft PRs and half-formed ideas are welcome. You are responsible for what you submit, including AI-assisted code. Oliver shared an <a href="https://github.com/flatppl/flatppl-js/blob/main/AI_POLICY.md">AI policy template</a> that repositories can adopt.</li>
+<li><strong>Contributing.</strong> We loosely follow <a href="https://github.com/SciML/ColPrac">ColPrac</a>: PRs need an approval from someone else before merging. Draft PRs and half-formed ideas are welcome. You are responsible for what you submit, including AI-assisted code. Oliver Schulz shared an <a href="https://github.com/flatppl/flatppl-js/blob/main/AI_POLICY.md">AI policy template</a> that repositories can adopt.</li>
 <li><strong>Getting involved.</strong> If you want to work on a package, ask the maintainers. Feel free to come and talk to us in the <code>#bayes</code> channel on <a href="https://julialang.slack.com/archives/C0BKRUEN6CX">Julia Slack</a>!</li>
 </ul>
 <p>You can find the statutes on <a href="https://github.com/JuliaBayes/community">GitHub</a>.</p>
@@ -45,7 +45,7 @@ Skip to main content
 <ul>
 <li><strong>Who else should know about us?</strong> If you know people or communities that would be interested in JuliaBayes, it would be great if you tell them (or tell us about those communities, for example on Slack).</li>
 <li><strong>The wider ecosystem.</strong> There are many packages outside JuliaBayes that are relevant to Bayesian inference in Julia. We would like to showcase these under a “wider ecosystem” section. Do you think your package fits? Let us know <a href="https://github.com/JuliaBayes/juliabayes.github.io/issues/new?template=bring-package.yml">here</a>.</li>
-<li><strong>JuliaCon in Tallinn.</strong> There is interest in a joint symposium on Bayesian inference in Julia. Get in touch if you would like to join!</li>
+<li><a href="https://juliacon.org/2027/"><strong>JuliaCon in Tallinn.</strong></a> There is interest in a joint symposium on Bayesian inference in Julia. Get in touch if you would like to join!</li>
 <li><strong>Funding.</strong> Being a formal organisation makes it easier to apply for money to pay for developers, compute, travel and collaborations. We’re still surveying our options here.</li>
 <li><strong>Collaborations.</strong> We want to avoid reinventing the wheel and collaborate with existing projects wherever possible. Contact us if you have a package you want to collaborate on!</li>
 </ul>

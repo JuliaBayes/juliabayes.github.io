@@ -16,9 +16,9 @@ include-after-body:
   - filters.html
 ---
 
-Have a Bayesian Julia package to share? [Ask us to showcase it](https://github.com/JuliaBayes/juliabayes.github.io/issues/new?template=suggest-package.yml) in the wider ecosystem.
-
 Think JuliaBayes would be a good home for your package? [Request to bring it into JuliaBayes](https://github.com/JuliaBayes/juliabayes.github.io/issues/new?template=bring-package.yml).
+
+Is your Julia package loosely related to Bayesian statistics or interfaces well with JuliaBayes? [Ask us to showcase it](https://github.com/JuliaBayes/juliabayes.github.io/issues/new?template=suggest-package.yml) as part of the wider ecosystem.
 
 Come say hello in [`#bayes` on Julia Slack](https://julialang.slack.com/archives/C0BKRUEN6CX) if you’d like to chat first!
 

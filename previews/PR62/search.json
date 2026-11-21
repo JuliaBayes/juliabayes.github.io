@@ -7,25 +7,25 @@
     "text": "Skip to main content\nOn 18 November, we met for the first JuliaBayes community meeting. 🎉\nRoughly 15 people from a wide variety of backgrounds attended the meeting - both package developers and users (!!). There was an agenda to go through, but the main goal was simply to meet each other and take the first steps towards building a community."
   },
   {
-    "objectID": "news/posts/2026-11-20-community-meeting-1/index.html#an-interim-steering-committee",
-    "href": "news/posts/2026-11-20-community-meeting-1/index.html#an-interim-steering-committee",
+    "objectID": "news/posts/2026-11-20-community-meeting-1/index.html#interim-steering-committee",
+    "href": "news/posts/2026-11-20-community-meeting-1/index.html#interim-steering-committee",
     "title": "JuliaBayes community meeting recap",
-    "section": "An interim steering committee",
-    "text": "An interim steering committee\nAn interim steering committe made up of Jessica, Ryan and Simon was announced. They will approve package transfers, keep an eye on package maintenance, and make decisions if there should be a need. The committee is temporary and will be replaced by an elected committee at the next community meeting, likely in January. Nobody objected."
+    "section": "Interim steering committee",
+    "text": "Interim steering committee\nAn interim steering committee made up of Jessica Cox, Ryan Senne and Simon Steiger was announced. They will approve package transfers, keep an eye on package maintenance, and make decisions if there should be a need. The committee is temporary and will be replaced by an elected committee at the next community meeting, likely in January. Nobody objected."
   },
   {
     "objectID": "news/posts/2026-11-20-community-meeting-1/index.html#draft-statutes",
     "href": "news/posts/2026-11-20-community-meeting-1/index.html#draft-statutes",
     "title": "JuliaBayes community meeting recap",
     "section": "Draft statutes",
-    "text": "Draft statutes\nJessica presented the draft rules for the organisation. Here goes an overview:\n\nCode of conduct. We are part of the Julia community and follow its standards: treat each other with respect, disagree about code, not people.\nYour package stays yours. Maintainers keep full control of their packages, including the option to move them out of the organisation again.\nAccount security. Use 2FA, make sure only you can log into your account, and ideally sign your commits.\nContributing. We loosely follow ColPrac: PRs need an approval from someone else before merging. Draft PRs and half-formed ideas are welcome. You are responsible for what you submit, including AI-assisted code. Oliver shared an AI policy template that repositories can adopt.\nGetting involved. If you want to work on a package, ask the maintainers. Feel free to come and talk to us in the #bayes channel on Julia Slack!\n\nYou can find the statutes on GitHub."
+    "text": "Draft statutes\nJessica presented the draft rules for the organisation. Here goes an overview:\n\nCode of conduct. We are part of the Julia community and follow its standards: treat each other with respect, disagree about code, not people.\nYour package stays yours. Maintainers keep full control of their packages, including the option to move them out of the organisation again. If you want to bring your package into JuliaBayes, let us know here.\nAccount security. Use 2FA, make sure only you can log into your account, and ideally sign your commits.\nContributing. We loosely follow ColPrac: PRs need an approval from someone else before merging. Draft PRs and half-formed ideas are welcome. You are responsible for what you submit, including AI-assisted code. Oliver shared an AI policy template that repositories can adopt.\nGetting involved. If you want to work on a package, ask the maintainers. Feel free to come and talk to us in the #bayes channel on Julia Slack!\n\nYou can find the statutes on GitHub."
   },
   {
     "objectID": "news/posts/2026-11-20-community-meeting-1/index.html#whats-next",
     "href": "news/posts/2026-11-20-community-meeting-1/index.html#whats-next",
     "title": "JuliaBayes community meeting recap",
     "section": "What’s next?",
-    "text": "What’s next?\n\nWho else should know about us? If you know people or communities that would be interested in JuliaBayes, it would be great if you tell them (or tell us about those communities, for example on Slack).\nThe wider ecosystem. We want to list packages outside the organisation that are relevant to Bayesian inference in Julia. We’re currently working on a way for you to submit proposals to this list.\nJuliaCon in Tallinn. There is interest in a joint symposium on Bayesian inference in Julia. Get in touch if you would like to join!\nFunding. Being a formal organisation makes it easier to apply for money to pay for developers, compute, travel and collaborations. We’re still surveying our options here.\nCollaborations. We want to avoid reinventing the wheel and collaborate with existing projects wherever possible. Contact us if you have a package you want to collaborate on!\n\nSee you in January!"
+    "text": "What’s next?\n\nWho else should know about us? If you know people or communities that would be interested in JuliaBayes, it would be great if you tell them (or tell us about those communities, for example on Slack).\nThe wider ecosystem. There are many packages outside JuliaBayes that are relevant to Bayesian inference in Julia. We would like to showcase these under a “wider ecosystem” section. Do you think your package fits? Let us know here.\nJuliaCon in Tallinn. There is interest in a joint symposium on Bayesian inference in Julia. Get in touch if you would like to join!\nFunding. Being a formal organisation makes it easier to apply for money to pay for developers, compute, travel and collaborations. We’re still surveying our options here.\nCollaborations. We want to avoid reinventing the wheel and collaborate with existing projects wherever possible. Contact us if you have a package you want to collaborate on!\n\nSee you in January!"
   },
   {
     "objectID": "ecosystem/index.html",

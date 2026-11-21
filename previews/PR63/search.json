@@ -1,0 +1,128 @@
+[
+  {
+    "objectID": "news/posts/2026-11-10-mock-third/index.html",
+    "href": "news/posts/2026-11-10-mock-third/index.html",
+    "title": "Mock post: a third entry with a much longer title, so that it runs past the width of the card and ends in an ellipsis",
+    "section": "",
+    "text": "Skip to main content\n\n\n\n\nPlaceholder post for testing the news listing on the landing page."
+  },
+  {
+    "objectID": "news/posts/2026-10-29-hello-world/index.html",
+    "href": "news/posts/2026-10-29-hello-world/index.html",
+    "title": "Hello, world!",
+    "section": "",
+    "text": "Skip to main content\n\n\n\n\nWelcome to JuliaBayes news! Posts here can contain Julia code. It runs when the author renders the post, and the site shows the saved output:\n\nusing Statistics\n\nx = randn(1000)\nmean(x), std(x)\n\n(0.004524789299067646, 0.9581874573980756)"
+  },
+  {
+    "objectID": "ecosystem/index.html",
+    "href": "ecosystem/index.html",
+    "title": "Ecosystem",
+    "section": "",
+    "text": "Skip to main content\nThink JuliaBayes would be a good home for your package? Request to bring it into JuliaBayes.\nIs your Julia package loosely related to Bayesian statistics or interfaces well with JuliaBayes? Ask us to showcase it as part of the wider ecosystem.\nCome say hello in #bayes on Julia Slack if you’d like to chat first!\nGot code to talk about? Join the development discussion in #bayes-dev on Julia Slack."
+  },
+  {
+    "objectID": "ecosystem/index.html#modelling",
+    "href": "ecosystem/index.html#modelling",
+    "title": "Ecosystem",
+    "section": "Modelling",
+    "text": "Modelling\n\n\nWren.jl\n\nDocs GitHub Issues\n\n\nProbabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.\n\n\n\nMaintained by: Jessica CoxRyan SenneSimon SteigerShow all\n\nStatus: Unregistered\n\nNo stable GitHub release or version tag yet."
+  },
+  {
+    "objectID": "ecosystem/index.html#sampling",
+    "href": "ecosystem/index.html#sampling",
+    "title": "Ecosystem",
+    "section": "Sampling",
+    "text": "Sampling\n\n\nEnsembleMCMC.jl\n\nDocs GitHub Issues\n\n\nGradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.5 on 2 Nov 2026\n\n\n\n\n\n\n\n\n\nImportanceSamplers.jl\n\nDocs GitHub Issues\n\n\nPlain, multiple and adaptive importance sampling, on CPU threads or GPUs.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.1 on 12 Nov 2026\n\n\n\n\n\n\n\n\n\nMGVI.jl\n\nDocs GitHub Issues\n\n\nApproximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.\n\n\n\nMaintained by: Oliver SchulzShow all\n\nStatus: Stable\n\nLatest release: v0.6.2 on 20 Nov 2026\n\n\n\n\n\n\nUltraNest.jl\n\nDocs GitHub Issues\n\n\nJulia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.\n\n\n\nMaintained by: Oliver SchulzShow all\n\nStatus: Stable\n\nLatest release: v0.2.1 on 20 Nov 2026"
+  },
+  {
+    "objectID": "ecosystem/index.html#analysis",
+    "href": "ecosystem/index.html#analysis",
+    "title": "Ecosystem",
+    "section": "Analysis",
+    "text": "Analysis\n\n\nFlexiChains.jl\n\nDocs GitHub Issues\n\n\nMarkov chains that keep the type and structure of each sample.\n\n\n\nMaintained by: Ryan SenneSimon SteigerShow all\n\nStatus: Stable\n\nLatest release: v0.7.2 on 5 Nov 2026"
+  },
+  {
+    "objectID": "ecosystem/index.html#workflow",
+    "href": "ecosystem/index.html#workflow",
+    "title": "Ecosystem",
+    "section": "Workflow",
+    "text": "Workflow\n\n\nBayesianWorkflow.jl\n\nDocs GitHub Issues\n\n\nHigh-level tools for Bayesian workflows.\n\n\n\nMaintained by: Peter Thestrup WaadeShow all\n\nStatus: Unregistered\n\nNo stable GitHub release or version tag yet."
+  },
+  {
+    "objectID": "ecosystem/index.html#tooling",
+    "href": "ecosystem/index.html#tooling",
+    "title": "Ecosystem",
+    "section": "Tooling",
+    "text": "Tooling\n\n\nMCMCProgress.jl\n\nDocs GitHub Issues\n\n\nA common interface for MCMC samplers to report progress, with plain-text and terminal backends.\n\n\nStatus: Registered\n\nLatest release: v0.1.0 on 18 Nov 2026\n\n\n\n\n\n\n\n\n\nPlaice.jl\n\nDocs GitHub Issues\n\n\nConverts samples from distributions to and from vectors, constrained or unconstrained.\n\n\nStatus: Registered\n\nLatest release: v0.1.4 on 7 Nov 2026\n\n\n\n\n\n\nVarNames.jl\n\nDocs GitHub Issues\n\n\nTypes to represent variable names and collections thereof.\n\n\nStatus: Stable\n\nLatest release: v0.1.9 on 14 Nov 2026"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "JuliaBayes",
+    "section": "",
+    "text": "Skip to main content"
+  },
+  {
+    "objectID": "index.html#news",
+    "href": "index.html#news",
+    "title": "JuliaBayes",
+    "section": "News",
+    "text": "News\nAll news →"
+  },
+  {
+    "objectID": "index.html#ecosystem",
+    "href": "index.html#ecosystem",
+    "title": "JuliaBayes",
+    "section": "Ecosystem",
+    "text": "Ecosystem\nAll packages →"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact us",
+    "section": "",
+    "text": "Skip to main content"
+  },
+  {
+    "objectID": "contact.html#julia-slack",
+    "href": "contact.html#julia-slack",
+    "title": "Contact us",
+    "section": "Julia Slack",
+    "text": "Julia Slack\nCome say hello in #bayes, our home for general JuliaBayes chat! Got code to talk about? Join the development discussion in #bayes-dev. New to the workspace? Join Julia Slack."
+  },
+  {
+    "objectID": "contact.html#github",
+    "href": "contact.html#github",
+    "title": "Contact us",
+    "section": "GitHub",
+    "text": "GitHub\nFor questions or bug reports about a package, open an issue in its repository under JuliaBayes. For this website, open an issue in the website repository."
+  },
+  {
+    "objectID": "about/index.html",
+    "href": "about/index.html",
+    "title": "About us",
+    "section": "",
+    "text": "Skip to main content\nJuliaBayes is a shared home for Bayesian software in Julia. Our goal is to make it easier to collaborate, share maintenance, and keep packages supported over time.\nWe are an open and welcoming community of people interested in Bayesian statistics, whether in theory, in applications, or in software engineering. Our projects span modelling, inference, and tools for working with the results.\nWe welcome collaboration across probabilistic programming languages, research groups, and institutions. Most of us contribute alongside our day jobs, so contributions of all sizes are welcome.\nWant to bring your package into JuliaBayes, or just talk Bayes with us? Come say hello in #bayes, our home for general JuliaBayes chat! Got code to talk about? Join the development discussion in #bayes-dev. New to the workspace? Join Julia Slack."
+  },
+  {
+    "objectID": "about/index.html#team",
+    "href": "about/index.html#team",
+    "title": "About us",
+    "section": "Team",
+    "text": "Team\nThese are some of the people behind JuliaBayes.\n\n\nSteering Committee\n\n\n\n\nJessica Cox she/her\n\nRole\n\nSteering Committee\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nEnsembleMCMC.jl, ImportanceSamplers.jl, Wren.jl\n\nBio\n\nI research and implement new methods to sample parameters, and ways to use those methods. I also work on preservable models that are decoupled from any particular backend.\n\nGitHub\n\nBJMCox\n\nWebsite\n\nbjmcox.github.io\n\nEmail\n\nbcox@mpp.mpg.de\n\n\n\n\n\n\n\nRyan Senne he/him\n\nRole\n\nSteering Committee\n\nAffiliation\n\nBoston University\n\nPackages\n\nWren.jl, FlexiChains.jl\n\nBio\n\nComputational neuroscience PhD student building statistical models that infer the hidden states shaping behavior and neural activity, and open-source Julia tools that make these models easy to use.\n\nGitHub\n\nrsenne\n\nWebsite\n\nryguy.io\n\nEmail\n\nrsenne@bu.edu\n\n\n\n\n\n\n\nSimon Steiger he/him\n\nRole\n\nSteering Committee\n\nAffiliation\n\nKarolinska Institutet\n\nPackages\n\nFlexiChains.jl, Wren.jl\n\nBio\n\nI like Bayesian statistics because the rest made less sense to me.\n\nGitHub\n\nsimonsteiger\n\nWebsite\n\nbirdsotherwi.se\n\nEmail\n\nsimon.steiger@ki.se\n\n\n\n\n\n\n\nMaintainers\n\n\n\n\nPeter Thestrup Waade he/him\n\nRole\n\nMaintainer\n\nAffiliation\n\nETH Zürich and Aarhus University\n\nPackages\n\nBayesianWorkflow.jl, BayesianRegressionModels.jl\n\nBio\n\nApplied computational modelling of cognition, psychiatry and phenomenology. Specialised in Bayesian mind models. Interest in social interaction.\n\nGitHub\n\nPTWaade\n\nEmail\n\npthestrup@ethz.ch\n\n\n\n\n\n\n\nNikolas Siccha\n\nRole\n\nMaintainer\n\nAffiliation\n\nIndependent contractor\n\nPackages\n\nBayesianRegressionModels.jl\n\nBio\n\nI tend to write code that writes code.\n\nGitHub\n\nnsiccha\n\n\n\n\n\n\n\nOliver Schulz\n\nRole\n\nMaintainer\n\nAffiliation\n\nMax-Planck-Institut für Physik\n\nPackages\n\nMGVI.jl, UltraNest.jl\n\nGitHub\n\noschulz\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "news/index.html",
+    "href": "news/index.html",
+    "title": "News",
+    "section": "",
+    "text": "Skip to main content\n\n\n\n\nClear category filter\n\n\n\n\n\n\nMock post: a third entry with a much longer title, so that it runs past the width of the card and ends in an ellipsis\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 10, 2026\n\n\n\n\n\n\n\nMock post: a second entry\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2026\n\n\n\n\n\n\n\nHello, world!\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "news/posts/2026-11-05-mock-second/index.html",
+    "href": "news/posts/2026-11-05-mock-second/index.html",
+    "title": "Mock post: a second entry",
+    "section": "",
+    "text": "Skip to main content\n\n\n\n\nPlaceholder post for testing the news listing on the landing page."
+  }
+]

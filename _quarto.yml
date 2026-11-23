@@ -20,6 +20,8 @@ project:
     - rss-icon.png
     - releases.xml
     - releases/*.xml
+    - feeds.opml
+    - package-feeds.opml
 
 website:
   title: "JuliaBayes"

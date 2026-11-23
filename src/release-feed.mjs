@@ -7,6 +7,29 @@ const xml = (text) => String(text)
 
 const site = "https://juliabayes.org";
 const ecosystem = `${site}/ecosystem/`;
+const releaseFeedTitle = (name) => name ? `JuliaBayes releases for ${name}` : "JuliaBayes package releases";
+
+export function packageFeedOpml(packages) {
+  const outlines = packages
+    .filter((pkg) => pkg.feed)
+    .sort((a, b) => a["release-package"].localeCompare(b["release-package"], "en"))
+    .map((pkg) => {
+      const title = xml(releaseFeedTitle(pkg["release-package"]));
+      const feed = xml(`${site}/${pkg.feed}`);
+      const releases = xml(`${pkg.repository}/releases`);
+      return `    <outline type="rss" text="${title}" title="${title}" xmlUrl="${feed}" htmlUrl="${releases}"/>`;
+    });
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>JuliaBayes individual package feeds</title>
+  </head>
+  <body>
+${outlines.join("\n")}
+  </body>
+</opml>
+`;
+}
 
 export function releaseIdentity(repository, tag) {
   // Wren publishes packages from the same repository under separate tag prefixes.
@@ -36,7 +59,7 @@ function releaseSummary(release) {
 }
 
 export function releaseFeed(releases, path = "releases.xml", packageName) {
-  const title = packageName ? `JuliaBayes releases for ${packageName}` : "JuliaBayes package releases";
+  const title = releaseFeedTitle(packageName);
   const description = packageName
     ? `Stable GitHub releases for ${packageName}.`
     : "Stable GitHub releases from packages in the JuliaBayes ecosystem.";

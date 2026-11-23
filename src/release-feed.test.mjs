@@ -43,6 +43,7 @@ if (response.status) process.exit(1);
     feed: () => readFileSync(join(dir, "releases.xml"), "utf8"),
     packageFeed: (name) => readFileSync(join(dir, "releases", name), "utf8"),
     packageFeeds: () => readdirSync(join(dir, "releases")).sort(),
+    packageOpml: () => readFileSync(join(dir, "package-feeds.opml"), "utf8"),
     snapshot: () => readFileSync(join(dir, "ecosystem/releases.yml"), "utf8"),
   };
 }
@@ -114,13 +115,16 @@ test("API failure preserves the existing release data and feeds", (t) => {
   const f = fixture(t, data);
   const result = f.run();
   assert.equal(result.status, 0, result.stderr);
-  const before = { feed: f.feed(), snapshot: f.snapshot(), package: f.packageFeed("test.jl.xml") };
+  const before = {
+    feed: f.feed(), snapshot: f.snapshot(), package: f.packageFeed("test.jl.xml"), opml: f.packageOpml(),
+  };
   data["repos/JuliaBayes/Test.jl/releases?per_page=100"] = { status: "503" };
   f.save();
   assert.notEqual(f.run().status, 0);
   assert.equal(f.feed(), before.feed);
   assert.equal(f.snapshot(), before.snapshot);
   assert.equal(f.packageFeed("test.jl.xml"), before.package);
+  assert.equal(f.packageOpml(), before.opml);
 });
 
 test("package feeds contain only their own releases and follow repository visibility", (t) => {
@@ -129,6 +133,9 @@ test("package feeds contain only their own releases and follow repository visibi
   let result = f.run();
   assert.equal(result.status, 0, result.stderr);
   assert.deepEqual(f.packageFeeds(), ["test.jl.xml", "wren.jl.xml"]);
+  assert.deepEqual([...f.packageOpml().matchAll(/xmlUrl="([^"]+)"/g)].map(([, url]) => url), [
+    "https://juliabayes.org/releases/test.jl.xml", "https://juliabayes.org/releases/wren.jl.xml",
+  ]);
   assert.deepEqual(identities(f.packageFeed("test.jl.xml")), ["github-release:3", "github-release:2", "github-release:1"]);
   assert.deepEqual(identities(f.packageFeed("wren.jl.xml")), []);
   assert.ok(f.feed().includes("<title>WrenDists v0.1.0</title>"));
@@ -141,6 +148,7 @@ test("package feeds contain only their own releases and follow repository visibi
   result = f.run();
   assert.equal(result.status, 0, result.stderr);
   assert.deepEqual(f.packageFeeds(), ["wren.jl.xml"]);
+  assert.ok(!f.packageOpml().includes("test.jl.xml"));
   assert.deepEqual(identities(f.feed()), ["github-release:6"]);
 });
 

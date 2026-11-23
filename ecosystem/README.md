@@ -22,3 +22,7 @@ release IDs keep entries stable across edits and across feeds. Commit the RSS
 snapshots for offline renders. Blog and news posts use a separate feed at
 `news/index.xml`. Run `node src/check-feeds.mjs _site` after rendering to
 check every feed.
+
+Commit the generated `package-feeds.opml` alongside the RSS snapshots. The
+sitewide `feeds.opml` bundles the blog and news feed with the combined release
+feed.

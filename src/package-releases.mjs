@@ -2,7 +2,7 @@
 // Keep it committed for local renders. CI refreshes it before rendering.
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { releaseFeed, releaseIdentity } from "./release-feed.mjs";
+import { packageFeedOpml, releaseFeed, releaseIdentity } from "./release-feed.mjs";
 
 const snapshot = new URL("../ecosystem/releases.yml", import.meta.url);
 const root = new URL("../", import.meta.url);
@@ -73,6 +73,7 @@ const releases = packages.map((pkg) => {
   return { ...record, release };
 });
 const feed = releaseFeed(history);
+const packageSubscriptions = packageFeedOpml(releases);
 mkdirSync(feedDirectory, { recursive: true });
 for (const [filename, content] of feeds) {
   writeFileSync(new URL(filename, feedDirectory), content);
@@ -84,3 +85,4 @@ for (const filename of readdirSync(feedDirectory)) {
 }
 writeFileSync(snapshot, `${JSON.stringify(releases, null, 2)}\n`);
 writeFileSync(new URL("releases.xml", root), feed);
+writeFileSync(new URL("package-feeds.opml", root), packageSubscriptions);

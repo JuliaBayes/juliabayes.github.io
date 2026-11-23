@@ -21,6 +21,9 @@ include-after-body:
 <button type="button" id="news-clear-category" class="listing-category" disabled>Clear category filter</button>
 ```
 
+[Subscribe to the community calendar](webcal://juliabayes.org/events.ics) ·
+[Calendar URL](/events.ics)
+
 :::: {.accent-card .accent-blue .news-card}
 ::: {#news-posts}
 :::

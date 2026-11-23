@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//JuliaBayes//Community Calendar//EN
+CALSCALE:GREGORIAN
+NAME:JuliaBayes community calendar
+X-WR-CALNAME:JuliaBayes community calendar
+SOURCE;VALUE=URI:https://juliabayes.org/events.ics
+BEGIN:VEVENT
+UID:community-meeting-1@juliabayes.org
+DTSTAMP:20261123T134220Z
+DTSTART;VALUE=DATE:20261118
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:JuliaBayes community meeting
+DESCRIPTION:First JuliaBayes community meeting. See the recap.
+URL:https://juliabayes.org/news/posts/2026-11-20-community-meeting-1/
+END:VEVENT
+END:VCALENDAR

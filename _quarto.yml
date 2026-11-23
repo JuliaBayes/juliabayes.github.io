@@ -18,6 +18,7 @@ project:
     - favicon.ico
     - apple-touch-icon.png
     - releases.xml
+    - events.ics
 
 website:
   title: "JuliaBayes"

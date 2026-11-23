@@ -18,6 +18,18 @@ CI should only read from `_freeze` and render the post.
 
 If you need to rerun the code in a post, you can delete the `_freeze/news/posts/YYYY-MM-DD-slug` folder (do _not_ delete the entire `_freeze` folder!) and rerun `quarto render`.
 
+## Updating the community calendar
+
+Edit [`events.ics`](events.ics) to add or change confirmed community events.
+Give each new event a unique `UID` and start its `SEQUENCE` at 0. Use UTC for
+timed events and `DTSTART;VALUE=DATE` for date-only entries.
+
+Keep the `UID` when an event moves. Increment `SEQUENCE` and update `DTSTAMP`
+in UTC when you change an event. Keep cancelled events in the file with
+`STATUS:CANCELLED` so subscribers can receive the change.
+
+GitHub Pages serves the updated calendar at the same URL after publishing.
+
 ## License
 
 - Code, such as the theme, scripts, templates and configuration, is under the [MIT License](LICENSE).

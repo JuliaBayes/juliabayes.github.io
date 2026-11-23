@@ -10,6 +10,7 @@ project:
     - "news/posts/**/*.qmd"
   resources:
     - CNAME
+    - events.ics
     # The font licence asks that it ships with the fonts. Quarto copies the
     # fonts themselves from the url() in theming/rules/_fonts.scss.
     - theming/fonts/LICENSE.txt
@@ -18,7 +19,6 @@ project:
     - favicon.ico
     - apple-touch-icon.png
     - releases.xml
-    - events.ics
 
 website:
   title: "JuliaBayes"

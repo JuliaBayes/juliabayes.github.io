@@ -10,3 +10,4 @@ author: "JuliaBayes"
 format:
   html:
     body-classes: news-post
+    appendix-cite-as: false

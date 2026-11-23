@@ -91,10 +91,10 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-description','listing-task','listing-order','listing-logo','listing-status','listing-release-package','listing-repository','listing-release','listing-checked','listing-name','listing-github','listing-role','listing-image','listing-pronouns','listing-affiliation','listing-bio','listing-packages','listing-website','listing-email',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-title','listing-description','listing-task','listing-order','listing-logo','listing-status','listing-release-package','listing-repository','listing-release','listing-checked','listing-feed','listing-name','listing-github','listing-role','listing-image','listing-pronouns','listing-affiliation','listing-bio','listing-packages','listing-website','listing-email',{ data: ['index'] },{ data: ['categories'] }],
       page: 25,
     pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
-      searchColumns: ["listing-title","listing-description","listing-task","listing-order","listing-logo","listing-status","listing-release-package","listing-repository","listing-release","listing-checked","listing-name","listing-github","listing-role","listing-image","listing-pronouns","listing-affiliation","listing-bio","listing-packages","listing-website","listing-email"],
+      searchColumns: ["listing-title","listing-description","listing-task","listing-order","listing-logo","listing-status","listing-release-package","listing-repository","listing-release","listing-checked","listing-feed","listing-name","listing-github","listing-role","listing-image","listing-pronouns","listing-affiliation","listing-bio","listing-packages","listing-website","listing-email"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -390,7 +390,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Think JuliaBayes would be a good home for your package? <a href="https://github.com/JuliaBayes/juliabayes.github.io/issues/new?template=bring-package.yml">Request to bring it into JuliaBayes</a>.</p>
 <p>Come say hello in <a href="https://julialang.slack.com/archives/C0BKRUEN6CX"><code>#bayes</code> on Julia Slack</a> if you’d like to chat first!</p>
 <p>Got code to talk about? Join the development discussion in <a href="https://julialang.slack.com/app_redirect?channel=bayes-dev"><code>#bayes-dev</code> on Julia Slack</a>.</p>
-<p><a href="../releases.xml">Subscribe to package releases (RSS)</a>.</p>
+<p><a href="../releases.xml">Subscribe to package releases (RSS)</a> · <a href="../package-feeds.opml" download="juliabayes-package-feeds.opml">Download individual package feeds (OPML)</a></p>
 <div id="listing-packages" class="quarto-listing quarto-listing-container-custom">
 <form id="ecosystem-filters" class="ecosystem-filters" role="search" aria-label="Find packages" hidden="">
   <div>
@@ -449,7 +449,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/Wren.jl/" class="ecosystem-package-name stretched-link">Wren.jl</a></p>
 <div class="ecosystem-links">
-<p><a href="https://juliabayes.org/Wren.jl/" aria-label="Wren.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/Wren.jl" aria-label="Wren.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/Wren.jl/issues" aria-label="Wren.jl issues">Issues</a></p>
+<p><a href="https://juliabayes.org/Wren.jl/" aria-label="Wren.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/Wren.jl" aria-label="Wren.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/Wren.jl/issues" aria-label="Wren.jl issues">Issues</a> <a href="../releases/wren.jl.xml" aria-label="Wren.jl release feed">RSS</a></p>
 </div>
 <div class="ecosystem-description">
 <p>Probabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.</p>
@@ -460,7 +460,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>Status: Unregistered</p>
 <div class="ecosystem-release">
-<p>Latest release: <a href="https://github.com/JuliaBayes/Wren.jl/releases/tag/WrenDists-v0.1.0">WrenDists-v0.1.0</a> on <time datetime="2026-11-23">23 Nov 2026</time></p>
+<p>No stable GitHub release or version tag yet.</p>
 </div>
 </div>
 </div>
@@ -475,7 +475,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/EnsembleMCMC.jl/" class="ecosystem-package-name stretched-link">EnsembleMCMC.jl</a></p>
 <div class="ecosystem-links">
-<p><a href="https://juliabayes.org/EnsembleMCMC.jl/" aria-label="EnsembleMCMC.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/EnsembleMCMC.jl" aria-label="EnsembleMCMC.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/EnsembleMCMC.jl/issues" aria-label="EnsembleMCMC.jl issues">Issues</a></p>
+<p><a href="https://juliabayes.org/EnsembleMCMC.jl/" aria-label="EnsembleMCMC.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/EnsembleMCMC.jl" aria-label="EnsembleMCMC.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/EnsembleMCMC.jl/issues" aria-label="EnsembleMCMC.jl issues">Issues</a> <a href="../releases/ensemblemcmc.jl.xml" aria-label="EnsembleMCMC.jl release feed">RSS</a></p>
 </div>
 <div class="ecosystem-description">
 <p>Gradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.</p>
@@ -498,7 +498,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/ImportanceSamplers.jl/dev/" class="ecosystem-package-name stretched-link">ImportanceSamplers.jl</a></p>
 <div class="ecosystem-links">
-<p><a href="https://juliabayes.org/ImportanceSamplers.jl/dev/" aria-label="ImportanceSamplers.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/ImportanceSamplers.jl" aria-label="ImportanceSamplers.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/ImportanceSamplers.jl/issues" aria-label="ImportanceSamplers.jl issues">Issues</a></p>
+<p><a href="https://juliabayes.org/ImportanceSamplers.jl/dev/" aria-label="ImportanceSamplers.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/ImportanceSamplers.jl" aria-label="ImportanceSamplers.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/ImportanceSamplers.jl/issues" aria-label="ImportanceSamplers.jl issues">Issues</a> <a href="../releases/importancesamplers.jl.xml" aria-label="ImportanceSamplers.jl release feed">RSS</a></p>
 </div>
 <div class="ecosystem-description">
 <p>Plain, multiple and adaptive importance sampling, on CPU threads or GPUs.</p>
@@ -521,7 +521,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/MGVI.jl/stable/" class="ecosystem-package-name stretched-link">MGVI.jl</a></p>
 <div class="ecosystem-links">
-<p><a href="https://juliabayes.org/MGVI.jl/stable/" aria-label="MGVI.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/MGVI.jl" aria-label="MGVI.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/MGVI.jl/issues" aria-label="MGVI.jl issues">Issues</a></p>
+<p><a href="https://juliabayes.org/MGVI.jl/stable/" aria-label="MGVI.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/MGVI.jl" aria-label="MGVI.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/MGVI.jl/issues" aria-label="MGVI.jl issues">Issues</a> <a href="../releases/mgvi.jl.xml" aria-label="MGVI.jl release feed">RSS</a></p>
 </div>
 <div class="ecosystem-description">
 <p>Approximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.</p>
@@ -541,7 +541,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/UltraNest.jl/stable/" class="ecosystem-package-name stretched-link">UltraNest.jl</a></p>
 <div class="ecosystem-links">
-<p><a href="https://juliabayes.org/UltraNest.jl/stable/" aria-label="UltraNest.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/UltraNest.jl" aria-label="UltraNest.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/UltraNest.jl/issues" aria-label="UltraNest.jl issues">Issues</a></p>
+<p><a href="https://juliabayes.org/UltraNest.jl/stable/" aria-label="UltraNest.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/UltraNest.jl" aria-label="UltraNest.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/UltraNest.jl/issues" aria-label="UltraNest.jl issues">Issues</a> <a href="../releases/ultranest.jl.xml" aria-label="UltraNest.jl release feed">RSS</a></p>
 </div>
 <div class="ecosystem-description">
 <p>Julia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.</p>
@@ -564,7 +564,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/FlexiChains.jl/" class="ecosystem-package-name stretched-link">FlexiChains.jl</a></p>
 <div class="ecosystem-links">
-<p><a href="https://juliabayes.org/FlexiChains.jl/" aria-label="FlexiChains.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/FlexiChains.jl" aria-label="FlexiChains.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/FlexiChains.jl/issues" aria-label="FlexiChains.jl issues">Issues</a></p>
+<p><a href="https://juliabayes.org/FlexiChains.jl/" aria-label="FlexiChains.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/FlexiChains.jl" aria-label="FlexiChains.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/FlexiChains.jl/issues" aria-label="FlexiChains.jl issues">Issues</a> <a href="../releases/flexichains.jl.xml" aria-label="FlexiChains.jl release feed">RSS</a></p>
 </div>
 <div class="ecosystem-description">
 <p>Markov chains that keep the type and structure of each sample.</p>
@@ -590,7 +590,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/BayesianWorkflow.jl/" class="ecosystem-package-name stretched-link">BayesianWorkflow.jl</a></p>
 <div class="ecosystem-links">
-<p><a href="https://juliabayes.org/BayesianWorkflow.jl/" aria-label="BayesianWorkflow.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/BayesianWorkflow.jl" aria-label="BayesianWorkflow.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/BayesianWorkflow.jl/issues" aria-label="BayesianWorkflow.jl issues">Issues</a></p>
+<p><a href="https://juliabayes.org/BayesianWorkflow.jl/" aria-label="BayesianWorkflow.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/BayesianWorkflow.jl" aria-label="BayesianWorkflow.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/BayesianWorkflow.jl/issues" aria-label="BayesianWorkflow.jl issues">Issues</a> <a href="../releases/bayesianworkflow.jl.xml" aria-label="BayesianWorkflow.jl release feed">RSS</a></p>
 </div>
 <div class="ecosystem-description">
 <p>High-level tools for Bayesian workflows.</p>
@@ -613,7 +613,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/MCMCProgress.jl/" class="ecosystem-package-name stretched-link">MCMCProgress.jl</a></p>
 <div class="ecosystem-links">
-<p><a href="https://juliabayes.org/MCMCProgress.jl/" aria-label="MCMCProgress.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/MCMCProgress.jl" aria-label="MCMCProgress.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/MCMCProgress.jl/issues" aria-label="MCMCProgress.jl issues">Issues</a></p>
+<p><a href="https://juliabayes.org/MCMCProgress.jl/" aria-label="MCMCProgress.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/MCMCProgress.jl" aria-label="MCMCProgress.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/MCMCProgress.jl/issues" aria-label="MCMCProgress.jl issues">Issues</a> <a href="../releases/mcmcprogress.jl.xml" aria-label="MCMCProgress.jl release feed">RSS</a></p>
 </div>
 <div class="ecosystem-description">
 <p>A common interface for MCMC samplers to report progress, with plain-text and terminal backends.</p>
@@ -633,7 +633,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/Plaice.jl/" class="ecosystem-package-name stretched-link">Plaice.jl</a></p>
 <div class="ecosystem-links">
-<p><a href="https://juliabayes.org/Plaice.jl/" aria-label="Plaice.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/Plaice.jl" aria-label="Plaice.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/Plaice.jl/issues" aria-label="Plaice.jl issues">Issues</a></p>
+<p><a href="https://juliabayes.org/Plaice.jl/" aria-label="Plaice.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/Plaice.jl" aria-label="Plaice.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/Plaice.jl/issues" aria-label="Plaice.jl issues">Issues</a> <a href="../releases/plaice.jl.xml" aria-label="Plaice.jl release feed">RSS</a></p>
 </div>
 <div class="ecosystem-description">
 <p>Converts samples from distributions to and from vectors, constrained or unconstrained.</p>
@@ -650,7 +650,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="ecosystem-package-text">
 <p><a href="https://juliabayes.org/VarNames.jl/" class="ecosystem-package-name stretched-link">VarNames.jl</a></p>
 <div class="ecosystem-links">
-<p><a href="https://juliabayes.org/VarNames.jl/" aria-label="VarNames.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/VarNames.jl" aria-label="VarNames.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/VarNames.jl/issues" aria-label="VarNames.jl issues">Issues</a></p>
+<p><a href="https://juliabayes.org/VarNames.jl/" aria-label="VarNames.jl documentation">Docs</a> <a href="https://github.com/JuliaBayes/VarNames.jl" aria-label="VarNames.jl on GitHub">GitHub</a> <a href="https://github.com/JuliaBayes/VarNames.jl/issues" aria-label="VarNames.jl issues">Issues</a> <a href="../releases/varnames.jl.xml" aria-label="VarNames.jl release feed">RSS</a></p>
 </div>
 <div class="ecosystem-description">
 <p>Types to represent variable names and collections thereof.</p>

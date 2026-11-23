@@ -1,15 +1,15 @@
 <script>
   (() => {
-    const form = document.getElementById("gist-filters");
+    const form = document.getElementById("snippet-filters");
     if (!form) return;
 
-    const search = document.getElementById("gist-search");
+    const search = document.getElementById("snippet-search");
     const dropdown = form.querySelector("details");
     const checkboxes = [...form.querySelectorAll('input[type="checkbox"]')];
     const count = form.querySelector('[role="status"]');
-    const empty = document.getElementById("gist-empty");
+    const empty = document.getElementById("snippet-empty");
     const normalise = (text) => text.trim().toLowerCase().replace(/\s+/g, " ");
-    const entries = [...document.querySelectorAll(".gist-entry")].map((row) => ({
+    const entries = [...document.querySelectorAll(".snippet-entry")].map((row) => ({
       row,
       text: normalise(row.textContent),
       tags: new Set([...row.querySelectorAll(".listing-category")].map((tag) => tag.textContent)),
@@ -27,7 +27,7 @@
         row.hidden = !text.includes(query) || (selected.length > 0 && !selected.some((tag) => tags.has(tag)));
         if (!row.hidden) matches += 1;
       }
-      count.textContent = `${matches} ${matches === 1 ? "gist" : "gists"}`;
+      count.textContent = `${matches} ${matches === 1 ? "snippet" : "snippets"}`;
       empty.hidden = matches > 0;
     };
 

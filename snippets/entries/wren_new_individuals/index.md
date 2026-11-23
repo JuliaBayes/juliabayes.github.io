@@ -31,13 +31,13 @@ y = rand.(BernoulliLogit.(theta[site] .+ beta[group]))
     return mu .+ tau * z
 end
 
-@wren function logistic_regression(y, site, group)
-    n_sites = maximum(site)
+@wren function logistic_regression(y, site_index, group)
+    n_sites = maximum(site_index)
     n_groups = maximum(group)
 
     theta = (site ~ hierarchical(n_sites))
     @iid beta ~ Normal() size=n_groups
-    logit_p = theta[site] .+ beta[group]
+    logit_p = theta[site_index] .+ beta[group]
     for i in eachindex(y)
         y[i] ~ BernoulliLogit(logit_p[i])
     end
@@ -59,3 +59,8 @@ chain_new = simulate(model_new, chain_sub)
 ```
 
 This is explained in more detail in the Wren docs [workflow page](https://juliabayes.org/Wren.jl/dev/tutorials/workflow/).
+
+The example runs with Julia 1.13.3. Download [Project.toml](Project.toml) and
+[Manifest.toml](Manifest.toml) into the same folder. Run
+`julia --project=. -e 'using Pkg; Pkg.instantiate()'` there to install the
+recorded environment.

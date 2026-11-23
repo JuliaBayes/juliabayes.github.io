@@ -5,4 +5,4 @@ code-fold: show
 code-copy: true
 format:
   html:
-    body-classes: "news-post gist-page"
+    body-classes: "news-post snippet-page"

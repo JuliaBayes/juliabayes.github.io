@@ -8,13 +8,15 @@ project:
     - "ecosystem/*.qmd"
     - "news/*.qmd"
     - "news/posts/**/*.qmd"
-    - "gists/index.qmd"
-    - "gists/entries/**/index.md"
+    - "snippets/index.qmd"
+    - "snippets/entries/**/index.md"
   resources:
     - CNAME
     # The font licence asks that it ships with the fonts. Quarto copies the
     # fonts themselves from the url() in theming/rules/_fonts.scss.
     - theming/fonts/LICENSE.txt
+    - "snippets/entries/**/Project.toml"
+    - "snippets/entries/**/Manifest.toml"
     # Browsers and iOS request these from the site root without a link tag.
     # src/favicon.jl generates them with favicon.svg.
     - favicon.ico
@@ -45,7 +47,7 @@ website:
       - about/index.qmd
       - ecosystem/index.qmd
       - news/index.qmd
-      - gists/index.qmd
+      - snippets/index.qmd
       - href: contact.qmd
         text: Contact
     # The links sit in the tools, next to the colour-scheme toggle and outside the

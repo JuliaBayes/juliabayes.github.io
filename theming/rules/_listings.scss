@@ -105,7 +105,7 @@ div.quarto-post .listing-subtitle:has(> a:empty) {
   }
 }
 
-// Search and checkbox filters shared by the Ecosystem and Gists listings.
+// Search and checkbox filters shared by the Ecosystem and Snippets listings.
 $listing-filter-open-border: mix($julia-blue, $accent-card-bg, percentage($package-tint-strength));
 $listing-filter-border-radius: 0.375rem;
 // The hover colour of the landing page's accent buttons.
@@ -235,6 +235,6 @@ body.quarto-light .listing-filters {
 }
 
 .listing-filters[hidden],
-.gist-entry[hidden] {
+.snippet-entry[hidden] {
   display: none;
 }

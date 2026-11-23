@@ -11,7 +11,7 @@
     if (categories.length === 0 || offset === undefined) {
       return;
     }
-    const section = document.body.classList.contains("gist-page") ? "gists" : "news";
+    const section = document.body.classList.contains("snippet-page") ? "snippets" : "news";
     const listing = new URL(`${offset}${section}/`, window.location).pathname;
     // Quarto adds the links after it fetches listings.json.
     const retarget = () => {

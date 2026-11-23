@@ -76,7 +76,7 @@ button.listing-category {
 
 // The news page: one accent card, with each post in a tinted panel like the
 // packages on the ecosystem page.
-:is(.news-card, .gist-card) {
+:is(.news-card, .snippet-card) {
   .quarto-listing {
     padding-bottom: 0;
   }
@@ -170,13 +170,13 @@ button.listing-category {
   }
 }
 
-.gist-card .listing-title {
+.snippet-card .listing-title {
   margin: 0;
   padding: 0;
   border: 0;
 }
 
-.gist-card .listing-category {
+.snippet-card .listing-category {
   cursor: default;
 }
 

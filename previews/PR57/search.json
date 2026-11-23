@@ -1,52 +1,66 @@
 [
   {
-    "objectID": "gists/entries/wren_new_individuals/index.html",
-    "href": "gists/entries/wren_new_individuals/index.html",
+    "objectID": "snippets/entries/wren_new_individuals/index.html",
+    "href": "snippets/entries/wren_new_individuals/index.html",
     "title": "New individuals in a hierarchical model",
     "section": "",
-    "text": "Skip to main content\n\n\n\n\nFitting a hierarchical model usually locks you into parameter vectors that share dimensions with the number of individuals you work with. Sometimes, however, you want to predict for new hypothetical individuals from the inferred population. Here’s how to do that!\n\nCode\nusing Wren, WrenDists\nimport Enzyme\n\nn = 10\nmu = 1.0\ntau = 0.5\nz = rand(Normal(), n)\ntheta = mu .+ tau * z\nbeta = [-2.0, 2.0]\nsite = eachindex(z)\ngroup = repeat([1, 2], div(n, 2))\ny = rand.(BernoulliLogit.(theta[site] .+ beta[group]))\n\n@wren function hierarchical(size)\n    mu ~ Normal()\n    tau ~ Exponential(1)\n    @iid z ~ Normal() size=size\n    return mu .+ tau * z\nend\n\n@wren function logistic_regression(y, site, group)\n    n_sites = maximum(site)\n    n_groups = maximum(group)\n\n    theta = (site ~ hierarchical(n_sites))\n    @iid beta ~ Normal() size=n_groups\n    logit_p = theta[site] .+ beta[group]\n    for i in eachindex(y)\n        y[i] ~ BernoulliLogit(logit_p[i])\n    end\n\n    @track contrast = sum(y[group .== 1]) .- sum(y[group .== 2])\nend\n\nmodel = logistic_regression(y, site, group)\nchain = nuts(model | (; y), 1000, 4)\n\nn_new = 200\nsite_new = 1:n_new\ngroup_new = repeat([1, 2], div(n_new, 2))\n\n# Dropping `site.z` from `chain` makes `simulate` sample from the prior\nchain_sub = chain[[@vn(site.mu), @vn(site.tau)]]\nmodel_new = logistic_regression(zeros(n_new), site_new, group_new)\nchain_new = simulate(model_new, chain_sub)\n\nThis is explained in more detail in the Wren docs workflow page."
+    "text": "Skip to main content\n\n\n\n\nFitting a hierarchical model usually locks you into parameter vectors that share dimensions with the number of individuals you work with. Sometimes, however, you want to predict for new hypothetical individuals from the inferred population. Here’s how to do that!\n\nCode\nusing Wren, WrenDists\nimport Enzyme\n\nn = 10\nmu = 1.0\ntau = 0.5\nz = rand(Normal(), n)\ntheta = mu .+ tau * z\nbeta = [-2.0, 2.0]\nsite = eachindex(z)\ngroup = repeat([1, 2], div(n, 2))\ny = rand.(BernoulliLogit.(theta[site] .+ beta[group]))\n\n@wren function hierarchical(size)\n    mu ~ Normal()\n    tau ~ Exponential(1)\n    @iid z ~ Normal() size=size\n    return mu .+ tau * z\nend\n\n@wren function logistic_regression(y, site_index, group)\n    n_sites = maximum(site_index)\n    n_groups = maximum(group)\n\n    theta = (site ~ hierarchical(n_sites))\n    @iid beta ~ Normal() size=n_groups\n    logit_p = theta[site_index] .+ beta[group]\n    for i in eachindex(y)\n        y[i] ~ BernoulliLogit(logit_p[i])\n    end\n\n    @track contrast = sum(y[group .== 1]) .- sum(y[group .== 2])\nend\n\nmodel = logistic_regression(y, site, group)\nchain = nuts(model | (; y), 1000, 4)\n\nn_new = 200\nsite_new = 1:n_new\ngroup_new = repeat([1, 2], div(n_new, 2))\n\n# Dropping `site.z` from `chain` makes `simulate` sample from the prior\nchain_sub = chain[[@vn(site.mu), @vn(site.tau)]]\nmodel_new = logistic_regression(zeros(n_new), site_new, group_new)\nchain_new = simulate(model_new, chain_sub)\n\nThis is explained in more detail in the Wren docs workflow page.\nThe example runs with Julia 1.13.3. Download Project.toml and Manifest.toml into the same folder. Run julia --project=. -e 'using Pkg; Pkg.instantiate()' there to install the recorded environment."
   },
   {
-    "objectID": "news/posts/2026-11-10-mock-third/index.html",
-    "href": "news/posts/2026-11-10-mock-third/index.html",
-    "title": "Mock post: a third entry with a much longer title, so that it runs past the width of the card and ends in an ellipsis",
+    "objectID": "news/posts/2026-11-20-community-meeting-1/index.html",
+    "href": "news/posts/2026-11-20-community-meeting-1/index.html",
+    "title": "JuliaBayes community meeting recap",
     "section": "",
-    "text": "Skip to main content\n\n\n\n\nPlaceholder post for testing the news listing on the landing page."
+    "text": "Skip to main content\nOn 18 November, we met for the first JuliaBayes community meeting. 🎉\nThe meeting was chaired by Peter Thestrup Waade. Roughly 15 people from a wide variety of backgrounds attended the meeting - both package developers and users (!!). There was an agenda to go through, but the main goal was simply to meet each other and take the first steps towards building a community."
   },
   {
-    "objectID": "news/posts/2026-10-29-hello-world/index.html",
-    "href": "news/posts/2026-10-29-hello-world/index.html",
-    "title": "Hello, world!",
-    "section": "",
-    "text": "Skip to main content\n\n\n\n\nWelcome to JuliaBayes news! Posts here can contain Julia code. It runs when the author renders the post, and the site shows the saved output:\n\nusing Statistics\n\nx = randn(1000)\nmean(x), std(x)\n\n(0.004524789299067646, 0.9581874573980756)"
+    "objectID": "news/posts/2026-11-20-community-meeting-1/index.html#interim-steering-committee",
+    "href": "news/posts/2026-11-20-community-meeting-1/index.html#interim-steering-committee",
+    "title": "JuliaBayes community meeting recap",
+    "section": "Interim steering committee",
+    "text": "Interim steering committee\nAn interim steering committee made up of Jessica Cox, Ryan Senne and Simon Steiger was announced. They will approve package transfers, keep an eye on package maintenance, and make decisions if there should be a need. The committee is temporary and will be replaced by an elected committee at the next community meeting, likely in January. Nobody objected."
+  },
+  {
+    "objectID": "news/posts/2026-11-20-community-meeting-1/index.html#draft-statutes",
+    "href": "news/posts/2026-11-20-community-meeting-1/index.html#draft-statutes",
+    "title": "JuliaBayes community meeting recap",
+    "section": "Draft statutes",
+    "text": "Draft statutes\nJessica presented the draft rules for the organisation. Here goes an overview:\n\nCode of conduct. We are part of the Julia community and follow its standards: treat each other with respect, disagree about code, not people.\nYour package stays yours. Maintainers keep full control of their packages, including the option to move them out of the organisation again. If you want to bring your package into JuliaBayes, let us know here.\nAccount security. Use 2FA, make sure only you can log into your account, and ideally sign your commits.\nContributing. We loosely follow ColPrac: PRs need an approval from someone else before merging. Draft PRs and half-formed ideas are welcome. You are responsible for what you submit, including AI-assisted code. Oliver Schulz shared an AI policy template that repositories can adopt.\nGetting involved. If you want to work on a package, ask the maintainers. Feel free to come and talk to us in the #bayes channel on Julia Slack!\n\nYou can find the statutes on GitHub."
+  },
+  {
+    "objectID": "news/posts/2026-11-20-community-meeting-1/index.html#whats-next",
+    "href": "news/posts/2026-11-20-community-meeting-1/index.html#whats-next",
+    "title": "JuliaBayes community meeting recap",
+    "section": "What’s next?",
+    "text": "What’s next?\n\nWho else should know about us? If you know people or communities that would be interested in JuliaBayes, it would be great if you tell them (or tell us about those communities, for example on Slack).\nThe wider ecosystem. There are many packages outside JuliaBayes that are relevant to Bayesian inference in Julia. We would like to showcase these under a “wider ecosystem” section. Do you think your package fits? Let us know here.\nJuliaCon in Tallinn. There is interest in a joint symposium on Bayesian inference in Julia. Get in touch if you would like to join!\nFunding. Being a formal organisation makes it easier to apply for money to pay for developers, compute, travel and collaborations. We’re still surveying our options here.\nCollaborations. We want to avoid reinventing the wheel and collaborate with existing projects wherever possible. Contact us if you have a package you want to collaborate on!\n\nSee you in January!"
   },
   {
     "objectID": "ecosystem/index.html",
     "href": "ecosystem/index.html",
     "title": "Ecosystem",
     "section": "",
-    "text": "Skip to main content\nHave a Bayesian Julia package to share? Ask us to showcase it in the wider ecosystem.\nThink JuliaBayes would be a good home for your package? Request to bring it into JuliaBayes.\nCome say hello in #bayes on Julia Slack if you’d like to chat first!\nGot code to talk about? Join the development discussion in #bayes-dev on Julia Slack."
+    "text": "Skip to main content\nHave a Bayesian Julia package to share? Ask us to showcase it in the wider ecosystem.\nThink JuliaBayes would be a good home for your package? Request to bring it into JuliaBayes.\nCome say hello in #bayes on Julia Slack if you’d like to chat first!\nGot code to talk about? Join the development discussion in #bayes-dev on Julia Slack.\nSubscribe to package releases (RSS)."
   },
   {
     "objectID": "ecosystem/index.html#modelling",
     "href": "ecosystem/index.html#modelling",
     "title": "Ecosystem",
     "section": "Modelling",
-    "text": "Modelling\n\n\nWren.jl\n\nDocs GitHub Issues\n\n\nProbabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.\n\n\n\nMaintained by: Jessica CoxRyan SenneSimon SteigerShow all\n\nStatus: Unregistered\n\nNo stable GitHub release or version tag yet."
+    "text": "Modelling\n\n\nWren.jl\n\nDocs GitHub Issues\n\n\nProbabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.\n\n\n\nMaintained by: Jessica CoxRyan SenneSimon SteigerShow all\n\nStatus: Unregistered\n\nLatest release: WrenDists-v0.1.0 on 23 Nov 2026"
   },
   {
     "objectID": "ecosystem/index.html#sampling",
     "href": "ecosystem/index.html#sampling",
     "title": "Ecosystem",
     "section": "Sampling",
-    "text": "Sampling\n\n\nEnsembleMCMC.jl\n\nDocs GitHub Issues\n\n\nGradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.5 on 2 Nov 2026\n\n\n\n\n\n\n\n\n\nImportanceSamplers.jl\n\nDocs GitHub Issues\n\n\nPlain, multiple and adaptive importance sampling, on CPU threads or GPUs.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.1 on 12 Nov 2026\n\n\n\n\n\n\n\n\n\nMGVI.jl\n\nDocs GitHub Issues\n\n\nApproximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.\n\n\n\nMaintained by: Oliver SchulzShow all\n\nStatus: Stable\n\nLatest release: v0.6.1 on 13 Nov 2026\n\n\n\n\n\n\nUltraNest.jl\n\nDocs GitHub Issues\n\n\nJulia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.\n\n\n\nMaintained by: Oliver SchulzShow all\n\nStatus: Stable\n\nLatest release: v0.2.0 on 31 Jul 2026"
+    "text": "Sampling\n\n\nEnsembleMCMC.jl\n\nDocs GitHub Issues\n\n\nGradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.5 on 2 Nov 2026\n\n\n\n\n\n\n\n\n\nImportanceSamplers.jl\n\nDocs GitHub Issues\n\n\nPlain, multiple and adaptive importance sampling, on CPU threads or GPUs.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.1 on 12 Nov 2026\n\n\n\n\n\n\n\n\n\nMGVI.jl\n\nDocs GitHub Issues\n\n\nApproximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.\n\n\n\nMaintained by: Oliver SchulzShow all\n\nStatus: Stable\n\nLatest release: v0.6.2 on 20 Nov 2026\n\n\n\n\n\n\nUltraNest.jl\n\nDocs GitHub Issues\n\n\nJulia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.\n\n\n\nMaintained by: Oliver SchulzShow all\n\nStatus: Stable\n\nLatest release: v0.2.1 on 20 Nov 2026"
   },
   {
     "objectID": "ecosystem/index.html#analysis",
     "href": "ecosystem/index.html#analysis",
     "title": "Ecosystem",
     "section": "Analysis",
-    "text": "Analysis\n\n\nFlexiChains.jl\n\nDocs GitHub Issues\n\n\nMarkov chains that keep the type and structure of each sample.\n\n\n\nMaintained by: Ryan SenneSimon SteigerShow all\n\nStatus: Stable\n\nLatest release: v0.7.2 on 5 Nov 2026"
+    "text": "Analysis\n\n\nFlexiChains.jl\n\nDocs GitHub Issues\n\n\nMarkov chains that keep the type and structure of each sample.\n\n\n\nMaintained by: Ryan SenneSimon SteigerShow all\n\nStatus: Stable\n\nLatest release: v0.7.3 on 22 Nov 2026"
   },
   {
     "objectID": "ecosystem/index.html#workflow",
@@ -60,7 +74,7 @@
     "href": "ecosystem/index.html#tooling",
     "title": "Ecosystem",
     "section": "Tooling",
-    "text": "Tooling\n\n\nMCMCProgress.jl\n\nDocs GitHub Issues\n\n\nA common interface for MCMC samplers to report progress, with plain-text and terminal backends.\n\n\nStatus: Registered\n\nLatest release: v0.1.0 on 18 Nov 2026\n\n\n\n\n\n\n\n\n\nPlaice.jl\n\nDocs GitHub Issues\n\n\nConverts samples from distributions to and from vectors, constrained or unconstrained.\n\n\nStatus: Registered\n\nLatest release: v0.1.4 on 7 Nov 2026\n\n\n\n\n\n\nVarNames.jl\n\nDocs GitHub Issues\n\n\nTypes to represent variable names and collections thereof.\n\n\nStatus: Stable\n\nLatest release: v0.1.9 on 14 Nov 2026"
+    "text": "Tooling\n\n\nMCMCProgress.jl\n\nDocs GitHub Issues\n\n\nA common interface for MCMC samplers to report progress, with plain-text and terminal backends.\n\n\nStatus: Registered\n\nLatest release: v0.1.0 on 18 Nov 2026\n\n\n\n\n\n\n\n\n\nPlaice.jl\n\nDocs GitHub Issues\n\n\nConverts samples from distributions to and from vectors, constrained or unconstrained.\n\n\nStatus: Registered\n\nLatest release: v0.1.5 on 22 Nov 2026\n\n\n\n\n\n\nVarNames.jl\n\nDocs GitHub Issues\n\n\nTypes to represent variable names and collections thereof.\n\n\nStatus: Stable\n\nLatest release: v0.1.9 on 14 Nov 2026"
   },
   {
     "objectID": "index.html",
@@ -123,20 +137,13 @@
     "href": "news/index.html",
     "title": "News",
     "section": "",
-    "text": "Skip to main content\n\n\n\n\nClear category filter\n\n\n\n\n\n\nMock post: a third entry with a much longer title, so that it runs past the width of the card and ends in an ellipsis\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 10, 2026\n\n\n\n\n\n\n\nMock post: a second entry\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2026\n\n\n\n\n\n\n\nHello, world!\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 29, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Skip to main content\n\n\n\n\nClear category filter\n\n\n\n\n\n\nJuliaBayes community meeting recap\n\n\n\nnews\n\ncommunity\n\n\n\n\n\n\n\n\n\n\n\nNov 20, 2026\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "news/posts/2026-11-05-mock-second/index.html",
-    "href": "news/posts/2026-11-05-mock-second/index.html",
-    "title": "Mock post: a second entry",
+    "objectID": "snippets/index.html",
+    "href": "snippets/index.html",
+    "title": "Snippets",
     "section": "",
-    "text": "Skip to main content\n\n\n\n\nPlaceholder post for testing the news listing on the landing page."
-  },
-  {
-    "objectID": "gists/index.html",
-    "href": "gists/index.html",
-    "title": "Gists",
-    "section": "",
-    "text": "Skip to main content\n\n\n\n\nContribute a gist\n\n\n\n  \n    Search gists\n    \n  \n  \n  \n    Tags\n    \n      Filter by tag: All tags\n      \n        \n          Show gists with any selected tag\n          \n           FlexiChains\n          \n           Wren\n          \n        \n      \n    \n  \n  \n  Clear\n  \n\n\nNo gists match.\n\n\n  \n    New individuals in a hierarchical model\n    Calculate results for hypothetical individuals by dropping parameters from your FlexiChain.\n    \n    \n      \n      Wren\n      \n      FlexiChains\n      \n    \n    \n  \n  \n    Simon Steiger\n    Nov 19, 2026\n  \n\n\nNo matching items"
+    "text": "Skip to main content\n\n\n\n\nContribute a snippet\n\n\n\n  \n    Search snippets\n    \n  \n  \n  \n    Tags\n    \n      Filter by tag: All tags\n      \n        \n          Show snippets with any selected tag\n          \n           FlexiChains\n          \n           Wren\n          \n        \n      \n    \n  \n  \n  Clear\n  \n\n\nNo snippets match.\n\n\n  \n    New individuals in a hierarchical model\n    Calculate results for hypothetical individuals by dropping parameters from your FlexiChain.\n    \n    \n      \n      Wren\n      \n      FlexiChains\n      \n    \n    \n  \n  \n    Simon Steiger\n    Nov 19, 2026\n  \n\n\nNo matching items"
   }
 ]

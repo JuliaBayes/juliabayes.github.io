@@ -1,43 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://juliabayes.org/gists/entries/wren_new_individuals/index.html</loc>
-    <lastmod>2026-11-19T20:14:56.489Z</lastmod>
+    <loc>https://juliabayes.org/snippets/entries/wren_new_individuals/index.html</loc>
+    <lastmod>2026-11-23T14:33:14.488Z</lastmod>
   </url>
   <url>
-    <loc>https://juliabayes.org/news/posts/2026-11-10-mock-third/index.html</loc>
-    <lastmod>2026-11-19T20:14:56.490Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliabayes.org/news/posts/2026-10-29-hello-world/index.html</loc>
-    <lastmod>2026-11-19T20:14:56.490Z</lastmod>
+    <loc>https://juliabayes.org/news/posts/2026-11-20-community-meeting-1/index.html</loc>
+    <lastmod>2026-11-23T14:33:14.486Z</lastmod>
   </url>
   <url>
     <loc>https://juliabayes.org/ecosystem/index.html</loc>
-    <lastmod>2026-11-19T20:14:56.489Z</lastmod>
+    <lastmod>2026-11-23T14:33:14.486Z</lastmod>
   </url>
   <url>
     <loc>https://juliabayes.org/index.html</loc>
-    <lastmod>2026-11-19T20:14:56.489Z</lastmod>
+    <lastmod>2026-11-23T14:33:14.486Z</lastmod>
   </url>
   <url>
     <loc>https://juliabayes.org/contact.html</loc>
-    <lastmod>2026-11-19T20:14:56.488Z</lastmod>
+    <lastmod>2026-11-23T14:33:14.485Z</lastmod>
   </url>
   <url>
     <loc>https://juliabayes.org/about/index.html</loc>
-    <lastmod>2026-11-19T20:14:56.488Z</lastmod>
+    <lastmod>2026-11-23T14:33:14.484Z</lastmod>
   </url>
   <url>
     <loc>https://juliabayes.org/news/index.html</loc>
-    <lastmod>2026-11-19T20:14:56.490Z</lastmod>
+    <lastmod>2026-11-23T14:33:14.486Z</lastmod>
   </url>
   <url>
-    <loc>https://juliabayes.org/news/posts/2026-11-05-mock-second/index.html</loc>
-    <lastmod>2026-11-19T20:14:56.490Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliabayes.org/gists/index.html</loc>
-    <lastmod>2026-11-19T20:14:56.489Z</lastmod>
+    <loc>https://juliabayes.org/snippets/index.html</loc>
+    <lastmod>2026-11-23T14:33:14.488Z</lastmod>
   </url>
 </urlset>

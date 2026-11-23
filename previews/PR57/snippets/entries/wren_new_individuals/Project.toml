@@ -1,0 +1,14 @@
+[deps]
+Enzyme = "7da242da-08ed-463a-9acd-ee780be4f1d9"
+Wren = "bcabdda7-19af-429b-97ac-a6b557ca0f6c"
+WrenCore = "008b59e7-bbda-4991-901b-b08f5cfc584d"
+WrenDists = "2ad4af40-d7c9-42b2-92b0-e09d37d1e75a"
+
+[sources]
+Wren = {url = "https://github.com/JuliaBayes/Wren.jl.git", rev = "96dbd58e98194afabd301bf1c233a1d240256169", subdir = "Wren"}
+WrenCore = {url = "https://github.com/JuliaBayes/Wren.jl.git", rev = "96dbd58e98194afabd301bf1c233a1d240256169", subdir = "WrenCore"}
+WrenDists = {url = "https://github.com/JuliaBayes/Wren.jl.git", rev = "96dbd58e98194afabd301bf1c233a1d240256169", subdir = "WrenDists"}
+
+[compat]
+Enzyme = "0.13"
+julia = "1.12"

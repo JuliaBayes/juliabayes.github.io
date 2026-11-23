@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Simon Steiger">
+<meta name="dcterms.date" content="2026-11-20">
 
-<title>Gists – JuliaBayes</title>
+<title>JuliaBayes community meeting recap – JuliaBayes</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,35 +28,32 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-3db608c3aac2db220582703da11e8ac9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3c3aaea33fb2b2a4f52b8bfed9319229.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-8842c7578fd20be36a05ea14c3cd1bc0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-3c3aaea33fb2b2a4f52b8bfed9319229.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-3db608c3aac2db220582703da11e8ac9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-25a8ecc39643bfa667d46c71fe3d19aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-0beab70188875c3f7712cf9fea907468.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-25a8ecc39643bfa667d46c71fe3d19aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -81,37 +80,16 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-gist-entries .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-engines','listing-language','listing-engine','listing-code-fold','listing-code-copy','listing-title','listing-author','listing-date','listing-description','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-engines","listing-language","listing-engine","listing-code-fold","listing-code-copy","listing-title","listing-author","listing-date","listing-description","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-gist-entries'] = new List('listing-gist-entries', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-  </script>
+<link rel="alternate" type="application/rss+xml" title="JuliaBayes package releases" href="../../../releases.xml">
+<link rel="alternate" type="application/rss+xml" title="JuliaBayes blog and news" href="../../../news/index.xml">
 
 
-<meta property="og:title" content="Gists – JuliaBayes">
+<meta property="og:title" content="JuliaBayes community meeting recap – JuliaBayes">
 <meta property="og:description" content="JuliaBayes is a shared home for Bayesian software in Julia.">
 <meta property="og:site_name" content="JuliaBayes">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed news-post quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -298,11 +276,11 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../favicon.svg" alt="JuliaBayes home" class="navbar-logo light-content">
-    <img src="../favicon.svg" alt="JuliaBayes home" class="navbar-logo dark-content">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../favicon.svg" alt="JuliaBayes home" class="navbar-logo light-content">
+    <img src="../../../favicon.svg" alt="JuliaBayes home" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">JuliaBayes</span>
     </a>
   </div>
@@ -312,30 +290,44 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about/index.html"> 
+    <a class="nav-link" href="../../../about/index.html"> 
 <span class="menu-text">About us</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../ecosystem/index.html"> 
+    <a class="nav-link" href="../../../ecosystem/index.html"> 
 <span class="menu-text">Ecosystem</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../news/index.html"> 
+    <a class="nav-link" href="../../../news/index.html"> 
 <span class="menu-text">News</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../gists/index.html" aria-current="page"> 
-<span class="menu-text">Gists</span></a>
+    <a class="nav-link" href="../../../snippets/index.html"> 
+<span class="menu-text">Snippets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../contact.html"> 
+    <a class="nav-link" href="../../../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
     <a href="https://github.com/JuliaBayes" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
-    <a href="../news/index.xml" title="RSS feed" class="quarto-navigation-tool px-1" aria-label="RSS feed"><i class="bi bi-rss"></i></a>
+    <div class="dropdown">
+      <a href="" title="RSS feeds" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="RSS feeds"><i class="bi bi-rss"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="../../../releases.xml">
+            Package releases
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="../../../news/index.xml">
+            Blog and news
+            </a>
+          </li>
+      </ul>
+    </div>
   <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -346,7 +338,17 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#interim-steering-committee" id="toc-interim-steering-committee" class="nav-link active" data-scroll-target="#interim-steering-committee">Interim steering committee</a></li>
+  <li><a href="#draft-statutes" id="toc-draft-statutes" class="nav-link" data-scroll-target="#draft-statutes">Draft statutes</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s next?</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
@@ -354,14 +356,30 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Gists</h1>
-</div>
+<h1 class="title">JuliaBayes community meeting recap</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">news</div>
+    <div class="quarto-category">community</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Simon Steiger </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 20, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -371,64 +389,37 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="https://github.com/JuliaBayes/juliabayes.github.io#writing-a-gist">Contribute a gist</a></p>
-<div class="accent-card accent-blue gist-card">
-<div id="listing-gist-entries" class="quarto-listing quarto-listing-container-custom">
-<form id="gist-filters" class="listing-filters" role="search" aria-label="Find gists" hidden="">
-  <div>
-    <label for="gist-search" class="form-label">Search gists</label>
-    <input id="gist-search" class="form-control" type="search" placeholder="Title, summary, author or tag" aria-controls="listing-gist-entries" autocomplete="off">
-  </div>
-  
-  <div>
-    <span class="form-label d-block">Tags</span>
-    <details class="listing-filter-dropdown">
-      <summary aria-controls="gist-tag-menu"><span class="visually-hidden">Filter by tag: </span><span data-filter-summary="">All tags</span></summary>
-      <div id="gist-tag-menu" class="listing-filter-menu">
-        <fieldset>
-          <legend class="visually-hidden">Show gists with any selected tag</legend>
-          
-          <label><input type="checkbox" value="FlexiChains" aria-controls="listing-gist-entries"> FlexiChains</label>
-          
-          <label><input type="checkbox" value="Wren" aria-controls="listing-gist-entries"> Wren</label>
-          
-        </fieldset>
-      </div>
-    </details>
-  </div>
-  
-  <button type="reset" class="btn">Clear</button>
-  <p role="status" aria-live="polite" aria-atomic="true"></p>
-</form>
-
-<p id="gist-empty" hidden="">No gists match.</p>
-
-<div class="quarto-post gist-entry">
-  <div class="body">
-    <h2 class="no-anchor listing-title"><a href="../gists/entries/wren_new_individuals/index.html">New individuals in a hierarchical model</a></h2>
-    <div class="listing-description">Calculate results for hypothetical individuals by dropping parameters from your FlexiChain.</div>
-    
-    <div class="listing-categories">
-      
-      <span class="listing-category">Wren</span>
-      
-      <span class="listing-category">FlexiChains</span>
-      
-    </div>
-    
-  </div>
-  <div class="metadata">
-    <div class="listing-author">Simon Steiger</div>
-    <div class="listing-date">Nov 19, 2026</div>
-  </div>
-</div>
-
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</div>
+<p>On 18 November, we met for the first JuliaBayes community meeting. 🎉</p>
+<p>The meeting was chaired by Peter Thestrup Waade. Roughly 15 people from a wide variety of backgrounds attended the meeting - both package developers and users (!!). There was an agenda to go through, but the main goal was simply to meet each other and take the first steps towards building a community.</p>
+<section id="interim-steering-committee" class="level2">
+<h2 class="anchored" data-anchor-id="interim-steering-committee">Interim steering committee</h2>
+<p>An interim <a href="https://juliabayes.org/about/#steering-committee">steering committee</a> made up of Jessica Cox, Ryan Senne and Simon Steiger was announced. They will approve package transfers, keep an eye on package maintenance, and make decisions if there should be a need. The committee is temporary and will be replaced by an elected committee at the next community meeting, likely in January. Nobody objected.</p>
+</section>
+<section id="draft-statutes" class="level2">
+<h2 class="anchored" data-anchor-id="draft-statutes">Draft statutes</h2>
+<p>Jessica presented the draft rules for the organisation. Here goes an overview:</p>
+<ul>
+<li><strong>Code of conduct.</strong> We are part of the Julia community and follow its standards: treat each other with respect, disagree about code, not people.</li>
+<li><strong>Your package stays yours.</strong> Maintainers keep full control of their packages, including the option to move them out of the organisation again. If you want to bring your package into JuliaBayes, let us know <a href="https://github.com/JuliaBayes/juliabayes.github.io/issues/new?template=bring-package.yml">here</a>.</li>
+<li><strong>Account security.</strong> Use 2FA, make sure only you can log into your account, and ideally sign your commits.</li>
+<li><strong>Contributing.</strong> We loosely follow <a href="https://github.com/SciML/ColPrac">ColPrac</a>: PRs need an approval from someone else before merging. Draft PRs and half-formed ideas are welcome. You are responsible for what you submit, including AI-assisted code. Oliver Schulz shared an <a href="https://github.com/flatppl/flatppl-js/blob/main/AI_POLICY.md">AI policy template</a> that repositories can adopt.</li>
+<li><strong>Getting involved.</strong> If you want to work on a package, ask the maintainers. Feel free to come and talk to us in the <code>#bayes</code> channel on <a href="https://julialang.slack.com/archives/C0BKRUEN6CX">Julia Slack</a>!</li>
+</ul>
+<p>You can find the statutes on <a href="https://github.com/JuliaBayes/community">GitHub</a>.</p>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s next?</h2>
+<ul>
+<li><strong>Who else should know about us?</strong> If you know people or communities that would be interested in JuliaBayes, it would be great if you tell them (or tell us about those communities, for example on Slack).</li>
+<li><strong>The wider ecosystem.</strong> There are many packages outside JuliaBayes that are relevant to Bayesian inference in Julia. We would like to showcase these under a “wider ecosystem” section. Do you think your package fits? Let us know <a href="https://github.com/JuliaBayes/juliabayes.github.io/issues/new?template=bring-package.yml">here</a>.</li>
+<li><a href="https://juliacon.org/2027/"><strong>JuliaCon in Tallinn.</strong></a> There is interest in a joint symposium on Bayesian inference in Julia. Get in touch if you would like to join!</li>
+<li><strong>Funding.</strong> Being a formal organisation makes it easier to apply for money to pay for developers, compute, travel and collaborations. We’re still surveying our options here.</li>
+<li><strong>Collaborations.</strong> We want to avoid reinventing the wheel and collaborate with existing projects wherever possible. Contact us if you have a package you want to collaborate on!</li>
+</ul>
+<p>See you in January!</p>
 
 
-
+</section>
 
 </main> <!-- /main -->
 <script>
@@ -447,7 +438,9 @@ ul.task-list li input[type="checkbox"] {
       menu.removeAttribute("role");
       const menuOpen = () => menu.getClientRects().length && menu.getAttribute("aria-expanded") === "true";
       header.addEventListener("keydown", (event) => {
-        if (event.key !== "Escape" || event.defaultPrevented || !menuOpen()) return;
+        if (event.key !== "Escape" || !menuOpen()) return;
+        // Bootstrap also prevents Escape on a closed dropdown toggle.
+        if (event.defaultPrevented && !event.target.closest('.rss-feed-toggle[aria-expanded="false"]')) return;
         event.preventDefault();
         menu.click();
         menu.focus();
@@ -579,7 +572,7 @@ ul.task-list li input[type="checkbox"] {
     if (categories.length === 0 || offset === undefined) {
       return;
     }
-    const section = document.body.classList.contains("gist-page") ? "gists" : "news";
+    const section = document.body.classList.contains("snippet-page") ? "snippets" : "news";
     const listing = new URL(`${offset}${section}/`, window.location).pathname;
     // Quarto adds the links after it fetches listings.json.
     const retarget = () => {
@@ -631,68 +624,20 @@ ul.task-list li input[type="checkbox"] {
 </script>
 <script>
   (() => {
-    const form = document.getElementById("gist-filters");
-    if (!form) return;
-
-    const search = document.getElementById("gist-search");
-    const dropdown = form.querySelector("details");
-    const checkboxes = [...form.querySelectorAll('input[type="checkbox"]')];
-    const count = form.querySelector('[role="status"]');
-    const empty = document.getElementById("gist-empty");
-    const normalise = (text) => text.trim().toLowerCase().replace(/\s+/g, " ");
-    const entries = [...document.querySelectorAll(".gist-entry")].map((row) => ({
-      row,
-      text: normalise(row.textContent),
-      tags: new Set([...row.querySelectorAll(".listing-category")].map((tag) => tag.textContent)),
-    }));
-
-    const filter = () => {
-      const query = normalise(search.value);
-      const selected = checkboxes.filter((box) => box.checked).map((box) => box.value);
-      if (dropdown) {
-        dropdown.querySelector("[data-filter-summary]").textContent = selected.length === 0 ? "All tags" :
-          selected.length === 1 ? selected[0] : `${selected.length} tags`;
-      }
-      let matches = 0;
-      for (const { row, text, tags } of entries) {
-        row.hidden = !text.includes(query) || (selected.length > 0 && !selected.some((tag) => tags.has(tag)));
-        if (!row.hidden) matches += 1;
-      }
-      count.textContent = `${matches} ${matches === 1 ? "gist" : "gists"}`;
-      empty.hidden = matches > 0;
-    };
-
-    form.addEventListener("submit", (event) => event.preventDefault());
-    search.addEventListener("input", filter);
-    form.addEventListener("change", filter);
-    form.addEventListener("reset", () => {
-      if (dropdown) dropdown.open = false;
-      const url = new URL(window.location.href);
-      if (url.hash.startsWith("#category=")) {
-        url.hash = "";
-        history.replaceState(null, "", url);
-      }
-      requestAnimationFrame(filter);
+    const root = document.querySelector(".quarto-navbar-tools .bi-rss")?.closest(".dropdown");
+    if (!root) return;
+    const toggle = root.querySelector(".dropdown-toggle");
+    const menu = root.querySelector(".dropdown-menu");
+    menu.id = "rss-feed-menu";
+    menu.classList.add("rss-feed-menu", "dropdown-menu-end");
+    toggle.classList.add("rss-feed-toggle");
+    toggle.setAttribute("role", "button");
+    toggle.setAttribute("aria-controls", menu.id);
+    toggle.addEventListener("keydown", (event) => {
+      if (event.key !== " ") return;
+      event.preventDefault();
+      if (!event.repeat) toggle.click();
     });
-    if (dropdown) {
-      dropdown.addEventListener("focusout", (event) => {
-        if (!dropdown.contains(event.relatedTarget)) dropdown.open = false;
-      });
-      dropdown.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          dropdown.open = false;
-          dropdown.querySelector("summary").focus();
-        }
-      });
-      document.addEventListener("pointerdown", (event) => {
-        if (!dropdown.contains(event.target)) dropdown.open = false;
-      });
-    }
-    const linkedTag = new URLSearchParams(window.location.hash.slice(1)).get("category");
-    const linkedCheckbox = checkboxes.find((box) => box.value === linkedTag);
-    if (linkedCheckbox) linkedCheckbox.checked = true;
-    filter();
-    form.hidden = false;
   })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1226,7 +1171,7 @@ ul.task-list li input[type="checkbox"] {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p><a href="../contact.html">Contact us</a> · © JuliaBayes contributors. Text and images: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Code: <a href="https://github.com/JuliaBayes/juliabayes.github.io/blob/main/LICENSE">MIT</a>.</p>
+<p><a href="../../../contact.html">Contact us</a> · © JuliaBayes contributors. Text and images: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Code: <a href="https://github.com/JuliaBayes/juliabayes.github.io/blob/main/LICENSE">MIT</a>.</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

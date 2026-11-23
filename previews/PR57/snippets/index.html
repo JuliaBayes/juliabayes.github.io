@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Simon Steiger">
-<meta name="dcterms.date" content="2026-11-19">
-<meta name="description" content="Calculate results for hypothetical individuals by dropping parameters from your FlexiChain.">
 
-<title>New individuals in a hierarchical model – JuliaBayes</title>
+<title>Snippets – JuliaBayes</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,67 +26,35 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../../favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-3db608c3aac2db220582703da11e8ac9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-2e2c7d6f473846cec26a2f924526d8fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-fafd7c67521f48c8318626bf532488ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-2e2c7d6f473846cec26a2f924526d8fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-3db608c3aac2db220582703da11e8ac9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-25a8ecc39643bfa667d46c71fe3d19aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-0beab70188875c3f7712cf9fea907468.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-25a8ecc39643bfa667d46c71fe3d19aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -116,14 +81,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-snippet-entries .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-engines','listing-language','listing-engine','listing-code-fold','listing-code-copy','listing-title','listing-author','listing-date','listing-description','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-engines","listing-language","listing-engine","listing-code-fold","listing-code-copy","listing-title","listing-author","listing-date","listing-description","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-snippet-entries'] = new List('listing-snippet-entries', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+  </script>
+<link rel="alternate" type="application/rss+xml" title="JuliaBayes package releases" href="../releases.xml">
+<link rel="alternate" type="application/rss+xml" title="JuliaBayes blog and news" href="../news/index.xml">
 
 
-<meta property="og:title" content="New individuals in a hierarchical model – JuliaBayes">
-<meta property="og:description" content="Calculate results for hypothetical individuals by dropping parameters from your FlexiChain.">
+<meta property="og:title" content="Snippets – JuliaBayes">
+<meta property="og:description" content="JuliaBayes is a shared home for Bayesian software in Julia.">
 <meta property="og:site_name" content="JuliaBayes">
 </head>
 
-<body class="nav-fixed news-post gist-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -310,11 +300,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../../favicon.svg" alt="JuliaBayes home" class="navbar-logo light-content">
-    <img src="../../../favicon.svg" alt="JuliaBayes home" class="navbar-logo dark-content">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../favicon.svg" alt="JuliaBayes home" class="navbar-logo light-content">
+    <img src="../favicon.svg" alt="JuliaBayes home" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">JuliaBayes</span>
     </a>
   </div>
@@ -324,30 +314,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../about/index.html"> 
+    <a class="nav-link" href="../about/index.html"> 
 <span class="menu-text">About us</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../ecosystem/index.html"> 
+    <a class="nav-link" href="../ecosystem/index.html"> 
 <span class="menu-text">Ecosystem</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../news/index.html"> 
+    <a class="nav-link" href="../news/index.html"> 
 <span class="menu-text">News</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../gists/index.html"> 
-<span class="menu-text">Gists</span></a>
+    <a class="nav-link active" href="../snippets/index.html" aria-current="page"> 
+<span class="menu-text">Snippets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../contact.html"> 
+    <a class="nav-link" href="../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
     <a href="https://github.com/JuliaBayes" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
-    <a href="../../../news/index.xml" title="RSS feed" class="quarto-navigation-tool px-1" aria-label="RSS feed"><i class="bi bi-rss"></i></a>
+    <div class="dropdown">
+      <a href="" title="RSS feeds" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="RSS feeds"><i class="bi bi-rss"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="../releases.xml">
+            Package releases
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="../news/index.xml">
+            Blog and news
+            </a>
+          </li>
+      </ul>
+    </div>
   <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -358,9 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
 
@@ -368,35 +370,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">New individuals in a hierarchical model</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Wren</div>
-    <div class="quarto-category">FlexiChains</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    Calculate results for hypothetical individuals by dropping parameters from your FlexiChain.
-  </div>
+<h1 class="title">Snippets</h1>
 </div>
+
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Simon Steiger </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">November 19, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -406,56 +387,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Fitting a hierarchical model usually locks you into parameter vectors that share dimensions with the number of individuals you work with. Sometimes, however, you want to predict for new hypothetical individuals from the inferred population. Here’s how to do that!</p>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Wren</span>, <span class="bu">WrenDists</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">Enzyme</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="fl">10</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="fl">0.5</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">Normal</span>(), n)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> mu <span class="op">.+</span> tau <span class="op">*</span> z</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>beta <span class="op">=</span> [<span class="op">-</span><span class="fl">2.0</span>, <span class="fl">2.0</span>]</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>site <span class="op">=</span> <span class="fu">eachindex</span>(z)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>group <span class="op">=</span> <span class="fu">repeat</span>([<span class="fl">1</span>, <span class="fl">2</span>], <span class="fu">div</span>(n, <span class="fl">2</span>))</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fu">rand</span>.(<span class="fu">BernoulliLogit</span>.(theta[site] <span class="op">.+</span> beta[group]))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="pp">@wren</span> <span class="kw">function</span> <span class="fu">hierarchical</span>(size)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    mu <span class="op">~</span> <span class="fu">Normal</span>()</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    tau <span class="op">~</span> <span class="fu">Exponential</span>(<span class="fl">1</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@iid</span> z <span class="op">~</span> <span class="fu">Normal</span>() size<span class="op">=</span>size</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mu <span class="op">.+</span> tau <span class="op">*</span> z</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="pp">@wren</span> <span class="kw">function</span> <span class="fu">logistic_regression</span>(y, site, group)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    n_sites <span class="op">=</span> <span class="fu">maximum</span>(site)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    n_groups <span class="op">=</span> <span class="fu">maximum</span>(group)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    theta <span class="op">=</span> (site <span class="op">~</span> <span class="fu">hierarchical</span>(n_sites))</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@iid</span> beta <span class="op">~</span> <span class="fu">Normal</span>() size<span class="op">=</span>n_groups</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    logit_p <span class="op">=</span> theta[site] <span class="op">.+</span> beta[group]</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fu">eachindex</span>(y)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        y[i] <span class="op">~</span> <span class="fu">BernoulliLogit</span>(logit_p[i])</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@track</span> contrast <span class="op">=</span> <span class="fu">sum</span>(y[group <span class="op">.==</span> <span class="fl">1</span>]) <span class="op">.-</span> <span class="fu">sum</span>(y[group <span class="op">.==</span> <span class="fl">2</span>])</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">logistic_regression</span>(y, site, group)</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>chain <span class="op">=</span> <span class="fu">nuts</span>(model <span class="op">|</span> (; y), <span class="fl">1000</span>, <span class="fl">4</span>)</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>n_new <span class="op">=</span> <span class="fl">200</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>site_new <span class="op">=</span> <span class="fl">1</span><span class="op">:</span>n_new</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>group_new <span class="op">=</span> <span class="fu">repeat</span>([<span class="fl">1</span>, <span class="fl">2</span>], <span class="fu">div</span>(n_new, <span class="fl">2</span>))</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Dropping `site.z` from `chain` makes `simulate` sample from the prior</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>chain_sub <span class="op">=</span> chain[[<span class="pp">@vn</span>(site.mu), <span class="pp">@vn</span>(site.tau)]]</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>model_new <span class="op">=</span> <span class="fu">logistic_regression</span>(<span class="fu">zeros</span>(n_new), site_new, group_new)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>chain_new <span class="op">=</span> <span class="fu">simulate</span>(model_new, chain_sub)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<p>This is explained in more detail in the Wren docs <a href="https://juliabayes.org/Wren.jl/dev/tutorials/workflow/">workflow page</a>.</p>
+<p><a href="https://github.com/JuliaBayes/juliabayes.github.io#writing-a-snippet">Contribute a snippet</a></p>
+<div class="accent-card accent-blue snippet-card">
+<div id="listing-snippet-entries" class="quarto-listing quarto-listing-container-custom">
+<form id="snippet-filters" class="listing-filters" role="search" aria-label="Find snippets" hidden="">
+  <div>
+    <label for="snippet-search" class="form-label">Search snippets</label>
+    <input id="snippet-search" class="form-control" type="search" placeholder="Title, summary, author or tag" aria-controls="listing-snippet-entries" autocomplete="off">
+  </div>
+  
+  <div>
+    <span class="form-label d-block">Tags</span>
+    <details class="listing-filter-dropdown">
+      <summary aria-controls="snippet-tag-menu"><span class="visually-hidden">Filter by tag: </span><span data-filter-summary="">All tags</span></summary>
+      <div id="snippet-tag-menu" class="listing-filter-menu">
+        <fieldset>
+          <legend class="visually-hidden">Show snippets with any selected tag</legend>
+          
+          <label><input type="checkbox" value="FlexiChains" aria-controls="listing-snippet-entries"> FlexiChains</label>
+          
+          <label><input type="checkbox" value="Wren" aria-controls="listing-snippet-entries"> Wren</label>
+          
+        </fieldset>
+      </div>
+    </details>
+  </div>
+  
+  <button type="reset" class="btn">Clear</button>
+  <p role="status" aria-live="polite" aria-atomic="true"></p>
+</form>
+
+<p id="snippet-empty" hidden="">No snippets match.</p>
+
+<div class="quarto-post snippet-entry">
+  <div class="body">
+    <h2 class="no-anchor listing-title"><a href="../snippets/entries/wren_new_individuals/index.html">New individuals in a hierarchical model</a></h2>
+    <div class="listing-description">Calculate results for hypothetical individuals by dropping parameters from your FlexiChain.</div>
+    
+    <div class="listing-categories">
+      
+      <span class="listing-category">Wren</span>
+      
+      <span class="listing-category">FlexiChains</span>
+      
+    </div>
+    
+  </div>
+  <div class="metadata">
+    <div class="listing-author">Simon Steiger</div>
+    <div class="listing-date">Nov 19, 2026</div>
+  </div>
+</div>
+
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</div>
+
 
 
 
@@ -476,7 +463,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       menu.removeAttribute("role");
       const menuOpen = () => menu.getClientRects().length && menu.getAttribute("aria-expanded") === "true";
       header.addEventListener("keydown", (event) => {
-        if (event.key !== "Escape" || event.defaultPrevented || !menuOpen()) return;
+        if (event.key !== "Escape" || !menuOpen()) return;
+        // Bootstrap also prevents Escape on a closed dropdown toggle.
+        if (event.defaultPrevented && !event.target.closest('.rss-feed-toggle[aria-expanded="false"]')) return;
         event.preventDefault();
         menu.click();
         menu.focus();
@@ -608,7 +597,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     if (categories.length === 0 || offset === undefined) {
       return;
     }
-    const section = document.body.classList.contains("gist-page") ? "gists" : "news";
+    const section = document.body.classList.contains("snippet-page") ? "snippets" : "news";
     const listing = new URL(`${offset}${section}/`, window.location).pathname;
     // Quarto adds the links after it fetches listings.json.
     const retarget = () => {
@@ -657,6 +646,90 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   window.addEventListener("blur", clear);
   enabled.addEventListener("change", clear);
 })();
+</script>
+<script>
+  (() => {
+    const root = document.querySelector(".quarto-navbar-tools .bi-rss")?.closest(".dropdown");
+    if (!root) return;
+    const toggle = root.querySelector(".dropdown-toggle");
+    const menu = root.querySelector(".dropdown-menu");
+    menu.id = "rss-feed-menu";
+    menu.classList.add("rss-feed-menu", "dropdown-menu-end");
+    toggle.classList.add("rss-feed-toggle");
+    toggle.setAttribute("role", "button");
+    toggle.setAttribute("aria-controls", menu.id);
+    toggle.addEventListener("keydown", (event) => {
+      if (event.key !== " ") return;
+      event.preventDefault();
+      if (!event.repeat) toggle.click();
+    });
+  })();
+</script>
+<script>
+  (() => {
+    const form = document.getElementById("snippet-filters");
+    if (!form) return;
+
+    const search = document.getElementById("snippet-search");
+    const dropdown = form.querySelector("details");
+    const checkboxes = [...form.querySelectorAll('input[type="checkbox"]')];
+    const count = form.querySelector('[role="status"]');
+    const empty = document.getElementById("snippet-empty");
+    const normalise = (text) => text.trim().toLowerCase().replace(/\s+/g, " ");
+    const entries = [...document.querySelectorAll(".snippet-entry")].map((row) => ({
+      row,
+      text: normalise(row.textContent),
+      tags: new Set([...row.querySelectorAll(".listing-category")].map((tag) => tag.textContent)),
+    }));
+
+    const filter = () => {
+      const query = normalise(search.value);
+      const selected = checkboxes.filter((box) => box.checked).map((box) => box.value);
+      if (dropdown) {
+        dropdown.querySelector("[data-filter-summary]").textContent = selected.length === 0 ? "All tags" :
+          selected.length === 1 ? selected[0] : `${selected.length} tags`;
+      }
+      let matches = 0;
+      for (const { row, text, tags } of entries) {
+        row.hidden = !text.includes(query) || (selected.length > 0 && !selected.some((tag) => tags.has(tag)));
+        if (!row.hidden) matches += 1;
+      }
+      count.textContent = `${matches} ${matches === 1 ? "snippet" : "snippets"}`;
+      empty.hidden = matches > 0;
+    };
+
+    form.addEventListener("submit", (event) => event.preventDefault());
+    search.addEventListener("input", filter);
+    form.addEventListener("change", filter);
+    form.addEventListener("reset", () => {
+      if (dropdown) dropdown.open = false;
+      const url = new URL(window.location.href);
+      if (url.hash.startsWith("#category=")) {
+        url.hash = "";
+        history.replaceState(null, "", url);
+      }
+      requestAnimationFrame(filter);
+    });
+    if (dropdown) {
+      dropdown.addEventListener("focusout", (event) => {
+        if (!dropdown.contains(event.relatedTarget)) dropdown.open = false;
+      });
+      dropdown.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          dropdown.open = false;
+          dropdown.querySelector("summary").focus();
+        }
+      });
+      document.addEventListener("pointerdown", (event) => {
+        if (!dropdown.contains(event.target)) dropdown.open = false;
+      });
+    }
+    const linkedTag = new URLSearchParams(window.location.hash.slice(1)).get("category");
+    const linkedCheckbox = checkboxes.find((box) => box.value === linkedTag);
+    if (linkedCheckbox) linkedCheckbox.checked = true;
+    filter();
+    form.hidden = false;
+  })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1189,7 +1262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p><a href="../../../contact.html">Contact us</a> · © JuliaBayes contributors. Text and images: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Code: <a href="https://github.com/JuliaBayes/juliabayes.github.io/blob/main/LICENSE">MIT</a>.</p>
+<p><a href="../contact.html">Contact us</a> · © JuliaBayes contributors. Text and images: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Code: <a href="https://github.com/JuliaBayes/juliabayes.github.io/blob/main/LICENSE">MIT</a>.</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

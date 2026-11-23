@@ -49,9 +49,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="/previews/PR57/site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="/previews/PR57/site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="/previews/PR57/site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="/previews/PR57/site_libs/bootstrap/bootstrap-3c3aaea33fb2b2a4f52b8bfed9319229.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="/previews/PR57/site_libs/bootstrap/bootstrap-dark-8842c7578fd20be36a05ea14c3cd1bc0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="/previews/PR57/site_libs/bootstrap/bootstrap-3c3aaea33fb2b2a4f52b8bfed9319229.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="/previews/PR57/site_libs/bootstrap/bootstrap-25a8ecc39643bfa667d46c71fe3d19aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="/previews/PR57/site_libs/bootstrap/bootstrap-dark-0beab70188875c3f7712cf9fea907468.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="/previews/PR57/site_libs/bootstrap/bootstrap-25a8ecc39643bfa667d46c71fe3d19aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,6 +78,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link rel="alternate" type="application/rss+xml" title="JuliaBayes package releases" href="/previews/PR57/releases.xml">
+<link rel="alternate" type="application/rss+xml" title="JuliaBayes blog and news" href="/previews/PR57/news/index.xml">
 
 
 <meta property="og:title" content="Page not found – JuliaBayes">
@@ -300,8 +302,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">News</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/previews/PR57/gists/index.html"> 
-<span class="menu-text">Gists</span></a>
+    <a class="nav-link" href="/previews/PR57/snippets/index.html"> 
+<span class="menu-text">Snippets</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="/previews/PR57/contact.html"> 
@@ -311,7 +313,21 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
     <a href="https://github.com/JuliaBayes" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
-    <a href="/previews/PR57/news/index.xml" title="RSS feed" class="quarto-navigation-tool px-1" aria-label="RSS feed"><i class="bi bi-rss"></i></a>
+    <div class="dropdown">
+      <a href="" title="RSS feeds" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="RSS feeds"><i class="bi bi-rss"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="/previews/PR57/releases.xml">
+            Package releases
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="/previews/PR57/news/index.xml">
+            Blog and news
+            </a>
+          </li>
+      </ul>
+    </div>
   <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -383,7 +399,9 @@ ul.task-list li input[type="checkbox"] {
       menu.removeAttribute("role");
       const menuOpen = () => menu.getClientRects().length && menu.getAttribute("aria-expanded") === "true";
       header.addEventListener("keydown", (event) => {
-        if (event.key !== "Escape" || event.defaultPrevented || !menuOpen()) return;
+        if (event.key !== "Escape" || !menuOpen()) return;
+        // Bootstrap also prevents Escape on a closed dropdown toggle.
+        if (event.defaultPrevented && !event.target.closest('.rss-feed-toggle[aria-expanded="false"]')) return;
         event.preventDefault();
         menu.click();
         menu.focus();
@@ -515,7 +533,7 @@ ul.task-list li input[type="checkbox"] {
     if (categories.length === 0 || offset === undefined) {
       return;
     }
-    const section = document.body.classList.contains("gist-page") ? "gists" : "news";
+    const section = document.body.classList.contains("snippet-page") ? "snippets" : "news";
     const listing = new URL(`${offset}${section}/`, window.location).pathname;
     // Quarto adds the links after it fetches listings.json.
     const retarget = () => {
@@ -564,6 +582,24 @@ ul.task-list li input[type="checkbox"] {
   window.addEventListener("blur", clear);
   enabled.addEventListener("change", clear);
 })();
+</script>
+<script>
+  (() => {
+    const root = document.querySelector(".quarto-navbar-tools .bi-rss")?.closest(".dropdown");
+    if (!root) return;
+    const toggle = root.querySelector(".dropdown-toggle");
+    const menu = root.querySelector(".dropdown-menu");
+    menu.id = "rss-feed-menu";
+    menu.classList.add("rss-feed-menu", "dropdown-menu-end");
+    toggle.classList.add("rss-feed-toggle");
+    toggle.setAttribute("role", "button");
+    toggle.setAttribute("aria-controls", menu.id);
+    toggle.addEventListener("keydown", (event) => {
+      if (event.key !== " ") return;
+      event.preventDefault();
+      if (!event.repeat) toggle.click();
+    });
+  })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

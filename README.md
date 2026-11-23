@@ -20,15 +20,19 @@ If you need to rerun the code in a post, you can delete the `_freeze/news/posts/
 
 ## Updating the community calendar
 
-Edit [`events.ics`](events.ics) to add or change confirmed community events.
-Give each new event a unique `UID` and start its `SEQUENCE` at 0. Use UTC for
-timed events and `DTSTART;VALUE=DATE` for date-only entries.
+Edit [`events.json`](events.json) to add or change confirmed events. Use a
+unique lowercase `id` with hyphens and include a `title`, `start`, and `updated`.
+Use `YYYY-MM-DDTHH:MM:SSZ` UTC timestamps for timed events and `YYYY-MM-DD`
+for date-only events. Set `end` for a known duration. Dates used as `end`
+are exclusive. The optional `description` and HTTPS `url` appear in the event.
 
-Keep the `UID` when an event moves. Increment `SEQUENCE` and update `DTSTAMP`
-in UTC when you change an event. Keep cancelled events in the file with
-`STATUS:CANCELLED` so subscribers can receive the change.
+Start `sequence` at 0. Keep the same `id` when an event changes, increment
+`sequence` and set `updated` to the current UTC timestamp. Set `cancelled`
+to `true` to publish a cancellation.
 
-GitHub Pages serves the updated calendar at the same URL after publishing.
+Run `node src/community-calendar.mjs` to refresh the local `events.ics`
+snapshot. Preview and publish builds regenerate it and omit completed events.
+The public subscription URL stays the same, including between events.
 
 ## License
 

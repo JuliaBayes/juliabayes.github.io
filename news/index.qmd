@@ -10,7 +10,11 @@ listing:
   categories: true
   sort-ui: false
   filter-ui: false
-  feed: true
+  feed:
+    title: "JuliaBayes Blog & News"
+    description: "Articles, announcements, and community news from JuliaBayes."
+    image: rss-icon.png
+    language: en
 # Quarto loads MathJax on every listing page. The listing shows no maths.
 html-math-method: plain
 include-after-body:

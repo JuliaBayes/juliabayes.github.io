@@ -28,9 +28,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
       # No need for julia here because outputs come from _freeze/
       - run: quarto render
+      - name: Validate RSS
+        run: python3 src/check-feeds.py _site
       - uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # 4.9.0
         with:
           branch: gh-pages
           folder: _site
           clean-exclude: previews/
           force: false
+      - name: Verify published RSS
+        timeout-minutes: 6
+        run: python3 src/check-feeds.py _site --live https://juliabayes.org

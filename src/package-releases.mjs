@@ -1,15 +1,18 @@
 // JSON is also YAML, so Quarto can read the snapshot as listing data.
 // Keep it committed for local renders. CI refreshes it before rendering.
 import { execFileSync } from "node:child_process";
-import { readFileSync, writeFileSync } from "node:fs";
-import { releaseFeed } from "./release-feed.mjs";
+import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { packageFeedOpml, releaseFeed, releaseIdentity } from "./release-feed.mjs";
 
 const snapshot = new URL("../ecosystem/releases.yml", import.meta.url);
+const root = new URL("../", import.meta.url);
+const feedDirectory = new URL("releases/", root);
 const packages = JSON.parse(readFileSync(snapshot, "utf8"));
 const api = (endpoint, ...flags) => JSON.parse(execFileSync("gh", ["api", endpoint, ...flags], {
   encoding: "utf8",
   stdio: ["ignore", "pipe", "pipe"],
   timeout: 30000,
+  maxBuffer: 16 * 1024 * 1024,
 }));
 
 function apiIfFound(endpoint) {
@@ -37,6 +40,7 @@ function latestVersionTag(repo, repository) {
 
 const checked = new Date().toISOString().slice(0, 10);
 const history = [];
+const feeds = new Map();
 const releases = packages.map((pkg) => {
   const name = pkg["release-package"];
   const repo = `repos/JuliaBayes/${name}`;
@@ -46,18 +50,39 @@ const releases = packages.map((pkg) => {
   if (!metadata || metadata.private) return record;
   record.repository = metadata.html_url;
   const pages = api(`${repo}/releases?per_page=100`,
-    "--paginate", "--slurp", "-H", "Accept: application/vnd.github.html+json");
-  for (const page of pages) {
-    history.push(...page.map((release) => ({ ...release, package: name })));
-  }
-  const data = apiIfFound(`${repo}/releases/latest`);
+    "--paginate", "--slurp", "-H", "Accept: application/vnd.github.full+json");
+  const repositoryHistory = pages.flat().map((release) => ({
+    ...release, ...releaseIdentity(name, release.tag_name),
+  }));
+  history.push(...repositoryHistory);
+  const packageHistory = repositoryHistory.filter((release) => release.package === name);
+  const filename = `${name.toLowerCase()}.xml`;
+  record.feed = `releases/${filename}`;
+  feeds.set(filename, releaseFeed(packageHistory, record.feed, name));
+
+  const latest = apiIfFound(`${repo}/releases/latest`);
+  const data = latest && releaseIdentity(name, latest.tag_name).package !== name
+    ? packageHistory.filter((release) => !release.draft && !release.prerelease)
+      .sort((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at))[0]
+    : latest;
   const release = data ? {
-    version: data.tag_name,
+    version: releaseIdentity(name, data.tag_name).version,
     date: data.published_at.slice(0, 10),
     url: data.html_url,
   } : latestVersionTag(repo, record.repository);
   return { ...record, release };
 });
 const feed = releaseFeed(history);
+const packageSubscriptions = packageFeedOpml(releases);
+mkdirSync(feedDirectory, { recursive: true });
+for (const [filename, content] of feeds) {
+  writeFileSync(new URL(filename, feedDirectory), content);
+}
+for (const filename of readdirSync(feedDirectory)) {
+  if (filename.endsWith(".xml") && !feeds.has(filename)) {
+    rmSync(new URL(filename, feedDirectory));
+  }
+}
 writeFileSync(snapshot, `${JSON.stringify(releases, null, 2)}\n`);
-writeFileSync(new URL("../releases.xml", import.meta.url), feed);
+writeFileSync(new URL("releases.xml", root), feed);
+writeFileSync(new URL("package-feeds.opml", root), packageSubscriptions);

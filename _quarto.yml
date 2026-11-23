@@ -18,7 +18,11 @@ project:
     # src/favicon.jl generates them with favicon.svg.
     - favicon.ico
     - apple-touch-icon.png
+    - rss-icon.png
     - releases.xml
+    - releases/*.xml
+    - feeds.opml
+    - package-feeds.opml
 
 website:
   title: "JuliaBayes"

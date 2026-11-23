@@ -41,6 +41,9 @@ jobs:
           quarto render --profile pr-preview
           node src/check-links.mjs _site --site-path "/previews/PR${PR_NUMBER}/"
 
+      - name: Validate RSS
+        run: node src/check-feeds.mjs _site
+
       - name: Deploy preview
         if: ${{ env.IS_PR_BUT_NOT_FORK == 'true' }}
         uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # 4.9.0
@@ -49,6 +52,13 @@ jobs:
           folder: _site
           target-folder: previews/PR${{ github.event.pull_request.number }}
           force: false
+
+      - name: Verify preview RSS
+        if: ${{ env.IS_PR_BUT_NOT_FORK == 'true' }}
+        timeout-minutes: 6
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: node src/check-feeds.mjs _site --live "https://juliabayes.org/previews/PR${PR_NUMBER}"
 
       - name: Post preview comment
         if: ${{ env.IS_PR_BUT_NOT_FORK == 'true' }}

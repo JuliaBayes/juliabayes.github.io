@@ -1,0 +1,34 @@
+.rss-feed-menu {
+  width: max-content;
+  min-width: 0;
+  max-width: calc(100vw - 1.5rem);
+  --bs-dropdown-font-size: 0.875rem;
+  --bs-dropdown-padding-y: 0.25rem;
+  --bs-dropdown-bg: #{$body-bg};
+  --bs-dropdown-color: #{$body-color};
+  --bs-dropdown-border-color: #{$border-color};
+  --bs-dropdown-link-color: #{$body-color};
+  --bs-dropdown-link-hover-bg: #{mix($body-color, $body-bg, 8%)};
+  --bs-dropdown-link-hover-color: #{$body-color};
+  --bs-dropdown-link-active-bg: #{mix($body-color, $body-bg, 8%)};
+  --bs-dropdown-link-active-color: #{$body-color};
+
+  .dropdown-item {
+    padding: 0.25rem 0.75rem;
+  }
+}
+
+body.quarto-light .rss-feed-menu {
+  color-scheme: light;
+}
+
+body.quarto-dark .rss-feed-menu {
+  color-scheme: dark;
+}
+
+@include media-breakpoint-down(lg) {
+  .navbar .quarto-navbar-tools .rss-feed-toggle::after {
+    border: 0;
+    margin: 0;
+  }
+}

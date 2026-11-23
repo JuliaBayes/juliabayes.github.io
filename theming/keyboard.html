@@ -14,7 +14,9 @@
       menu.removeAttribute("role");
       const menuOpen = () => menu.getClientRects().length && menu.getAttribute("aria-expanded") === "true";
       header.addEventListener("keydown", (event) => {
-        if (event.key !== "Escape" || event.defaultPrevented || !menuOpen()) return;
+        if (event.key !== "Escape" || !menuOpen()) return;
+        // Bootstrap also prevents Escape on a closed dropdown toggle.
+        if (event.defaultPrevented && !event.target.closest('.rss-feed-toggle[aria-expanded="false"]')) return;
         event.preventDefault();
         menu.click();
         menu.focus();

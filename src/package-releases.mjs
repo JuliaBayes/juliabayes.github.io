@@ -2,6 +2,7 @@
 // Keep it committed for local renders. CI refreshes it before rendering.
 import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
+import { releaseFeed } from "./release-feed.mjs";
 
 const snapshot = new URL("../ecosystem/releases.yml", import.meta.url);
 const packages = JSON.parse(readFileSync(snapshot, "utf8"));
@@ -35,6 +36,7 @@ function latestVersionTag(repo, repository) {
 }
 
 const checked = new Date().toISOString().slice(0, 10);
+const history = [];
 const releases = packages.map((pkg) => {
   const name = pkg["release-package"];
   const repo = `repos/JuliaBayes/${name}`;
@@ -43,6 +45,11 @@ const releases = packages.map((pkg) => {
   // Local credentials can see private repos that CI and visitors cannot.
   if (!metadata || metadata.private) return record;
   record.repository = metadata.html_url;
+  const pages = api(`${repo}/releases?per_page=100`,
+    "--paginate", "--slurp", "-H", "Accept: application/vnd.github.html+json");
+  for (const page of pages) {
+    history.push(...page.map((release) => ({ ...release, package: name })));
+  }
   const data = apiIfFound(`${repo}/releases/latest`);
   const release = data ? {
     version: data.tag_name,
@@ -51,4 +58,6 @@ const releases = packages.map((pkg) => {
   } : latestVersionTag(repo, record.repository);
   return { ...record, release };
 });
+const feed = releaseFeed(history);
 writeFileSync(snapshot, `${JSON.stringify(releases, null, 2)}\n`);
+writeFileSync(new URL("../releases.xml", import.meta.url), feed);

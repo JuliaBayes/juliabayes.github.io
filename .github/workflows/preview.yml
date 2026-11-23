@@ -35,6 +35,7 @@ jobs:
           # Quarto gives 404 pages absolute links so they work from nested URLs.
           printf 'website:\n  site-path: /previews/PR%s/\n' "$PR_NUMBER" > _quarto-pr-preview.yml
           quarto render --profile pr-preview
+          python3 src/check-links.py _site --site-path "/previews/PR${PR_NUMBER}/"
 
       - name: Deploy preview
         if: ${{ env.IS_PR_BUT_NOT_FORK == 'true' }}

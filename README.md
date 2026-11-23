@@ -31,8 +31,12 @@ Start `sequence` at 0. Keep the same `id` when an event changes, increment
 to `true` to publish a cancellation.
 
 Run `node src/community-calendar.mjs` to refresh the local `events.ics`
-snapshot. Preview and publish builds regenerate it and omit completed events.
-The public subscription URL stays the same, including between events.
+snapshot. Preview and publish builds regenerate it. Keep past events in the
+file as a record. The public subscription URL stays the same.
+
+Open a PR against `main` with the [calendar event template](.github/PULL_REQUEST_TEMPLATE/calendar-event.md).
+Set `template=calendar-event.md` in the GitHub compare URL. From the CLI, use
+`gh pr create --base main --template .github/PULL_REQUEST_TEMPLATE/calendar-event.md`.
 
 ## License
 

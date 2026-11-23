@@ -2,7 +2,6 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 
 const site = "https://juliabayes.org";
-const day = 24 * 60 * 60 * 1000;
 
 function dateValue(value) {
   const allDay = /^\d{4}-\d{2}-\d{2}$/.test(value);
@@ -32,7 +31,7 @@ function fold(line) {
   return output;
 }
 
-export function communityCalendar(events, now = Date.now()) {
+export function communityCalendar(events) {
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
@@ -54,8 +53,6 @@ export function communityCalendar(events, now = Date.now()) {
     if (to && (to.time <= from.time || to.allDay !== from.allDay)) {
       throw new Error(`End must follow start and use the same date format: ${id}`);
     }
-    if ((to?.time ?? (from.time + (from.allDay ? day : 0))) <= now) continue;
-
     const stamp = dateValue(updated);
     if (stamp.allDay || !Number.isSafeInteger(sequence) || sequence < 0 || !title?.trim() ||
       typeof cancelled !== "boolean") {

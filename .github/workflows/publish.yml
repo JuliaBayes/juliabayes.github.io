@@ -29,7 +29,7 @@ jobs:
       # No need for julia here because outputs come from _freeze/
       - run: quarto render
       - name: Validate RSS
-        run: python3 src/check-feeds.py _site
+        run: node src/check-feeds.mjs _site
       - uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # 4.9.0
         with:
           branch: gh-pages
@@ -38,4 +38,4 @@ jobs:
           force: false
       - name: Verify published RSS
         timeout-minutes: 6
-        run: python3 src/check-feeds.py _site --live https://juliabayes.org
+        run: node src/check-feeds.mjs _site --live https://juliabayes.org

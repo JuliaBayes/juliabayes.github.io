@@ -37,7 +37,7 @@ jobs:
           quarto render --profile pr-preview
 
       - name: Validate RSS
-        run: python3 src/check-feeds.py _site
+        run: node src/check-feeds.mjs _site
 
       - name: Deploy preview
         if: ${{ env.IS_PR_BUT_NOT_FORK == 'true' }}
@@ -53,7 +53,7 @@ jobs:
         timeout-minutes: 6
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
-        run: python3 src/check-feeds.py _site --live "https://juliabayes.org/previews/PR${PR_NUMBER}"
+        run: node src/check-feeds.mjs _site --live "https://juliabayes.org/previews/PR${PR_NUMBER}"
 
       - name: Post preview comment
         if: ${{ env.IS_PR_BUT_NOT_FORK == 'true' }}

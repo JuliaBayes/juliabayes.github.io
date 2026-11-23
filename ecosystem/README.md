@@ -20,5 +20,5 @@ The same command builds `releases.xml` and the feeds in `releases/` from the
 full public GitHub release history, excluding drafts and prereleases. GitHub
 release IDs keep entries stable across edits and across feeds. Commit the RSS
 snapshots for offline renders. Blog and news posts use a separate feed at
-`news/index.xml`. Run `python3 src/check-feeds.py _site` after rendering to
+`news/index.xml`. Run `node src/check-feeds.mjs _site` after rendering to
 check every feed.

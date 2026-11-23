@@ -16,6 +16,10 @@ Source for <https://juliabayes.org>, built with [Quarto](https://quarto.org).
 Julia code should be run locally and saved in `_freeze`; it shouldn't be rerun on CI.
 CI should only read from `_freeze` and render the post.
 
+For a technical post you want readers to cite, include its title, author, and
+publication date in the front matter. Add `citation: true` and
+`google-scholar: true` to include citation metadata in the page header.
+
 If you need to rerun the code in a post, you can delete the `_freeze/news/posts/YYYY-MM-DD-slug` folder (do _not_ delete the entire `_freeze` folder!) and rerun `quarto render`.
 
 ## Updating the community calendar

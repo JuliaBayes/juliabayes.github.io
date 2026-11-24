@@ -67,7 +67,7 @@
     "href": "ecosystem/index.html#tooling",
     "title": "Ecosystem",
     "section": "Tooling",
-    "text": "Tooling\n\n\nMCMCProgress.jl\n\nDocs GitHub Issues RSS\n\n\nA common interface for MCMC samplers to report progress, with plain-text and terminal backends.\n\n\nStatus: Registered\n\nLatest release: v0.1.0 on 18 Nov 2026\n\n\n\n\n\n\n\n\n\nPlaice.jl\n\nDocs GitHub Issues RSS\n\n\nConverts samples from distributions to and from vectors, constrained or unconstrained.\n\n\nStatus: Registered\n\nLatest release: v0.1.5 on 22 Nov 2026\n\n\n\n\n\n\nVarNames.jl\n\nDocs GitHub Issues RSS\n\n\nTypes to represent variable names and collections thereof.\n\n\nStatus: Stable\n\nLatest release: v0.1.9 on 14 Nov 2026"
+    "text": "Tooling\n\n\nMCMCProgress.jl\n\nDocs GitHub Issues RSS\n\n\nA common interface for MCMC samplers to report progress, with plain-text and terminal backends.\n\n\nStatus: Registered\n\nLatest release: v0.2.0 on 24 Nov 2026\n\n\n\n\n\n\n\n\n\nPlaice.jl\n\nDocs GitHub Issues RSS\n\n\nConverts samples from distributions to and from vectors, constrained or unconstrained.\n\n\nStatus: Registered\n\nLatest release: v0.1.5 on 22 Nov 2026\n\n\n\n\n\n\nVarNames.jl\n\nDocs GitHub Issues RSS\n\n\nTypes to represent variable names and collections thereof.\n\n\nStatus: Stable\n\nLatest release: v0.1.9 on 14 Nov 2026"
   },
   {
     "objectID": "index.html",

@@ -13,7 +13,47 @@
     <height>32</height>
   </image>
   <atom:link href="https://juliabayes.org/releases.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Mon, 23 Nov 2026 02:56:44 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 17:36:38 GMT</lastBuildDate>
+  <item>
+    <title>MCMCProgress.jl v0.2.0</title>
+    <link>https://github.com/JuliaBayes/MCMCProgress.jl/releases/tag/v0.2.0</link>
+    <guid isPermaLink="false">github-release:457114583</guid>
+    <pubDate>Tue, 24 Nov 2026 17:36:38 GMT</pubDate>
+    <category>MCMCProgress.jl</category>
+    <description>&lt;p&gt;Breaking changes Passing backend=nothing is no longer supported. Omit the backend argument to use the default, and pass backend=() to skip the progress display altogether. Other changes ProgressLogging skips determinate updates smaller…&lt;/p&gt;</description>
+    <content:encoded>&lt;h1&gt;MCMCProgress v0.2.0&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/MCMCProgress.jl/compare/v0.1.0...v0.2.0&quot;&gt;Diff since v0.1.0&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Breaking changes&lt;/h2&gt;
+&lt;p&gt;Passing &lt;code&gt;backend=nothing&lt;/code&gt; is no longer supported.&lt;br&gt;
+Omit the &lt;code&gt;backend&lt;/code&gt; argument to use the default, and pass &lt;code&gt;backend=()&lt;/code&gt; to skip the progress display altogether.&lt;/p&gt;
+&lt;h2&gt;Other changes&lt;/h2&gt;
+&lt;p&gt;ProgressLogging skips determinate updates smaller than half a percentage point to reduce log traffic.&lt;br&gt;
+It still reports when a phase opens, closes, or transitions to or from 100%.&lt;/p&gt;
+&lt;h3&gt;Merged pull requests:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Bump julia-actions/julia-runtest from 1.12.0 to 1.13.0 by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;organization&quot; data-hovercard-url=&quot;/orgs/dependabot/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/dependabot&quot;&gt;@dependabot&lt;/a&gt;[bot] in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6401205436&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MCMCProgress.jl/issues/64&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MCMCProgress.jl/pull/64/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MCMCProgress.jl/pull/64&quot;&gt;#64&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Add logo to README by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/simonsteiger/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/simonsteiger&quot;&gt;@simonsteiger&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6444257713&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MCMCProgress.jl/issues/65&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MCMCProgress.jl/pull/65/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MCMCProgress.jl/pull/65&quot;&gt;#65&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Reduce ProgressLogging traffic in VS Code and Pluto by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/BJMCox/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/BJMCox&quot;&gt;@BJMCox&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6466901754&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MCMCProgress.jl/issues/66&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MCMCProgress.jl/pull/66/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MCMCProgress.jl/pull/66&quot;&gt;#66&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Document backend selection by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/BJMCox/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/BJMCox&quot;&gt;@BJMCox&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6468139179&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MCMCProgress.jl/issues/67&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MCMCProgress.jl/pull/67/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MCMCProgress.jl/pull/67&quot;&gt;#67&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Silence tests. by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/penelopeysm/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/penelopeysm&quot;&gt;@penelopeysm&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6530612360&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MCMCProgress.jl/issues/73&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MCMCProgress.jl/pull/73/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MCMCProgress.jl/pull/73&quot;&gt;#73&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;v0.2 by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/penelopeysm/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/penelopeysm&quot;&gt;@penelopeysm&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6529717217&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MCMCProgress.jl/issues/71&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MCMCProgress.jl/pull/71/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MCMCProgress.jl/pull/71&quot;&gt;#71&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>FlexiChains.jl v0.6.45</title>
+    <link>https://github.com/JuliaBayes/FlexiChains.jl/releases/tag/v0.6.45</link>
+    <guid isPermaLink="false">github-release:456205623</guid>
+    <pubDate>Tue, 24 Nov 2026 01:40:53 GMT</pubDate>
+    <category>FlexiChains.jl</category>
+    <description>&lt;p&gt;Fix DimArray(::FlexiChain) and DimArray(::FlexiSummary) (and the Array versions too) not working for containers of variables that weren&amp;apos;t just plain Arrays. This release has been identified as a backport. Automated changelogs for…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;FlexiChains v0.6.45&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/FlexiChains.jl/compare/v0.6.44...v0.6.45&quot;&gt;Diff since v0.6.44&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Fix &lt;code&gt;DimArray(::FlexiChain)&lt;/code&gt; and &lt;code&gt;DimArray(::FlexiSummary)&lt;/code&gt; (and the &lt;code&gt;Array&lt;/code&gt; versions too) not working for containers of variables that weren&apos;t just plain Arrays.&lt;/p&gt;
+&lt;p&gt;This release has been identified as a backport.&lt;br&gt;
+Automated changelogs for backports tend to be wildly incorrect.&lt;br&gt;
+Therefore, the list of issues and pull requests is hidden.&lt;/p&gt;
+</content:encoded>
+  </item>
   <item>
     <title>WrenDists v0.1.0</title>
     <link>https://github.com/JuliaBayes/Wren.jl/releases/tag/WrenDists-v0.1.0</link>

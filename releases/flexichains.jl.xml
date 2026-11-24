@@ -13,7 +13,22 @@
     <height>32</height>
   </image>
   <atom:link href="https://juliabayes.org/releases/flexichains.jl.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Sun, 22 Nov 2026 21:07:22 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 01:40:53 GMT</lastBuildDate>
+  <item>
+    <title>FlexiChains.jl v0.6.45</title>
+    <link>https://github.com/JuliaBayes/FlexiChains.jl/releases/tag/v0.6.45</link>
+    <guid isPermaLink="false">github-release:456205623</guid>
+    <pubDate>Tue, 24 Nov 2026 01:40:53 GMT</pubDate>
+    <category>FlexiChains.jl</category>
+    <description>&lt;p&gt;Fix DimArray(::FlexiChain) and DimArray(::FlexiSummary) (and the Array versions too) not working for containers of variables that weren&amp;apos;t just plain Arrays. This release has been identified as a backport. Automated changelogs for…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;FlexiChains v0.6.45&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/FlexiChains.jl/compare/v0.6.44...v0.6.45&quot;&gt;Diff since v0.6.44&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Fix &lt;code&gt;DimArray(::FlexiChain)&lt;/code&gt; and &lt;code&gt;DimArray(::FlexiSummary)&lt;/code&gt; (and the &lt;code&gt;Array&lt;/code&gt; versions too) not working for containers of variables that weren&apos;t just plain Arrays.&lt;/p&gt;
+&lt;p&gt;This release has been identified as a backport.&lt;br&gt;
+Automated changelogs for backports tend to be wildly incorrect.&lt;br&gt;
+Therefore, the list of issues and pull requests is hidden.&lt;/p&gt;
+</content:encoded>
+  </item>
   <item>
     <title>FlexiChains.jl v0.7.3</title>
     <link>https://github.com/JuliaBayes/FlexiChains.jl/releases/tag/v0.7.3</link>

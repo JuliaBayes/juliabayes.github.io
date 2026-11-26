@@ -1,0 +1,19 @@
+---
+title: "Announcing Wren.jl"
+date: 2026-12-01
+categories: [packages]
+engine: markdown
+author: Penelope Yong
+---
+
+Approximately:
+
+- What is Wren
+- Set up multinomial regression model, naive
+- Optimising it with handwritten likelihood
+- Vectorising the observations with `@batch`
+- Running it with Reactant
+- Running it with Reactant but on GPU
+- Brief intro to compilation model, tracked quantities
+- Docs are artisan
+- How you can contribute

@@ -6,7 +6,7 @@ engine: markdown
 author: Penelope Yong
 ---
 
-We are very excited to announce Wren.jl ([docs](https://juliabayes.org/Wren.jl_), [GitHub](https://github.com/JuliaBayes/Wren.jl)), a new library for probabilistic programming in Julia.
+We are very excited to announce Wren.jl ([docs](https://juliabayes.org/Wren.jl), [GitHub](https://github.com/JuliaBayes/Wren.jl)), a new library for probabilistic programming in Julia.
 
 If you're not familiar with probabilistic programming in general, the Wren docs contain [a thorough introduction to the underlying concepts](https://juliabayes.org/Wren.jl/dev/tutorials/beginner/), which you can read before coming back to this!
 

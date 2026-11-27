@@ -6,6 +6,54 @@ engine: markdown
 author: Penelope Yong
 ---
 
+We are very excited to announce Wren.jl ([docs](https://juliabayes.org/Wren.jl_), [GitHub](https://github.com/JuliaBayes/Wren.jl)), a new library for probabilistic programming in Julia.
+
+If you're not familiar with probabilistic programming in general, the Wren docs contain [a thorough introduction to the underlying concepts](https://juliabayes.org/Wren.jl/dev/tutorials/beginner/), which you can read before coming back to this!
+
+On the surface, Wren's syntax looks and feels similar to typical PPLs.
+However, many of its components have been (re)built with the aim of improving performance, including potential acceleration on GPUs via [Reactant.jl](https://github.com/EnzymeAD/Reactant.jl).
+Wren also utilises a two-stage compilation process, heavily inspired by [Tilde.jl](https://github.com/cscherrer/Tilde.jl), that enables some level of introspection and static analysis of models.
+
+We believe the best way to demonstrate these are to walk through a fairly simple model, expanding on it as we go along in order to introduce some of the new functionality that Wren provides.
+
+## Our model
+
+We're going to write a Bayesian multinomial regression model for classifying the MNIST digits dataset.
+
+We begin by setting up our data:
+
+```julia
+using MLDatasets: MNIST
+
+data = MNIST(split=:train)
+
+# N x 784 matrix of pixel values in [0, 1], one row per image
+X = Matrix(Float64.(reshape(data.features, 28 * 28, :))')
+# Convert labels from 0-9 to 1-10 for 1-based indexing in Julia
+y = data.targets .+ 1
+```
+
+We can define our model in Wren as follows:
+
+```julia
+using Wren, Wren.Dists
+
+@wren function mnist1(X, y, C)
+    N, D = size(X)
+    @iid W ~ Normal() size=(C-1, D)
+    @iid b ~ Normal() size=(C-1)
+    nonreference_logits = W * X' .+ b # (C-1) x N
+    logits = vcat(zeros(1, N), nonreference_logits)
+    probabilities = softmax(logits; dims=1)
+    for i in 1:N
+        y[i] ~ Categorical(probabilities[:, i])
+    end
+end
+
+model = mnist1(X, y, 10) | (; y = y)
+```
+
+
 Approximately:
 
 - What is Wren

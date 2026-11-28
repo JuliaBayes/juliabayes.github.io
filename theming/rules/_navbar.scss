@@ -48,9 +48,10 @@ body.nav-fixed {
 
 // The search comes before the icons, so that the box grows into the free space
 // to its left and no icon moves. Quarto orders the collapsed links 20, and the
-// search after the tools.
-@include media-breakpoint-up(lg) {
-  .navbar #quarto-search {
+// search after the tools. The header id outranks Quarto's order: 999 for
+// navbar-expand-md.
+@include media-breakpoint-up(md) {
+  #quarto-header .navbar #quarto-search {
     order: 998;
     margin-inline: 0.5rem 0.25rem;
   }
@@ -62,7 +63,7 @@ body.nav-fixed {
 
 // Thin lines separate the page links in the expanded navbar. The collapsed
 // menu stacks them, so it needs no lines.
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up(md) {
   .navbar-collapse .navbar-nav.me-auto .nav-item {
     display: flex;
     align-items: center;
@@ -252,11 +253,11 @@ body.nav-fixed {
   margin-block: -0.25rem;
 }
 
-// Below lg, Quarto collapses the page links behind the menu button. The bar
+// Below md, Quarto collapses the page links behind the menu button. The bar
 // keeps the logo, title, search and menu button, each target at least 44px.
 // GitHub, RSS and the theme toggle move into the open menu, under the page
 // links, so the bar has room for the logo.
-@include media-breakpoint-down(lg) {
+@include media-breakpoint-down(md) {
   // On short screens, let Tab scroll the open menu to tools below the fold.
   #quarto-header:has(.navbar-collapse:is(.show, .collapsing)) {
     max-height: 100dvh;
@@ -288,7 +289,7 @@ body.nav-fixed {
     margin-inline: 0 auto !important;
   }
 
-  .navbar #quarto-search {
+  #quarto-header .navbar #quarto-search {
     order: 2;
   }
 

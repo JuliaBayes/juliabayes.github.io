@@ -43,6 +43,9 @@ website:
       Code: [MIT](https://github.com/JuliaBayes/juliabayes.github.io/blob/main/LICENSE).
   navbar:
     logo: favicon.svg
+    # The links fit in one row down to the md breakpoint. rules/_navbar.scss
+    # and rules/_feeds.scss use the same breakpoint.
+    collapse-below: md
     # Quarto puts the logo in a link of its own, so it needs a name.
     logo-alt: "JuliaBayes home"
     left:

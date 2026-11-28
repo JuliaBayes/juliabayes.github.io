@@ -5,9 +5,11 @@ a code {
 }
 
 // The output of a code cell sits in a blue-tinted panel, like the author and
-// date on a post. rules/_code-documenter.scss styles the code itself.
+// date on a post. rules/_code-documenter.scss styles the code itself. The
+// bottom margin parts the panel from the prose after it.
 main div.cell-output:has(> pre) {
   margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
   background-color: mix($julia-blue, $accent-card-bg, percentage($package-tint-strength));
   border: none;
   border-radius: 0.5rem;

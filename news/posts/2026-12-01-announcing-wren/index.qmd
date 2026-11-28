@@ -2,7 +2,6 @@
 title: "Announcing Wren.jl"
 date: 2026-12-01
 categories: [packages]
-engine: markdown
 author: Penelope Yong
 ---
 
@@ -14,15 +13,15 @@ On the surface, Wren's syntax looks and feels similar to typical PPLs.
 However, many of its components have been (re)built with the aim of improving performance, including potential acceleration on GPUs via [Reactant.jl](https://github.com/EnzymeAD/Reactant.jl).
 Wren also utilises a two-stage compilation process, heavily inspired by [Tilde.jl](https://github.com/cscherrer/Tilde.jl), that enables some level of introspection and static analysis of models.
 
-We believe the best way to demonstrate these are to walk through a fairly simple model, expanding on it as we go along in order to introduce some of the new functionality that Wren provides.
+We believe the best way to demonstrate these is to walk through a fairly simple model, expanding on it as we go along in order to introduce some of the new functionality that Wren provides.
 
-## Our model
+## Setup
 
 We're going to write a Bayesian multinomial regression model for classifying the MNIST digits dataset.
 
-We begin by setting up our data:
+Let's set up our data first:
 
-```julia
+```{julia}
 using MLDatasets: MNIST
 
 data = MNIST(split=:train)
@@ -31,11 +30,13 @@ data = MNIST(split=:train)
 X = Matrix(Float64.(reshape(data.features, 28 * 28, :))')
 # Convert labels from 0-9 to 1-10 for 1-based indexing in Julia
 y = data.targets .+ 1
+
+size(X), size(y)
 ```
 
 We can define our model in Wren as follows:
 
-```julia
+```{julia}
 using Wren, Wren.Dists
 
 @wren function mnist1(X, y, C)

@@ -374,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#our-model" id="toc-our-model" class="nav-link active" data-scroll-target="#our-model">Our model</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
   </ul>
 </nav>
     </div>
@@ -420,35 +420,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We are very excited to announce Wren.jl (<a href="https://juliabayes.org/Wren.jl">docs</a>, <a href="https://github.com/JuliaBayes/Wren.jl">GitHub</a>), a new library for probabilistic programming in Julia.</p>
 <p>If you’re not familiar with probabilistic programming in general, the Wren docs contain <a href="https://juliabayes.org/Wren.jl/dev/tutorials/beginner/">a thorough introduction to the underlying concepts</a>, which you can read before coming back to this!</p>
 <p>On the surface, Wren’s syntax looks and feels similar to typical PPLs. However, many of its components have been (re)built with the aim of improving performance, including potential acceleration on GPUs via <a href="https://github.com/EnzymeAD/Reactant.jl">Reactant.jl</a>. Wren also utilises a two-stage compilation process, heavily inspired by <a href="https://github.com/cscherrer/Tilde.jl">Tilde.jl</a>, that enables some level of introspection and static analysis of models.</p>
-<p>We believe the best way to demonstrate these are to walk through a fairly simple model, expanding on it as we go along in order to introduce some of the new functionality that Wren provides.</p>
-<section id="our-model" class="level2">
-<h2 class="anchored" data-anchor-id="our-model">Our model</h2>
+<p>We believe the best way to demonstrate these is to walk through a fairly simple model, expanding on it as we go along in order to introduce some of the new functionality that Wren provides.</p>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <p>We’re going to write a Bayesian multinomial regression model for classifying the MNIST digits dataset.</p>
-<p>We begin by setting up our data:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">MLDatasets</span>: MNIST</span>
+<p>Let’s set up our data first:</p>
+<div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">MLDatasets</span>: MNIST</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">MNIST</span>(split<span class="op">=:</span>train)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># N x 784 matrix of pixel values in [0, 1], one row per image</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> <span class="fu">Matrix</span>(<span class="fu">Float64</span>.(<span class="fu">reshape</span>(data.features, <span class="fl">28</span> <span class="op">*</span> <span class="fl">28</span>, <span class="op">:</span>))<span class="ch">')</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert labels from 0-9 to 1-10 for 1-based indexing in Julia</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data.targets <span class="op">.+</span> <span class="fl">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data.targets <span class="op">.+</span> <span class="fl">1</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">size</span>(X), <span class="fu">size</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>((60000, 784), (60000,))</code></pre>
+</div>
+</div>
 <p>We can define our model in Wren as follows:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Wren</span>, <span class="bu">Wren.Dists</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@wren</span> <span class="kw">function</span> <span class="fu">mnist1</span>(X, y, C)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    N, D <span class="op">=</span> <span class="fu">size</span>(X)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@iid</span> W <span class="op">~</span> <span class="fu">Normal</span>() size<span class="op">=</span>(C<span class="op">-</span><span class="fl">1</span>, D)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@iid</span> b <span class="op">~</span> <span class="fu">Normal</span>() size<span class="op">=</span>(C<span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    nonreference_logits <span class="op">=</span> W <span class="op">*</span> X<span class="op">'</span> <span class="op">.+</span> b <span class="co"># (C-1) x N</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> <span class="fu">vcat</span>(<span class="fu">zeros</span>(<span class="fl">1</span>, N), nonreference_logits)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    probabilities <span class="op">=</span> <span class="fu">softmax</span>(logits; dims<span class="op">=</span><span class="fl">1</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>N</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        y[i] <span class="op">~</span> <span class="fu">Categorical</span>(probabilities[<span class="op">:</span>, i])</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">mnist1</span>(X, y, <span class="fl">10</span>) <span class="op">|</span> (; y <span class="op">=</span> y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Wren</span>, <span class="bu">Wren.Dists</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@wren</span> <span class="kw">function</span> <span class="fu">mnist1</span>(X, y, C)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    N, D <span class="op">=</span> <span class="fu">size</span>(X)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@iid</span> W <span class="op">~</span> <span class="fu">Normal</span>() size<span class="op">=</span>(C<span class="op">-</span><span class="fl">1</span>, D)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@iid</span> b <span class="op">~</span> <span class="fu">Normal</span>() size<span class="op">=</span>(C<span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    nonreference_logits <span class="op">=</span> W <span class="op">*</span> X<span class="op">'</span> <span class="op">.+</span> b <span class="co"># (C-1) x N</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> <span class="fu">vcat</span>(<span class="fu">zeros</span>(<span class="fl">1</span>, N), nonreference_logits)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    probabilities <span class="op">=</span> <span class="fu">softmax</span>(logits; dims<span class="op">=</span><span class="fl">1</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>N</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        y[i] <span class="op">~</span> <span class="fu">Categorical</span>(probabilities[<span class="op">:</span>, i])</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">mnist1</span>(X, y, <span class="fl">10</span>) <span class="op">|</span> (; y <span class="op">=</span> y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-bold">Model mnist1</span>
+├─ <span class="ansi-bold">arguments</span>
+│  ├─ <span class="ansi-red-fg">X</span> =&gt; [0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0]
+│  └─ <span class="ansi-red-fg">C</span> =&gt; 10
+├─ <span class="ansi-bold">conditioned</span>
+│  └─ <span class="ansi-red-fg">y</span> =&gt; [6, 1, 5, 2, 10, 3, 2, 4, 2, 5  …  10, 3, 10, 6, 2, 9, 4, 6, 7, 9]
+└─ <span class="ansi-bold">expressions</span>
+     (N, D) = size(X)
+     @iid(W ~ Normal(), size = (C - 1, D))
+     @iid(b ~ Normal(), size = C - 1)
+     nonreference_logits = W * X' .+ b
+     logits = vcat(zeros(1, N), nonreference_logits)
+     probabilities = softmax(logits; dims = 1)
+     for i = 1:N
+         y[i] ~ Categorical(probabilities[:, i])
+     end</pre>
+</div>
+</div>
+</div>
 <p>Approximately:</p>
 <ul>
 <li>What is Wren</li>

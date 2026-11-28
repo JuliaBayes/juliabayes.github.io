@@ -33,12 +33,13 @@ Skip to main content
 <p>We are very excited to announce Wren.jl (<a href="https://juliabayes.org/Wren.jl">docs</a>, <a href="https://github.com/JuliaBayes/Wren.jl">GitHub</a>), a new library for probabilistic programming in Julia.</p>
 <p>If you’re not familiar with probabilistic programming in general, the Wren docs contain <a href="https://juliabayes.org/Wren.jl/dev/tutorials/beginner/">a thorough introduction to the underlying concepts</a>, which you can read before coming back to this!</p>
 <p>On the surface, Wren’s syntax looks and feels similar to typical PPLs. However, many of its components have been (re)built with the aim of improving performance, including potential acceleration on GPUs via <a href="https://github.com/EnzymeAD/Reactant.jl">Reactant.jl</a>. Wren also utilises a two-stage compilation process, heavily inspired by <a href="https://github.com/cscherrer/Tilde.jl">Tilde.jl</a>, that enables some level of introspection and static analysis of models.</p>
-<p>We believe the best way to demonstrate these are to walk through a fairly simple model, expanding on it as we go along in order to introduce some of the new functionality that Wren provides.</p>
-<section id="our-model" class="level2">
-<h2 class="anchored" data-anchor-id="our-model">Our model</h2>
+<p>We believe the best way to demonstrate these is to walk through a fairly simple model, expanding on it as we go along in order to introduce some of the new functionality that Wren provides.</p>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <p>We’re going to write a Bayesian multinomial regression model for classifying the MNIST digits dataset.</p>
-<p>We begin by setting up our data:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><span class="im" style="color: #00769E;
+<p>Let’s set up our data first:</p>
+<div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">using</span> <span class="bu" style="color: null;
 background-color: null;
@@ -83,17 +84,28 @@ font-style: inherit;">=</span> data.targets <span class="op" style="color: #5E5E
 background-color: null;
 font-style: inherit;">.+</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1</span></span></code></pre></div></div>
+font-style: inherit;">1</span></span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">size</span>(X), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">size</span>(y)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>((60000, 784), (60000,))</code></pre>
+</div>
+</div>
 <p>We can define our model in Wren as follows:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><span class="im" style="color: #00769E;
+<div id="4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">using</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">Wren</span>, <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">Wren.Dists</span></span>
-<span id="cb2-2"></span>
-<span id="cb2-3"><span class="pp" style="color: #AD0000;
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">@wren</span> <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -101,12 +113,12 @@ font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mnist1</span>(X, y, C)</span>
-<span id="cb2-4">    N, D <span class="op" style="color: #5E5E5E;
+<span id="cb3-4">    N, D <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">size</span>(X)</span>
-<span id="cb2-5">    <span class="pp" style="color: #AD0000;
+<span id="cb3-5">    <span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">@iid</span> W <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -119,7 +131,7 @@ background-color: null;
 font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>, D)</span>
-<span id="cb2-6">    <span class="pp" style="color: #AD0000;
+<span id="cb3-6">    <span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">@iid</span> b <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -132,7 +144,7 @@ background-color: null;
 font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span>
-<span id="cb2-7">    nonreference_logits <span class="op" style="color: #5E5E5E;
+<span id="cb3-7">    nonreference_logits <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> W <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -143,7 +155,7 @@ background-color: null;
 font-style: inherit;">.+</span> b <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># (C-1) x N</span></span>
-<span id="cb2-8">    logits <span class="op" style="color: #5E5E5E;
+<span id="cb3-8">    logits <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -152,7 +164,7 @@ background-color: null;
 font-style: inherit;">zeros</span>(<span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>, N), nonreference_logits)</span>
-<span id="cb2-9">    probabilities <span class="op" style="color: #5E5E5E;
+<span id="cb3-9">    probabilities <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -161,7 +173,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span>
-<span id="cb2-10">    <span class="cf" style="color: #003B4F;
+<span id="cb3-10">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
@@ -172,23 +184,23 @@ background-color: null;
 font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span>N</span>
-<span id="cb2-11">        y[i] <span class="op" style="color: #5E5E5E;
+<span id="cb3-11">        y[i] <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">~</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">Categorical</span>(probabilities[<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span>, i])</span>
-<span id="cb2-12">    <span class="cf" style="color: #003B4F;
+<span id="cb3-12">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">end</span></span>
-<span id="cb2-13"><span class="kw" style="color: #003B4F;
+<span id="cb3-13"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">end</span></span>
-<span id="cb2-14"></span>
-<span id="cb2-15">model <span class="op" style="color: #5E5E5E;
+<span id="cb3-14"></span>
+<span id="cb3-15">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -199,6 +211,27 @@ background-color: null;
 font-style: inherit;">|</span> (; y <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> y)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-bold">Model mnist1</span>
+├─ <span class="ansi-bold">arguments</span>
+│  ├─ <span class="ansi-red-fg">X</span> =&gt; [0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0; … ; 0.0 0.0 … 0.0 0.0; 0.0 0.0 … 0.0 0.0]
+│  └─ <span class="ansi-red-fg">C</span> =&gt; 10
+├─ <span class="ansi-bold">conditioned</span>
+│  └─ <span class="ansi-red-fg">y</span> =&gt; [6, 1, 5, 2, 10, 3, 2, 4, 2, 5  …  10, 3, 10, 6, 2, 9, 4, 6, 7, 9]
+└─ <span class="ansi-bold">expressions</span>
+     (N, D) = size(X)
+     @iid(W ~ Normal(), size = (C - 1, D))
+     @iid(b ~ Normal(), size = C - 1)
+     nonreference_logits = W * X' .+ b
+     logits = vcat(zeros(1, N), nonreference_logits)
+     probabilities = softmax(logits; dims = 1)
+     for i = 1:N
+         y[i] ~ Categorical(probabilities[:, i])
+     end</pre>
+</div>
+</div>
+</div>
 <p>Approximately:</p>
 <ul>
 <li>What is Wren</li>

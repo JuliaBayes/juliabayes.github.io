@@ -2,6 +2,7 @@
 #
 # - `favicon.svg`: the tab icon.
 # - `favicon.ico`: a 32px fallback for browsers without SVG favicons.
+# - `rss-icon.png`: the same 32px icon for feed readers.
 # - `apple-touch-icon.png`: the 180px home-screen icon. iOS fetches it from the
 #   site root.
 #
@@ -126,7 +127,9 @@ end
 function write_icons(root=dirname(@__DIR__))
     svg = icon_svg()
     write(joinpath(root, "favicon.svg"), svg)
-    write_ico(joinpath(root, "favicon.ico"), rasterize(icon_svg(; square=true), ICON_SIZE), ICON_SIZE)
+    png = rasterize(icon_svg(; square=true), ICON_SIZE)
+    write_ico(joinpath(root, "favicon.ico"), png, ICON_SIZE)
+    write(joinpath(root, "rss-icon.png"), png)
     touch_svg = icon_svg(; background=TOUCH_ICON_BACKGROUND, square=true)
     write(joinpath(root, "apple-touch-icon.png"), rasterize(touch_svg, TOUCH_ICON_PX))
     return root

@@ -10,16 +10,25 @@ listing:
   categories: true
   sort-ui: false
   filter-ui: false
-  feed: true
+  feed:
+    title: "JuliaBayes Blog & News"
+    description: "Articles, announcements, and community news from JuliaBayes."
+    image: rss-icon.png
+    language: en
 # Quarto loads MathJax on every listing page. The listing shows no maths.
 html-math-method: plain
 include-after-body:
   - category-pills.html
 ---
 
+[Download blog, news, and package release feeds (OPML)](/feeds.opml){download="juliabayes-feeds.opml"}
+
 ```{=html}
 <button type="button" id="news-clear-category" class="listing-category" disabled>Clear category filter</button>
 ```
+
+[Subscribe to the community calendar](webcal://juliabayes.org/events.ics) ·
+[Calendar URL](/events.ics)
 
 :::: {.accent-card .accent-blue .news-card}
 ::: {#news-posts}

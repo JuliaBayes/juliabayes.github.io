@@ -100,8 +100,7 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 
 <% for (const pkg of packages.filter((p) => p.task === task)) { %>
 <% const maintainers = maintainersOf(pkg); %>
-<% const repository = releases.get(pkg.title).repository; %>
-<% const release = releases.get(pkg.title).release; %>
+<% const { repository, release, feed } = releases.get(pkg.title); %>
 ::: {.ecosystem-package data-name="<%= pkg.title %>" data-status="<%= pkg.status %>"}
 
 ::: {.ecosystem-package-text}
@@ -112,6 +111,7 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 [Docs](<%= pkg.path %>){aria-label="<%= pkg.title %> documentation"}
 <% if (repository) { %>[GitHub](<%= repository %>){aria-label="<%= pkg.title %> on GitHub"}
 [Issues](<%= repository %>/issues){aria-label="<%= pkg.title %> issues"}<% } %>
+<% if (feed) { %>[RSS](/<%= feed %>){aria-label="<%= pkg.title %> release feed"}<% } %>
 :::
 
 ::: {.ecosystem-description}

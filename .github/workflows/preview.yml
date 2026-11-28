@@ -20,7 +20,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # 7.0.1
+      - name: Build community calendar
+        run: |
+          node --test src/community-calendar.test.mjs
+          node src/community-calendar.mjs
       - uses: quarto-dev/quarto-actions/setup@8a96df13519ee81fd526f2dfca5962811136661b # 2.2.0
+      - name: Test release feed
+        run: node --test src/release-feed.test.mjs
       - name: Refresh package releases
         run: node src/package-releases.mjs
         env:
@@ -33,6 +39,10 @@ jobs:
           # Quarto gives 404 pages absolute links so they work from nested URLs.
           printf 'website:\n  site-path: /previews/PR%s/\n' "$PR_NUMBER" > _quarto-pr-preview.yml
           quarto render --profile pr-preview
+          node src/check-links.mjs _site --site-path "/previews/PR${PR_NUMBER}/"
+
+      - name: Validate RSS
+        run: node src/check-feeds.mjs _site
 
       - name: Deploy preview
         if: ${{ env.IS_PR_BUT_NOT_FORK == 'true' }}
@@ -42,6 +52,13 @@ jobs:
           folder: _site
           target-folder: previews/PR${{ github.event.pull_request.number }}
           force: false
+
+      - name: Verify preview RSS
+        if: ${{ env.IS_PR_BUT_NOT_FORK == 'true' }}
+        timeout-minutes: 6
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: node src/check-feeds.mjs _site --live "https://juliabayes.org/previews/PR${PR_NUMBER}"
 
       - name: Post preview comment
         if: ${{ env.IS_PR_BUT_NOT_FORK == 'true' }}

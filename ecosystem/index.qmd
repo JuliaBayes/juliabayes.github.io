@@ -24,5 +24,8 @@ Come say hello in [`#bayes` on Julia Slack](https://julialang.slack.com/archives
 
 Got code to talk about? Join the development discussion in [`#bayes-dev` on Julia Slack](https://julialang.slack.com/app_redirect?channel=bayes-dev).
 
+[Subscribe to package releases (RSS)](/releases.xml) ·
+[Download individual package feeds (OPML)](/package-feeds.opml){download="juliabayes-package-feeds.opml"}
+
 ::: {#packages}
 :::

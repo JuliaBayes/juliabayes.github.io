@@ -12,6 +12,7 @@ project:
     - "snippets/entries/**/index.md"
   resources:
     - CNAME
+    - events.ics
     # The font licence asks that it ships with the fonts. Quarto copies the
     # fonts themselves from the url() in theming/rules/_fonts.scss.
     - theming/fonts/LICENSE.txt
@@ -21,6 +22,11 @@ project:
     # src/favicon.jl generates them with favicon.svg.
     - favicon.ico
     - apple-touch-icon.png
+    - rss-icon.png
+    - releases.xml
+    - releases/*.xml
+    - feeds.opml
+    - package-feeds.opml
 
 website:
   title: "JuliaBayes"
@@ -57,8 +63,12 @@ website:
         href: https://github.com/JuliaBayes
         text: GitHub
       - icon: rss
-        href: news/index.xml
-        text: RSS feed
+        text: RSS feeds
+        menu:
+          - text: Package releases
+            href: releases.xml
+          - text: Blog and news
+            href: news/index.xml
 
 format:
   html:
@@ -70,6 +80,7 @@ format:
     # The first visit follows the visitor's system setting. The toggle still
     # overrides it.
     respect-user-color-scheme: true
+    include-in-header: theming/release-feed.html
     include-before-body: theming/skip-link.html
     include-after-body:
       - theming/keyboard.html
@@ -77,6 +88,7 @@ format:
       - theming/search-shortcut.html
       - theming/category-links.html
       - theming/hover.html
+      - theming/feed-menu.html
 
 # Render Julia code locally and commit the results in _freeze/, so that CI
 # doesn't need to run any Julia.

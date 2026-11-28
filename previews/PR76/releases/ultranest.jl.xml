@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+  <title>JuliaBayes releases for UltraNest.jl</title>
+  <link>https://juliabayes.org/ecosystem/</link>
+  <description>Stable GitHub releases for UltraNest.jl.</description>
+  <language>en</language>
+  <image>
+    <url>https://juliabayes.org/rss-icon.png</url>
+    <title>JuliaBayes releases for UltraNest.jl</title>
+    <link>https://juliabayes.org/ecosystem/</link>
+    <width>32</width>
+    <height>32</height>
+  </image>
+  <atom:link href="https://juliabayes.org/releases/ultranest.jl.xml" rel="self" type="application/rss+xml"/>
+  <lastBuildDate>Fri, 20 Nov 2026 16:35:08 GMT</lastBuildDate>
+  <item>
+    <title>UltraNest.jl v0.2.1</title>
+    <link>https://github.com/JuliaBayes/UltraNest.jl/releases/tag/v0.2.1</link>
+    <guid isPermaLink="false">github-release:452932241</guid>
+    <pubDate>Fri, 20 Nov 2026 16:35:08 GMT</pubDate>
+    <category>UltraNest.jl</category>
+    <description>&lt;p&gt;Repository moved to https://github.com/JuliaBayes/UltraNest.jl. Documentation is now at https://juliabayes.org/UltraNest.jl/. No changes to the package code. Merged pull requests: Update URLs after move to JuliaBayes organization (#6)…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;UltraNest v0.2.1&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/UltraNest.jl/compare/v0.2.0...v0.2.1&quot;&gt;Diff since v0.2.0&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Repository moved to &lt;a href=&quot;https://github.com/JuliaBayes/UltraNest.jl&quot;&gt;https://github.com/JuliaBayes/UltraNest.jl&lt;/a&gt;. Documentation is now at &lt;a href=&quot;https://juliabayes.org/UltraNest.jl/&quot; rel=&quot;nofollow&quot;&gt;https://juliabayes.org/UltraNest.jl/&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;No changes to the package code.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Update URLs after move to JuliaBayes organization (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6288237169&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/UltraNest.jl/issues/6&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/UltraNest.jl/pull/6/hovercard&quot; href=&quot;https://github.com/JuliaBayes/UltraNest.jl/pull/6&quot;&gt;#6&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/oschulz/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/oschulz&quot;&gt;@oschulz&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Align documentation code styling (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6288895860&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/UltraNest.jl/issues/7&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/UltraNest.jl/pull/7/hovercard&quot; href=&quot;https://github.com/JuliaBayes/UltraNest.jl/pull/7&quot;&gt;#7&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/BJMCox/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/BJMCox&quot;&gt;@BJMCox&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>UltraNest.jl v0.2.0</title>
+    <link>https://github.com/JuliaBayes/UltraNest.jl/releases/tag/v0.2.0</link>
+    <guid isPermaLink="false">github-release:362871748</guid>
+    <pubDate>Fri, 31 Jul 2026 05:41:05 GMT</pubDate>
+    <category>UltraNest.jl</category>
+    <description>&lt;p&gt;Breaking changes Switched from PyCall to PythonCall, with API consequences. Merged pull requests: CompatHelper: add new compat entry for Statistics at version 1, (keep existing compat) (#4) (@github-actions[bot])&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;UltraNest v0.2.0&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/UltraNest.jl/compare/v0.1.0...v0.2.0&quot;&gt;Diff since v0.1.0&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;Breaking changes&lt;/h1&gt;
+&lt;p&gt;Switched from PyCall to PythonCall, with API consequences.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CompatHelper: add new compat entry for Statistics at version 1, (keep existing compat) (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;2664847412&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/UltraNest.jl/issues/4&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/UltraNest.jl/pull/4/hovercard&quot; href=&quot;https://github.com/JuliaBayes/UltraNest.jl/pull/4&quot;&gt;#4&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>UltraNest.jl v0.1.0</title>
+    <link>https://github.com/JuliaBayes/UltraNest.jl/releases/tag/v0.1.0</link>
+    <guid isPermaLink="false">github-release:35815857</guid>
+    <pubDate>Tue, 29 Dec 2020 17:07:38 GMT</pubDate>
+    <category>UltraNest.jl</category>
+    <description>&lt;p&gt;See the release on GitHub.&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;UltraNest v0.1.0&lt;/h2&gt;</content:encoded>
+  </item>
+</channel>
+</rss>

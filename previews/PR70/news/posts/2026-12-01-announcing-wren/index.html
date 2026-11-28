@@ -381,6 +381,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#optimisation-part-1-handwritten-likelihood" id="toc-optimisation-part-1-handwritten-likelihood" class="nav-link" data-scroll-target="#optimisation-part-1-handwritten-likelihood">Optimisation, part 1: handwritten likelihood</a></li>
+  <li><a href="#optimisation-part-2-using-batch" id="toc-optimisation-part-2-using-batch" class="nav-link" data-scroll-target="#optimisation-part-2-using-batch">Optimisation, part 2: using <code>@batch</code></a></li>
   </ul>
 </nav>
     </div>
@@ -423,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>We are very excited to announce Wren.jl (<a href="https://juliabayes.org/Wren.jl">docs</a>, <a href="https://github.com/JuliaBayes/Wren.jl">GitHub</a>), a new library for probabilistic programming in Julia.</p>
+<p>We are very excited to announce <a href="https://juliabayes.org/Wren.jl">Wren.jl</a>, a new library for probabilistic programming in Julia.</p>
 <p>If you’re not familiar with probabilistic programming in general, the Wren docs contain <a href="https://juliabayes.org/Wren.jl/dev/tutorials/beginner/">a thorough introduction to the underlying concepts</a>, which you can read before coming back to this!</p>
 <p>On the surface, Wren’s syntax looks and feels similar to typical PPLs. Many of the underlying machinery has come directly from ideas which my colleagues and I wrote for the <a href="https://turinglang.org">Turing.jl ecosystem</a>. However, many of its components have been (re)built with the aim of improving performance, including AD via <a href="https://github.com/EnzymeAD/Enzyme.jl">Enzyme.jl</a>, and potential acceleration on GPUs via <a href="https://github.com/EnzymeAD/Reactant.jl">Reactant.jl</a>. Wren also utilises a two-stage compilation process, heavily inspired by <a href="https://github.com/cscherrer/Tilde.jl">Tilde.jl</a>, that enables some level of introspection and static analysis of models.</p>
 <p>Some of this might understandably feel a little opaque. So, let’s walk through a fairly simple model, expanding on it as we go along in order to introduce some of the new functionality that Wren provides.</p>
@@ -509,12 +511,146 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Ther</p>
-<p>Approximately:</p>
+<p>We can draw from the prior of the model using <code>simulate</code>:</p>
+<div id="8" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simulate</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="ansi-escaped-output">
+<pre>ModelResult
+├─ <span class="ansi-cyan-fg">parameters</span> =&gt; VarNamedTuple
+│  ├─ <span class="ansi-cyan-fg">W</span> =&gt; [0.5782116084755283 -1.2633996732078356 … 1.2443571484081855 0.38721624847572217; -2.071386159590323 -0.830733778951094 … -0.14046879154579014 -1.8428709946778825; … ; 0.3854937303231855 0.14627483166958502 … 0.689957896441692 0.5893427053556428; -2.007050278429986 0.04932024971503994 … -1.783691063609721 0.49512165265641916]
+│  └─ <span class="ansi-cyan-fg">b</span> =&gt; [-1.4293227135757622, -2.897110616549758, -1.3174219261419065, -0.18466717717160153, -0.2657797287138613, 1.9848254538861831, 1.3109011995895656, 1.6292316620830567, 0.37380651438788204]
+├─ <span class="ansi-cyan-fg">tracked_quantities</span> =&gt; VarNamedTuple()
+├─ <span class="ansi-cyan-fg">return_value</span> =&gt; nothing
+├─ <span class="ansi-cyan-fg">logprior</span> =&gt; -10056.03447044332
+└─ <span class="ansi-cyan-fg">loglikelihood</span> =&gt; -808773.21025982</pre>
+</div>
+</div>
+</div>
+<p>This returns a set of the parameters <code>W</code> and <code>b</code>, together with their associated log-probabilities; precisely the information we need to start performing inference. For example, we can feed this model to NUTS, using Enzyme.jl to calculate the necessary gradients of the log-density with respect to the parameters:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">Enzyme</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nuts</span>(model, <span class="fl">1000</span>, <span class="fl">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>(Wren’s default AD backend is reverse-mode Enzyme, but you can also specify any AD backend you like via the <code>adtype</code> keyword as Wren uses <a href="https://juliadiff.org/DifferentiationInterface.jl/DifferentiationInterface/stable/">DifferentiationInterface.jl</a> under the hood.)</p>
+<p>Wren returns <a href="https://juliabayes.org/FlexiChains.jl">a <code>FlexiChain</code></a> from its sampling routines, which has many useful tools for analysis and visualisation of the resulting data. Unfortunately, running this will almost certainly take a long time, if only because the model is very large! (We’ve omitted this output from the post because of this.) Of course, the question is then how can we make this faster!</p>
+<p>To illustrate the changes in performance, we’ll use Wren’s benchmarking tools to help us measure the performance of our model.</p>
+<div id="10" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">Enzyme</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@bmodel</span> model DEFAULT_AD</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>BenchmarkResult
+  ├ model       : mnist1
+  ├ backend     : ADTypes.AutoEnzyme(mode=EnzymeCore.ReverseMode{false, false, false, EnzymeCore.FFIABI, false, false}())
+  ├ n_params    : 7065
+  ├ parameters  : 33.538 ms (60041 allocs: 24.942 MiB)
+  ├ logjoint    : 33.896 ms (60020 allocs: 24.753 MiB)
+  ├ lp          : 33.766 ms (60020 allocs: 24.753 MiB)
+  ├ lp_and_grad : 81.348 ms (120065 allocs: 52.318 MiB)
+  └ grad / lp   : 2.409</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>BenchmarkResult
+  ├ model       : mnist1
+  ├ backend     : ADTypes.AutoEnzyme(mode=EnzymeCore.ReverseMode{false, false, false, EnzymeCore.FFIABI, false, false}())
+  ├ n_params    : 7065
+  ├ parameters  : 33.538 ms (60041 allocs: 24.942 MiB)
+  ├ logjoint    : 33.896 ms (60020 allocs: 24.753 MiB)
+  ├ lp          : 33.766 ms (60020 allocs: 24.753 MiB)
+  ├ lp_and_grad : 81.348 ms (120065 allocs: 52.318 MiB)
+  └ grad / lp   : 2.409</code></pre>
+</div>
+</div>
+<p>There are several fields here, but for NUTS we are most interested in the <code>lp_and_grad</code> field, which tells us the median time taken to evaluate the log-density and its gradient. One can profile this further, but it shouldn’t be a huge spoiler if I tell you that the bulk of the time is spent on the likelihood evaluation, because of the large dataset.</p>
+</section>
+<section id="optimisation-part-1-handwritten-likelihood" class="level2">
+<h2 class="anchored" data-anchor-id="optimisation-part-1-handwritten-likelihood">Optimisation, part 1: handwritten likelihood</h2>
+<p>Traditionally, when faced with performance issues, one of the biggest tools that people reach for is to directly write out a mathematical expression for the likelihood, in the hope of stripping away the overhead of the PPL machinery. We can do that with the <code>@addloglikelihood</code> macro:</p>
+<div id="12" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LogExpFunctions</span>: logsumexp</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@wren</span> <span class="kw">function</span> <span class="fu">mnist_manual</span>(X, y, C)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    N, D <span class="op">=</span> <span class="fu">size</span>(X)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@iid</span> W <span class="op">~</span> <span class="fu">Normal</span>() size<span class="op">=</span>(C<span class="op">-</span><span class="fl">1</span>, D)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@iid</span> b <span class="op">~</span> <span class="fu">Normal</span>() size<span class="op">=</span>(C<span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    ref_logits <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">1</span>, N)                  <span class="co">#     1 x N</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    nonref_logits <span class="op">=</span> W <span class="op">*</span> X<span class="op">'</span> <span class="op">.+</span> b               <span class="co"># (C-1) x N</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> <span class="fu">vcat</span>(ref_logits, nonref_logits)  <span class="co">#     C x N</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@addloglikelihood</span> <span class="fu">sum</span>(logits[y <span class="op">.+</span> C <span class="op">.*</span> (<span class="fl">0</span><span class="op">:</span>(N<span class="op">-</span><span class="fl">1</span>))]) <span class="op">-</span> <span class="fu">sum</span>(<span class="fu">logsumexp</span>(logits; dims<span class="op">=</span><span class="fl">1</span>))</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>model_manual <span class="op">=</span> <span class="fu">mnist_manual</span>(X, y, <span class="fl">10</span>) <span class="op">|</span> (; y <span class="op">=</span> y)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="pp">@bmodel</span> model_manual DEFAULT_AD</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>BenchmarkResult
+  ├ model       : mnist_manual
+  ├ backend     : ADTypes.AutoEnzyme(mode=EnzymeCore.ReverseMode{false, false, false, EnzymeCore.FFIABI, false, false}())
+  ├ n_params    : 7065
+  ├ parameters  : 31.160 ms (33 allocs: 13.486 MiB)
+  ├ logjoint    : 33.564 ms (24 allocs: 15.626 MiB)
+  ├ lp          : 33.299 ms (24 allocs: 15.626 MiB)
+  ├ lp_and_grad : 78.949 ms (68 allocs: 32.678 MiB)
+  └ grad / lp   : 2.371</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>BenchmarkResult
+  ├ model       : mnist_manual
+  ├ backend     : ADTypes.AutoEnzyme(mode=EnzymeCore.ReverseMode{false, false, false, EnzymeCore.FFIABI, false, false}())
+  ├ n_params    : 7065
+  ├ parameters  : 31.160 ms (33 allocs: 13.486 MiB)
+  ├ logjoint    : 33.564 ms (24 allocs: 15.626 MiB)
+  ├ lp          : 33.299 ms (24 allocs: 15.626 MiB)
+  ├ lp_and_grad : 78.949 ms (68 allocs: 32.678 MiB)
+  └ grad / lp   : 2.371</code></pre>
+</div>
+</div>
+<p>We can see here that the median time has decreased by a small percentage, which is a good start. More subtly, the number of allocations has also decreased substantially. This in turn means that the garbage collector has less work to do, and reduces the spikiness in the time taken to evaluate the log-density and its gradient. While this is not obvious from the summarised benchmark that <code>@bmodel</code> gives us, you can see this if you were to directly profile the <code>WrenCore.lp_and_grad</code> function.</p>
+<p>This is all very good. <em>However</em>, in the process of doing this optimisation, we have also made the model much less readable. It’s hard to see at a glance that this is indeed a multinomial regression model. This rather defeats the purpose of using a PPL in the first place: if you wanted to just write a bare mathematical expression, you could have done that in a single function without needing the abstraction of a PPL!</p>
+</section>
+<section id="optimisation-part-2-using-batch" class="level2">
+<h2 class="anchored" data-anchor-id="optimisation-part-2-using-batch">Optimisation, part 2: using <code>@batch</code></h2>
+<p>This is where one of Wren’s features comes in: the <code>@batch</code> macro. We can simply annotate our original <code>for</code> loop with the macro, and Wren will attempt to vectorise the likelihood evaluation:</p>
+<div id="14" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@wren</span> <span class="kw">function</span> <span class="fu">mnist_batch</span>(X, y, C)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    N, D <span class="op">=</span> <span class="fu">size</span>(X)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@iid</span> W <span class="op">~</span> <span class="fu">Normal</span>() size<span class="op">=</span>(C<span class="op">-</span><span class="fl">1</span>, D)  <span class="co"># Weights</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@iid</span> b <span class="op">~</span> <span class="fu">Normal</span>() size<span class="op">=</span>(C<span class="op">-</span><span class="fl">1</span>)     <span class="co"># Biases</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    ref_logits <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">1</span>, N)                  <span class="co">#     1 x N</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    nonref_logits <span class="op">=</span> W <span class="op">*</span> X<span class="op">'</span> <span class="op">.+</span> b               <span class="co"># (C-1) x N</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> <span class="fu">vcat</span>(ref_logits, nonref_logits)  <span class="co">#     C x N</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    probabilities <span class="op">=</span> <span class="fu">softmax</span>(logits; dims<span class="op">=</span><span class="fl">1</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="pp">@batch</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>N</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        y[i] <span class="op">~</span> <span class="fu">Categorical</span>(probabilities[<span class="op">:</span>, i])</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>model_batch <span class="op">=</span> <span class="fu">mnist_batch</span>(X, y, <span class="fl">10</span>) <span class="op">|</span> (; y <span class="op">=</span> y)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="pp">@bmodel</span> model_batch DEFAULT_AD</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>BenchmarkResult
+  ├ model       : mnist_batch
+  ├ backend     : ADTypes.AutoEnzyme(mode=EnzymeCore.ReverseMode{false, false, false, EnzymeCore.FFIABI, false, false}())
+  ├ n_params    : 7065
+  ├ parameters  : 33.645 ms (46 allocs: 19.471 MiB)
+  ├ logjoint    : 33.747 ms (25 allocs: 19.282 MiB)
+  ├ lp          : 33.624 ms (25 allocs: 19.282 MiB)
+  ├ lp_and_grad : 79.115 ms (68 allocs: 39.522 MiB)
+  └ grad / lp   : 2.353</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>BenchmarkResult
+  ├ model       : mnist_batch
+  ├ backend     : ADTypes.AutoEnzyme(mode=EnzymeCore.ReverseMode{false, false, false, EnzymeCore.FFIABI, false, false}())
+  ├ n_params    : 7065
+  ├ parameters  : 33.645 ms (46 allocs: 19.471 MiB)
+  ├ logjoint    : 33.747 ms (25 allocs: 19.282 MiB)
+  ├ lp          : 33.624 ms (25 allocs: 19.282 MiB)
+  ├ lp_and_grad : 79.115 ms (68 allocs: 39.522 MiB)
+  └ grad / lp   : 2.353</code></pre>
+</div>
+</div>
+<p>The only difference between this model and the original <code>mnist1</code> model is the addition of the <code>@batch</code> macro. We see that this allows us to gain the same performance benefits as when we handwrote our likelihood, with no loss in readability.</p>
+<p>Hand-written likelihoods, like the one we wrote above, can have a significant impact if it allows us to reduce the number of redundant computations. For example, if we have <code>y[i] ~ Normal(mu[i], sigma)</code> for a large dataset <code>y</code>, the <code>log(sigma)</code> term does not need to be computed <code>N</code> times, and can be factored out of the likelihood. Just like in our present example, <code>@batch</code> <em>also</em> does such optimisations automatically for you, without you having to write out the likelihood by hand!</p>
 <ul>
-<li>What is Wren</li>
-<li>Set up multinomial regression model, naive</li>
-<li>Optimising it with handwritten likelihood</li>
 <li>Vectorising the observations with <code>@batch</code></li>
 <li>Running it with Reactant</li>
 <li>Running it with Reactant but on GPU</li>

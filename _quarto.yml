@@ -64,6 +64,12 @@ website:
             href: releases.xml
           - text: Blog and news
             href: news/index.xml
+          - text: All feeds (OPML)
+            href: feeds.opml
+      # webcal:// asks the calendar app to subscribe, not to import a copy.
+      - icon: calendar3
+        href: webcal://juliabayes.org/events.ics
+        text: Community calendar
 
 format:
   html:

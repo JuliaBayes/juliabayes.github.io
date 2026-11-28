@@ -104,3 +104,137 @@ div.quarto-post .listing-subtitle:has(> a:empty) {
     padding-inline: 0.75rem;
   }
 }
+
+// Search and checkbox filters shared by the Ecosystem and Snippets listings.
+$listing-filter-open-border: mix($julia-blue, $accent-card-bg, percentage($package-tint-strength));
+$listing-filter-border-radius: 0.375rem;
+// The hover colour of the landing page's accent buttons.
+$listing-filter-hover-bg: mix($julia-blue, $accent-card-bg, percentage($tint-strength));
+
+.listing-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+
+  > div:first-child {
+    flex: 1 1 15rem;
+  }
+
+  > div:not(:first-child) {
+    flex: 1 1 10rem;
+  }
+
+  > [role="status"] {
+    flex-basis: 100%;
+    margin: 0;
+    font-size: $landing-small-font-size;
+    color: var(--bs-secondary-color);
+  }
+}
+
+.listing-filters input[type="search"],
+.listing-filter-dropdown summary {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+}
+
+// An open dropdown carries the same ring as a focused search field.
+.listing-filters input[type="search"]:focus-visible,
+.listing-filters button[type="reset"]:focus-visible,
+.listing-filter-dropdown summary:focus-visible,
+.listing-filter-dropdown[open] summary {
+  outline: 2px solid var(--bs-link-color);
+  outline-offset: 2px;
+}
+
+.listing-filter-dropdown[open] summary {
+  border-color: $listing-filter-open-border;
+}
+
+.listing-filters input[type="search"],
+.listing-filter-dropdown summary {
+  border-radius: $listing-filter-border-radius;
+}
+
+// The hover colours match the landing page's accent buttons. Bootstrap's hover
+// and active states read these variables, so setting `background` or `color`
+// directly would disable them.
+.listing-filters .btn[type="reset"] {
+  --bs-btn-color: var(--bs-body-color);
+  --bs-btn-bg: var(--bs-body-bg);
+  --bs-btn-border-color: var(--bs-border-color);
+  --bs-btn-hover-color: var(--bs-body-color);
+  --bs-btn-hover-bg: #{$listing-filter-hover-bg};
+  --bs-btn-hover-border-color: var(--bs-border-color);
+  --bs-btn-active-color: var(--bs-body-color);
+  --bs-btn-active-bg: #{$listing-filter-hover-bg};
+  --bs-btn-active-border-color: var(--bs-border-color);
+}
+
+.listing-filters input[type="search"]::placeholder {
+  color: var(--bs-secondary-color);
+  opacity: 1;
+}
+
+body.quarto-dark .listing-filters {
+  color-scheme: dark;
+}
+
+body.quarto-light .listing-filters {
+  color-scheme: light;
+}
+
+.listing-filter-dropdown {
+  position: relative;
+  margin: 0;
+
+  summary {
+    padding: 0.375rem 0.75rem;
+    cursor: pointer;
+  }
+}
+
+.listing-filter-menu {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(100% + 0.25rem);
+  z-index: 3;
+  padding: 0.5rem;
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: $listing-filter-border-radius;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+
+  fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $listing-filter-hover-bg;
+    }
+  }
+
+  input {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--bs-link-color);
+  }
+}
+
+.listing-filters[hidden],
+.snippet-entry[hidden] {
+  display: none;
+}

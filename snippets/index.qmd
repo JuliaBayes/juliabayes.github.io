@@ -1,0 +1,20 @@
+---
+title: Snippets
+toc: false
+html-math-method: plain
+listing:
+  id: snippet-entries
+  contents: entries
+  sort: "date desc"
+  template: entries.ejs.md
+  sort-ui: false
+  filter-ui: false
+include-after-body: filters.html
+---
+
+[Contribute a snippet](https://github.com/JuliaBayes/juliabayes.github.io#writing-a-snippet)
+
+:::: {.accent-card .accent-blue .snippet-card}
+::: {#snippet-entries}
+:::
+::::

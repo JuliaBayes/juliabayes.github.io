@@ -51,16 +51,16 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
 %>
 
 ```{=html}
-<form id="ecosystem-filters" class="ecosystem-filters" role="search" aria-label="Find packages" hidden>
+<form id="ecosystem-filters" class="listing-filters" role="search" aria-label="Find packages" hidden>
   <div>
     <label for="package-search" class="form-label">Search packages</label>
     <input id="package-search" class="form-control" type="search" placeholder="Name, description or maintainer" aria-controls="listing-packages" autocomplete="off">
   </div>
   <div>
     <span class="form-label d-block">Tasks</span>
-    <details id="package-tasks" class="ecosystem-filter-dropdown">
+    <details id="package-tasks" class="listing-filter-dropdown">
       <summary aria-controls="package-task-menu"><span class="visually-hidden">Filter by task: </span><span data-filter-summary>All tasks</span></summary>
-      <div id="package-task-menu" class="ecosystem-filter-menu">
+      <div id="package-task-menu" class="listing-filter-menu">
         <fieldset>
           <legend class="visually-hidden">Show packages for any selected task</legend>
       <% for (const task of tasks) { %>
@@ -72,9 +72,9 @@ const tasks = [...new Set(packages.sort(byOrderThenTitle).map((pkg) => pkg.task)
   </div>
   <div>
     <span class="form-label d-block">Status</span>
-    <details id="package-statuses" class="ecosystem-filter-dropdown">
+    <details id="package-statuses" class="listing-filter-dropdown">
       <summary aria-controls="package-status-menu"><span class="visually-hidden">Filter by status: </span><span data-filter-summary>All statuses</span></summary>
-      <div id="package-status-menu" class="ecosystem-filter-menu">
+      <div id="package-status-menu" class="listing-filter-menu">
         <fieldset>
           <legend class="visually-hidden">Show packages with any selected status</legend>
       <% for (const status of statuses) { %>

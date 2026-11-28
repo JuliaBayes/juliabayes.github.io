@@ -22,6 +22,17 @@ publication date in the front matter. Add `citation: true` and
 
 If you need to rerun the code in a post, you can delete the `_freeze/news/posts/YYYY-MM-DD-slug` folder (do _not_ delete the entire `_freeze` folder!) and rerun `quarto render`.
 
+## Writing a snippet
+
+1. Copy [the snippet template](snippets/_template.md) to `snippets/entries/YYYY-MM-DD-slug/index.md`.
+1. Fill in the title, author, date, summary, and tags. Add Julia code you have run. Use `{.julia .cell-code}` on fenced blocks for syntax highlighting and folding.
+1. Add any saved output, figures, or source links. Keep assets next to `index.md`. Code-only snippets are welcome.
+1. Link to the `Project.toml` and `Manifest.toml` you used. Keep them alongside the snippet, or link to a fixed commit or release containing both for an external example.
+1. Check that a reader can recreate the environment with `julia --project=. -e 'using Pkg; Pkg.instantiate()'` from the directory containing those files.
+1. Render with `quarto render snippets/` and open a PR with the Markdown and assets.
+
+Snippets use Quarto's Markdown engine with execution disabled. Include code and results as static content.
+
 ## Updating the community calendar
 
 Edit [`events.json`](events.json) to add or change confirmed events. Use a

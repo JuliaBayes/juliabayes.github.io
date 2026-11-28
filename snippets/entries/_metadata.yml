@@ -1,0 +1,8 @@
+engine: markdown
+execute:
+  enabled: false
+code-fold: show
+code-copy: true
+format:
+  html:
+    body-classes: "news-post snippet-page"

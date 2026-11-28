@@ -51,9 +51,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b1528b1cba7e9f63f59baa7408a6f56.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-307118dc5fe4dffce67135228d432258.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-9e4043d34acb6e3d3755cbd388e8c256.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-307118dc5fe4dffce67135228d432258.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5d2c08e3326f4786513fad3524a32265.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-f3c5b6a9707a6ddf3e9a16b152c6745b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5d2c08e3326f4786513fad3524a32265.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -329,7 +329,7 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+    <nav class="navbar navbar-expand-md " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
@@ -365,6 +365,7 @@ window.Quarto = {
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
     <a href="https://github.com/JuliaBayes" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="webcal://juliabayes.org/events.ics" title="Community calendar" class="quarto-navigation-tool px-1" aria-label="Community calendar"><i class="bi bi-calendar3"></i></a>
     <div class="dropdown">
       <a href="" title="RSS feeds" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="RSS feeds"><i class="bi bi-rss"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -376,6 +377,11 @@ window.Quarto = {
           <li>
             <a class="dropdown-item quarto-navbar-tools-item" href="../news/index.xml">
             Blog and news
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="../feeds.opml">
+            All feeds (OPML)
             </a>
           </li>
       </ul>
@@ -849,6 +855,8 @@ Max-Planck-Institut für Physik
     menu.id = "rss-feed-menu";
     menu.classList.add("rss-feed-menu", "dropdown-menu-end");
     toggle.classList.add("rss-feed-toggle");
+    // Without a download name, the browser shows the OPML file as text.
+    menu.querySelector('a[href$=".opml"]')?.setAttribute("download", "juliabayes-feeds.opml");
     toggle.setAttribute("role", "button");
     toggle.setAttribute("aria-controls", menu.id);
     toggle.addEventListener("keydown", (event) => {

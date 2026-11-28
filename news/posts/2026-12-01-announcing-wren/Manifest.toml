@@ -2,7 +2,7 @@
 
 julia_version = "1.13.4"
 manifest_format = "2.1"
-project_hash = "204733a9d20f7c1d72932fb6a296cf410de21c7d"
+project_hash = "a7d6cf508c19e8374d358c11c059296498bf05e2"
 
 [[deps.ADTypes]]
 deps = ["PrecompileTools"]
@@ -2107,10 +2107,9 @@ version = "0.1.0"
 
 [[deps.WrenDists]]
 deps = ["DensityInterface", "EnzymeCore", "FillArrays", "IrrationalConstants", "LinearAlgebra", "LogExpFunctions", "Plaice", "Random", "ReactantCore", "SpecialFunctions", "Test", "VarNames"]
-git-tree-sha1 = "fd9c3564b117bbe3bf68f0430247421cf845ba46"
-registries = "General"
+path = "/Users/pysm/jl/w/WrenDists"
 uuid = "2ad4af40-d7c9-42b2-92b0-e09d37d1e75a"
-version = "0.1.0"
+version = "0.1.2"
 
     [deps.WrenDists.extensions]
     WrenDistsReactantExt = "Reactant"

@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
-import { releaseFeed } from "./release-feed.mjs";
+import { releaseFeed, releaseIdentity } from "./release-feed.mjs";
 
 function fixture(t, responses) {
   const dir = mkdtempSync(join(tmpdir(), "juliabayes-feed-"));
@@ -61,13 +61,18 @@ const wrenDists = release(6, {
   html_url: "https://github.com/JuliaBayes/Wren.jl/releases/tag/WrenDists-v0.1.0",
   body_text: "WrenDists WrenDists-v0.1.0\nFirst WrenDists release.",
 });
+const wrenCore = release(7, {
+  tag_name: "WrenCore-v0.1.0",
+  html_url: "https://github.com/JuliaBayes/Wren.jl/releases/tag/WrenCore-v0.1.0",
+  body_text: "WrenCore WrenCore-v0.1.0\nFirst WrenCore release.",
+});
 const responses = () => ({
   "repos/JuliaBayes/Test.jl": { private: false, html_url: "https://github.com/JuliaBayes/Test.jl" },
   "repos/JuliaBayes/Private.jl": { private: true },
   "repos/JuliaBayes/Wren.jl": { private: false, html_url: "https://github.com/JuliaBayes/Wren.jl" },
-  "repos/JuliaBayes/Wren.jl/releases/latest": wrenDists,
-  "repos/JuliaBayes/Wren.jl/releases?per_page=100": [[wrenDists]],
-  "repos/JuliaBayes/Wren.jl/tags?per_page=100": [[{ name: wrenDists.tag_name }]],
+  "repos/JuliaBayes/Wren.jl/releases/latest": wrenCore,
+  "repos/JuliaBayes/Wren.jl/releases?per_page=100": [[wrenCore, wrenDists]],
+  "repos/JuliaBayes/Wren.jl/tags?per_page=100": [[{ name: wrenCore.tag_name }, { name: wrenDists.tag_name }]],
   "repos/JuliaBayes/Test.jl/releases/latest": release(3),
   "repos/JuliaBayes/Test.jl/releases?per_page=100": [
     [release(3), release(2), release(5, { prerelease: true })],
@@ -82,7 +87,7 @@ test("publishes all stable history once and keeps identities across edits", (t) 
   const f = fixture(t, data);
   let result = f.run();
   assert.equal(result.status, 0, result.stderr);
-  const ids = ["github-release:6", "github-release:3", "github-release:2", "github-release:1"];
+  const ids = ["github-release:7", "github-release:6", "github-release:3", "github-release:2", "github-release:1"];
   assert.deepEqual(identities(f.feed()), ids);
   const summary = f.feed().match(/<description>&lt;p&gt;(Fish .+?)&lt;\/p&gt;<\/description>/)[1];
   assert.ok(summary.startsWith("Fish &amp;amp; chips 🐟 with &amp;lt;lime&amp;gt;."));
@@ -140,6 +145,7 @@ test("package feeds contain only their own releases and follow repository visibi
   assert.deepEqual(identities(f.packageFeed("wren.jl.xml")), []);
   assert.ok(f.feed().includes("<title>WrenDists v0.1.0</title>"));
   assert.ok(f.feed().includes("<category>WrenDists</category>"));
+  assert.ok(f.feed().includes("<title>WrenCore v0.1.0</title>"));
   assert.ok(f.packageFeed("test.jl.xml").includes('href="https://juliabayes.org/releases/test.jl.xml"'));
   assert.equal(JSON.parse(f.snapshot()).find((pkg) => pkg["release-package"] === "Wren.jl").release, null);
 
@@ -149,7 +155,14 @@ test("package feeds contain only their own releases and follow repository visibi
   assert.equal(result.status, 0, result.stderr);
   assert.deepEqual(f.packageFeeds(), ["wren.jl.xml"]);
   assert.ok(!f.packageOpml().includes("test.jl.xml"));
-  assert.deepEqual(identities(f.feed()), ["github-release:6"]);
+  assert.deepEqual(identities(f.feed()), ["github-release:7", "github-release:6"]);
+});
+
+test("monorepo tags belong to the package that the prefix names", () => {
+  assert.deepEqual(releaseIdentity("Wren.jl", "WrenCore-v0.1.0"), { package: "WrenCore", version: "v0.1.0" });
+  assert.deepEqual(releaseIdentity("Wren.jl", "Wren-v0.2.0"), { package: "Wren.jl", version: "v0.2.0" });
+  assert.deepEqual(releaseIdentity("Wren.jl", "v0.2.0"), { package: "Wren.jl", version: "v0.2.0" });
+  assert.deepEqual(releaseIdentity("Test.jl", "renamed"), { package: "Test.jl", version: "renamed" });
 });
 
 test("an empty history produces a subscribable channel without invalid dates", () => {

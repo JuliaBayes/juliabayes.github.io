@@ -39,7 +39,7 @@
     "href": "ecosystem/index.html#modelling",
     "title": "Ecosystem",
     "section": "Modelling",
-    "text": "Modelling\n\n\nWren.jl\n\nDocs GitHub Issues RSS\n\n\nProbabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.\n\n\n\nMaintained by: Jessica CoxRyan SenneSimon SteigerShow all\n\nStatus: Unregistered\n\nLatest release: WrenCore-v0.1.0 on 26 Nov 2026"
+    "text": "Modelling\n\n\nWren.jl\n\nDocs GitHub Issues RSS\n\n\nProbabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.\n\n\n\nMaintained by: Jessica CoxRyan SenneSimon SteigerShow all\n\nStatus: Unregistered\n\nNo stable GitHub release or version tag yet."
   },
   {
     "objectID": "ecosystem/index.html#sampling",

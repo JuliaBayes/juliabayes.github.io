@@ -15,12 +15,12 @@
   <atom:link href="https://juliabayes.org/releases.xml" rel="self" type="application/rss+xml"/>
   <lastBuildDate>Thu, 26 Nov 2026 09:00:01 GMT</lastBuildDate>
   <item>
-    <title>Wren.jl WrenCore-v0.1.0</title>
+    <title>WrenCore v0.1.0</title>
     <link>https://github.com/JuliaBayes/Wren.jl/releases/tag/WrenCore-v0.1.0</link>
     <guid isPermaLink="false">github-release:459162116</guid>
     <pubDate>Thu, 26 Nov 2026 09:00:01 GMT</pubDate>
-    <category>Wren.jl</category>
-    <description>&lt;p&gt;WrenCore WrenCore-v0.1.0 WrenCore is a library for defining and evaluating probabilistic models, which aims to allow users to write performant models with natural modelling syntax. It is part of the Wren probabilistic programming library:…&lt;/p&gt;</description>
+    <category>WrenCore</category>
+    <description>&lt;p&gt;WrenCore is a library for defining and evaluating probabilistic models, which aims to allow users to write performant models with natural modelling syntax. It is part of the Wren probabilistic programming library: see…&lt;/p&gt;</description>
     <content:encoded>&lt;h2&gt;WrenCore WrenCore-v0.1.0&lt;/h2&gt;
 &lt;p&gt;WrenCore is a library for defining and evaluating probabilistic models, which aims to allow users to write performant models with natural modelling syntax. It is part of the Wren probabilistic programming library: see &lt;a href=&quot;https://juliabayes.org/Wren.jl/&quot; rel=&quot;nofollow&quot;&gt;https://juliabayes.org/Wren.jl/&lt;/a&gt; for more information.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Closed issues:&lt;/strong&gt;&lt;/p&gt;

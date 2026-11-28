@@ -1,0 +1,182 @@
+---
+title: "Announcing Wren.jl"
+date: 2026-12-01
+categories: [packages]
+author: Penelope Yong
+---
+
+We are very excited to announce [Wren.jl](https://juliabayes.org/Wren.jl), a new library for probabilistic programming in Julia.
+
+If you're not familiar with probabilistic programming in general, the Wren docs contain [a thorough introduction to the underlying concepts](https://juliabayes.org/Wren.jl/dev/tutorials/beginner/), which you can read before coming back to this!
+
+On the surface, Wren's syntax looks and feels similar to typical PPLs.
+Many of the underlying machinery has come directly from ideas which my colleagues and I wrote for the [Turing.jl ecosystem](https://turinglang.org).
+However, many of its components have been (re)built with the aim of improving performance, including AD via [Enzyme.jl](https://github.com/EnzymeAD/Enzyme.jl), and potential acceleration on GPUs via [Reactant.jl](https://github.com/EnzymeAD/Reactant.jl).
+Wren also utilises a two-stage compilation process, heavily inspired by [Tilde.jl](https://github.com/cscherrer/Tilde.jl), that enables some level of introspection and static analysis of models.
+
+Some of this might understandably feel a little opaque.
+So, let's walk through a fairly simple model, expanding on it as we go along in order to introduce some of the new functionality that Wren provides.
+
+## Setup
+
+We're going to write a Bayesian multinomial regression model for classifying the MNIST digits dataset.
+
+Let's set up our data first:
+
+::: {.callout-note collapse="true"}
+
+## A note about the MLDatasets version
+
+As of the time of writing of this post, due to [various compatibility conflicts involving JSON3.jl](https://github.com/quinnj/JSON3.jl/issues/330), the newest versions of MLDatasets and Reactant cannot be loaded together.
+This should hopefully be fixed soon, and we will update the blog post when this happens.
+However, in the meantime, this post uses [a temporary fork of MLDatasets](https://github.com/penelopeysm/MLDatasets.jl) to circumvent this.
+If you are trying to run this code you should also use this fork.
+
+:::
+
+```{julia}
+using MLDatasets: MNIST
+
+data = MNIST(split=:train)
+
+# N x 784 matrix of pixel values in [0, 1], one row per image
+X = Matrix(Float64.(reshape(data.features, 28 * 28, :))')
+
+# Convert labels from 0-9 to 1-10 for 1-based indexing in Julia
+y = data.targets .+ 1
+
+size(X), size(y)
+```
+
+We can define our model in Wren with a function wrapped in the `@wren` macro.
+Random variables are written with `~`, like most other PPLs.
+In multinomial regression, we need to have a 'reference' category against which the other categories are compared, whose logits (i.e. unnormalised 'probabilities') are set to zero.
+For this example, we use the the digit '0' as the reference category.
+
+```{julia}
+using Wren, Wren.Dists
+using LogExpFunctions: softmax
+
+@wren function mnist1(X, y, C)
+    N, D = size(X)
+    @iid W ~ Normal() size=(C-1, D)  # Weights
+    @iid b ~ Normal() size=(C-1)     # Biases
+    ref_logits = zeros(1, N)                  #     1 x N
+    nonref_logits = W * X' .+ b               # (C-1) x N
+    logits = vcat(ref_logits, nonref_logits)  #     C x N
+    probabilities = softmax(logits; dims=1)
+    for i in 1:N
+        y[i] ~ Categorical(probabilities[:, i])
+    end
+end
+```
+
+We can now instantiate the model with our data.
+Note that (unlike in Turing.jl) passing `y` as an argument to `mnist1` alone does not make it an observation; it merely makes the values available to the model.
+So, we need to additionally condition the model on `y` using the `|` operator.
+Conditioning means that any `y... ~ dist` is treated as an observation in the model.
+
+```{julia}
+model = mnist1(X, y, 10) | (; y = y)
+```
+
+We can draw from the prior of the model using `simulate`:
+
+```{julia}
+simulate(model)
+```
+
+This returns a set of the parameters `W` and `b`, together with their associated log-probabilities; precisely the information we need to start performing inference.
+For example, we can feed this model to NUTS, using Enzyme.jl to calculate the necessary gradients of the log-density with respect to the parameters:
+
+```julia
+import Enzyme
+
+nuts(model, 1000, 4)
+```
+
+(Wren's default AD backend is reverse-mode Enzyme, but you can also specify any AD backend you like via the `adtype` keyword as Wren uses [DifferentiationInterface.jl](https://juliadiff.org/DifferentiationInterface.jl/DifferentiationInterface/stable/) under the hood.)
+
+Wren returns [a `FlexiChain`](https://juliabayes.org/FlexiChains.jl) from its sampling routines, which has many useful tools for analysis and visualisation of the resulting data.
+Unfortunately, running this will almost certainly take a long time, if only because the model is very large!
+(We've omitted this output from the post because of this.)
+Of course, the question is then how can we make this faster!
+
+To illustrate the changes in performance, we'll use Wren's benchmarking tools to help us measure the performance of our model.
+
+```{julia}
+import Enzyme
+
+@bmodel model DEFAULT_AD
+```
+
+There are several fields here, but for NUTS we are most interested in the `lp_and_grad` field, which tells us the median time taken to evaluate the log-density and its gradient.
+One can profile this further, but it shouldn't be a huge spoiler if I tell you that the bulk of the time is spent on the likelihood evaluation, because of the large dataset.
+
+## Optimisation, part 1: handwritten likelihood
+
+Traditionally, when faced with performance issues, one of the biggest tools that people reach for is to directly write out a mathematical expression for the likelihood, in the hope of stripping away the overhead of the PPL machinery.
+We can do that with the `@addloglikelihood` macro:
+
+```{julia}
+using LogExpFunctions: logsumexp
+
+@wren function mnist_manual(X, y, C)
+    N, D = size(X)
+    @iid W ~ Normal() size=(C-1, D)
+    @iid b ~ Normal() size=(C-1)
+    ref_logits = zeros(1, N)                  #     1 x N
+    nonref_logits = W * X' .+ b               # (C-1) x N
+    logits = vcat(ref_logits, nonref_logits)  #     C x N
+    @addloglikelihood sum(logits[y .+ C .* (0:(N-1))]) - sum(logsumexp(logits; dims=1))
+end
+
+model_manual = mnist_manual(X, y, 10) | (; y = y)
+@bmodel model_manual DEFAULT_AD
+```
+
+We can see here that the median time has decreased by a small percentage, which is a good start.
+More subtly, the number of allocations has also decreased substantially.
+This in turn means that the garbage collector has less work to do, and reduces the spikiness in the time taken to evaluate the log-density and its gradient.
+While this is not obvious from the summarised benchmark that `@bmodel` gives us, you can see this if you were to directly profile the `WrenCore.lp_and_grad` function.
+
+This is all very good.
+*However*, in the process of doing this optimisation, we have also made the model much less readable.
+It's hard to see at a glance that this is indeed a multinomial regression model.
+This rather defeats the purpose of using a PPL in the first place: if you wanted to just write a bare mathematical expression, you could have done that in a single function without needing the abstraction of a PPL!
+
+## Optimisation, part 2: using `@batch`
+
+This is where one of Wren's features comes in: the `@batch` macro.
+We can simply annotate our original `for` loop with the macro, and Wren will attempt to vectorise the likelihood evaluation:
+
+```{julia}
+@wren function mnist_batch(X, y, C)
+    N, D = size(X)
+    @iid W ~ Normal() size=(C-1, D)  # Weights
+    @iid b ~ Normal() size=(C-1)     # Biases
+    ref_logits = zeros(1, N)                  #     1 x N
+    nonref_logits = W * X' .+ b               # (C-1) x N
+    logits = vcat(ref_logits, nonref_logits)  #     C x N
+    probabilities = softmax(logits; dims=1)
+    @batch for i in 1:N
+        y[i] ~ Categorical(probabilities[:, i])
+    end
+end
+model_batch = mnist_batch(X, y, 10) | (; y = y)
+@bmodel model_batch DEFAULT_AD
+```
+
+The only difference between this model and the original `mnist1` model is the addition of the `@batch` macro.
+We see that this allows us to gain the same performance benefits as when we handwrote our likelihood, with no loss in readability!
+
+Hand-written likelihoods, like the one we wrote above, can have a significant impact if it allows us to reduce the number of redundant computations.
+For example, if we have `y[i] ~ Normal(mu[i], sigma)` for a large dataset `y`, the `log(sigma)` term does not need to be computed `N` times, and can be factored out of the likelihood.
+Just like in our present example, `@batch` _also_ does such optimisations automatically for you, without you having to write out the likelihood by hand!
+
+- Vectorising the observations with `@batch`
+- Running it with Reactant
+- Running it with Reactant but on GPU
+- Brief intro to compilation model, tracked quantities
+- Docs are artisan
+- How you can contribute

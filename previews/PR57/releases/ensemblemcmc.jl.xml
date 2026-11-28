@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+  <title>JuliaBayes releases for EnsembleMCMC.jl</title>
+  <link>https://juliabayes.org/ecosystem/</link>
+  <description>Stable GitHub releases for EnsembleMCMC.jl.</description>
+  <language>en</language>
+  <image>
+    <url>https://juliabayes.org/rss-icon.png</url>
+    <title>JuliaBayes releases for EnsembleMCMC.jl</title>
+    <link>https://juliabayes.org/ecosystem/</link>
+    <width>32</width>
+    <height>32</height>
+  </image>
+  <atom:link href="https://juliabayes.org/releases/ensemblemcmc.jl.xml" rel="self" type="application/rss+xml"/>
+  <lastBuildDate>Mon, 02 Nov 2026 15:43:24 GMT</lastBuildDate>
+  <item>
+    <title>EnsembleMCMC.jl v0.0.5</title>
+    <link>https://github.com/JuliaBayes/EnsembleMCMC.jl/releases/tag/v0.0.5</link>
+    <guid isPermaLink="false">github-release:431645622</guid>
+    <pubDate>Mon, 02 Nov 2026 15:43:24 GMT</pubDate>
+    <category>EnsembleMCMC.jl</category>
+    <description>&lt;p&gt;Changelog No public API changes. Numerical fixes can change trajectories at extreme scales and through Gaussian rounding. Preserve finite Stretch and DE proposals when intermediate subtraction or multiplication overflows. Avoid…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;EnsembleMCMC v0.0.5&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/EnsembleMCMC.jl/compare/v0.0.4...v0.0.5&quot;&gt;Diff since v0.0.4&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Changelog&lt;/h2&gt;
+&lt;p&gt;No public API changes. Numerical fixes can change trajectories at extreme scales and through Gaussian rounding.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Preserve finite Stretch and DE proposals when intermediate subtraction or multiplication overflows.&lt;/li&gt;
+&lt;li&gt;Avoid overflowing full squared residuals in Gaussian replacement when the required half-quadratic remains finite.&lt;/li&gt;
+&lt;li&gt;Clarify Gaussian fallback invariance, synchronization borrowing, and kernel callback failure timing.&lt;/li&gt;
+&lt;li&gt;Strengthen numerical-scale, curved-target, and threaded failure tests.&lt;/li&gt;
+&lt;li&gt;Require Random123 1.5 or later and PrecompileTools 1.0.1 or later, excluding versions with build or precompile failures.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Preserve finite ensemble proposals across extreme scales (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6164847839&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/EnsembleMCMC.jl/issues/6&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/EnsembleMCMC.jl/pull/6/hovercard&quot; href=&quot;https://github.com/JuliaBayes/EnsembleMCMC.jl/pull/6&quot;&gt;#6&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/BJMCox/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/BJMCox&quot;&gt;@BJMCox&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>EnsembleMCMC.jl v0.0.4</title>
+    <link>https://github.com/JuliaBayes/EnsembleMCMC.jl/releases/tag/v0.0.4</link>
+    <guid isPermaLink="false">github-release:401776796</guid>
+    <pubDate>Fri, 02 Oct 2026 11:57:59 GMT</pubDate>
+    <category>EnsembleMCMC.jl</category>
+    <description>&lt;p&gt;Changelog No public API changes. Numerical fixes can change sampling trajectories. Fixed Preserve Hastings corrections under constant log-density offsets in scalar, batched, and kernel execution. Keep finite snooker projections under…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;EnsembleMCMC v0.0.4&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/EnsembleMCMC.jl/compare/v0.0.3...v0.0.4&quot;&gt;Diff since v0.0.3&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Changelog&lt;/h2&gt;
+&lt;p&gt;No public API changes. Numerical fixes can change sampling trajectories.&lt;/p&gt;
+&lt;h3&gt;Fixed&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Preserve Hastings corrections under constant log-density offsets in scalar, batched, and kernel execution.&lt;/li&gt;
+&lt;li&gt;Keep finite snooker projections under large coordinate translations and overflowing companion differences.&lt;/li&gt;
+&lt;li&gt;Prevent overflow during affine-rank validation by rescaling its owned workspace before centering.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fix numerical invariance in ensemble sampling (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5676276913&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/EnsembleMCMC.jl/issues/4&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/EnsembleMCMC.jl/pull/4/hovercard&quot; href=&quot;https://github.com/JuliaBayes/EnsembleMCMC.jl/pull/4&quot;&gt;#4&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/BJMCox/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/BJMCox&quot;&gt;@BJMCox&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>EnsembleMCMC.jl v0.0.3</title>
+    <link>https://github.com/JuliaBayes/EnsembleMCMC.jl/releases/tag/v0.0.3</link>
+    <guid isPermaLink="false">github-release:400054989</guid>
+    <pubDate>Wed, 30 Sep 2026 13:05:11 GMT</pubDate>
+    <category>EnsembleMCMC.jl</category>
+    <description>&lt;p&gt;Breaking changes The generic verbs (initialize, step!, sample!, current_state, snapshot, synchronize!, validate_positions, acceptance_rate) are no longer exported. They are public on Julia 1.11 and later. Use using EnsembleMCMC: ... or…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;EnsembleMCMC v0.0.3&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/EnsembleMCMC.jl/compare/v0.0.2...v0.0.3&quot;&gt;Diff since v0.0.2&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Breaking changes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;The generic verbs (&lt;code&gt;initialize&lt;/code&gt;, &lt;code&gt;step!&lt;/code&gt;, &lt;code&gt;sample!&lt;/code&gt;, &lt;code&gt;current_state&lt;/code&gt;, &lt;code&gt;snapshot&lt;/code&gt;, &lt;code&gt;synchronize!&lt;/code&gt;, &lt;code&gt;validate_positions&lt;/code&gt;, &lt;code&gt;acceptance_rate&lt;/code&gt;) are no longer exported. They are &lt;code&gt;public&lt;/code&gt; on Julia 1.11 and later. Use &lt;code&gt;using EnsembleMCMC: ...&lt;/code&gt; or qualified calls.&lt;/li&gt;
+&lt;li&gt;A NaN candidate log density is now a rejection. A &lt;code&gt;+Inf&lt;/code&gt; candidate and a non-finite initial value still throw, and the error names the walker and the sweep.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GaussianReplacementMove&lt;/code&gt; defaults to &lt;code&gt;shrinkage=:auto&lt;/code&gt;, an affine-invariant &lt;code&gt;(1 + d/m) C&lt;/code&gt; proposal, so its results change.&lt;/li&gt;
+&lt;li&gt;Threefry4x streams changed, because &lt;code&gt;set_rng!&lt;/code&gt; now resets the buffer position. Philox4x streams do not change.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ThreadedExecutor&lt;/code&gt; no longer calibrates or falls back to serial.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Changelog&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Add &lt;code&gt;acceptance_rate&lt;/code&gt;, &lt;code&gt;sample!(...; thin)&lt;/code&gt; and &lt;code&gt;ThreadedExecutor(; min_chunk)&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Warn on &lt;code&gt;-Inf&lt;/code&gt; initial log densities and on nearly degenerate ensembles.&lt;/li&gt;
+&lt;li&gt;Give clearer errors, and add early RNG partition-depth checks.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ThreadedExecutor&lt;/code&gt; rethrows the original exception.&lt;/li&gt;
+&lt;li&gt;Support BigFloat positions.&lt;/li&gt;
+&lt;li&gt;Fix &lt;code&gt;KernelExecutor&lt;/code&gt; on wrapped CuArrays.&lt;/li&gt;
+&lt;li&gt;Fix Float32 Gaussian fit precision far from the origin.&lt;/li&gt;
+&lt;li&gt;Cut allocation per sweep from 21 KB to 1.9 KB. Kernel bookkeeping now runs in parallel.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Review fixes: correctness, robustness, performance, API and docs (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5646129858&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/EnsembleMCMC.jl/issues/3&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/EnsembleMCMC.jl/pull/3/hovercard&quot; href=&quot;https://github.com/JuliaBayes/EnsembleMCMC.jl/pull/3&quot;&gt;#3&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/BJMCox/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/BJMCox&quot;&gt;@BJMCox&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>EnsembleMCMC.jl v0.0.2</title>
+    <link>https://github.com/JuliaBayes/EnsembleMCMC.jl/releases/tag/v0.0.2</link>
+    <guid isPermaLink="false">github-release:393612182</guid>
+    <pubDate>Tue, 22 Sep 2026 09:49:49 GMT</pubDate>
+    <category>EnsembleMCMC.jl</category>
+    <description>&lt;p&gt;Changelog Add Gaussian replacement moves and device-resident sampling through KernelAbstractions and the CUDA extension. Add cached initial densities, transition details, state synchronization, position validation, and externally…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;EnsembleMCMC v0.0.2&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/EnsembleMCMC.jl/compare/v0.0.1...v0.0.2&quot;&gt;Diff since v0.0.1&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Changelog&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Add Gaussian replacement moves and device-resident sampling through KernelAbstractions and the CUDA extension.&lt;/li&gt;
+&lt;li&gt;Add cached initial densities, transition details, state synchronization, position validation, and externally addressed sweeps for sampler adapters.&lt;/li&gt;
+&lt;li&gt;Improve proposal throughput and workload-aware thread scheduling, and precompile common sampling workloads.&lt;/li&gt;
+&lt;li&gt;Preserve rejected-transition metadata for degenerate proposals and run synchronization on the state&apos;s owning CUDA device.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Breaking changes&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;current_state&lt;/code&gt; and &lt;code&gt;snapshot&lt;/code&gt; now include candidate positions, candidate log densities, and acceptance probabilities. Code that assumes the old record shape must change.&lt;/p&gt;
+&lt;p&gt;Random123 remains the RNG backend in this release.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Expose transition data and state synchronization for sampler adapters (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5439553485&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/EnsembleMCMC.jl/issues/2&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/EnsembleMCMC.jl/pull/2/hovercard&quot; href=&quot;https://github.com/JuliaBayes/EnsembleMCMC.jl/pull/2&quot;&gt;#2&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/BJMCox/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/BJMCox&quot;&gt;@BJMCox&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>EnsembleMCMC.jl v0.0.1</title>
+    <link>https://github.com/JuliaBayes/EnsembleMCMC.jl/releases/tag/v0.0.1</link>
+    <guid isPermaLink="false">github-release:386323513</guid>
+    <pubDate>Thu, 10 Sep 2026 13:48:03 GMT</pubDate>
+    <category>EnsembleMCMC.jl</category>
+    <description>&lt;p&gt;See the release on GitHub.&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;EnsembleMCMC v0.0.1&lt;/h2&gt;</content:encoded>
+  </item>
+</channel>
+</rss>

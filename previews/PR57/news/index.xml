@@ -5,10 +5,18 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>JuliaBayes</title>
+<title>JuliaBayes Blog &amp; News</title>
 <link>https://juliabayes.org/news/</link>
 <atom:link href="https://juliabayes.org/news/index.xml" rel="self" type="application/rss+xml"/>
-<description>JuliaBayes is a shared home for Bayesian software in Julia.</description>
+<description>Articles, announcements, and community news from JuliaBayes.</description>
+<language>en</language>
+<image>
+<url>https://juliabayes.org/rss-icon.png</url>
+<title>JuliaBayes Blog &amp; News</title>
+<link>https://juliabayes.org/news/</link>
+<height>32</height>
+<width>32</width>
+</image>
 <generator>quarto-1.11.9</generator>
 <lastBuildDate>Fri, 20 Nov 2026 00:00:00 GMT</lastBuildDate>
 <item>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>JuliaBayes individual package feeds</title>
+  </head>
+  <body>
+    <outline type="rss" text="JuliaBayes releases for BayesianWorkflow.jl" title="JuliaBayes releases for BayesianWorkflow.jl" xmlUrl="https://juliabayes.org/releases/bayesianworkflow.jl.xml" htmlUrl="https://github.com/JuliaBayes/BayesianWorkflow.jl/releases"/>
+    <outline type="rss" text="JuliaBayes releases for EnsembleMCMC.jl" title="JuliaBayes releases for EnsembleMCMC.jl" xmlUrl="https://juliabayes.org/releases/ensemblemcmc.jl.xml" htmlUrl="https://github.com/JuliaBayes/EnsembleMCMC.jl/releases"/>
+    <outline type="rss" text="JuliaBayes releases for FlexiChains.jl" title="JuliaBayes releases for FlexiChains.jl" xmlUrl="https://juliabayes.org/releases/flexichains.jl.xml" htmlUrl="https://github.com/JuliaBayes/FlexiChains.jl/releases"/>
+    <outline type="rss" text="JuliaBayes releases for ImportanceSamplers.jl" title="JuliaBayes releases for ImportanceSamplers.jl" xmlUrl="https://juliabayes.org/releases/importancesamplers.jl.xml" htmlUrl="https://github.com/JuliaBayes/ImportanceSamplers.jl/releases"/>
+    <outline type="rss" text="JuliaBayes releases for MCMCProgress.jl" title="JuliaBayes releases for MCMCProgress.jl" xmlUrl="https://juliabayes.org/releases/mcmcprogress.jl.xml" htmlUrl="https://github.com/JuliaBayes/MCMCProgress.jl/releases"/>
+    <outline type="rss" text="JuliaBayes releases for MGVI.jl" title="JuliaBayes releases for MGVI.jl" xmlUrl="https://juliabayes.org/releases/mgvi.jl.xml" htmlUrl="https://github.com/JuliaBayes/MGVI.jl/releases"/>
+    <outline type="rss" text="JuliaBayes releases for Plaice.jl" title="JuliaBayes releases for Plaice.jl" xmlUrl="https://juliabayes.org/releases/plaice.jl.xml" htmlUrl="https://github.com/JuliaBayes/Plaice.jl/releases"/>
+    <outline type="rss" text="JuliaBayes releases for UltraNest.jl" title="JuliaBayes releases for UltraNest.jl" xmlUrl="https://juliabayes.org/releases/ultranest.jl.xml" htmlUrl="https://github.com/JuliaBayes/UltraNest.jl/releases"/>
+    <outline type="rss" text="JuliaBayes releases for VarNames.jl" title="JuliaBayes releases for VarNames.jl" xmlUrl="https://juliabayes.org/releases/varnames.jl.xml" htmlUrl="https://github.com/JuliaBayes/VarNames.jl/releases"/>
+    <outline type="rss" text="JuliaBayes releases for Wren.jl" title="JuliaBayes releases for Wren.jl" xmlUrl="https://juliabayes.org/releases/wren.jl.xml" htmlUrl="https://github.com/JuliaBayes/Wren.jl/releases"/>
+  </body>
+</opml>

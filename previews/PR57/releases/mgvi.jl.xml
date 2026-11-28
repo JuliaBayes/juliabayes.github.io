@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+  <title>JuliaBayes releases for MGVI.jl</title>
+  <link>https://juliabayes.org/ecosystem/</link>
+  <description>Stable GitHub releases for MGVI.jl.</description>
+  <language>en</language>
+  <image>
+    <url>https://juliabayes.org/rss-icon.png</url>
+    <title>JuliaBayes releases for MGVI.jl</title>
+    <link>https://juliabayes.org/ecosystem/</link>
+    <width>32</width>
+    <height>32</height>
+  </image>
+  <atom:link href="https://juliabayes.org/releases/mgvi.jl.xml" rel="self" type="application/rss+xml"/>
+  <lastBuildDate>Fri, 20 Nov 2026 16:57:07 GMT</lastBuildDate>
+  <item>
+    <title>MGVI.jl v0.6.2</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.6.2</link>
+    <guid isPermaLink="false">github-release:452955819</guid>
+    <pubDate>Fri, 20 Nov 2026 16:57:07 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Allow DocStringExtensions v0.10. Merged pull requests: CompatHelper: bump compat for DocStringExtensions to 0.10, (keep existing compat) (#76) (@github-actions[bot])&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.6.2&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/MGVI.jl/compare/v0.6.1...v0.6.2&quot;&gt;Diff since v0.6.1&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Allow DocStringExtensions v0.10.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CompatHelper: bump compat for DocStringExtensions to 0.10, (keep existing compat) (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5857930902&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/76&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/76/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/76&quot;&gt;#76&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.6.1</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.6.1</link>
+    <guid isPermaLink="false">github-release:444113222</guid>
+    <pubDate>Fri, 13 Nov 2026 10:50:07 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Fix a large slowdown of reverse-mode AD through product distributions with Distributions v0.25.133 and newer (#80). This also corrects the flat parameters of products of multivariate normal distributions under Zygote. Allow…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.6.1&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/MGVI.jl/compare/v0.6.0...v0.6.1&quot;&gt;Diff since v0.6.0&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fix a large slowdown of reverse-mode AD through product distributions with Distributions v0.25.133 and newer (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6295657569&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/80&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/80/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/80&quot;&gt;#80&lt;/a&gt;). This also corrects the flat parameters of products of multivariate normal distributions under Zygote.&lt;/li&gt;
+&lt;li&gt;Allow DensityInterface v1.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Re-enable 32-bit CI (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5485416737&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/75&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/75/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/75&quot;&gt;#75&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/oschulz/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/oschulz&quot;&gt;@oschulz&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Update URLs after move to JuliaBayes organization (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6288109211&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/78&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/78/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/78&quot;&gt;#78&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/oschulz/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/oschulz&quot;&gt;@oschulz&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Align documentation code styling (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6288893921&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/79&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/79/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/79&quot;&gt;#79&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/BJMCox/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/BJMCox&quot;&gt;@BJMCox&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Flatten distribution parameters without the generic params fold (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6295657569&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/80&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/80/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/80&quot;&gt;#80&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/oschulz/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/oschulz&quot;&gt;@oschulz&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.6.0</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.6.0</link>
+    <guid isPermaLink="false">github-release:367960809</guid>
+    <pubDate>Mon, 10 Aug 2026 14:04:22 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Breaking changes Use MatrixShapedOperators, resulting in moderate API changes. Merged pull requests: CompatHelper: bump compat for LinearSolve to 5, (keep existing compat) (#72) (@github-actions[bot])&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.6.0&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.5.0...v0.6.0&quot;&gt;Diff since v0.5.0&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;Breaking changes&lt;/h1&gt;
+&lt;p&gt;Use MatrixShapedOperators, resulting in moderate API changes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CompatHelper: bump compat for LinearSolve to 5, (keep existing compat) (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;4864798732&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/72&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/72/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/72&quot;&gt;#72&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.5.0</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.5.0</link>
+    <guid isPermaLink="false">github-release:352628451</guid>
+    <pubDate>Sat, 11 Jul 2026 23:26:19 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Breaking changes Minor breaking API changes New features Added geoVI Partial Reactant-compatibility Lots of improvements, bug fixes, etc. Merged pull requests: Bump julia-actions/cache from 2 to 3 (#65) (@dependabot[bot])&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.5.0&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.4.6...v0.5.0&quot;&gt;Diff since v0.4.6&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;Breaking changes&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Minor breaking API changes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;New features&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Added geoVI&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Partial Reactant-compatibility&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lots of improvements, bug fixes, etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bump julia-actions/cache from 2 to 3 (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;4046680656&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/65&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/65/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/65&quot;&gt;#65&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;organization&quot; data-hovercard-url=&quot;/orgs/dependabot/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/dependabot&quot;&gt;@dependabot&lt;/a&gt;[bot])&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.4.6</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.4.6</link>
+    <guid isPermaLink="false">github-release:285145165</guid>
+    <pubDate>Wed, 11 Feb 2026 08:43:52 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Merged pull requests: Bump actions/checkout from 5 to 6 (#60) (@dependabot[bot]) CompatHelper: bump compat for OptimizationBase in [weakdeps] to 5, (keep existing compat) (#63) (@github-actions[bot])&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.4.6&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.4.5...v0.4.6&quot;&gt;Diff since v0.4.5&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bump actions/checkout from 5 to 6 (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;3659542859&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/60&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/60/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/60&quot;&gt;#60&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;organization&quot; data-hovercard-url=&quot;/orgs/dependabot/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/dependabot&quot;&gt;@dependabot&lt;/a&gt;[bot])&lt;/li&gt;
+&lt;li&gt;CompatHelper: bump compat for OptimizationBase in [weakdeps] to 5, (keep existing compat) (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;3924178729&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/63&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/63/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/63&quot;&gt;#63&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.4.5</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.4.5</link>
+    <guid isPermaLink="false">github-release:256975867</guid>
+    <pubDate>Fri, 24 Oct 2025 11:40:54 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Merged pull requests: CompatHelper: bump compat for OptimizationBase in [weakdeps] to 4, (keep existing compat) (#59) (@github-actions[bot])&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.4.5&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.4.4...v0.4.5&quot;&gt;Diff since v0.4.4&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CompatHelper: bump compat for OptimizationBase in [weakdeps] to 4, (keep existing compat) (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;3547094156&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/59&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/59/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/59&quot;&gt;#59&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.4.4</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.4.4</link>
+    <guid isPermaLink="false">github-release:254838654</guid>
+    <pubDate>Wed, 15 Oct 2025 21:51:49 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;See the release on GitHub.&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.4.4&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.4.3...v0.4.4&quot;&gt;Diff since v0.4.3&lt;/a&gt;&lt;/p&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.4.3</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.4.3</link>
+    <guid isPermaLink="false">github-release:252611238</guid>
+    <pubDate>Tue, 07 Oct 2025 06:53:59 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Merged pull requests: Bump actions/checkout from 4 to 5 (#55) (@dependabot[bot])&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.4.3&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.4.2...v0.4.3&quot;&gt;Diff since v0.4.2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bump actions/checkout from 4 to 5 (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;3311719324&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/55&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/55/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/55&quot;&gt;#55&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;organization&quot; data-hovercard-url=&quot;/orgs/dependabot/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/dependabot&quot;&gt;@dependabot&lt;/a&gt;[bot])&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.4.2</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.4.2</link>
+    <guid isPermaLink="false">github-release:211873630</guid>
+    <pubDate>Fri, 11 Apr 2025 15:22:10 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;See the release on GitHub.&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.4.2&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.4.1...v0.4.2&quot;&gt;Diff since v0.4.1&lt;/a&gt;&lt;/p&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.4.1</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.4.1</link>
+    <guid isPermaLink="false">github-release:207711421</guid>
+    <pubDate>Sun, 23 Mar 2025 19:24:32 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Merged pull requests: Bump codecov/codecov-action from 4 to 5 (#52) (@dependabot[bot]) CompatHelper: bump compat for LinearSolve to 3, (keep existing compat) (#53) (@github-actions[bot])&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.4.1&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.4.0...v0.4.1&quot;&gt;Diff since v0.4.0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bump codecov/codecov-action from 4 to 5 (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;2669083042&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/52&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/52/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/52&quot;&gt;#52&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;organization&quot; data-hovercard-url=&quot;/orgs/dependabot/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/dependabot&quot;&gt;@dependabot&lt;/a&gt;[bot])&lt;/li&gt;
+&lt;li&gt;CompatHelper: bump compat for LinearSolve to 3, (keep existing compat) (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;2941396483&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/53&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/53/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/53&quot;&gt;#53&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.4.0</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.4.0</link>
+    <guid isPermaLink="false">github-release:181396830</guid>
+    <pubDate>Wed, 23 Oct 2024 08:55:32 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;See the release on GitHub.&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.4.0&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.3.3...v0.4.0&quot;&gt;Diff since v0.3.3&lt;/a&gt;&lt;/p&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.3.3</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.3.3</link>
+    <guid isPermaLink="false">github-release:180903386</guid>
+    <pubDate>Sun, 20 Oct 2024 22:29:44 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;See the release on GitHub.&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.3.3&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.3.2...v0.3.3&quot;&gt;Diff since v0.3.2&lt;/a&gt;&lt;/p&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.3.2</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.3.2</link>
+    <guid isPermaLink="false">github-release:178689297</guid>
+    <pubDate>Mon, 07 Oct 2024 13:32:36 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;See the release on GitHub.&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.3.2&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.3.1...v0.3.2&quot;&gt;Diff since v0.3.1&lt;/a&gt;&lt;/p&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.3.1</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.3.1</link>
+    <guid isPermaLink="false">github-release:132806830</guid>
+    <pubDate>Wed, 06 Dec 2023 09:18:44 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;See the release on GitHub.&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.3.1&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.3.0...v0.3.1&quot;&gt;Diff since v0.3.0&lt;/a&gt;&lt;/p&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.3.0</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.3.0</link>
+    <guid isPermaLink="false">github-release:114075583</guid>
+    <pubDate>Sat, 29 Jul 2023 03:17:59 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;See the release on GitHub.&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.3.0&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.2.5...v0.3.0&quot;&gt;Diff since v0.2.5&lt;/a&gt;&lt;/p&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.2.5</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.2.5</link>
+    <guid isPermaLink="false">github-release:80811374</guid>
+    <pubDate>Mon, 24 Oct 2022 15:56:19 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Merged pull requests: use generic gp sampler (#32) (@vindex10) Compatibility with ChainRulesCore v1.0 (#34) (@oschulz) CompatHelper: bump compat for ValueShapes to 0.10, (keep existing compat) (#36) (@github-actions[bot]) Improve…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.2.5&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.2.4...v0.2.5&quot;&gt;Diff since v0.2.4&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;use generic gp sampler (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;970546741&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/32&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/32/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/32&quot;&gt;#32&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vindex10/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vindex10&quot;&gt;@vindex10&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Compatibility with ChainRulesCore v1.0 (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;985746424&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/34&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/34/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/34&quot;&gt;#34&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/oschulz/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/oschulz&quot;&gt;@oschulz&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;CompatHelper: bump compat for ValueShapes to 0.10, (keep existing compat) (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;1064871055&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/36&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/36/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/36&quot;&gt;#36&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;li&gt;Improve array/parameter flattening operations (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;1112004666&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/37&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/37/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/37&quot;&gt;#37&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/oschulz/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/oschulz&quot;&gt;@oschulz&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;weaken test residual sampler conditions (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;1113096013&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/38&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/38/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/38&quot;&gt;#38&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vindex10/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vindex10&quot;&gt;@vindex10&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Add without_chol and get_diagonal (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;1121821417&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/39&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/39/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/39&quot;&gt;#39&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/oschulz/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/oschulz&quot;&gt;@oschulz&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;add NewtonCG optimizer (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;1137659516&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/40&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/40/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/40&quot;&gt;#40&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/apmypb/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/apmypb&quot;&gt;@apmypb&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;CompatHelper: bump compat for FillArrays to 0.13, (keep existing compat) (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;1139404435&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/41&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/41/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/41&quot;&gt;#41&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;li&gt;Improve Jacobian implementations (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;1164218793&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/42&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/42/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/42&quot;&gt;#42&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/oschulz/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/oschulz&quot;&gt;@oschulz&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Use fwddiff in advanced tutorial (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;1185424354&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/43&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/43/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/43&quot;&gt;#43&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/oschulz/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/oschulz&quot;&gt;@oschulz&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Simplily some code (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;1236390674&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/44&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/44/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/44&quot;&gt;#44&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/oschulz/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/oschulz&quot;&gt;@oschulz&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;CompatHelper: bump compat for DocStringExtensions to 0.9, (keep existing compat) (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;1250252957&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/45&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/45/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/45&quot;&gt;#45&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.2.4</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.2.4</link>
+    <guid isPermaLink="false">github-release:45428863</guid>
+    <pubDate>Tue, 29 Jun 2021 14:29:41 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Merged pull requests: CompatHelper: bump compat for &amp;quot;ChainRulesCore&amp;quot; to &amp;quot;0.10&amp;quot; (#28) (@github-actions[bot]) Separate test deps and use ChainRulesCore.NoTangent (#29) (@oschulz)&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.2.4&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.2.3...v0.2.4&quot;&gt;Diff since v0.2.3&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CompatHelper: bump compat for &quot;ChainRulesCore&quot; to &quot;0.10&quot; (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;908960477&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/28&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/28/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/28&quot;&gt;#28&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;li&gt;Separate test deps and use ChainRulesCore.NoTangent (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;909606807&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/29&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/29/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/29&quot;&gt;#29&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/oschulz/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/oschulz&quot;&gt;@oschulz&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.2.3</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.2.3</link>
+    <guid isPermaLink="false">github-release:42670070</guid>
+    <pubDate>Sun, 09 May 2021 19:20:08 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Merged pull requests: pretty plots (#25) (@vindex10) fix heatmap cropping (#26) (@vindex10) CompatHelper: bump compat for &amp;quot;Distributions&amp;quot; to &amp;quot;0.25&amp;quot; (#27) (@github-actions[bot])&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.2.3&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.2.2...v0.2.3&quot;&gt;Diff since v0.2.2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pretty plots (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;850472863&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/25&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/25/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/25&quot;&gt;#25&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vindex10/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vindex10&quot;&gt;@vindex10&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;fix heatmap cropping (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;854498800&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/26&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/26/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/26&quot;&gt;#26&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vindex10/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vindex10&quot;&gt;@vindex10&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;CompatHelper: bump compat for &quot;Distributions&quot; to &quot;0.25&quot; (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;874151380&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/27&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/27/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/27&quot;&gt;#27&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.2.2</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.2.2</link>
+    <guid isPermaLink="false">github-release:40552934</guid>
+    <pubDate>Fri, 26 Mar 2021 16:54:19 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Merged pull requests: return mirrored samples (#20) (@vindex10) add coal_mining notebook (#21) (@vindex10) fix residual samples output wrong sign (#22) (@vindex10) Feature/updates adv tutorial (#23) (@vindex10) A few changes to advanced…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.2.2&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.2.1...v0.2.2&quot;&gt;Diff since v0.2.1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;return mirrored samples (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;826446461&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/20&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/20/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/20&quot;&gt;#20&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vindex10/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vindex10&quot;&gt;@vindex10&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;add coal_mining notebook (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;826451748&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/21&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/21/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/21&quot;&gt;#21&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vindex10/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vindex10&quot;&gt;@vindex10&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;fix residual samples output wrong sign (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;827618953&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/22&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/22/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/22&quot;&gt;#22&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vindex10/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vindex10&quot;&gt;@vindex10&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Feature/updates adv tutorial (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;839039965&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/23&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/23/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/23&quot;&gt;#23&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vindex10/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vindex10&quot;&gt;@vindex10&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A few changes to advanced tutorial text (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;841372007&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/24&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/24/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/24&quot;&gt;#24&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/sthayashi/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/sthayashi&quot;&gt;@sthayashi&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.2.1</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.2.1</link>
+    <guid isPermaLink="false">github-release:37319086</guid>
+    <pubDate>Wed, 03 Feb 2021 20:47:31 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;See the release on GitHub.&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.2.1&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.2.0...v0.2.1&quot;&gt;Diff since v0.2.0&lt;/a&gt;&lt;/p&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.2.0</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.2.0</link>
+    <guid isPermaLink="false">github-release:36965599</guid>
+    <pubDate>Wed, 27 Jan 2021 11:47:40 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Merged pull requests: CompatHelper: bump compat for &amp;quot;StaticArrays&amp;quot; to &amp;quot;1.0&amp;quot; (#9) (@github-actions[bot]) CompatHelper: bump compat for &amp;quot;Zygote&amp;quot; to &amp;quot;0.6&amp;quot; (#12) (@github-actions[bot]) CompatHelper: bump compat for &amp;quot;IterativeSolvers&amp;quot; to &amp;quot;0.9&amp;quot;…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.2.0&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bat/MGVI.jl/compare/v0.1.0...v0.2.0&quot;&gt;Diff since v0.1.0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CompatHelper: bump compat for &quot;StaticArrays&quot; to &quot;1.0&quot; (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;761738929&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/9&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/9/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/9&quot;&gt;#9&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;li&gt;CompatHelper: bump compat for &quot;Zygote&quot; to &quot;0.6&quot; (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;772550242&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/12&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/12/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/12&quot;&gt;#12&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;li&gt;CompatHelper: bump compat for &quot;IterativeSolvers&quot; to &quot;0.9&quot; (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;774953504&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/13&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/13/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/13&quot;&gt;#13&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;li&gt;mv normal autodiff didnt work (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;792166754&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/16&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/16/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/16&quot;&gt;#16&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vindex10/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vindex10&quot;&gt;@vindex10&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;transition from linearmaps 2 to linearmaps 3 (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;794388402&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/17&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/17/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/17&quot;&gt;#17&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vindex10/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vindex10&quot;&gt;@vindex10&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;CompatHelper: add new compat entry for &quot;ChainRulesCore&quot; at version &quot;0.9&quot; (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;794660211&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/18&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/18/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/18&quot;&gt;#18&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;li&gt;CompatHelper: add new compat entry for &quot;DistributionsAD&quot; at version &quot;0.6&quot; (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;794660274&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/19&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/19/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/19&quot;&gt;#19&lt;/a&gt;) (@github-actions[bot])&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>MGVI.jl v0.1.0</title>
+    <link>https://github.com/JuliaBayes/MGVI.jl/releases/tag/v0.1.0</link>
+    <guid isPermaLink="false">github-release:35211953</guid>
+    <pubDate>Sun, 13 Dec 2020 23:19:47 GMT</pubDate>
+    <category>MGVI.jl</category>
+    <description>&lt;p&gt;Merged pull requests: test_models unified approach. add fft_gp (#1) (@vindex10) Initial implementation (#2) (@vindex10) propose changes (#3) (@jknollm) build dev docs from master branch (#4) (@vindex10)&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;MGVI v0.1.0&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;test_models unified approach. add fft_gp (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;740323838&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/1&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/1/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/1&quot;&gt;#1&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vindex10/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vindex10&quot;&gt;@vindex10&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Initial implementation (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;744968936&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/2&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/2/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/2&quot;&gt;#2&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vindex10/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vindex10&quot;&gt;@vindex10&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;propose changes (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;760371752&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/3&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/3/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/3&quot;&gt;#3&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/jknollm/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/jknollm&quot;&gt;@jknollm&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;build dev docs from master branch (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;760716753&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/MGVI.jl/issues/4&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/MGVI.jl/pull/4/hovercard&quot; href=&quot;https://github.com/JuliaBayes/MGVI.jl/pull/4&quot;&gt;#4&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vindex10/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vindex10&quot;&gt;@vindex10&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+</channel>
+</rss>

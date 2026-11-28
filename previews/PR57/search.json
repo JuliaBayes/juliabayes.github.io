@@ -39,42 +39,42 @@
     "href": "ecosystem/index.html",
     "title": "Ecosystem",
     "section": "",
-    "text": "Skip to main content\nHave a Bayesian Julia package to share? Ask us to showcase it in the wider ecosystem.\nThink JuliaBayes would be a good home for your package? Request to bring it into JuliaBayes.\nCome say hello in #bayes on Julia Slack if you’d like to chat first!\nGot code to talk about? Join the development discussion in #bayes-dev on Julia Slack.\nSubscribe to package releases (RSS)."
+    "text": "Skip to main content\nHave a Bayesian Julia package to share? Ask us to showcase it in the wider ecosystem.\nThink JuliaBayes would be a good home for your package? Request to bring it into JuliaBayes.\nCome say hello in #bayes on Julia Slack if you’d like to chat first!\nGot code to talk about? Join the development discussion in #bayes-dev on Julia Slack.\nSubscribe to package releases (RSS) · Download individual package feeds (OPML)"
   },
   {
     "objectID": "ecosystem/index.html#modelling",
     "href": "ecosystem/index.html#modelling",
     "title": "Ecosystem",
     "section": "Modelling",
-    "text": "Modelling\n\n\nWren.jl\n\nDocs GitHub Issues\n\n\nProbabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.\n\n\n\nMaintained by: Jessica CoxRyan SenneSimon SteigerShow all\n\nStatus: Unregistered\n\nLatest release: WrenDists-v0.1.0 on 23 Nov 2026"
+    "text": "Modelling\n\n\nWren.jl\n\nDocs GitHub Issues RSS\n\n\nProbabilistic programming through staged compilation, built for large models, with support for Enzyme and Reactant.\n\n\n\nMaintained by: Jessica CoxRyan SenneSimon SteigerShow all\n\nStatus: Unregistered\n\nLatest release: WrenCore-v0.1.0 on 26 Nov 2026"
   },
   {
     "objectID": "ecosystem/index.html#sampling",
     "href": "ecosystem/index.html#sampling",
     "title": "Ecosystem",
     "section": "Sampling",
-    "text": "Sampling\n\n\nEnsembleMCMC.jl\n\nDocs GitHub Issues\n\n\nGradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.5 on 2 Nov 2026\n\n\n\n\n\n\n\n\n\nImportanceSamplers.jl\n\nDocs GitHub Issues\n\n\nPlain, multiple and adaptive importance sampling, on CPU threads or GPUs.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.1 on 12 Nov 2026\n\n\n\n\n\n\n\n\n\nMGVI.jl\n\nDocs GitHub Issues\n\n\nApproximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.\n\n\n\nMaintained by: Oliver SchulzShow all\n\nStatus: Stable\n\nLatest release: v0.6.2 on 20 Nov 2026\n\n\n\n\n\n\nUltraNest.jl\n\nDocs GitHub Issues\n\n\nJulia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.\n\n\n\nMaintained by: Oliver SchulzShow all\n\nStatus: Stable\n\nLatest release: v0.2.1 on 20 Nov 2026"
+    "text": "Sampling\n\n\nEnsembleMCMC.jl\n\nDocs GitHub Issues RSS\n\n\nGradient-free ensemble MCMC with stretch, differential-evolution and snooker moves, on CPU threads or CUDA.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.5 on 2 Nov 2026\n\n\n\n\n\n\n\n\n\nImportanceSamplers.jl\n\nDocs GitHub Issues RSS\n\n\nPlain, multiple and adaptive importance sampling, on CPU threads or GPUs.\n\n\n\nMaintained by: Jessica CoxShow all\n\nStatus: Registered\n\nLatest release: v0.0.1 on 12 Nov 2026\n\n\n\n\n\n\n\n\n\nMGVI.jl\n\nDocs GitHub Issues RSS\n\n\nApproximate posterior sampling with metric Gaussian variational inference, using implicit covariance representations for large models.\n\n\n\nMaintained by: Oliver SchulzShow all\n\nStatus: Stable\n\nLatest release: v0.6.2 on 20 Nov 2026\n\n\n\n\n\n\nUltraNest.jl\n\nDocs GitHub Issues RSS\n\n\nJulia interface to UltraNest for nested sampling, posterior estimation, and Bayesian model comparison.\n\n\n\nMaintained by: Oliver SchulzShow all\n\nStatus: Stable\n\nLatest release: v0.2.1 on 20 Nov 2026"
   },
   {
     "objectID": "ecosystem/index.html#analysis",
     "href": "ecosystem/index.html#analysis",
     "title": "Ecosystem",
     "section": "Analysis",
-    "text": "Analysis\n\n\nFlexiChains.jl\n\nDocs GitHub Issues\n\n\nMarkov chains that keep the type and structure of each sample.\n\n\n\nMaintained by: Ryan SenneSimon SteigerShow all\n\nStatus: Stable\n\nLatest release: v0.7.3 on 22 Nov 2026"
+    "text": "Analysis\n\n\nFlexiChains.jl\n\nDocs GitHub Issues RSS\n\n\nMarkov chains that keep the type and structure of each sample.\n\n\n\nMaintained by: Ryan SenneSimon SteigerShow all\n\nStatus: Stable\n\nLatest release: v0.7.4 on 26 Nov 2026"
   },
   {
     "objectID": "ecosystem/index.html#workflow",
     "href": "ecosystem/index.html#workflow",
     "title": "Ecosystem",
     "section": "Workflow",
-    "text": "Workflow\n\n\nBayesianWorkflow.jl\n\nDocs GitHub Issues\n\n\nHigh-level tools for Bayesian workflows.\n\n\n\nMaintained by: Peter Thestrup WaadeShow all\n\nStatus: Unregistered\n\nNo stable GitHub release or version tag yet."
+    "text": "Workflow\n\n\nBayesianWorkflow.jl\n\nDocs GitHub Issues RSS\n\n\nHigh-level tools for Bayesian workflows.\n\n\n\nMaintained by: Peter Thestrup WaadeShow all\n\nStatus: Unregistered\n\nNo stable GitHub release or version tag yet."
   },
   {
     "objectID": "ecosystem/index.html#tooling",
     "href": "ecosystem/index.html#tooling",
     "title": "Ecosystem",
     "section": "Tooling",
-    "text": "Tooling\n\n\nMCMCProgress.jl\n\nDocs GitHub Issues\n\n\nA common interface for MCMC samplers to report progress, with plain-text and terminal backends.\n\n\nStatus: Registered\n\nLatest release: v0.1.0 on 18 Nov 2026\n\n\n\n\n\n\n\n\n\nPlaice.jl\n\nDocs GitHub Issues\n\n\nConverts samples from distributions to and from vectors, constrained or unconstrained.\n\n\nStatus: Registered\n\nLatest release: v0.1.5 on 22 Nov 2026\n\n\n\n\n\n\nVarNames.jl\n\nDocs GitHub Issues\n\n\nTypes to represent variable names and collections thereof.\n\n\nStatus: Stable\n\nLatest release: v0.1.9 on 14 Nov 2026"
+    "text": "Tooling\n\n\nMCMCProgress.jl\n\nDocs GitHub Issues RSS\n\n\nA common interface for MCMC samplers to report progress, with plain-text and terminal backends.\n\n\nStatus: Registered\n\nLatest release: v0.2.0 on 24 Nov 2026\n\n\n\n\n\n\n\n\n\nPlaice.jl\n\nDocs GitHub Issues RSS\n\n\nConverts samples from distributions to and from vectors, constrained or unconstrained.\n\n\nStatus: Registered\n\nLatest release: v0.1.5 on 22 Nov 2026\n\n\n\n\n\n\nVarNames.jl\n\nDocs GitHub Issues RSS\n\n\nTypes to represent variable names and collections thereof.\n\n\nStatus: Stable\n\nLatest release: v0.1.9 on 14 Nov 2026"
   },
   {
     "objectID": "index.html",
@@ -137,7 +137,7 @@
     "href": "news/index.html",
     "title": "News",
     "section": "",
-    "text": "Skip to main content\n\n\n\n\nClear category filter\n\n\n\n\n\n\nJuliaBayes community meeting recap\n\n\n\nnews\n\ncommunity\n\n\n\n\n\n\n\n\n\n\n\nNov 20, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Skip to main content\n\n\n\n\nDownload blog, news, and package release feeds (OPML)\nClear category filter\nSubscribe to the community calendar · Calendar URL\n\n\n\n\n\n\nJuliaBayes community meeting recap\n\n\n\nnews\n\ncommunity\n\n\n\n\n\n\n\n\n\n\n\nNov 20, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "snippets/index.html",

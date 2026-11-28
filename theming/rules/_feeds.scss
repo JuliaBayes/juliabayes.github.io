@@ -26,7 +26,7 @@ body.quarto-dark .rss-feed-menu {
   color-scheme: dark;
 }
 
-@include media-breakpoint-down(lg) {
+@include media-breakpoint-down(md) {
   .navbar .quarto-navbar-tools .rss-feed-toggle::after {
     border: 0;
     margin: 0;

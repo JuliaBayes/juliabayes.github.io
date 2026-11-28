@@ -57,6 +57,10 @@ website:
       - icon: github
         href: https://github.com/JuliaBayes
         text: GitHub
+      # webcal:// asks the calendar app to subscribe, not to import a copy.
+      - icon: calendar3
+        href: webcal://juliabayes.org/events.ics
+        text: Community calendar
       - icon: rss
         text: RSS feeds
         menu:
@@ -66,10 +70,6 @@ website:
             href: news/index.xml
           - text: All feeds (OPML)
             href: feeds.opml
-      # webcal:// asks the calendar app to subscribe, not to import a copy.
-      - icon: calendar3
-        href: webcal://juliabayes.org/events.ics
-        text: Community calendar
 
 format:
   html:

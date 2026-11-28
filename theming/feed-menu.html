@@ -7,6 +7,8 @@
     menu.id = "rss-feed-menu";
     menu.classList.add("rss-feed-menu", "dropdown-menu-end");
     toggle.classList.add("rss-feed-toggle");
+    // Without a download name, the browser shows the OPML file as text.
+    menu.querySelector('a[href$=".opml"]')?.setAttribute("download", "juliabayes-feeds.opml");
     toggle.setAttribute("role", "button");
     toggle.setAttribute("aria-controls", menu.id);
     toggle.addEventListener("keydown", (event) => {

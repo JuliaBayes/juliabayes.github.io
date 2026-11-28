@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+  <title>JuliaBayes releases for VarNames.jl</title>
+  <link>https://juliabayes.org/ecosystem/</link>
+  <description>Stable GitHub releases for VarNames.jl.</description>
+  <language>en</language>
+  <image>
+    <url>https://juliabayes.org/rss-icon.png</url>
+    <title>JuliaBayes releases for VarNames.jl</title>
+    <link>https://juliabayes.org/ecosystem/</link>
+    <width>32</width>
+    <height>32</height>
+  </image>
+  <atom:link href="https://juliabayes.org/releases/varnames.jl.xml" rel="self" type="application/rss+xml"/>
+  <lastBuildDate>Sat, 14 Nov 2026 20:36:55 GMT</lastBuildDate>
+  <item>
+    <title>VarNames.jl v0.1.9</title>
+    <link>https://github.com/JuliaBayes/VarNames.jl/releases/tag/v0.1.9</link>
+    <guid isPermaLink="false">github-release:445574411</guid>
+    <pubDate>Sat, 14 Nov 2026 20:36:55 GMT</pubDate>
+    <category>VarNames.jl</category>
+    <description>&lt;p&gt;Add the convenience method getindex(::VarNamedTuple, ::Symbol). Merged pull requests: Index into VNTs with symbols (#36) (@penelopeysm)&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;VarNames v0.1.9&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/VarNames.jl/compare/v0.1.8...v0.1.9&quot;&gt;Diff since v0.1.8&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Add the convenience method &lt;code&gt;getindex(::VarNamedTuple, ::Symbol)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Index into VNTs with symbols (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6270735813&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/36&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/pull/36/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/pull/36&quot;&gt;#36&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/penelopeysm/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/penelopeysm&quot;&gt;@penelopeysm&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>VarNames.jl v0.1.8</title>
+    <link>https://github.com/JuliaBayes/VarNames.jl/releases/tag/v0.1.8</link>
+    <guid isPermaLink="false">github-release:430729830</guid>
+    <pubDate>Sun, 01 Nov 2026 17:11:34 GMT</pubDate>
+    <category>VarNames.jl</category>
+    <description>&lt;p&gt;Make hasvalue and getvalue work for Tuples and Refs. Improve the performance of hasvalue and getvalue by deferring to checkbounds in more cases (specifically with keyword indices). Merged pull requests: Support native indexing in value…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;VarNames v0.1.8&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/VarNames.jl/compare/v0.1.7...v0.1.8&quot;&gt;Diff since v0.1.7&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Make &lt;code&gt;hasvalue&lt;/code&gt; and &lt;code&gt;getvalue&lt;/code&gt; work for &lt;code&gt;Tuple&lt;/code&gt;s and &lt;code&gt;Ref&lt;/code&gt;s.&lt;/p&gt;
+&lt;p&gt;Improve the performance of &lt;code&gt;hasvalue&lt;/code&gt; and &lt;code&gt;getvalue&lt;/code&gt; by deferring to &lt;code&gt;checkbounds&lt;/code&gt; in more cases (specifically with keyword indices).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Support native indexing in value lookups (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6145996403&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/29&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/pull/29/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/pull/29&quot;&gt;#29&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/BJMCox/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/BJMCox&quot;&gt;@BJMCox&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Use bounds checks for keyword indices (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6146892741&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/32&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/pull/32/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/pull/32&quot;&gt;#32&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/BJMCox/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/BJMCox&quot;&gt;@BJMCox&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Closed issues:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Support tuple indexing in canview and getvalue (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6145219400&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/27&quot; data-hovercard-type=&quot;issue&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/issues/27/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/27&quot;&gt;#27&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Update getvalue/hasvalue for kwarg indices (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;6146630286&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/31&quot; data-hovercard-type=&quot;issue&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/issues/31/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/31&quot;&gt;#31&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>VarNames.jl v0.1.7</title>
+    <link>https://github.com/JuliaBayes/VarNames.jl/releases/tag/v0.1.7</link>
+    <guid isPermaLink="false">github-release:430322171</guid>
+    <pubDate>Sun, 01 Nov 2026 02:41:18 GMT</pubDate>
+    <category>VarNames.jl</category>
+    <description>&lt;p&gt;Fix a bug in Base.:(==) for VarNames.Draw.&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;VarNames v0.1.7&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/VarNames.jl/compare/v0.1.6...v0.1.7&quot;&gt;Diff since v0.1.6&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Fix a bug in &lt;code&gt;Base.:(==)&lt;/code&gt; for &lt;code&gt;VarNames.Draw&lt;/code&gt;.&lt;/p&gt;</content:encoded>
+  </item>
+  <item>
+    <title>VarNames.jl v0.1.6</title>
+    <link>https://github.com/JuliaBayes/VarNames.jl/releases/tag/v0.1.6</link>
+    <guid isPermaLink="false">github-release:430313028</guid>
+    <pubDate>Sun, 01 Nov 2026 02:17:08 GMT</pubDate>
+    <category>VarNames.jl</category>
+    <description>&lt;p&gt;Add more convenient ways to construct simple VarNamedTuples through the @vnt macro, such as @vnt(x := xval, y := yval) and @vnt(x, y).&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;VarNames v0.1.6&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/VarNames.jl/compare/v0.1.5...v0.1.6&quot;&gt;Diff since v0.1.5&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Add more convenient ways to construct simple &lt;code&gt;VarNamedTuple&lt;/code&gt;s through the &lt;code&gt;@vnt&lt;/code&gt; macro, such as &lt;code&gt;@vnt(x := xval, y := yval)&lt;/code&gt; and &lt;code&gt;@vnt(x, y)&lt;/code&gt;.&lt;/p&gt;</content:encoded>
+  </item>
+  <item>
+    <title>VarNames.jl v0.1.5</title>
+    <link>https://github.com/JuliaBayes/VarNames.jl/releases/tag/v0.1.5</link>
+    <guid isPermaLink="false">github-release:415787908</guid>
+    <pubDate>Sat, 17 Oct 2026 12:21:15 GMT</pubDate>
+    <category>VarNames.jl</category>
+    <description>&lt;p&gt;Add Base.view(::VarNamedTuple, vn::VarName), which attempts to return a view of the corresponding value. This usually only makes a difference if vn is a slice of an array, e.g. @vn(x[1:100]). Merged pull requests: Add a test for merge…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;VarNames v0.1.5&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/VarNames.jl/compare/v0.1.4...v0.1.5&quot;&gt;Diff since v0.1.4&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Add &lt;code&gt;Base.view(::VarNamedTuple, vn::VarName)&lt;/code&gt;, which attempts to return a view of the corresponding value.&lt;br&gt;
+This usually only makes a difference if &lt;code&gt;vn&lt;/code&gt; is a slice of an array, e.g. &lt;code&gt;@vn(x[1:100])&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add a test for merge behaviour (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5283167143&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/12&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/pull/12/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/pull/12&quot;&gt;#12&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/penelopeysm/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/penelopeysm&quot;&gt;@penelopeysm&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Bump JuliaRegistries/TagBot from 1.25.10 to 1.25.11 (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5312883438&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/13&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/pull/13/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/pull/13&quot;&gt;#13&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;organization&quot; data-hovercard-url=&quot;/orgs/dependabot/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/dependabot&quot;&gt;@dependabot&lt;/a&gt;[bot])&lt;/li&gt;
+&lt;li&gt;Bump julia-actions/cache from 3.2.0 to 3.3.0 (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5312884161&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/14&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/pull/14/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/pull/14&quot;&gt;#14&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;organization&quot; data-hovercard-url=&quot;/orgs/dependabot/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/dependabot&quot;&gt;@dependabot&lt;/a&gt;[bot])&lt;/li&gt;
+&lt;li&gt;Fix dynamic index display tests on Julia 1.13 (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5644146424&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/17&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/pull/17/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/pull/17&quot;&gt;#17&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/BJMCox/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/BJMCox&quot;&gt;@BJMCox&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Add compat entries to test/Project.toml (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5648661166&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/18&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/pull/18/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/pull/18&quot;&gt;#18&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/penelopeysm/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/penelopeysm&quot;&gt;@penelopeysm&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Add views into VarNamedTuple (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5848582942&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/20&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/pull/20/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/pull/20&quot;&gt;#20&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/BJMCox/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/BJMCox&quot;&gt;@BJMCox&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Closed issues:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fix test on 1.13 (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5467967596&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/16&quot; data-hovercard-type=&quot;issue&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/issues/16/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/16&quot;&gt;#16&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;View into a VNT (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5694632089&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/19&quot; data-hovercard-type=&quot;issue&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/issues/19/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/19&quot;&gt;#19&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>VarNames.jl v0.1.4</title>
+    <link>https://github.com/JuliaBayes/VarNames.jl/releases/tag/v0.1.4</link>
+    <guid isPermaLink="false">github-release:374575126</guid>
+    <pubDate>Fri, 21 Aug 2026 17:49:52 GMT</pubDate>
+    <category>VarNames.jl</category>
+    <description>&lt;p&gt;Add a show_header keyword argument to vnt_pretty_print to allow for callers to control whether or not to print the VarNamedTuple header. Merged pull requests: Allow vnt_pretty_print callers to not print VarNamedTuple at the very top (#11)…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;VarNames v0.1.4&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/VarNames.jl/compare/v0.1.3...v0.1.4&quot;&gt;Diff since v0.1.3&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Add a &lt;code&gt;show_header&lt;/code&gt; keyword argument to &lt;code&gt;vnt_pretty_print&lt;/code&gt; to allow for callers to control whether or not to print the &lt;code&gt;VarNamedTuple&lt;/code&gt; header.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Allow &lt;code&gt;vnt_pretty_print&lt;/code&gt; callers to not print VarNamedTuple at the very top (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5216536485&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/11&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/pull/11/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/pull/11&quot;&gt;#11&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/penelopeysm/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/penelopeysm&quot;&gt;@penelopeysm&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>VarNames.jl v0.1.3</title>
+    <link>https://github.com/JuliaBayes/VarNames.jl/releases/tag/v0.1.3</link>
+    <guid isPermaLink="false">github-release:373818441</guid>
+    <pubDate>Thu, 20 Aug 2026 14:54:05 GMT</pubDate>
+    <category>VarNames.jl</category>
+    <description>&lt;p&gt;Add ==, isequal, and show methods for Draw.&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;VarNames v0.1.3&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/VarNames.jl/compare/v0.1.2...v0.1.3&quot;&gt;Diff since v0.1.2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Add &lt;code&gt;==&lt;/code&gt;, &lt;code&gt;isequal&lt;/code&gt;, and &lt;code&gt;show&lt;/code&gt; methods for &lt;code&gt;Draw&lt;/code&gt;.&lt;/p&gt;</content:encoded>
+  </item>
+  <item>
+    <title>VarNames.jl v0.1.2</title>
+    <link>https://github.com/JuliaBayes/VarNames.jl/releases/tag/v0.1.2</link>
+    <guid isPermaLink="false">github-release:373738987</guid>
+    <pubDate>Thu, 20 Aug 2026 13:02:34 GMT</pubDate>
+    <category>VarNames.jl</category>
+    <description>&lt;p&gt;Export the vnt_pretty_print function and MustNotOverWriteError struct.&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;VarNames v0.1.2&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/VarNames.jl/compare/v0.1.1...v0.1.2&quot;&gt;Diff since v0.1.1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Export the &lt;code&gt;vnt_pretty_print&lt;/code&gt; function and &lt;code&gt;MustNotOverWriteError&lt;/code&gt; struct.&lt;/p&gt;</content:encoded>
+  </item>
+  <item>
+    <title>VarNames.jl v0.1.1</title>
+    <link>https://github.com/JuliaBayes/VarNames.jl/releases/tag/v0.1.1</link>
+    <guid isPermaLink="false">github-release:373431851</guid>
+    <pubDate>Thu, 20 Aug 2026 01:02:50 GMT</pubDate>
+    <category>VarNames.jl</category>
+    <description>&lt;p&gt;Added the Draw struct, which bundles a VarNamedTuple of parameter values with a NamedTuple of extra information, as well as the accessor functions parameters and extras. This is intended to represent a single MCMC sample. Draw is…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;VarNames v0.1.1&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JuliaBayes/VarNames.jl/compare/v0.1.0...v0.1.1&quot;&gt;Diff since v0.1.0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Added the &lt;code&gt;Draw&lt;/code&gt; struct, which bundles a &lt;code&gt;VarNamedTuple&lt;/code&gt; of parameter values with a &lt;code&gt;NamedTuple&lt;/code&gt; of extra information, as well as the accessor functions &lt;code&gt;parameters&lt;/code&gt; and &lt;code&gt;extras&lt;/code&gt;.&lt;br&gt;
+This is intended to represent a single MCMC sample.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Draw&lt;/code&gt; is structurally the same as what used to be called &lt;code&gt;ParamsWithStats&lt;/code&gt; in DynamicPPL.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add &lt;code&gt;Draw&lt;/code&gt; struct (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5198369589&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/9&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/pull/9/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/pull/9&quot;&gt;#9&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/penelopeysm/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/penelopeysm&quot;&gt;@penelopeysm&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Closed issues:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Move ParamsWithStats here (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5198283914&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/8&quot; data-hovercard-type=&quot;issue&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/issues/8/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/8&quot;&gt;#8&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+  <item>
+    <title>VarNames.jl v0.1.0</title>
+    <link>https://github.com/JuliaBayes/VarNames.jl/releases/tag/v0.1.0</link>
+    <guid isPermaLink="false">github-release:372947907</guid>
+    <pubDate>Wed, 19 Aug 2026 10:03:49 GMT</pubDate>
+    <category>VarNames.jl</category>
+    <description>&lt;p&gt;Initial release. This is a direct port of code from AbstractPPL and DynamicPPL, with one major change: @vn is now an alias for @varname, which is hopefully helpful since it gets used quite a lot. Merged pull requests: Bump the…&lt;/p&gt;</description>
+    <content:encoded>&lt;h2&gt;VarNames v0.1.0&lt;/h2&gt;
+&lt;p&gt;Initial release.&lt;br&gt;
+This is a direct port of code from AbstractPPL and DynamicPPL, with one major change: &lt;code&gt;@vn&lt;/code&gt; is now an alias for &lt;code&gt;@varname&lt;/code&gt;, which is hopefully helpful since it gets used quite a lot.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Merged pull requests:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bump the all-julia-packages group across 2 directories with 9 updates (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5065346484&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/1&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/pull/1/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/pull/1&quot;&gt;#1&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;organization&quot; data-hovercard-url=&quot;/orgs/dependabot/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/dependabot&quot;&gt;@dependabot&lt;/a&gt;[bot])&lt;/li&gt;
+&lt;li&gt;Add &lt;code&gt;@vn&lt;/code&gt; as a synonym for &lt;code&gt;@varname&lt;/code&gt; (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5088215780&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/4&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/pull/4/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/pull/4&quot;&gt;#4&lt;/a&gt;) (&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/penelopeysm/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/penelopeysm&quot;&gt;@penelopeysm&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Closed issues:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;@vn&lt;/code&gt; macro (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5075679938&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/2&quot; data-hovercard-type=&quot;issue&quot; data-hovercard-url=&quot;/JuliaBayes/VarNames.jl/issues/2/hovercard&quot; href=&quot;https://github.com/JuliaBayes/VarNames.jl/issues/2&quot;&gt;#2&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+  </item>
+</channel>
+</rss>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>JuliaBayes feeds</title>
+  </head>
+  <body>
+    <outline type="rss" text="JuliaBayes Blog &amp; News" title="JuliaBayes Blog &amp; News" xmlUrl="https://juliabayes.org/news/index.xml" htmlUrl="https://juliabayes.org/news/"/>
+    <outline type="rss" text="JuliaBayes package releases" title="JuliaBayes package releases" xmlUrl="https://juliabayes.org/releases.xml" htmlUrl="https://juliabayes.org/ecosystem/"/>
+  </body>
+</opml>

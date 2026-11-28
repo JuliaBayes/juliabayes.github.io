@@ -24,7 +24,8 @@ If you need to rerun the code in a post, you can delete the `_freeze/news/posts/
 
 ## Updating the community calendar
 
-Edit [`events.json`](events.json) to add or change confirmed events. Use a
+Edit [`events.yml`](events.yml) to add or change confirmed events. The file
+holds JSON, which is also YAML, so Quarto can read it as listing data. Use a
 unique lowercase `id` with hyphens and include a `title`, `start`, and `updated`.
 Use `YYYY-MM-DDTHH:MM:SSZ` UTC timestamps for timed events and `YYYY-MM-DD`
 for date-only events. Set `end` for a known duration. Dates used as `end`
@@ -33,6 +34,10 @@ are exclusive. The optional `description` and HTTPS `url` appear in the event.
 Start `sequence` at 0. Keep the same `id` when an event changes, increment
 `sequence` and set `updated` to the current UTC timestamp. Set `cancelled`
 to `true` to publish a cancellation.
+
+The landing page names the next event that has not ended, with a link to
+its `url`. With no such event, the line is not shown. The daily publish build
+refreshes the line, and a script in the page removes it once the event ends.
 
 Run `node src/community-calendar.mjs` to refresh the local `events.ics`
 snapshot. Preview and publish builds regenerate it. Keep past events in the

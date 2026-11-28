@@ -25,6 +25,12 @@ listing:
     sort: false
     sort-ui: false
     filter-ui: false
+  - id: next-event
+    contents: events.yml
+    template: news/next-event.ejs.md
+    sort: false
+    sort-ui: false
+    filter-ui: false
 ---
 
 ::::::: {.grid}
@@ -54,6 +60,12 @@ We develop, maintain, and promote Bayesian methods and software in Julia.
 
 We are community-driven and aim to be welcoming and inclusive. \
 Contributions and collaborations of all sizes are welcome.
+
+::: {#next-event}
+:::
+
+[]{.bi .bi-calendar3 aria-hidden="true"} [Subscribe to the community calendar](webcal://juliabayes.org/events.ics)
+for meetings and events.
 ::::
 
 :::: {.g-col-12 .accent-card .accent-blue .landing-card-news}
@@ -61,6 +73,7 @@ Contributions and collaborations of all sizes are welcome.
 ::: {.landing-card-header}
 ## News
 
+[[]{.bi .bi-rss}](news/index.xml){.landing-feed title="News feed (RSS)" aria-label="News feed (RSS)"}
 [All news →](news/index.qmd)
 :::
 
@@ -76,6 +89,7 @@ Contributions and collaborations of all sizes are welcome.
 ::: {.landing-card-header}
 ## Ecosystem
 
+[[]{.bi .bi-rss}](releases.xml){.landing-feed title="Package releases feed (RSS)" aria-label="Package releases feed (RSS)"}
 [All packages →](ecosystem/index.qmd)
 :::
 

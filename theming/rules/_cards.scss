@@ -26,7 +26,11 @@
     margin-top: 0;
   }
 
+  // The feed icon sits before the link to the full page.
   p {
+    display: flex;
+    align-items: baseline;
+    column-gap: 0.75rem;
     margin: 0;
     font-size: $landing-small-font-size;
   }
@@ -72,19 +76,49 @@ $landing-row-padding-x: 0.8rem;
   max-width: 36rem;
   margin-inline: auto;
   text-align: center;
+
+  // The next event and the calendar link below it read as one unit.
+  #listing-next-event {
+    padding-bottom: 0;
+  }
+
+  // The line breaks only between its parts, not inside a date or time.
+  .landing-next-event {
+    margin-bottom: 0;
+
+    time,
+    time + span {
+      white-space: nowrap;
+    }
+  }
 }
 
 // On touch screens, the link beside a card heading reaches the 44px target
 // size. The heading row aligns on centres, since a baseline would move the
 // taller link box.
 @include media-breakpoint-down(lg) {
+  // The narrow gap keeps the links beside the heading on a phone. If they
+  // wrap, they stay at the right edge.
   .landing-card-header {
     align-items: center;
+    column-gap: 0.5rem;
+  }
+
+  // The target box of the feed icon already spaces it from the link.
+  .landing-card-header > p {
+    align-items: center;
+    column-gap: 0;
+    margin-inline-start: auto;
   }
 
   .landing-card-header > p > a {
     display: inline-flex;
     align-items: center;
     min-height: 2.75rem;
+  }
+
+  .landing-card-header > p > a.landing-feed {
+    justify-content: center;
+    min-width: 2.75rem;
   }
 }

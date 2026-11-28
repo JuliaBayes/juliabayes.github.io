@@ -90,6 +90,6 @@ export function communityCalendar(events) {
 }
 
 if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) {
-  const events = JSON.parse(readFileSync(new URL("../events.json", import.meta.url), "utf8"));
+  const events = JSON.parse(readFileSync(new URL("../events.yml", import.meta.url), "utf8"));
   writeFileSync(new URL("../events.ics", import.meta.url), communityCalendar(events));
 }

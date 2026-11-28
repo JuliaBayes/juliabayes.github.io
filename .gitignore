@@ -3,3 +3,4 @@
 /.claude/
 **/*.quarto_ipynb
 **/*_files/
+/node_modules/

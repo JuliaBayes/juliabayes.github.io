@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
+import { parse } from "yaml";
 import { communityCalendar } from "./community-calendar.mjs";
 
 const meeting = {
@@ -36,4 +38,17 @@ test("escapes event text and folds UTF-8 lines without changing the title", () =
   const feed = communityCalendar([{ ...meeting, title }]);
   assert.ok(feed.split("\r\n").every((line) => Buffer.byteLength(line) <= 75));
   assert.ok(feed.replace(/\r\n /g, "").includes("SUMMARY:Bayes\\, Julia\\; " + "é".repeat(80) + "\\nTalk"));
+});
+
+test("publishes the meeting link as the location and rejects plain HTTP links", () => {
+  const feed = communityCalendar([{ ...meeting, "meeting-url": "https://example.org/join?id=1,2" }]);
+  assert.match(feed, /LOCATION:https:\/\/example\.org\/join\?id=1\\,2\r\n/);
+  assert.throws(() => communityCalendar([{ ...meeting, "meeting-url": "http://example.org/" }]), /HTTPS/);
+  assert.throws(() => communityCalendar([{ ...meeting, description: 42 }]), /text/);
+});
+
+test("reads the YAML events file", () => {
+  const events = parse(readFileSync(new URL("../events.yml", import.meta.url), "utf8"));
+  assert.ok(Array.isArray(events));
+  assert.match(communityCalendar(events), /BEGIN:VEVENT/);
 });

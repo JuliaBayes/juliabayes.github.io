@@ -76,21 +76,46 @@ $landing-row-padding-x: 0.8rem;
   max-width: 36rem;
   margin-inline: auto;
   text-align: center;
+}
 
-  // The next event and the calendar link below it read as one unit.
-  #listing-next-event {
-    padding-bottom: 0;
+// With no upcoming event, the slot takes no row, and so no grid gap.
+.landing-event-slot:not(:has(.landing-event)) {
+  display: none;
+}
+
+.landing-event-slot .quarto-listing {
+  padding-bottom: 0;
+}
+
+.landing-event-panel {
+  padding: 0.75rem $landing-row-padding-x;
+
+  h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
   }
 
-  // The line breaks only between its parts, not inside a date or time.
-  .landing-next-event {
-    margin-bottom: 0;
-
-    time,
-    time + span {
-      white-space: nowrap;
-    }
+  p {
+    margin: 0.5rem 0 0;
   }
+}
+
+// The time breaks only between UTC and local time, not inside either.
+.landing-event-when {
+  color: var(--bs-secondary-color);
+
+  time,
+  time + span {
+    white-space: nowrap;
+  }
+}
+
+.landing-event-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
 }
 
 // On touch screens, the link beside a card heading reaches the 44px target

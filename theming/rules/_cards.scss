@@ -26,7 +26,11 @@
     margin-top: 0;
   }
 
+  // The feed icon sits before the link to the full page.
   p {
+    display: flex;
+    align-items: baseline;
+    column-gap: 0.75rem;
     margin: 0;
     font-size: $landing-small-font-size;
   }
@@ -74,17 +78,72 @@ $landing-row-padding-x: 0.8rem;
   text-align: center;
 }
 
+// With no upcoming event, the slot takes no row, and so no grid gap.
+.landing-event-slot:not(:has(.landing-event)) {
+  display: none;
+}
+
+.landing-event-slot .quarto-listing {
+  padding-bottom: 0;
+}
+
+.landing-event-panel {
+  padding: 0.75rem $landing-row-padding-x;
+
+  h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0.5rem 0 0;
+  }
+}
+
+// The time breaks only between UTC and local time, not inside either.
+.landing-event-when {
+  color: var(--bs-secondary-color);
+
+  time,
+  time + span {
+    white-space: nowrap;
+  }
+}
+
+.landing-event-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+
 // On touch screens, the link beside a card heading reaches the 44px target
 // size. The heading row aligns on centres, since a baseline would move the
 // taller link box.
 @include media-breakpoint-down(lg) {
+  // The narrow gap keeps the links beside the heading on a phone. If they
+  // wrap, they stay at the right edge.
   .landing-card-header {
     align-items: center;
+    column-gap: 0.5rem;
+  }
+
+  // The target box of the feed icon already spaces it from the link.
+  .landing-card-header > p {
+    align-items: center;
+    column-gap: 0;
+    margin-inline-start: auto;
   }
 
   .landing-card-header > p > a {
     display: inline-flex;
     align-items: center;
     min-height: 2.75rem;
+  }
+
+  .landing-card-header > p > a.landing-feed {
+    justify-content: center;
+    min-width: 2.75rem;
   }
 }

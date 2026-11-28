@@ -1,0 +1,7 @@
+# The community calendar. README.md lists the fields.
+- id: community-meeting-1
+  title: JuliaBayes community meeting
+  start: 2026-11-18
+  updated: 2026-11-23T13:42:20Z
+  description: First JuliaBayes community meeting. See the recap.
+  url: https://juliabayes.org/news/posts/2026-11-20-community-meeting-1/

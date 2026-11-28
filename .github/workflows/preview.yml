@@ -22,6 +22,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # 7.0.1
       - name: Build community calendar
         run: |
+          npm ci --ignore-scripts
           node --test src/community-calendar.test.mjs
           node src/community-calendar.mjs
       - uses: quarto-dev/quarto-actions/setup@8a96df13519ee81fd526f2dfca5962811136661b # 2.2.0

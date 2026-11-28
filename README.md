@@ -24,18 +24,23 @@ If you need to rerun the code in a post, you can delete the `_freeze/news/posts/
 
 ## Updating the community calendar
 
-Edit [`events.json`](events.json) to add or change confirmed events. Use a
+Edit [`events.yml`](events.yml) to add or change confirmed events. Use a
 unique lowercase `id` with hyphens and include a `title`, `start`, and `updated`.
 Use `YYYY-MM-DDTHH:MM:SSZ` UTC timestamps for timed events and `YYYY-MM-DD`
 for date-only events. Set `end` for a known duration. Dates used as `end`
-are exclusive. The optional `description` and HTTPS `url` appear in the event.
+are exclusive. The optional `description`, HTTPS `url` for details, and
+HTTPS `meeting-url` for joining appear in the event.
 
 Start `sequence` at 0. Keep the same `id` when an event changes, increment
 `sequence` and set `updated` to the current UTC timestamp. Set `cancelled`
 to `true` to publish a cancellation.
 
-Run `node src/community-calendar.mjs` to refresh the local `events.ics`
-snapshot. Preview and publish builds regenerate it. Keep past events in the
+The landing page shows the next event that has not ended in a box with its
+details. With no such event, the box is not shown. The daily publish build
+refreshes the box, and a script in the page removes it once the event ends.
+
+Run `npm ci` once, then `node src/community-calendar.mjs` to refresh the local
+`events.ics` snapshot. Preview and publish builds regenerate it. Keep past events in the
 file as a record. The public subscription URL stays the same.
 
 Open a PR against `main` with the [calendar event template](.github/PULL_REQUEST_TEMPLATE/calendar-event.md).

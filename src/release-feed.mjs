@@ -32,12 +32,12 @@ ${outlines.join("\n")}
 }
 
 export function releaseIdentity(repository, tag) {
-  // Wren publishes packages from the same repository under separate tag prefixes.
-  if (repository === "Wren.jl") {
-    const match = /^(WrenDists|Wren)-(v?\d+\.\d+\.\d+(?:[-+].*)?)$/.exec(tag);
-    if (match) return { package: match[1] === "Wren" ? repository : match[1], version: match[2] };
-  }
-  return { package: repository, version: tag };
+  // In a monorepo, TagBot tags each subdirectory package as Name-vX.Y.Z. Such
+  // a tag belongs to the repository package only if Name is that package.
+  const match = /^([A-Za-z]\w*)-(v\d+\.\d+\.\d+(?:[-+].*)?)$/.exec(tag);
+  if (!match) return { package: repository, version: tag };
+  const [, name, version] = match;
+  return { package: name === repository.replace(/\.jl$/, "") ? repository : name, version };
 }
 
 function releaseSummary(release) {
